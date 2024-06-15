@@ -28,6 +28,9 @@ html{
 body{
   background-color: var(--color-primary-1);
 }
+a{
+  text-decoration: none;
+}
 
 section{
   padding: 280px 8%;
