@@ -2,9 +2,9 @@ header{
   width: 100%;
   padding: 28px 8%;
   background-color: var(--color-primary-1);
-/*   position: sticky; 
+  position: sticky; 
   top: 0; 
-  z-index: 3;  */
+  z-index: 3;  
 }
 
 #conteudo-cabecalho{
