@@ -28,7 +28,37 @@
   overflow: hidden;
 }
 
+.prato-coracao{
+  position: absolute;
+  background-color: var(--color-primary-6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.563rem;
+  color: var(--color-primary-1);
+  width: 70px;
+  height: 70px;
+  right: -10px;
+  top: -10px;
+  border-radius: 0px 37.5px 0px 42.5px;
+}
+
 .tamanho-imagem{
-  width: 200px;
+  width: 180px;
   height: 150px;
+}
+
+.prato-titulo{
+  color: #434343;
+  text-align: center;
+}
+
+.prato-star i{
+  color: var(--color-primary-6);
+}
+
+.prato-preco{
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
