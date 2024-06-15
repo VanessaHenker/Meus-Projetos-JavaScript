@@ -35,6 +35,7 @@ header{
   border-bottom: 3px solid var(--color-primary-4);
 }
 
+
 #btn_mobile{
   display: none;
 }
@@ -75,4 +76,10 @@ header{
     list-style: none;
     text-align: center;
   } 
+
+  .nav-item li:hover{
+    color: var(--color-neutral-1);
+    border-bottom: 3px solid var(--color-primary-4);
+  }
+  
 }
