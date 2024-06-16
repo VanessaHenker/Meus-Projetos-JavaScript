@@ -4,7 +4,7 @@
   align-items: center;
   justify-content: center;
   gap: 40px;
-  margin-top: -3rem;
+
 }
 
 #imagem_chefe{
@@ -97,7 +97,7 @@
     width: 100%;
   }
 
-  .feedback{
+  .feedback {
     flex-direction: column;
   }
 } 
