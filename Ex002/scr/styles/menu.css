@@ -62,3 +62,24 @@
   align-items: center;
   gap: 20px;
 }
+
+@media screen and (max-width: 1170px) {
+  #cardapio{
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .pratos{
+    width: calc(50% - 12px);
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .section-subtitulo{
+    text-align: center;
+  }
+
+  .pratos{
+    width: 100%;
+  }
+} 

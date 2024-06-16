@@ -1,0 +1,32 @@
+#aval{
+  min-height: calc(100vh - 91px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 48px;
+}
+
+#magem-chefe{
+  width: 500px;
+  height: auto;
+}
+
+#aval .section-subtitulo{
+  font-size: 3rem;
+}
+
+#aval_conteudo{
+  width: 50%;
+}
+
+#feedbacks{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 40px;
+  margin-top: 30px;
+}
+
+.imagem-cliente{
+  width: 50px;
+}
