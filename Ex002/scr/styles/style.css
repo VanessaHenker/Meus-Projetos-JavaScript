@@ -4,6 +4,7 @@
 @import url('home.css');
 @import url('menu.css');
 @import url('avaliacao.css');
+@import url('footer.css');
 
 :root {
   --color-primary-1: #fff9ea;

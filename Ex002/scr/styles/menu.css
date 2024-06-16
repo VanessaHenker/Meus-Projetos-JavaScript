@@ -80,14 +80,20 @@
   .pratos{
     width: calc(50% - 12px);
   }
+
+  .prato-descricao{
+    text-align: center;
+  }
 }
 
 @media screen and (max-width: 600px) {
-  .section-subtitulo{
+  .section-subtitulo,
+  .prato-descricao{
     text-align: center;
   }
 
   .pratos{
     width: 100%;
   }
+
 } 
