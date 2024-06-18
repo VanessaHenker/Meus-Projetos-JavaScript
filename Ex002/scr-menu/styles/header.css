@@ -51,23 +51,46 @@ header{
   .conteudo-button-pesq{
     display: flex;
     background-color: var(--color-primary-2);
-    width: 200px;
     padding: 5px;
     border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    width: 25px;
   }
 
-  #btn_mobile_pesq{
+  .conteudo-button-pesq.ativar{
+    width: 200px;
+  }
+
+  .btn_mobile_pesq{
     font-size: 1rem;
+    cursor: pointer;
   }
-
+ 
   .conteudo-input input{
     background-color: var(--color-primary-2);
     margin-left: 0.3rem;
     border: none;
     outline: none;
     font-size: 12px;
+   
   }
 
+  .button_fechar,
+  .btn_mobile_pesq{
+    display: block;
+    border: none;
+    background-color: transparent;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+
+  .button_fechar i{
+    font-size: 0.7rem;
+    margin-left: 0.3rem;
+  } 
+
+  
   #btn_mobile{
     display: block;
     border: none;
@@ -75,20 +98,6 @@ header{
     font-size: 1rem;
     cursor: pointer;
   }
-  
-  #button_fechar,
-  #btn_mobile_pesq{
-    display: block;
-    border: none;
-    background-color: transparent;
-    font-size: 1rem;
-    cursor: pointer;
-  }
-
-  #button_fechar i{
-    font-size: 0.7rem;
-    margin-left: 0.3rem;
-  } 
 
   #mobile_menu.active{
     display: flex;

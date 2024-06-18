@@ -23,22 +23,17 @@
       $('#btn_mobile').find('i').toggleClass('fa-x');
     });
 
-    let boxBuscar = document.querySelector('#conteudo-button-pesq');
 
-    let lupa = document.querySelector('#conteudo-button-pesq');
+    let boxBuscar = document.querySelector('.conteudo-button-pesq');
 
-    let fechar = document.querySelector('#conteudo-button-pesq');
-  });
+    let lupa = document.querySelector('.btn_mobile_pesq');
 
-    let boxBuscar = document.querySelector('conteudo-button-pesq');
-
-    let lupa = document.querySelector('#btn_mobile_pesq');
-
-    let btnFechar = document.querySelector('button_fechar');
+    let btnFechar = document.querySelector('.button_fechar');
   
-    lupa.addEventListener('click', () =>{
-      boxBuscar.classList.add('ativar')
+    lupa.addEventListener('click', ()=> {
+      boxBuscar.classList.add('ativar');
     });
+  });
     
   </script>
   <title>Menu-Pizza Bliss</title>
@@ -66,17 +61,17 @@
         
         <div class="buttons-mobile">
           <div class="conteudo-button-pesq">
-            <button id="btn_mobile_pesq">
+            <div class="btn_mobile_pesq">
               <i class="fa-solid fa-magnifying-glass"></i>
-            </button>
+            </div>
 
             <div class="conteudo-input">
-              <input class="search-bar" type="text"placeholder="Pesquisar...">
+              <input type="text"placeholder="Pesquisar...">
             </div>
            
-            <button id="button_fechar">
+            <div class="button_fechar">
               <i class="fa-solid fa-x"></i>
-            </button>
+            </div>
           </div>
 
           <button id="btn_mobile">
