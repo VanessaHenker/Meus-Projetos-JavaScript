@@ -29,9 +29,11 @@
 
     let lupa = document.querySelector('btn_mobile_pesq');
 
-    let fechar = document.querySelector('btn-fechar');
+    let btnFechar = document.querySelector('btn-fechar');
   
-
+    lupa.addEventListener('click', () =>{
+      boxBuscar.classList.add('ativar')
+    });
     
   </script>
   <title>Menu-Pizza Bliss</title>
@@ -61,8 +63,14 @@
           <div class="conteudo-button-pesq">
             <button id="btn_mobile_pesq">
               <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+
+            <div class="conteudo-input">
               <input class="search-bar" type="text"placeholder="Pesquisar...">
-              <i class="fa-solid fa-x" id="btn-fechar"></i>
+            </div>
+           
+            <button id="button_fechar">
+              <i class="fa-solid fa-x"></i>
             </button>
           </div>
 

@@ -27,8 +27,7 @@ header{
   font-weight: 600;
 }
 
-#btn_mobile,
-#btn_mobile_pesq{
+.buttons-mobile{
   display: none;
 }
 
@@ -49,30 +48,35 @@ header{
     gap: 10px;
   }
 
-  #btn_mobile_pesq input{
-    background-color: var(--color-primary-2);
-    max-width: 100px;
-    border: none;
-    outline: none;
-  }
-
-  #btn_mobile_abrir i{
-    font-size: 15px;
-  }
-
-  #btn-fechar{
-    font-size: 10px;
-  }
   .conteudo-button-pesq{
     display: flex;
     background-color: var(--color-primary-2);
-    align-items: center;
-    width: 150px;
-    overflow: hidden;
+    width: 200px;
     padding: 5px;
     border-radius: 10px;
   }
-  #btn_mobile,
+
+  #btn_mobile_pesq{
+    font-size: 1rem;
+  }
+
+  .conteudo-input input{
+    background-color: var(--color-primary-2);
+    padding-left: 2px;
+    border: none;
+    outline: none;
+    font-size: 12px;
+  }
+
+  #btn_mobile{
+    display: block;
+    border: none;
+    background-color: transparent;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  
+  #button_fechar,
   #btn_mobile_pesq{
     display: block;
     border: none;
