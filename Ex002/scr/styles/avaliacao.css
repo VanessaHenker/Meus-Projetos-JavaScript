@@ -65,14 +65,14 @@
   color: var(--color-primary-6);
 }
 
-@media sreen and (max-width: 1170px){
+@media(max-width: 1170px){
   #aval{
     flex-direction: column;
   }
 
   #aval .section-subtitulo{
     text-align: center;
-    font-size: 2.5;
+    font-size: 2.5rem;
   }
   
   #imagem_chefe{
@@ -88,7 +88,7 @@
 }
 
 
-@media screen and (max-width: 600px) {
+@media (max-width: 750px) {
   #aval .section-subtitle {
     font-size: 2rem;
   }
@@ -97,7 +97,8 @@
     width: 100%;
   }
 
-  .feedback {
+  .feedback-alien {
     flex-direction: column;
+    align-items: center;
   }
 } 
