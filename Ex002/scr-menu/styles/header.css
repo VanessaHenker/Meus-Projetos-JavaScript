@@ -1,3 +1,28 @@
 header{
   width: 100%;
+  padding: 28px 8%;
+  background-color: var(--color-primary-1);
+}
+
+.conteudo-cabecalho{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#nav_logo{
+  font-size: 24px;
+  color: var(--color-primary-6);
+}
+
+.nav-list{
+  display: flex;
+  list-style: none;
+  gap: 48px;
+}
+
+.nav-item li{
+  color: #1d1d1dad;
+  font-weight: 600;
 }

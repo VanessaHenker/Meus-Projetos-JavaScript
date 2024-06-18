@@ -11,15 +11,16 @@
   <link rel="shortcut icon" href="Imagens/icon/icons8-pizza-100.png" type="image/x-icon">
 
   <link rel="stylesheet" href="scr-menu/styles/style.css">
-  <title>Pizza bliss</title>
+  <title>Menu-Pizza Bliss</title>
 </head>
 <body>
     <header>
-      <nav id="conteudo-cabecalho">
-        <i class="fa-solid fa-pizza-slice" id="nav_logo">Pizza Bliss</i>
-        <ul id="nav_list">
+      <nav class="conteudo-cabecalho">
+        <a href="index.html">
+        <i class="fa-solid fa-pizza-slice" id="nav_logo">Pizza Bliss</i></a>
+        <ul class="nav-list">
           <a href="#" class="nav-item">
-            <li>cardápio</li>
+            <li>Cardápio</li>
           </a>
 
           <a href="#" class="nav-item">
@@ -32,7 +33,32 @@
         </ul>
 
         <button class="btn-default"> Login</button>
+
+        <button id="btn_mobile">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+
+        <button id="btn_mobile">
+          <i class="fa-solid fa-bars"></i>
+        </button>
       </nav>
+
+      <div id="mobile-menu">
+        <ul id="m">
+          <a href="">
+            <li>Cardápio</li>
+          </a>
+
+          <a href="">
+            <li>Pedidos</li>
+          </a>
+
+          <a href="">
+            <li>Cupons</li>
+          </a>
+        </ul>
+        <button class="btn-default">Login</button>
+      </div>
     </header>
 </body>
 </html>
