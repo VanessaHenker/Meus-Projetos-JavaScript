@@ -50,9 +50,9 @@ header{
   }
 
   #btn_mobile_pesq input{
-    display: none;
+  
   }
-
+ 
   #btn_mobile,
   #btn_mobile_pesq{
     display: block;
