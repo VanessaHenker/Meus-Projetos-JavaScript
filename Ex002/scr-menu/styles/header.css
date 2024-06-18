@@ -50,9 +50,28 @@ header{
   }
 
   #btn_mobile_pesq input{
-  
+    background-color: var(--color-primary-2);
+    max-width: 100px;
+    border: none;
+    outline: none;
   }
- 
+
+  #btn_mobile_abrir i{
+    font-size: 15px;
+  }
+
+  #btn-fechar{
+    font-size: 10px;
+  }
+  .conteudo-button-pesq{
+    display: flex;
+    background-color: var(--color-primary-2);
+    align-items: center;
+    width: 150px;
+    overflow: hidden;
+    padding: 5px;
+    border-radius: 10px;
+  }
   #btn_mobile,
   #btn_mobile_pesq{
     display: block;

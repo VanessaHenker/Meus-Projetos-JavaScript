@@ -23,25 +23,11 @@
       $('#btn_mobile').find('i').toggleClass('fa-x');
     });
 
-    /* $('#btn_mobile_pesq').on('click', function() {
-      
-    $('#mobile_menu').toggleClass('active');
-    $('#btn_mobile').find('i').toggleClass();
-      }); */
+    let boxBuscar = document.querySelector('#btn_mobile_pesq"')
 
     });
 
-   const searchIcon = document.querySelector('.search-icon');
-const searchBar = document.getElementById('search-bar');
-
-searchIcon.addEventListener('click', function() {
-  if (searchBar.style.display === 'none' || searchBar.style.display === '') {
-    searchBar.style.display = 'block'; // Mostrar a barra de pesquisa
-    searchBar.focus(); // Colocar o foco na barra de pesquisa
-  } else {
-    searchBar.style.display = 'none'; // Ocultar a barra de pesquisa
-  }
-});
+    
   </script>
   <title>Menu-Pizza Bliss</title>
 </head>
@@ -67,11 +53,16 @@ searchIcon.addEventListener('click', function() {
         <button class="btn-default"> Login</button>
         
         <div class="buttons-mobile">
-          <button id="btn_mobile_pesq">
-            <i class="fa-solid fa-magnifying-glass"></i>
-            <input class="search-bar" type="text"placeholder="Pesquisar...">
-          </button>
-     
+          <div class="conteudo-button-pesq">
+            <button id="btn_mobile_pesq">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              
+              <input class="search-bar" type="text"placeholder="Pesquisar...">
+              
+              <i class="fa-solid fa-x" id="btn-fechar"></i>
+            </button>
+          </div>
+
           <button id="btn_mobile">
             <i class="fa-solid fa-bars"></i>
           </button>
