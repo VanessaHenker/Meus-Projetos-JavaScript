@@ -4,7 +4,7 @@ header{
   background-color: var(--color-primary-1);
 }
 
-.conteudo-cabecalho{
+#conteudo_cabecalho{
   width: 100%;
   display: flex;
   align-items: center;
@@ -16,7 +16,7 @@ header{
   color: var(--color-primary-6);
 }
 
-.nav-list{
+#nav_list{
   display: flex;
   list-style: none;
   gap: 48px;
@@ -25,4 +25,34 @@ header{
 .nav-item li{
   color: #1d1d1dad;
   font-weight: 600;
+}
+
+#btn_mobile{
+  display: none;
+}
+
+#mobile_menu{
+  display: none;
+}
+
+/* Versão mobile */
+@media screen and (max-width: 1170px){
+  #nav_list,
+  #conteudo_cabecalho .btn-default{
+    display: none;
+  }
+
+  #btn_mobile{
+    display: block;
+    border: none;
+    background-color: transparent;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+
+  #mobile-menu.active{
+    display: flex;
+    flex-direction: column;
+  }
+
 }

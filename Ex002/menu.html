@@ -11,14 +11,19 @@
   <link rel="shortcut icon" href="Imagens/icon/icons8-pizza-100.png" type="image/x-icon">
 
   <link rel="stylesheet" href="scr-menu/styles/style.css">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+  integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://unpkg.com/scrollreveal"></script>
   <title>Menu-Pizza Bliss</title>
 </head>
 <body>
     <header>
-      <nav class="conteudo-cabecalho">
+      <nav id="conteudo_cabecalho">
         <a href="index.html">
         <i class="fa-solid fa-pizza-slice" id="nav_logo">Pizza Bliss</i></a>
-        <ul class="nav-list">
+        <ul id="nav_list">
           <a href="#" class="nav-item">
             <li>Cardápio</li>
           </a>
@@ -43,17 +48,17 @@
         </button>
       </nav>
 
-      <div id="mobile-menu">
-        <ul id="m">
-          <a href="">
+      <div id="mobile_menu">
+        <ul id="mobile_nav_list">
+          <a href="#menu" class="nav-item">
             <li>Cardápio</li>
           </a>
 
-          <a href="">
+          <a href="#ped" class="nav-item">
             <li>Pedidos</li>
           </a>
 
-          <a href="">
+          <a href="aval" class="nav-item">
             <li>Cupons</li>
           </a>
         </ul>
