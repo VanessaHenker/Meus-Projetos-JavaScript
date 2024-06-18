@@ -62,7 +62,7 @@ header{
 
   .conteudo-input input{
     background-color: var(--color-primary-2);
-    padding-left: 2px;
+    margin-left: 0.3rem;
     border: none;
     outline: none;
     font-size: 12px;
@@ -84,6 +84,11 @@ header{
     font-size: 1rem;
     cursor: pointer;
   }
+
+  #button_fechar i{
+    font-size: 0.7rem;
+    margin-left: 0.3rem;
+  } 
 
   #mobile_menu.active{
     display: flex;
