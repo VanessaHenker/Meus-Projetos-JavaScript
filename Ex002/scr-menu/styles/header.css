@@ -46,14 +46,17 @@ header{
   .buttons-mobile{
     display: flex;
     justify-content: end;
-    gap: 5px;
+    gap: 10px;
+  }
+
+  #btn_mobile_pesq input{
+    display: none;
   }
 
   #btn_mobile,
   #btn_mobile_pesq{
     display: block;
-    border-radius: 10px;
-    padding: 5px;
+    border: none;
     background-color: transparent;
     font-size: 1rem;
     cursor: pointer;
@@ -80,5 +83,11 @@ header{
   .nav-item li:hover{
     color: var(--color-neutral-1);
     border-bottom: 3px solid var(--color-primary-4);
+  }
+}
+
+@media screen and (max-width: 370px){
+  #nav_logo{
+    font-size: 20px;
   }
 }
