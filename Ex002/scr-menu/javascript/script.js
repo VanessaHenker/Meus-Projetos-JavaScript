@@ -1,3 +1,5 @@
+//button header
+
 $(document).ready(function() {
   $('#btn_mobile').on('click', function() {
     $('#mobile_menu').toggleClass('active');
@@ -5,6 +7,7 @@ $(document).ready(function() {
   });
 
 
+  //button pesquisa
   let boxBuscar = document.querySelector('.conteudo-button-pesq');
 
   let lupa = document.querySelector('.btn_mobile_pesq');
@@ -16,6 +19,6 @@ $(document).ready(function() {
   });
 
   btnFechar.addEventListener('click', ()=> {
-    boxBuscar.classList.remove('ativar');
+    boxBuscar.classList.remove('ativar'); //fim do header
   });
 });

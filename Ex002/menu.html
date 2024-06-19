@@ -16,30 +16,6 @@
     integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="https://unpkg.com/scrollreveal"></script>
-  <script>
-    $(document).ready(function() {
-    $('#btn_mobile').on('click', function() {
-      $('#mobile_menu').toggleClass('active');
-      $('#btn_mobile').find('i').toggleClass('fa-x');
-    });
-
-
-    let boxBuscar = document.querySelector('.conteudo-button-pesq');
-
-    let lupa = document.querySelector('.btn_mobile_pesq');
-
-    let btnFechar = document.querySelector('.button_fechar');
-  
-    lupa.addEventListener('click', ()=> {
-      boxBuscar.classList.add('ativar');
-    });
-
-    btnFechar.addEventListener('click', ()=> {
-      boxBuscar.classList.remove('ativar');
-    });
-  });
-    
-  </script>
   <title>Menu-Pizza Bliss</title>
 </head>
 <body>
@@ -101,5 +77,6 @@
         <button class="btn-default">Login</button>
       </div>
     </header>
+    <script src="scr-menu/javascript/script.js"></script>
 </body>
 </html>
