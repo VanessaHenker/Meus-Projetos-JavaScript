@@ -1,22 +1,21 @@
-//buttons header
 $(document).ready(function() {
-  $('#btn_mobile')('#btn_mobile_pesq').on('click', function() {
-    $('#mobile_menu').toggleClass('active');
-    $('#btn_mobile').find('i').toggleClass('fa-x');
-
+  $('#btn_mobile').on('click', function() {
     $('#mobile_menu').toggleClass('active');
     $('#btn_mobile').find('i').toggleClass('fa-x');
   });
-});
 
-const searchIcon = document.querySelector('.search-icon');
-const searchBar = document.getElementById('search-bar');
 
-searchIcon.addEventListener('click', function() {
-  if (searchBar.style.display === 'none' || searchBar.style.display === '') {
-    searchBar.style.display = 'block'; // Mostrar a barra de pesquisa
-    searchBar.focus(); // Colocar o foco na barra de pesquisa
-  } else {
-    searchBar.style.display = 'none'; // Ocultar a barra de pesquisa
-  }
+  let boxBuscar = document.querySelector('.conteudo-button-pesq');
+
+  let lupa = document.querySelector('.btn_mobile_pesq');
+
+  let btnFechar = document.querySelector('.button_fechar');
+
+  lupa.addEventListener('click', ()=> {
+    boxBuscar.classList.add('ativar');
+  });
+
+  btnFechar.addEventListener('click', ()=> {
+    boxBuscar.classList.remove('ativar');
+  });
 });
