@@ -175,6 +175,7 @@ body {
   width: 100%;
   border: none;
   background-color: #ecf0f1;
+  outline: none;
 }
 
 input:-webkit-autofill{    
