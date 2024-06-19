@@ -21,33 +21,19 @@ $(document).ready(function() {
     boxBuscar.classList.remove('ativar'); //fim do header
   });
    
-  
 });
 
-//conteudo suguestão button pesquisa
-const searchInput = document.getElementById('serach')
-const suggestionsBox = document.getElementById('suggestions');
-
-const suggestions = [
-  "Batata",
-  "Bola",
-  "Pizza"
-];
-
-searchInput.addEventListener('input',() =>{
-  const input = searchInput.value.toLowerCase();
-  suggestionsBox.innerHTML = '';
-
-  if(input){
-    const filteredSuggestions = suggestions.filler(item => item.toLowerCase().includes(input));
-    filteredSuggestions.forEach(suggestions => {
-      const suggestionDiv = document.createElement('div');
-      suggestionDiv = document.createElement('div');
-      suggestionDiv.addEventListener('click', () =>{
-        searchInput.value = suggestion;
-        suggestionsBox.innerHTML = '';
-      });
-    });
+function search_animal() {
+  let input = document.getElementById('search').value
+  input=input.toLowerCase();
+  let x = document.getElementsByClassName('animals');
+    
+  for (i = 0; i < x.length; i++) { 
+      if (!x[i].innerHTML.toLowerCase().includes(input)) {
+          x[i].style.display="none";
+      }
+      else {
+          x[i].style.display="list-item";                 
+      }
   }
-
-});
+}
