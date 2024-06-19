@@ -1,5 +1,4 @@
-//button header
-
+  //button header
 $(document).ready(function() {
   $('#btn_mobile').on('click', function() {
     $('#mobile_menu').toggleClass('active');
@@ -21,4 +20,34 @@ $(document).ready(function() {
   btnFechar.addEventListener('click', ()=> {
     boxBuscar.classList.remove('ativar'); //fim do header
   });
+   
+  
+});
+
+//conteudo suguestão button pesquisa
+const searchInput = document.getElementById('serach')
+const suggestionsBox = document.getElementById('suggestions');
+
+const suggestions = [
+  "Batata",
+  "Bola",
+  "Pizza"
+];
+
+searchInput.addEventListener('input',() =>{
+  const input = searchInput.value.toLowerCase();
+  suggestionsBox.innerHTML = '';
+
+  if(input){
+    const filteredSuggestions = suggestions.filler(item => item.toLowerCase().includes(input));
+    filteredSuggestions.forEach(suggestions => {
+      const suggestionDiv = document.createElement('div');
+      suggestionDiv = document.createElement('div');
+      suggestionDiv.addEventListener('click', () =>{
+        searchInput.value = suggestion;
+        suggestionsBox.innerHTML = '';
+      });
+    });
+  }
+
 });
