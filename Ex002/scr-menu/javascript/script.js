@@ -25,25 +25,25 @@ $(document).ready(function () {
 
 
 document.addEventListener('DOMContentLoaded', () => {
-  const searchBar = document.getElementById('Barra de pesquisa');
+  const searchBar = document.getElementById('Barra-pesquisa');
   const options = document.getElementById('opcoes');
 
   searchBar.addEventListener('click', () => {
-    options.classList.remove('hidden');
+    options.classList.remove('ativar-barra');
   });
 
   document.addEventListener('click', (event) => {
-    if (!event.target.closest('.conteudo-procurar')) {
-      options.classList.add('hidden');
+    if (!event.target.closest('.conteudo-pesquisa')) {
+      options.classList.add('ativar-barra');
     }
   });
 
   // Adiciona comportamento de clique nas opções (opcional)
-  const optionItems = document.querySelectorAll('.opcoes');
+  const optionItems = document.querySelectorAll('.opcoes-barra');
   optionItems.forEach(option => {
     option.addEventListener('click', () => {
       searchBar.value = option.textContent;
-      options.classList.add('hidden');
+      options.classList.add('ativar-barra');
     });
   });
 });
