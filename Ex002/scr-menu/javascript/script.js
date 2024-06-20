@@ -1,4 +1,5 @@
-//button header
+// header
+//buttom menu
 $(document).ready(function () {
   $('#btn_mobile').on('click', function () {
     $('#mobile_menu').toggleClass('active');
@@ -19,7 +20,17 @@ $(document).ready(function () {
   btnFechar.addEventListener('click', () => {
     boxBuscar.classList.remove('ativar');
   });
-
+  
+  //verificar se opção de busca está aberta
+  document.addEventListener('click', function(event) {
+    var content = document.getElementById('content');
+    var isClickInside = content.contains(event.target);
+   
+    if (!isClickInside) {
+      boxBuscar.classList.remove('ativar');
+    }
+  });
+  
   //button pesquisa opções
   const searchBar = document.getElementById('barra-pesquisa');
   const options = document.getElementById('opcoes');
@@ -29,12 +40,6 @@ $(document).ready(function () {
   });
 
 
-  document.addEventListener('click', (event) => {
-    if (!event.target.closest('.conteudo-pesquisa')){
-      options.classList.add('ativar-barra');
-    }
-  });
-
   // Adiciona comportamento de clique nas opções (opcional)
   const optionItems = document.querySelectorAll('.opcoes-barra');
   optionItems.forEach(option => {
@@ -43,34 +48,8 @@ $(document).ready(function () {
       options.classList.add('ativar-barra');
     });
   });
-
 });
 
-document.addEventListener('click', function(event) {
-
-  let boxBuscar = document.querySelector('.conteudo-button-pesq');
-
-  let lupa = document.querySelector('.btn_mobile_pesq');
-
-  let btnFechar = document.querySelector('.button_fechar');
-
-  lupa.addEventListener('click', () => {
-    boxBuscar.classList.add('ativar');
-  
-  });
-
-  btnFechar.addEventListener('click', () => {
-    boxBuscar.classList.remove('ativar');
-  });
-
-  //verificar se opção de busca está aberta
-  var content = document.getElementById('content');
-  var isClickInside = content.contains(event.target);
- 
-  if (!isClickInside) {
-    boxBuscar.classList.remove('ativar');
-  }
-});
 
 
  
