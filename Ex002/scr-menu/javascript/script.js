@@ -13,6 +13,7 @@ $(document).ready(function () {
 
   let btnFechar = document.querySelector('.button_fechar');
 
+  
   lupa.addEventListener('click', () => {
     boxBuscar.classList.add('ativar');
   });
@@ -46,20 +47,26 @@ $(document).ready(function () {
       var content = document.getElementById('content');
       var isClickInside = content.contains(event.target);
       
-      var button = document.getElementById('opcoes');
-      var teste = button.contains(event.target);
-
+      var input = document.getElementById('opcoes');
+      input.style.display = 'block';
+      
       if (!isClickInside) {
         boxBuscar.classList.remove('ativar');
-        button.style.display = 'none';
-      }  
+        input.style.display = 'none';
+      } 
       
-      
+      //button menu
+      var menu = document.getElementById('#mobile_menu');
+      var menuClick = menu.contains(event.target);
 
+      if (!menuClick) {
+          menu.style.display = 'none';
+        //input.style.display = 'none';
+        //$('#mobile_menu').toggleClass('active');
+      } 
       
-
     });
-});
+  });
 
 
 
