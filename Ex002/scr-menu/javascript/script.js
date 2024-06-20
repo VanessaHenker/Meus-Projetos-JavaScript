@@ -64,17 +64,16 @@ document.addEventListener('click', function(event) {
 
 
   var content = document.getElementById('content');
-  var contenteste = document.getElementById('#btn_mobile');
   var isClickInside = content.contains(event.target);
+ 
+  
 
   if (!isClickInside) {
     boxBuscar.classList.remove('ativar');
   }
 
-  if (!contenteste) {
-    $('#mobile_menu').toggleClass();
-    $('#btn_mobile').find('i').toggleClass('fa-x');
-  }
+  
+
 });
 
 
