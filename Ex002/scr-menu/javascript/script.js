@@ -43,8 +43,39 @@ $(document).ready(function () {
       options.classList.add('ativar-barra');
     });
   });
+
 });
 
+document.addEventListener('click', function(event) {
+
+  let boxBuscar = document.querySelector('.conteudo-button-pesq');
+
+  let lupa = document.querySelector('.btn_mobile_pesq');
+
+  let btnFechar = document.querySelector('.button_fechar');
+
+  lupa.addEventListener('click', () => {
+    boxBuscar.classList.add('ativar');
+  });
+
+  btnFechar.addEventListener('click', () => {
+    boxBuscar.classList.remove('ativar');
+  });
+
+
+  var content = document.getElementById('content');
+  var contenteste = document.getElementById('#btn_mobile');
+  var isClickInside = content.contains(event.target);
+
+  if (!isClickInside) {
+    boxBuscar.classList.remove('ativar');
+  }
+
+  if (!contenteste) {
+    $('#mobile_menu').toggleClass();
+    $('#btn_mobile').find('i').toggleClass('fa-x');
+  }
+});
 
 
  

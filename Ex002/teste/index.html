@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fechar ao Clicar Fora</title>
+    <style>
+        .content {
+            width: 300px;
+            padding: 20px;
+            background-color: lightblue;
+            border: 1px solid #ccc;
+            position: relative;
+            margin: 50px auto;
+        }
+    </style>
+
+    <script>
+    document.addEventListener('click', function(event) {
+    var content = document.getElementById('content');
+    var isClickInside = content.contains(event.target);
+
+    if (!isClickInside) {
+        content.style.display = 'none';
+    }
+});
+
+    </script>
+</head>
+<body>
+    <div id="content" class="content">
+        Clique fora deste conteúdo para fechá-lo.
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

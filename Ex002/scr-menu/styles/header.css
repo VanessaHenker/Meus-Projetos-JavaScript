@@ -98,6 +98,9 @@ header{
  
   }
 
+  .content{
+    background-color: aqua;
+  }
   .ativar-barra {
     display: none;
   }
