@@ -62,7 +62,8 @@ header{
 
   .hidden {
     display: none;
-}
+  }
+
   .conteudo-button-pesq.ativar{
     width: 200px;
   }
@@ -81,6 +82,11 @@ header{
    
   }
 
+  .button_fechar{
+    justify-content: end;
+    margin-left: 100px;
+  }
+ 
   .button_fechar,
   .btn_mobile_pesq{
     display: block;
@@ -91,6 +97,7 @@ header{
   }
 
   .button_fechar i{
+    display: flex;
     font-size: 0.7rem;
     margin-left: 0.3rem;
   } 
