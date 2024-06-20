@@ -24,25 +24,22 @@ $(document).ready(function() {
 });
 
 function search_animal() {
-  
-  let boxBuscar = document.querySelector('.conteudo-button-pesq');
-
-  let clicarInput = document.querySelector('.button_fechar');
-
-  input.addEventListener('click', ()=> {
-    boxBuscar.classList.add('ativar');
-  });
-
-  let input = document.getElementById('search').value
+  $(document).ready(function() {
+  $('#search').on('click', function() {
+    $('#list').toggleClass('active');
+    
+    let input = document.getElementById('search').value
     input=input.toLowerCase();
 
-  let x = document.getElementsByClassName('animals');
+    let x = document.getElementsByClassName('animals');
   for (i = 0; i < x.length; i++) { 
     if (!x[i].innerHTML.toLowerCase().includes(input)) {
-      x[i].style.display="none";
+        x[i].style.display="none";
     }
     else {
-      x[i].style.display="list-item";                 
+        x[i].style.display="list-item";                 
     }
-  } 
+} 
+  });
+});
 }
