@@ -2,6 +2,9 @@ header{
   width: 100%;
   padding: 28px 8%;
   background-color: var(--color-primary-1);
+  position:sticky;
+  top: 0; 
+  z-index: 2;  
 }
 
 #conteudo_cabecalho{
@@ -48,6 +51,7 @@ header{
     gap: 10px;
   }
 
+  
   .conteudo-button-pesq{
     display: flex;
     background-color: var(--color-primary-2);
@@ -90,10 +94,16 @@ header{
   .ativar-barra {
     display: none;
   }
+  
+  .opcoes-barra{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
 
   .opcoes-barra:hover{
     background-color: var(--color-primary-3);
-    border-radius: 10px;
+    border-radius: 5px;
     width: 100%;
   }
 

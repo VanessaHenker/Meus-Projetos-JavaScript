@@ -18,14 +18,16 @@ $(document).ready(function () {
   });
 
   btnFechar.addEventListener('click', () => {
-    boxBuscar.classList.remove('ativar'); //fim do header
+    boxBuscar.classList.remove('ativar');
   });
 
 });
 
+//button pesquisa opções
+document.addEventListener('click', () => {
 
-document.addEventListener('DOMContentLoaded', () => {
-  const searchBar = document.getElementById('Barra-pesquisa');
+
+  const searchBar = document.getElementById('barra-pesquisa');
   const options = document.getElementById('opcoes');
 
   searchBar.addEventListener('click', () => {
@@ -46,6 +48,6 @@ document.addEventListener('DOMContentLoaded', () => {
       options.classList.add('ativar-barra');
     });
   });
-});
+});//fim do header
 
 
