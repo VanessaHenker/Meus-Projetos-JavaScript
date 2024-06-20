@@ -5,7 +5,6 @@ $(document).ready(function () {
     $('#btn_mobile').find('i').toggleClass('fa-x');
   });
 
-
   //button pesquisa
   let boxBuscar = document.querySelector('.conteudo-button-pesq');
 
@@ -21,12 +20,7 @@ $(document).ready(function () {
     boxBuscar.classList.remove('ativar');
   });
 
-});
-
-//button pesquisa opções
-document.addEventListener('click', () => {
-
-
+  //button pesquisa opções
   const searchBar = document.getElementById('barra-pesquisa');
   const options = document.getElementById('opcoes');
 
@@ -34,8 +28,9 @@ document.addEventListener('click', () => {
     options.classList.remove('ativar-barra');
   });
 
+
   document.addEventListener('click', (event) => {
-    if (!event.target.closest('.conteudo-pesquisa')) {
+    if (!event.target.closest('.conteudo-pesquisa')){
       options.classList.add('ativar-barra');
     }
   });
@@ -48,6 +43,11 @@ document.addEventListener('click', () => {
       options.classList.add('ativar-barra');
     });
   });
-});//fim do header
+});
+
+
+
+ 
+
 
 
