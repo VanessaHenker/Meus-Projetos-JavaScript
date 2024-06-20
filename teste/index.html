@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barra de Pesquisa com Opções</title>
+    <link rel="stylesheet" href="styles.css">
+<style>
+.search-container {
+  position: relative;
+  width: 300px;
+}
+
+#search-bar {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.options {
+    position: absolute;
+    top: 40px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-top: none;
+    background-color: white;
+    z-index: 1000;
+}
+
+.option {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.option:hover {
+    background-color: #f0f0f0;
+}
+
+.hidden {
+    display: none;
+}
+
+  </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+    const searchBar = document.getElementById('search-bar');
+    const options = document.getElementById('options');
+
+    searchBar.addEventListener('click', () => {
+        options.classList.remove('hidden');
+    });
+
+    document.addEventListener('click', (event) => {
+        if (!event.target.closest('.search-container')) {
+            options.classList.add('hidden');
+        }
+    });
+
+    // Adiciona comportamento de clique nas opções (opcional)
+    const optionItems = document.querySelectorAll('.option');
+    optionItems.forEach(option => {
+        option.addEventListener('click', () => {
+            searchBar.value = option.textContent;
+            options.classList.add('hidden');
+        });
+    });
+});
+
+  </script>
+</head>
+<body>
+    <div class="search-container">
+        <input type="text" id="search-bar" placeholder="Pesquisar...">
+        <div id="options" class="options hidden">
+            <div class="option">Opção 1</div>
+            <div class="option">Opção 2</div>
+            <div class="option">Opção 3</div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,6 +1,6 @@
-  //button header
-$(document).ready(function() {
-  $('#btn_mobile').on('click', function() {
+//button header
+$(document).ready(function () {
+  $('#btn_mobile').on('click', function () {
     $('#mobile_menu').toggleClass('active');
     $('#btn_mobile').find('i').toggleClass('fa-x');
   });
@@ -13,33 +13,39 @@ $(document).ready(function() {
 
   let btnFechar = document.querySelector('.button_fechar');
 
-  lupa.addEventListener('click', ()=> {
+  lupa.addEventListener('click', () => {
     boxBuscar.classList.add('ativar');
   });
 
-  btnFechar.addEventListener('click', ()=> {
+  btnFechar.addEventListener('click', () => {
     boxBuscar.classList.remove('ativar'); //fim do header
   });
-   
+
 });
 
-function search_animal() {
-  $(document).ready(function() {
-  $('#search').on('click', function() {
-    $('#list').toggleClass('active');
-    
-    let input = document.getElementById('search').value
-    input=input.toLowerCase();
 
-    let x = document.getElementsByClassName('animals');
-  for (i = 0; i < x.length; i++) { 
-    if (!x[i].innerHTML.toLowerCase().includes(input)) {
-        x[i].style.display="none";
+document.addEventListener('DOMContentLoaded', () => {
+  const searchBar = document.getElementById('search-bar');
+  const options = document.getElementById('options');
+
+  searchBar.addEventListener('click', () => {
+    options.classList.remove('hidden');
+  });
+
+  document.addEventListener('click', (event) => {
+    if (!event.target.closest('.search-container')) {
+      options.classList.add('hidden');
     }
-    else {
-        x[i].style.display="list-item";                 
-    }
-} 
+  });
+
+  // Adiciona comportamento de clique nas opções (opcional)
+  const optionItems = document.querySelectorAll('.option');
+  optionItems.forEach(option => {
+    option.addEventListener('click', () => {
+      searchBar.value = option.textContent;
+      options.classList.add('hidden');
+    });
   });
 });
-}
+
+
