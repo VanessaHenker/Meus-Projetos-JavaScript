@@ -20,34 +20,36 @@ $(document).ready(function () {
   btnFechar.addEventListener('click', () => {
     boxBuscar.classList.remove('ativar');
   });
-  
-  //verificar se opção de busca está aberta
-  document.addEventListener('click', function(event) {
-    var content = document.getElementById('content');
-    var isClickInside = content.contains(event.target);
-   
-    if (!isClickInside) {
-      boxBuscar.classList.remove('ativar');
-    }
-  });
-  
+
   //button pesquisa opções
   const searchBar = document.getElementById('barra-pesquisa');
   const options = document.getElementById('opcoes');
 
+
   searchBar.addEventListener('click', () => {
     options.classList.remove('ativar-barra');
   });
+  
 
-
-  // Adiciona comportamento de clique nas opções (opcional)
+  // Adiciona comportamento de clique nas opções
   const optionItems = document.querySelectorAll('.opcoes-barra');
   optionItems.forEach(option => {
     option.addEventListener('click', () => {
       searchBar.value = option.textContent;
       options.classList.add('ativar-barra');
-    });
+    })
   });
+
+  //verificar se opção de busca está aberta
+    document.addEventListener('click', function(event) {
+      var content = document.getElementById('content');
+      var isClickInside = content.contains(event.target);
+      
+      if (!isClickInside) {
+        boxBuscar.classList.remove('ativar');
+        
+      }
+    });
 });
 
 

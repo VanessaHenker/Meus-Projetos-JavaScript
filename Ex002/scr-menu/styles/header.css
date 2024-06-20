@@ -46,7 +46,7 @@ header{
   }
 
   #conteudo_cabecalho{
-    align-items: normal;
+    align-items:flex-start;
   }
   
   .buttons-mobile{
