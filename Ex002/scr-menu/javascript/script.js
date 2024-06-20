@@ -56,24 +56,20 @@ document.addEventListener('click', function(event) {
 
   lupa.addEventListener('click', () => {
     boxBuscar.classList.add('ativar');
+  
   });
 
   btnFechar.addEventListener('click', () => {
     boxBuscar.classList.remove('ativar');
   });
 
-
+  //verificar se opção de busca está aberta
   var content = document.getElementById('content');
   var isClickInside = content.contains(event.target);
  
-  
-
   if (!isClickInside) {
     boxBuscar.classList.remove('ativar');
   }
-
-  
-
 });
 
 
