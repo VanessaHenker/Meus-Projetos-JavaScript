@@ -12,14 +12,18 @@ $(document).ready(function () {
   let lupa = document.querySelector('.btn_mobile_pesq');
 
   let btnFechar = document.querySelector('.button_fechar');
-
+  
+  const teste = document.getElementById('opcoes');
   
   lupa.addEventListener('click', () => {
     boxBuscar.classList.add('ativar');
   });
 
-  btnFechar.addEventListener('click', () => {
+    teste.style.display = 'flex'
+
+    btnFechar.addEventListener('click', () => {
     boxBuscar.classList.remove('ativar');
+    teste.style.display = 'none'
   });
 
   //button pesquisa opções
