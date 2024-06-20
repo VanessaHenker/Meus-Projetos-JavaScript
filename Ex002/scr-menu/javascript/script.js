@@ -42,13 +42,22 @@ $(document).ready(function () {
 
   //verificar se opção de busca está aberta
     document.addEventListener('click', function(event) {
+
       var content = document.getElementById('content');
       var isClickInside = content.contains(event.target);
       
+      var button = document.getElementById('opcoes');
+      var teste = button.contains(event.target);
+
       if (!isClickInside) {
         boxBuscar.classList.remove('ativar');
-        
-      }
+        button.style.display = 'none';
+      }  
+      
+      
+
+      
+
     });
 });
 
