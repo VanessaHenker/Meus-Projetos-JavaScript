@@ -74,6 +74,10 @@ header{
     width: 200px;
   }
 
+  .opcoes.ativ{
+    display: none;
+  }
+
   .btn_mobile_pesq{
     font-size: 1rem;
     cursor: pointer;
