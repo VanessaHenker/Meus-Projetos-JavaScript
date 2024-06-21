@@ -56,5 +56,6 @@
     
     if (!isClickInside) {
       boxBuscar.classList.remove('ativar');
+      options.classList.add('ativar-barra');
     } 
   });
