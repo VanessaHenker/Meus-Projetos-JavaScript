@@ -16,21 +16,28 @@ $(document).ready(function () {
 
   lupa.addEventListener('click', () => {
     boxBuscar.classList.add('ativar');
+  
   });
 
   btnFechar.addEventListener('click', () => {
     boxBuscar.classList.remove('ativar');
-  });
+  })
+
    
   //button pesquisa opções
   const searchBar = document.getElementById('barra-pesquisa');
   const options = document.getElementById('opcoes');
-  
+  const button_close = document.getElementById('button_fechar');
+
   searchBar.addEventListener('click', () => {
     options.classList.remove('ativar-barra');
   });
   
-   // Adiciona comportamento de clique nas opções
+  button_close.addEventListener('click', () => {
+    options.classList.add('ativar-barra');
+  });
+  
+  // Adiciona comportamento de clique nas opções
   const optionItems = document.querySelectorAll('.opcoes-barra');
   optionItems.forEach(option => {
     option.addEventListener('click', () => {
@@ -38,5 +45,3 @@ $(document).ready(function () {
       options.classList.add('ativar-barra');           
     })
   });
-
-
