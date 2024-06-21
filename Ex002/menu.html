@@ -49,9 +49,8 @@
           
           <div class="conteudo-input">
             <div class="conteudo-pesquisa">
-              <input id="barra-pesquisa" type="text" placeholder="Pesquisar...">
-              
-              <div id="opcoes" class="opcoes ativar-barra">
+              <input id="barra-pesquisa" onkeyup="search_animal()" type="text" placeholder="Pesquisar..." autocomplete="off">
+              <div id="opcoes" class="ativar-barra">
                 <div class="opcoes-barra">Pizzas</div>
                 <div class="opcoes-barra">Pizzas doces</div>
                 <div class="opcoes-barra">Bebidas</div>
@@ -76,7 +75,7 @@
       </div>
     </nav>
 
-    <div id="mobile_menu">
+    <div id="mobile_menu" class="teste">
       <ul id="mobile_nav_list">
         <a href="#menu" class="nav-item">
           <li>Cardápio</li>

@@ -74,6 +74,9 @@ header{
     width: 200px;
   }
 
+  #opcoes{
+    list-style-type: none;
+  }
   .opcoes.ativ{
     display: none;
   }
@@ -83,7 +86,6 @@ header{
     cursor: pointer;
   }
   
-
   .conteudo-input input{
     align-items: center;
     font-weight: 500;
@@ -101,7 +103,7 @@ header{
     font-size: 14px;
  
   }
-
+  
   .content{
     background-color: aqua;
   }

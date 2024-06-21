@@ -40,6 +40,13 @@
     options.classList.add('ativar-barra');
   }); 
   
+  const menu = document.getElementById('mobile_menu');
+  const menuButton = document.getElementById('btn_mobile');
+
+  menu.addEventListener('click', () => {
+    menuButton.classList.remove('mobile_nav_list');
+  });
+      
   // Adiciona comportamento de clique nas opções
   const optionItems = document.querySelectorAll('.opcoes-barra');
   optionItems.forEach(option => {
@@ -50,8 +57,7 @@
   });
 
   //verificar se opção de busca está aberta
-
-  document.addEventListener('click', function(event) {
+   document.addEventListener('click', function(event) {
     var isClickInside = content.contains(event.target);
     
     if (!isClickInside) {
@@ -59,3 +65,19 @@
       options.classList.add('ativar-barra');
     } 
   });
+
+  function search_animal() {
+    let input = document.getElementById('barra-pesquisa').value
+    input=input.toLowerCase();
+    let x = document.getElementsByClassName('opcoes-barra');
+      
+    for (i = 0; i < x.length; i++) { 
+      if (!x[i].innerHTML.toLowerCase().includes(input)) {
+          x[i].style.display="none";
+      }
+      else {
+        x[i].style.display= "list-item";         
+      }
+    }
+  }
+
