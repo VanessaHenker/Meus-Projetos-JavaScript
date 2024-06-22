@@ -1,11 +1,11 @@
   // header 
   //buttom menu
-  /* $(document).ready(function () {
+  $(document).ready(function () {
     $('#btn_mobile').on('click', function () {
       $('#mobile_menu').toggleClass('active');
       $('#btn_mobile').find('i').toggleClass('fa-x');
     });
-  }); */
+  });  
 
   //button pesquisa
   let boxBuscar = document.querySelector('.conteudo-button-pesq');
@@ -52,11 +52,15 @@
   //verificar se opção de busca está aberta
    document.addEventListener('click', function(event) {
     var isClickInside = content.contains(event.target);
-    
+
     if (!isClickInside) {
       boxBuscar.classList.remove('ativar');
       options.classList.add('ativar-barra');
-    } 
+    }
+    
+     
+      
+    
   });
 
   // digitar a opção desejada
@@ -76,24 +80,7 @@
     }
   }
 
-  document.addEventListener('DOMContentLoaded', function () {
-    const btn = document.getElementById('btn_mobile');
-    const menu = document.getElementById('mobile_menu');
-   
 
-    btn.addEventListener('click', function () {
-        menu.classList.add('active');
-        $('#btn_mobile').find('i').toggleClass('fa-x');
-    });
+ 
 
-    document.addEventListener('click', function(event) {
-      var isClickInside = content.contains(event.target);
-      
-      if (!isClickInside) {
-        menu.classList.remove('active');
-      } 
-    });
-   
-
-    
-});
+ 
