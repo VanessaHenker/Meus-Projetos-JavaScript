@@ -3,99 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Fechar ao Clicar Fora</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,900;1,800&display=swap');
-
-body{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-family: "Arial";
-  margin: 0;
-  padding: 20px;
-  background-color: #182134;
-  font-family: "Poppins", arial, sans-serif;
-}
-
-#searchbar{
-  width: 50vw;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  outline: none;
-}
-
-#list{
-  list-style-type: none;
-  padding: 0;
-  margin-top: 10px;
-}
-
-.animals{
-  text-align: center;
-  margin: 5px 0;
-  width: 17vw;
-  padding: 10px;
-  border-radius: 5px;
-  font-size: 0.8em;
-  overflow: hidden;
-  background-color: #283E5E;
-  color: white;
-  transition: all .2s;
-  cursor: default !important;
-}
-
-.animals:hover{
-  background-color: #5cdeff;
-  color: #182134;
-}
-
-@media screen and (max-width: 768px){
-  #searchbar{
-    width: 60vw;
-  }
-  
-  .animals{
-    width: 35vw;
-  }
-}
-</style>
-<script>
-    function search_animal() {
-    let input = document.getElementById('searchbar').value
-    input=input.toLowerCase();
-    let x = document.getElementsByClassName('animals');
-      
-    for (i = 0; i < x.length; i++) { 
-        if (!x[i].innerHTML.toLowerCase().includes(input)) {
-            x[i].style.display="none";
+        .modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-        else {
-            x[i].style.display="list-item";                 
+
+        .modal.active {
+            display: block;
         }
-    }
-}
-</script>
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+        }
+
+        .overlay.active {
+            display: block;
+        }
+    </style>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+    const modal = document.getElementById('modal');
+    const overlay = document.getElementById('overlay');
+    const openModalButton = document.getElementById('openModal');
+
+    openModalButton.addEventListener('click', function () {
+        modal.classList.add('active');
+        overlay.classList.add('active');
+    });
+
+    overlay.addEventListener('click', function () {
+        modal.classList.remove('active');
+        overlay.classList.remove('active');
+    });
+
+    document.addEventListener('click', function (event) {
+        if (!modal.contains(event.target) && !openModalButton.contains(event.target)) {
+            modal.classList.remove('active');
+            overlay.classList.remove('active');
+        }
+    });
+});
+
+    </script>
 </head>
 <body>
-    <body>
-        <input id="searchbar" onkeyup="search_animal()" type="text" name="search" placeholder="Search animals.." autocomplete="off">
-          
-        <ol id='list'>
-            <li class="animals">Cat</li>
-            <li class="animals">Dog</li>
-            <li class="animals">Elephant</li>
-            <li class="animals">Fish</li>
-            <li class="animals">Gorilla</li>
-          <li class="animals">Camel</li>
-          <li class="animals">Chicken</li>
-            <li class="animals">Monkey</li>
-            <li class="animals">Turtle</li>
-            <li class="animals">Whale</li>
-            <li class="animals">Aligator</li>
-            <li class="animals">Donkey</li>
-            <li class="animals">Horse</li>
-        </ol>
+    <button id="openModal">Abrir Modal</button>
+    <div id="overlay" class="overlay"></div>
+    <div id="modal" class="modal">
+        <p>Este é um conteúdo modal. Clique fora para fechar.</p>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
