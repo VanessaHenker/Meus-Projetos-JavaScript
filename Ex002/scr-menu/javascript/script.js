@@ -29,7 +29,14 @@
   const searchBar = document.getElementById('barra-pesquisa');
   const options = document.getElementById('opcoes');
   const button_close = document.getElementById('button_fechar');
+  
+  const teste = document.getElementById('mobile_menu');
+  const teste1 = document.getElementById('btn_mobile');
 
+  teste1.addEventListener('click', () => {
+    teste.classList.remove('teste');
+  });
+  
   //Abre as opções
   searchBar.addEventListener('click', () => {
     options.classList.remove('ativar-barra');
@@ -40,13 +47,6 @@
     options.classList.add('ativar-barra');
   }); 
   
-  const menu = document.getElementById('mobile_menu');
-  const menuButton = document.getElementById('btn_mobile');
-
-  menu.addEventListener('click', () => {
-    menuButton.classList.remove('mobile_nav_list');
-  });
-      
   // Adiciona comportamento de clique nas opções
   const optionItems = document.querySelectorAll('.opcoes-barra');
   optionItems.forEach(option => {
@@ -63,20 +63,23 @@
     if (!isClickInside) {
       boxBuscar.classList.remove('ativar');
       options.classList.add('ativar-barra');
+      teste.classList.add('teste');
     } 
   });
 
-  function search_animal() {
+  // digitar a opção desejada
+  function digitar_opcao() {
     let input = document.getElementById('barra-pesquisa').value
     input=input.toLowerCase();
-    let x = document.getElementsByClassName('opcoes-barra');
+    
+    let opcao = document.getElementsByClassName('opcoes-barra');
       
-    for (i = 0; i < x.length; i++) { 
-      if (!x[i].innerHTML.toLowerCase().includes(input)) {
-          x[i].style.display="none";
+    for (i = 0; i < opcao.length; i++) { 
+      if (!opcao[i].innerHTML.toLowerCase().includes(input)) {
+          opcao[i].style.display="none";
       }
       else {
-        x[i].style.display= "list-item";         
+        opcao[i].style.display= "list-item";   
       }
     }
   }
