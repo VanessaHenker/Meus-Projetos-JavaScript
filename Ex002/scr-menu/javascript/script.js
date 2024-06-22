@@ -30,13 +30,6 @@
   const options = document.getElementById('opcoes');
   const button_close = document.getElementById('button_fechar');
   
-  const teste = document.getElementById('mobile_menu');
-  const teste1 = document.getElementById('btn_mobile');
-
-  teste1.addEventListener('click', () => {
-    teste.classList.remove('teste');
-  });
-  
   //Abre as opções
   searchBar.addEventListener('click', () => {
     options.classList.remove('ativar-barra');
@@ -63,7 +56,6 @@
     if (!isClickInside) {
       boxBuscar.classList.remove('ativar');
       options.classList.add('ativar-barra');
-      teste.classList.add('teste');
     } 
   });
 
