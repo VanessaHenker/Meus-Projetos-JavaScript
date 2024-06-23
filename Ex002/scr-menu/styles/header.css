@@ -4,7 +4,7 @@ header{
   background-color: var(--color-primary-1);
   position:sticky;
   top: 0; 
-  z-index: 2;  
+  z-index: 2;
 }
 
 #conteudo_cabecalho{
@@ -70,6 +70,7 @@ header{
     margin-top: -5px;
   }
 
+
   .conteudo-button-pesq.ativar{
     width: 200px;
   }
@@ -101,7 +102,6 @@ header{
     color: var(--color-neutral-2);
     font-weight: 500;
     font-size: 14px;
- 
   }
   
   .content{
@@ -135,7 +135,6 @@ header{
     font-size: 0.7rem;
   } 
 
-  
   #btn_mobile{
     display: block;
     border: none;
@@ -149,7 +148,7 @@ header{
     flex-direction: column;
     align-items: center;
   }
-
+  
   #mobile_nav_list{
     display: flex;
     flex-direction: column;

@@ -1,16 +1,16 @@
-  // header 
-  //buttom menu
+// Header 
+  //Buttom menu
   $(document).ready(function () {
     $('#btn_mobile').on('click', function () {
       $('#mobile_menu').toggleClass('active');
       $('#btn_mobile').find('i').toggleClass('fa-x');
     });
 
-    // Manipulador de eventos para o clique no documento
+    //Manipulador de eventos para o clique no documento
     $(document).on('click', function (event) {
       var $target = $(event.target);
     
-    // Verifica se o clique foi fora do menu e do botão
+    //Verifica se o clique foi fora do menu e do botão
       if (!$target.closest('#mobile_menu').length && !$target.closest('#btn_mobile').length) {
         $('#mobile_menu').removeClass('active');
         $('#btn_mobile').find('i').removeClass('fa-x');
@@ -18,7 +18,7 @@
     });
   });  
 
-  //button pesquisa
+  //Button pesquisa
   let boxBuscar = document.querySelector('.conteudo-button-pesq');
 
   let lupa = document.querySelector('.btn_mobile_pesq');
@@ -36,7 +36,7 @@
     boxBuscar.classList.remove('ativar');
   })
 
-  //button pesquisa opções
+  //Button pesquisa opções
   const searchBar = document.getElementById('barra-pesquisa');
   const options = document.getElementById('opcoes');
   const button_close = document.getElementById('button_fechar');
@@ -60,7 +60,7 @@
     })
   });
 
-  //verificar se opção de busca está aberta
+  //Verificar se opção de busca está aberta
    document.addEventListener('click', function(event) {
     var isClickInside = content.contains(event.target);
 
@@ -68,13 +68,9 @@
       boxBuscar.classList.remove('ativar');
       options.classList.add('ativar-barra');
     }
-    
-     
-      
-    
   });
 
-  // digitar a opção desejada
+  // Digitar a opção desejada
   function digitar_opcao() {
     let input = document.getElementById('barra-pesquisa').value
     input=input.toLowerCase();
