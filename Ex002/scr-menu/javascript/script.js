@@ -90,12 +90,12 @@
 //Conteudo informação
 /* 
   dom - fechado
-  sag   11:30 - 19h
-  ter   11:30 - 19h
-  qua   11:30 - 19h
-  qui   11:30 - 19h
-  sex   11:30 - 19h
-  sab   11:30 - 19h
+  sag - 11:30 - 19h
+  ter - 11:30 - 19h
+  qua - 11:30 - 19h
+  qui - 11:30 - 19h
+  sex - 11:30 - 19h
+  sab - 11:30 - 19h
 */
 
 var mudarCor = document.getElementById('mudar-cor')
@@ -105,7 +105,6 @@ let diaDaSemana = now.getDay();
 
 let hours = now.getHours();
 let minutes = now.getMinutes();
-let seconds = now.getSeconds();
 
 var hora = document.getElementById('hora-atual')
 
@@ -114,11 +113,18 @@ var hora = document.getElementById('hora-atual')
     hora.style.color = 'black'
     mudarCor.style.color = '#ffcb45'
   }
-  else if(hours >= 11 && hours < 19){
+  else if(hours <= 11 && minutes < 30){
+    escrito()
+  }
+  else if(hours >= 11 && hours < 19 || hours == 19 && minutes <= 30){
     hora.innerHTML = 'Aberto agora'
   }
   else{
-    hora.innerHTML = 'Fechado agora'
-    hora.style.color = 'black'
-    mudarCor.style.color = '#ffcb45'
+    escrito()
   }
+
+function escrito(){
+  hora.innerHTML = 'Fechado agora'
+  hora.style.color = 'black'
+  mudarCor.style.color = '#ffcb45'
+}
