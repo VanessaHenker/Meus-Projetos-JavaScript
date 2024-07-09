@@ -102,22 +102,36 @@
 var mudarCor = document.getElementById('mudar-cor')
 
 let now = new Date();
+let diaDaSemana = now.getDay();
 
 let hours = now.getHours();
 let minutes = now.getMinutes();
 let seconds = now.getSeconds();
 
+
 hours = hours < 10 ? '0' + hours : hours;
 minutes = minutes < 10 ? '0' + minutes : minutes;
 seconds = seconds < 10 ? '0' + seconds : seconds;
 
+var nomesDosDias = ["domingo", "segunda-feira", "terça-feira", "quarta-feira", "quinta-feira", "sexta-feira", "sábado"];
+
+// Obtem o nome do dia da semana
+var nomeDoDia = nomesDosDias[diaDaSemana];
+console.log("Hoje é " + nomeDoDia);
+
+  
 // Exibe o horário atual no formato HH:MM:SS
 let currentTime = hours + ':' + minutes + ':' + seconds;
 console.log('Horário atual: ' + currentTime);
 
 var hora = document.getElementById('hora-atual')
 
-  if(hours >= 11 && hours <= 19){
+  if(nomeDoDia == 'domingo'){
+    hora.innerHTML = 'Fechado'
+    hora.style.color = 'black'
+    mudarCor.style.color = '#ffcb45'
+  }
+  else if(hours >= 11 && hours <= 19){
     hora.innerHTML = 'Aberto agora'
   }
   else{
