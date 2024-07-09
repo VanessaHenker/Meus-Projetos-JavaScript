@@ -88,8 +88,40 @@
   }
 
 //Conteudo informação
+
+/* 
+  dom - fechado
+  sag   11:30 - 19h
+  ter   11:30 - 19h
+  qua   11:30 - 19h
+  qui   11:30 - 19h
+  sex   11:30 - 19h
+  sab   11:30 - 19h
+*/
+
+var mudarCor = document.getElementById('mudar-cor')
+
 let now = new Date();
 
 let hours = now.getHours();
 let minutes = now.getMinutes();
 let seconds = now.getSeconds();
+
+hours = hours < 10 ? '0' + hours : hours;
+minutes = minutes < 10 ? '0' + minutes : minutes;
+seconds = seconds < 10 ? '0' + seconds : seconds;
+
+// Exibe o horário atual no formato HH:MM:SS
+let currentTime = hours + ':' + minutes + ':' + seconds;
+console.log('Horário atual: ' + currentTime);
+
+var hora = document.getElementById('hora-atual')
+
+  if(hours >= 11 && hours <= 19){
+    hora.innerHTML = 'Aberto agora'
+  }
+  else{
+    hora.innerHTML = 'Fechado agora'
+    hora.style.color = 'black'
+    mudarCor.style.color = '#ffcb45'
+  }
