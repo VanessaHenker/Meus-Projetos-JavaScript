@@ -1,0 +1,13 @@
+.conteudo-info{
+  text-align: center;
+}
+
+.imagem-logo{
+  width: 200px;
+  border-radius: 100%;
+}
+
+.conteudo-escrito{
+  color: var(--color-primary-5);
+  margin-top: 10px;
+}
