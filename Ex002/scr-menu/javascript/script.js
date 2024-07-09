@@ -1,4 +1,4 @@
-// Header 
+// Conteudo header 
   //Buttom menu
   $(document).ready(function () {
     $('#btn_mobile').on('click', function () {
@@ -51,7 +51,7 @@
     options.classList.add('ativar-barra');
   }); 
   
-  // Adiciona comportamento de clique nas opções
+  //Adiciona comportamento de clique nas opções
   const optionItems = document.querySelectorAll('.opcoes-barra');
   optionItems.forEach(option => {
     option.addEventListener('click', () => {
@@ -70,7 +70,7 @@
     }
   });
 
-  // Digitar a opção desejada
+  //Digitar a opção desejada
   function digitar_opcao() {
     let input = document.getElementById('barra-pesquisa').value
     input=input.toLowerCase();
@@ -87,7 +87,8 @@
     }
   }
 
-
+  //Conteudo informação
+  
  
 
  
