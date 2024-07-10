@@ -87,7 +87,7 @@
     }
   }
 
-//Conteudo informação
+//Conteudo informação menu
 /* 
   Dias e horários de funcionamento
   dom - fechado
@@ -98,7 +98,6 @@
   sex - 11h30 - 19h30
   sab - 11h30 - 19h30
 */
-
 
 var mudarCor = document.getElementById('mudar-cor')
 
@@ -134,17 +133,34 @@ function escrito(){
   mudarCor.style.color = '#ffcb45'
 }
 
+//Button ver mais
 $(document).ready(function () {
+  //Abre as informações
   $('#button-ver-mais').on('click', function () {
     $('#button-info').toggleClass('active');
   });
+
+  //Fechar as informaçoes clicando no botão
+  const buttonFechar = document.getElementById('btn-fechar')
+  const info = document.getElementById('button-info')
+  
+  buttonFechar.addEventListener('click', () => {
+   info.classList.remove('active');
+  }); 
+  
+  const buttonIconFechar = document.getElementById('btn-icon')
+  const infoIcon  = document.getElementById('button-info')
+
+  buttonIconFechar.addEventListener('click', () => {
+    infoIcon.classList.remove('active');
+   }); 
 
   //Manipulador de eventos para o clique no documento
   $(document).on('click', function (event) {
     var $target = $(event.target);
   
   //Verifica se o clique foi fora do menu e do botão
-    if (!$target.closest('#mobile_menu').length && !$target.closest('#button-ver-mais').length) {
+    if (!$target.closest('#button-info').length && !$target.closest('#button-ver-mais').length){
       $('#button-info').removeClass('active');
     }
   });
