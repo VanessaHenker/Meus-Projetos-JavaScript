@@ -45,11 +45,17 @@
   background-color: var(--color-primary-3);
 }
 
-.button-info{
+#button-info{
+  display: none;
   max-width: 600px;
   background-color: white;
   border-radius: 10px;
   margin: auto;
+}
+
+#button-info.active{
+  display: block;
+  transition: .5s;
 }
 
 .btn-fechar{

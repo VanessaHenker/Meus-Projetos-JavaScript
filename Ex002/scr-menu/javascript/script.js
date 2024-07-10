@@ -60,7 +60,7 @@
     })
   });
 
-  //Verificar se opção de busca está aberta
+  //Verifica se opção de busca está aberta
    document.addEventListener('click', function(event) {
     var isClickInside = content.contains(event.target);
 
@@ -89,6 +89,7 @@
 
 //Conteudo informação
 /* 
+  Dias e horários de funcionamento
   dom - fechado
   sag - 11h30 - 19h30
   ter - 11h30 - 19h30
@@ -98,16 +99,20 @@
   sab - 11h30 - 19h30
 */
 
+
 var mudarCor = document.getElementById('mudar-cor')
 
+//Recebendo o dia atual
 let now = new Date();
 let diaDaSemana = now.getDay();
 
+//Recebendo a hora atual e min
 let hours = now.getHours();
 let minutes = now.getMinutes();
 
 var hora = document.getElementById('hora-atual')
 
+//Verifica as condições do horário e dia de funcionamento
   if(diaDaSemana == 1){
     hora.innerHTML = 'Fechado'
     hora.style.color = 'black'
@@ -128,3 +133,9 @@ function escrito(){
   hora.style.color = 'black'
   mudarCor.style.color = '#ffcb45'
 }
+
+$(document).ready(function () {
+  $('#button-ver-mais').on('click', function () {
+    $('#button-info').toggleClass('active');
+  });
+});  
