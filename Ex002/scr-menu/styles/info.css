@@ -51,11 +51,11 @@
   background-color: white;
   border-radius: 10px;
   margin: auto;
+  transition: 5s;
 }
 
 #button-info.active{
   display: block;
-  transition: .5s;
 }
 
 .btn-fechar{

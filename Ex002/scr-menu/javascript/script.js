@@ -138,4 +138,14 @@ $(document).ready(function () {
   $('#button-ver-mais').on('click', function () {
     $('#button-info').toggleClass('active');
   });
+
+  //Manipulador de eventos para o clique no documento
+  $(document).on('click', function (event) {
+    var $target = $(event.target);
+  
+  //Verifica se o clique foi fora do menu e do botão
+    if (!$target.closest('#mobile_menu').length && !$target.closest('#button-ver-mais').length) {
+      $('#button-info').removeClass('active');
+    }
+  });
 });  
