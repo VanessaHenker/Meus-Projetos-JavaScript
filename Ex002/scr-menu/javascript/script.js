@@ -143,11 +143,10 @@ $(document).ready(function () {
   //Fecha as informações clicando no botão
   const buttonFechar = document.getElementById('btn-fechar')
   const info = document.getElementById('button-info')
-  let animation = document.querySelector('.button-info');
 
   buttonFechar.addEventListener('click', () => {
     info.classList.remove('active');
-    animation.classList.remove('teste')
+ 
   }); 
 
   
@@ -171,12 +170,17 @@ $(document).ready(function () {
 }); 
 
 function fecharConteudo() {
+  //Fecha as informações clicando no X
+  const buttonIconFechar = document.getElementById('btn-fechar')
+  const infoIcon  = document.getElementById('button-info')
+  
+  buttonIconFechar.addEventListener('click', () => {
+    infoIcon.classList.add('teste');
+  }); 
+  
+
   var content = document.getElementById('button-info');
   content.style.opacity = '1';
   content.style.transform = 'translateY(100%)';
-  content.style.transform = ' animation: slideUp .7s forwards;'
 }
-
-
   
-

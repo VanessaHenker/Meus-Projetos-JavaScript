@@ -70,15 +70,17 @@ body, html {
     transform: translateY(0);
   }
 }
-.teste{
-  transform: translateY(-100%);
-}
-
-
 
 #button-info.active{
   display: block;
 }
+
+#button-info.teste{
+  transform: translateY(-100%);
+  animation: slideUp .7s forwards;
+}
+
+
 
 .btn-fechar{
   display: flex;
@@ -100,3 +102,4 @@ body, html {
 .detalhes{
   margin-top: 20px;
 }
+
