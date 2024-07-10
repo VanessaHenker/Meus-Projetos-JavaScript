@@ -67,16 +67,23 @@ body, html {
   z-index: 0;
 
   transform: translateY(100%);
-  animation: slideUp 1s forwards;
+  animation: slideUp .7s forwards;
 }
+
 @keyframes slideUp {
   to {
     transform: translateY(0);
   }
 }
+
+.start-animation {
+  transform: translateY(0);
+}
+
 #button-info.active{
   display: block;
 }
+
 
 .btn-fechar{
   display: flex;

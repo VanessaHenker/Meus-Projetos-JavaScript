@@ -145,7 +145,7 @@ $(document).ready(function () {
   const info = document.getElementById('button-info')
   
   buttonFechar.addEventListener('click', () => {
-   info.classList.remove('active');
+  info.classList.remove('active');
   }); 
   
   //Fecha as informações clicando no X
@@ -167,8 +167,6 @@ $(document).ready(function () {
   });
 }); 
 
-document.addEventListener('DOMContentLoaded', function() {
-  const content = document.getElementById('content');
-  // Adicione uma classe que inicie a animação
-  content.classList.add('start-animation');
-});
+
+  
+
