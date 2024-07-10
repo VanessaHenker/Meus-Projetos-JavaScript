@@ -90,12 +90,12 @@
 //Conteudo informação
 /* 
   dom - fechado
-  sag - 11:30 - 19h
-  ter - 11:30 - 19h
-  qua - 11:30 - 19h
-  qui - 11:30 - 19h
-  sex - 11:30 - 19h
-  sab - 11:30 - 19h
+  sag - 11h30 - 19h30
+  ter - 11h30 - 19h30
+  qua - 11h30 - 19h30
+  qui - 11h30 - 19h30
+  sex - 11h30 - 19h30
+  sab - 11h30 - 19h30
 */
 
 var mudarCor = document.getElementById('mudar-cor')
