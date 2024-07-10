@@ -46,19 +46,28 @@
 }
 
 .button-info{
-  background-color: rgb(206, 182, 182);
   max-width: 600px;
-  
+  background-color: white;
   margin: auto;
 }
 
-.icon-fechar{
+.btn-fechar{
   display: flex;
   justify-content: end;
-  background-color: rgb(156, 147, 147);
+  padding: 10px;
 }
 
 .btn-icon{
   border: none;
-  
+  background-color: white;
+  font-size: 15px;
+}
+
+.btn-icon:hover{
+  color: #808080;
+  transition: .3s;
+}
+
+.detalhes{
+  margin-top: 20px;
 }
