@@ -44,3 +44,13 @@
 .button:hover {
   background-color: var(--color-primary-3);
 }
+
+.button-info{
+  background-color: rgb(206, 182, 182);
+}
+
+.icon-fechar{
+  border: none;
+  display: flex;
+  justify-content:flex-start;
+}
