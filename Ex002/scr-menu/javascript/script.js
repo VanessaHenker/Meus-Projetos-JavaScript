@@ -168,7 +168,7 @@ $(document).ready(function () {
 }); 
 
 document.addEventListener('DOMContentLoaded', function() {
-  var content = document.getElementById('button-info"');
-  content.style.opacity = '1';
-  content.style.transform = 'translateY(0)';
+  const content = document.getElementById('content');
+  // Adicione uma classe que inicie a animação
+  content.classList.add('start-animation');
 });

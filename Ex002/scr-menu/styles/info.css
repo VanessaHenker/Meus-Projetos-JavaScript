@@ -57,6 +57,7 @@ body, html {
 }
 
 #button-info{
+  display: none;
   max-width: 600px;
   background-color: white;
   border-radius: 10px;
@@ -64,8 +65,15 @@ body, html {
 
   margin-top: -20rem;
   z-index: 0;
-}
 
+  transform: translateY(100%);
+  animation: slideUp 1s forwards;
+}
+@keyframes slideUp {
+  to {
+    transform: translateY(0);
+  }
+}
 #button-info.active{
   display: block;
 }
