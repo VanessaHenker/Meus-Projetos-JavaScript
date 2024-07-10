@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Animação de Conteúdo</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+  <style>
+    body, html {
+    height: 90%;
+    margin: 0;
+  font-family: Arial, sans-serif;
+} 
+
+.container {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  height: 100%;
+}
+
+.content {
+  opacity: 0;
+  transform: translateY(100%);
+  transition: opacity 1s, transform 1s;
+  text-align: center;
+  background-color: #f0f0f0;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 600px;
+}
+</style>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+  var content = document.getElementById('content');
+  content.style.opacity = '1';
+  content.style.transform = 'translateY(0)';
+});
+
+</script>
+<body>
+<div class="container">
+  <div class="content" id="content">
+    <h1>Conteúdo que sobe</h1>
+    <p>Este é um exemplo de conteúdo que aparece de baixo para cima.</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla tempore neque mollitia nam consectetur praesentium qui quos, aspernatur animi voluptas? Rem, eaque mollitia tempora modi veritatis incidunt repellat beatae ut.</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla tempore neque mollitia nam consectetur praesentium qui quos, aspernatur animi voluptas? Rem, eaque mollitia tempora modi veritatis incidunt repellat beatae ut.</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla tempore neque mollitia nam consectetur praesentium qui quos, aspernatur animi voluptas? Rem, eaque mollitia tempora modi veritatis incidunt repellat beatae ut.</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla tempore neque mollitia nam consectetur praesentium qui quos, aspernatur animi voluptas? Rem, eaque mollitia tempora modi veritatis incidunt repellat beatae ut.</p>
+  </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>

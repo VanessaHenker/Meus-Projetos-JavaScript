@@ -1,3 +1,7 @@
+body, html {
+  height: 100%;
+  margin: 0;
+}
 .conteudo-info{
   text-align: center;
 }
@@ -45,13 +49,21 @@
   background-color: var(--color-primary-3);
 }
 
+.container{
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  height: 100%;
+}
+
 #button-info{
-  display: none;
   max-width: 600px;
   background-color: white;
   border-radius: 10px;
   margin: auto;
-  transition: 5s;
+
+  margin-top: -20rem;
+  z-index: 0;
 }
 
 #button-info.active{

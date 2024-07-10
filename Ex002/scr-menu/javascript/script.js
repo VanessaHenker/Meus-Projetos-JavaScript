@@ -140,7 +140,7 @@ $(document).ready(function () {
     $('#button-info').toggleClass('active');
   });
 
-  //Fechar as informaçoes clicando no botão
+  //Fecha as informações clicando no botão
   const buttonFechar = document.getElementById('btn-fechar')
   const info = document.getElementById('button-info')
   
@@ -148,6 +148,7 @@ $(document).ready(function () {
    info.classList.remove('active');
   }); 
   
+  //Fecha as informações clicando no X
   const buttonIconFechar = document.getElementById('btn-icon')
   const infoIcon  = document.getElementById('button-info')
 
@@ -159,9 +160,15 @@ $(document).ready(function () {
   $(document).on('click', function (event) {
     var $target = $(event.target);
   
-  //Verifica se o clique foi fora do menu e do botão
+  //Verifica se o clique foi fora do menu e dos botões
     if (!$target.closest('#button-info').length && !$target.closest('#button-ver-mais').length){
       $('#button-info').removeClass('active');
     }
   });
-});  
+}); 
+
+document.addEventListener('DOMContentLoaded', function() {
+  var content = document.getElementById('button-info"');
+  content.style.opacity = '1';
+  content.style.transform = 'translateY(0)';
+});
