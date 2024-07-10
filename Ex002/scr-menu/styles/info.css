@@ -49,12 +49,6 @@ body, html {
   background-color: var(--color-primary-3);
 }
 
-.container{
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  height: 100%;
-}
 
 #button-info{
   display: none;
@@ -75,9 +69,8 @@ body, html {
     transform: translateY(0);
   }
 }
-
-.start-animation {
-  transform: translateY(0);
+.teste{
+  transform: translateY(-100%);
 }
 
 #button-info.active{

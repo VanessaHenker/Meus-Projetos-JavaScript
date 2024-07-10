@@ -143,10 +143,13 @@ $(document).ready(function () {
   //Fecha as informações clicando no botão
   const buttonFechar = document.getElementById('btn-fechar')
   const info = document.getElementById('button-info')
-  
+  let animation = document.querySelector('.button-info');
+
   buttonFechar.addEventListener('click', () => {
-  info.classList.remove('active');
+    info.classList.remove('active');
+    animation.classList.remove('teste')
   }); 
+
   
   //Fecha as informações clicando no X
   const buttonIconFechar = document.getElementById('btn-icon')
