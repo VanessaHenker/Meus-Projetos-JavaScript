@@ -60,6 +60,7 @@ body, html {
   margin-top: -20rem;
   z-index: 0;
 
+
   transform: translateY(100%);
   animation: slideUp .7s forwards;
 }
@@ -72,6 +73,8 @@ body, html {
 .teste{
   transform: translateY(-100%);
 }
+
+
 
 #button-info.active{
   display: block;

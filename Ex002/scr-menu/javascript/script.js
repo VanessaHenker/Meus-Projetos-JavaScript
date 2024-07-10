@@ -170,6 +170,13 @@ $(document).ready(function () {
   });
 }); 
 
+function fecharConteudo() {
+  var content = document.getElementById('button-info');
+  content.style.opacity = '1';
+  content.style.transform = 'translateY(100%)';
+  content.style.transform = ' animation: slideUp .7s forwards;'
+}
+
 
   
 
