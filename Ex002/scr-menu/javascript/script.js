@@ -70,7 +70,7 @@
     }
   });
 
-  //Digitar a opção desejada
+  //Digita a opção desejada
   function digitar_opcao() {
     let input = document.getElementById('barra-pesquisa').value
     input=input.toLowerCase();
@@ -101,16 +101,15 @@
 
 var mudarCor = document.getElementById('mudar-cor')
 
-//Recebendo o dia atual
+//Recebe o dia atual
 let now = new Date();
 let diaDaSemana = now.getDay();
 
-//Recebendo a hora atual e min
+//Recebe a hora atual e min
 let hours = now.getHours();
 let minutes = now.getMinutes();
 
 var hora = document.getElementById('hora-atual')
-
 //Verifica as condições do horário e dia de funcionamento
   if(diaDaSemana == 1){
     hora.innerHTML = 'Fechado'
@@ -127,13 +126,30 @@ var hora = document.getElementById('hora-atual')
     escrito()
   }
 
+  var hora2 = document.getElementById('hora')
+  //Verifica as condições do horário e dia de funcionamento
+  if(diaDaSemana == 1){
+    hora2.innerHTML = 'Fechado'
+    hora2.style.color = 'black'
+    mudarCor.style.color = '#ffcb45'
+  }
+  else if(hours <= 11 && minutes < 30){
+    escrito()
+  }
+  else if(hours >= 11 && hours < 19 || hours == 19 && minutes <= 30){
+    hora2.innerHTML = 'Aberto agora'
+  }
+  else{
+    escrito()
+  }
+
   //Função escrito
   function escrito(){
     hora.innerHTML = 'Fechado agora'
     hora.style.color = 'black'
     mudarCor.style.color = '#ffcb45'
-}
-
+  }
+  
 //Button ver mais
 document.addEventListener('DOMContentLoaded', function () {
   // Adiciona evento ao botão "Ver Mais"
@@ -141,19 +157,19 @@ document.addEventListener('DOMContentLoaded', function () {
   const buttonInfo = document.getElementById('button-info');
 
   buttonVerMais.addEventListener('click', function () {
-    buttonInfo.classList.toggle('active');
+    buttonInfo.classList.add('active');
   });
 
   // Fecha as informações clicando no botão "Fechar"
   const buttonFechar = document.getElementById('btn-fechar');
   buttonFechar.addEventListener('click', function () {
-    showAndHideContent();
+    ocultarConteudo();
   });
 
   // Fecha as informações clicando no ícone "X"
   const buttonIconFechar = document.getElementById('btn-icon');
   buttonIconFechar.addEventListener('click', function () {
-    showAndHideContent();
+    ocultarConteudo();
   });
 
   // Manipulador de eventos para o clique no documento
@@ -162,12 +178,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Verifica se o clique foi fora do menu e dos botões
     if (!buttonInfo.contains(target) && !buttonVerMais.contains(target)) {
-      showAndHideContent();
+      ocultarConteudo();
     }
   });
 
   // Função para descer o conteúdo e esconder o button-info
-  function showAndHideContent() {
+  function ocultarConteudo() {
     if (buttonInfo.classList.contains('active')) {
       buttonInfo.classList.add('slideDown');
       buttonInfo.addEventListener('animationend', function () {
