@@ -135,40 +135,46 @@ var hora = document.getElementById('hora-atual')
 }
 
 //Button ver mais
-$(document).ready(function () {
-  $('#button-ver-mais').on('click', function () {
-    $('#button-info').toggleClass('active');
+document.addEventListener('DOMContentLoaded', function () {
+  // Adiciona evento ao botão "Ver Mais"
+  const buttonVerMais = document.getElementById('button-ver-mais');
+  const buttonInfo = document.getElementById('button-info');
+
+  buttonVerMais.addEventListener('click', function () {
+    buttonInfo.classList.toggle('active');
   });
 
-  // Fecha as informações clicando no botão
-  $('#btn-fechar').on('click', function () {
+  // Fecha as informações clicando no botão "Fechar"
+  const buttonFechar = document.getElementById('btn-fechar');
+  buttonFechar.addEventListener('click', function () {
     showAndHideContent();
   });
 
-  // Fecha as informações clicando no X
-  $('#btn-icon').on('click', function () {
+  // Fecha as informações clicando no ícone "X"
+  const buttonIconFechar = document.getElementById('btn-icon');
+  buttonIconFechar.addEventListener('click', function () {
     showAndHideContent();
   });
 
   // Manipulador de eventos para o clique no documento
-  $(document).on('click', function (event) {
-    var $target = $(event.target);
+  document.addEventListener('click', function (event) {
+    const target = event.target;
 
     // Verifica se o clique foi fora do menu e dos botões
-    if (!$target.closest('#button-info').length && !$target.closest('#button-ver-mais').length) {
+    if (!buttonInfo.contains(target) && !buttonVerMais.contains(target)) {
       showAndHideContent();
     }
   });
 
-  // Função para descer o conteúdo e sumir o button-info
+  // Função para descer o conteúdo e esconder o button-info
   function showAndHideContent() {
-    const buttonInfo = document.getElementById('button-info');
     if (buttonInfo.classList.contains('active')) {
       buttonInfo.classList.add('slideDown');
-      buttonInfo.addEventListener('animationend', () => {
+      buttonInfo.addEventListener('animationend', function () {
         buttonInfo.classList.remove('active');
         buttonInfo.classList.remove('slideDown');
       }, { once: true });
     }
   }
 });
+
