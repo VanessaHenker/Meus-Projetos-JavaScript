@@ -138,6 +138,7 @@ function escrito(){
     //Abre as informações
     $('#button-ver-mais').on('click', function () {
       $('#button-info').toggleClass('active');
+
     });
   }); 
 
@@ -146,7 +147,7 @@ function escrito(){
   const info = document.getElementById('button-info')
 
   buttonFechar.addEventListener('click', () => {
-    info.classList.remove('active');
+    info.classList.add('teste');
   }); 
 
   //Fecha as informações clicando no X
@@ -167,6 +168,11 @@ function escrito(){
     }
   });
 
-
-
-  
+  function showAndHideContent() {
+  const buttonInfo = document.getElementById('button-info');
+  buttonInfo.classList.add('active');
+  buttonInfo.addEventListener('animationend', () => {
+    //buttonInfo.style.display = 'none';
+    buttonInfo.classList.remove('active');
+  }, { once: true });
+}

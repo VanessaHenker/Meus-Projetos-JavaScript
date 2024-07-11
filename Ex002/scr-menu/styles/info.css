@@ -57,11 +57,11 @@ body, html {
   border-radius: 10px;
   margin: auto;
 
+  
   margin-top: -20rem;
   z-index: 0;
-
-
 }
+
 @keyframes slideUp {
   to {
     transform: translateY(0);
@@ -72,9 +72,18 @@ body, html {
   display: block;
   transform: translateY(100%);
   animation: slideUp .7s forwards;
-
 }
 
+@keyframes slideDown {
+  to {
+    transform: translateY(100%);
+  }
+}
+
+#button-info.teste {
+  transform: translateY(0);
+  animation: slideDown 0.7s forwards;
+}
 .btn-fechar{
   display: flex;
   justify-content: end;
