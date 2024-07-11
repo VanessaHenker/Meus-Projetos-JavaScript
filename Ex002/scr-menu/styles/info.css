@@ -59,10 +59,6 @@ body, html {
 
   margin-top: -20rem;
   z-index: 0;
-
-
-  transform: translateY(100%);
-  animation: slideUp .7s forwards;
 }
 
 @keyframes slideUp {
@@ -73,13 +69,9 @@ body, html {
 
 #button-info.active{
   display: block;
-}
-
-#button-info.teste{
-  transform: translateY(-100%);
+  transform: translateY(100%);
   animation: slideUp .7s forwards;
 }
-
 
 
 .btn-fechar{
@@ -102,4 +94,3 @@ body, html {
 .detalhes{
   margin-top: 20px;
 }
-

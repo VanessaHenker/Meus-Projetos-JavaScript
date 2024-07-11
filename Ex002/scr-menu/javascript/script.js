@@ -134,11 +134,12 @@ function escrito(){
 }
 
 //Button ver mais
-$(document).ready(function () {
-  //Abre as informações
-  $('#button-ver-mais').on('click', function () {
-    $('#button-info').toggleClass('active');
-  });
+  $(document).ready(function () {
+    //Abre as informações
+    $('#button-ver-mais').on('click', function () {
+      $('#button-info').toggleClass('active');
+    });
+  }); 
 
   //Fecha as informações clicando no botão
   const buttonFechar = document.getElementById('btn-fechar')
@@ -146,10 +147,8 @@ $(document).ready(function () {
 
   buttonFechar.addEventListener('click', () => {
     info.classList.remove('active');
- 
   }); 
 
-  
   //Fecha as informações clicando no X
   const buttonIconFechar = document.getElementById('btn-icon')
   const infoIcon  = document.getElementById('button-info')
@@ -167,20 +166,7 @@ $(document).ready(function () {
       $('#button-info').removeClass('active');
     }
   });
-}); 
 
-function fecharConteudo() {
-  //Fecha as informações clicando no X
-  const buttonIconFechar = document.getElementById('btn-fechar')
-  const infoIcon  = document.getElementById('button-info')
-  
-  buttonIconFechar.addEventListener('click', () => {
-    infoIcon.classList.add('teste');
-  }); 
-  
 
-  var content = document.getElementById('button-info');
-  content.style.opacity = '1';
-  content.style.transform = 'translateY(100%)';
-}
+
   
