@@ -59,8 +59,9 @@ body, html {
 
   margin-top: -20rem;
   z-index: 0;
-}
 
+
+}
 @keyframes slideUp {
   to {
     transform: translateY(0);
@@ -71,8 +72,8 @@ body, html {
   display: block;
   transform: translateY(100%);
   animation: slideUp .7s forwards;
-}
 
+}
 
 .btn-fechar{
   display: flex;
