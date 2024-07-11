@@ -146,7 +146,7 @@ function escrito(){
   const info = document.getElementById('button-info')
 
   buttonFechar.addEventListener('click', () => {
-    info.classList.add('teste');
+    showAndHideContent()
   }); 
   
   //Fecha as informações clicando no X
@@ -154,7 +154,7 @@ function escrito(){
   const infoIcon  = document.getElementById('button-info')
 
   buttonIconFechar.addEventListener('click', () => {
-    infoIcon.classList.remove('active');
+      showAndHideContent()
    }); 
 
   //Manipulador de eventos para o clique no documento
@@ -163,7 +163,7 @@ function escrito(){
   
   //Verifica se o clique foi fora do menu e dos botões
     if (!$target.closest('#button-info').length && !$target.closest('#button-ver-mais').length){
-      $('#button-info').removeClass('active');
+      showAndHideContent()
     }
   });
 
