@@ -127,51 +127,48 @@ var hora = document.getElementById('hora-atual')
     escrito()
   }
 
-function escrito(){
-  hora.innerHTML = 'Fechado agora'
-  hora.style.color = 'black'
-  mudarCor.style.color = '#ffcb45'
+  //Função escrito
+  function escrito(){
+    hora.innerHTML = 'Fechado agora'
+    hora.style.color = 'black'
+    mudarCor.style.color = '#ffcb45'
 }
 
 //Button ver mais
-  $(document).ready(function () {
-    //Abre as informações
-    $('#button-ver-mais').on('click', function () {
-      $('#button-info').toggleClass('active');
-    });
-  }); 
-  
-  //Fecha as informações clicando no botão
-  const buttonFechar = document.getElementById('btn-fechar')
-  const info = document.getElementById('button-info')
+$(document).ready(function () {
+  $('#button-ver-mais').on('click', function () {
+    $('#button-info').toggleClass('active');
+  });
 
-  buttonFechar.addEventListener('click', () => {
-    showAndHideContent()
-  }); 
-  
-  //Fecha as informações clicando no X
-  const buttonIconFechar = document.getElementById('btn-icon')
-  const infoIcon  = document.getElementById('button-info')
+  // Fecha as informações clicando no botão
+  $('#btn-fechar').on('click', function () {
+    showAndHideContent();
+  });
 
-  buttonIconFechar.addEventListener('click', () => {
-      showAndHideContent()
-   }); 
+  // Fecha as informações clicando no X
+  $('#btn-icon').on('click', function () {
+    showAndHideContent();
+  });
 
-  //Manipulador de eventos para o clique no documento
+  // Manipulador de eventos para o clique no documento
   $(document).on('click', function (event) {
     var $target = $(event.target);
-  
-  //Verifica se o clique foi fora do menu e dos botões
-    if (!$target.closest('#button-info').length && !$target.closest('#button-ver-mais').length){
-      showAndHideContent()
+
+    // Verifica se o clique foi fora do menu e dos botões
+    if (!$target.closest('#button-info').length && !$target.closest('#button-ver-mais').length) {
+      showAndHideContent();
     }
   });
 
-function showAndHideContent() {
-  const buttonInfo = document.getElementById('button-info');
-  buttonInfo.classList.add('teste');
-  buttonInfo.addEventListener('animationend', () => {
-  //buttonInfo.style.display = 'none';
-  buttonInfo.classList.remove('active');
-  }, { once: true });
-}
+  // Função para descer o conteúdo e sumir o button-info
+  function showAndHideContent() {
+    const buttonInfo = document.getElementById('button-info');
+    if (buttonInfo.classList.contains('active')) {
+      buttonInfo.classList.add('slideDown');
+      buttonInfo.addEventListener('animationend', () => {
+        buttonInfo.classList.remove('active');
+        buttonInfo.classList.remove('slideDown');
+      }, { once: true });
+    }
+  }
+});

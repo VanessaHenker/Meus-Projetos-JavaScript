@@ -80,7 +80,7 @@ body, html {
   }
 }
 
-#button-info.teste {
+#button-info.slideDown{
   transform: translateY(0);
   animation: slideDown 0.5s forwards;
 }
