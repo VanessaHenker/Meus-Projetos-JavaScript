@@ -82,7 +82,7 @@ body, html {
 
 #button-info.teste {
   transform: translateY(0);
-  animation: slideDown 0.7s forwards;
+  animation: slideDown 0.5s forwards;
 }
 .btn-fechar{
   display: flex;

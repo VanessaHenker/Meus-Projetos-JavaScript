@@ -138,10 +138,9 @@ function escrito(){
     //Abre as informações
     $('#button-ver-mais').on('click', function () {
       $('#button-info').toggleClass('active');
-
     });
   }); 
-
+  
   //Fecha as informações clicando no botão
   const buttonFechar = document.getElementById('btn-fechar')
   const info = document.getElementById('button-info')
@@ -149,7 +148,7 @@ function escrito(){
   buttonFechar.addEventListener('click', () => {
     info.classList.add('teste');
   }); 
-
+  
   //Fecha as informações clicando no X
   const buttonIconFechar = document.getElementById('btn-icon')
   const infoIcon  = document.getElementById('button-info')
@@ -168,11 +167,11 @@ function escrito(){
     }
   });
 
-  function showAndHideContent() {
+function showAndHideContent() {
   const buttonInfo = document.getElementById('button-info');
-  buttonInfo.classList.add('active');
+  buttonInfo.classList.add('teste');
   buttonInfo.addEventListener('animationend', () => {
-    //buttonInfo.style.display = 'none';
-    buttonInfo.classList.remove('active');
+  //buttonInfo.style.display = 'none';
+  buttonInfo.classList.remove('active');
   }, { once: true });
 }
