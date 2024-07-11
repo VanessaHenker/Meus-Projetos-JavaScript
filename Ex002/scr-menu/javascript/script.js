@@ -106,8 +106,8 @@ let now = new Date();
 let diaDaSemana = now.getDay();
 
 //Recebe a hora atual e min
-let hours = now.getHours();
-let minutes = now.getMinutes();
+let hours = 11;
+let minutes = 30;
 
 var hora = document.getElementById('hora-atual')
 //Verifica as condições do horário e dia de funcionamento
@@ -134,13 +134,17 @@ var hora = document.getElementById('hora-atual')
     mudarCor.style.color = '#ffcb45'
   }
   else if(hours <= 11 && minutes < 30){
-    escrito()
+    hora2.innerHTML = 'Fechado agora'
+    hora2.style.color = 'black'
+    mudarCor.style.color = '#ffcb45'
   }
   else if(hours >= 11 && hours < 19 || hours == 19 && minutes <= 30){
     hora2.innerHTML = 'Aberto agora'
   }
   else{
-    escrito()
+    hora2.innerHTML = 'Fechado agora'
+    hora2.style.color = 'black'
+    mudarCor.style.color = '#ffcb45'
   }
 
   //Função escrito
