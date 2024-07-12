@@ -104,39 +104,35 @@ let now = new Date();
 let diaDaSemana = now.getDay();
 
 //Recebe a hora atual e min
-let hours = 11;
-let minutes = 30;
+let hours = now.getHours();
+let minutes = now.getMinutes();
 
 // Obtém os elementos de hora
 var hora = document.getElementById('hora-atual');
 var hora2 = document.getElementById('hora');
-var mudarCor = document.getElementById('mudarCor'); // Supondo que exista um elemento com esse ID
+var mudarCor = document.getElementById('mudar-cor'); 
 
-// Função para verificar se está fechado
-function estaFechado() {
-  return (diaDaSemana == 1) || (hours < 11 && minutes < 30) || (hours >= 19 && minutes > 30);
-}
-
-function estaAberto(){
-  return(hours >= 11 && hours < 19 || hours == 19 && minutes <= 30) 
-}
+// Atualiza ambos os elementos de hora
+estaFechado(hora);
+estaFechado(hora2);
 
 // Função para atualizar a hora e a cor
-function atualizarHora(elemento) {
-  if (estaAberto()) {
+function escrito(elemento) {
+  elemento.innerHTML = 'Fechado';
+  elemento.style.color = 'black';
+  mudarCor.style.color = '#ffcb45';
+}
+
+// Função para verificar se está fechado
+function estaFechado(elemento) {
+  if (diaDaSemana == 1 || (hours <= 11 && minutes < 30) || (hours >= 19 && minutes > 30)) {
+    escrito(elemento);
+  } else if (hours >= 11 && hours < 19 || (hours == 19 && minutes <= 30)) {
     elemento.innerHTML = 'Aberto agora';
   } else {
-    estaFechado()
-    elemento.innerHTML = 'Fechado agora';
-    elemento.style.color = 'black';
-    mudarCor.style.color = '#ffcb45';
+    escrito(elemento);
   }
-} 
-// Atualiza ambos os elementos de hora
-atualizarHora(hora);
-atualizarHora(hora2);
-
-  
+}
 //Button ver mais
 document.addEventListener('DOMContentLoaded', function () {
   //Adiciona evento ao botão "Ver Mais"
