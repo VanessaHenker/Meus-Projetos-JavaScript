@@ -2,7 +2,7 @@
   //Buttom menu
   $(document).ready(function () {
     $('#btn_mobile').on('click', function () {
-      $('#mobile_menu').toggleClass('active');
+      $('#mobile_menu').toggleClass('slideUp');
       $('#btn_mobile').find('i').toggleClass('fa-x');
     });
 
@@ -12,7 +12,7 @@
     
     //Verifica se o clique foi fora do menu e do botão
       if (!$target.closest('#mobile_menu').length && !$target.closest('#btn_mobile').length) {
-        $('#mobile_menu').removeClass('active');
+        $('#mobile_menu').removeClass('slideUp');
         $('#btn_mobile').find('i').removeClass('fa-x');
       }
     });
@@ -140,10 +140,10 @@ function horaEscrito(elemento) {
 document.addEventListener('DOMContentLoaded', function () {
   //Adiciona evento ao botão "Ver Mais"
   const buttonVerMais = document.getElementById('button-ver-mais');
-  const buttonInfo = document.getElementById('button-info');
+  const buttonInfo = document.getElementById('conteudo-button-info');
 
   buttonVerMais.addEventListener('click', function () {
-    buttonInfo.classList.add('active');
+    buttonInfo.classList.add('slideUp');
   });
 
   //Fecha as informações clicando no botão "Fechar"
@@ -170,10 +170,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
   //Função para descer o conteúdo e esconder o button-info
   function ocultarConteudo() {
-    if (buttonInfo.classList.contains('active')) {
+    if (buttonInfo.classList.contains('slideUp')) {
       buttonInfo.classList.add('slideDown');
       buttonInfo.addEventListener('animationend', function () {
-        buttonInfo.classList.remove('active');
+        buttonInfo.classList.remove('slideUp');
         buttonInfo.classList.remove('slideDown');
       }, { once: true });
     }
