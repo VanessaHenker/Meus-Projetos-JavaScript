@@ -1,8 +1,8 @@
 // Conteudo header 
-  //Buttom menu
+//Buttom menu
   $(document).ready(function () {
     $('#btn_mobile').on('click', function () {
-      $('#mobile_menu').toggleClass('slideUp');
+      $('#mobile_menu').toggleClass('active');
       $('#btn_mobile').find('i').toggleClass('fa-x');
     });
 
@@ -12,7 +12,7 @@
     
     //Verifica se o clique foi fora do menu e do botão
       if (!$target.closest('#mobile_menu').length && !$target.closest('#btn_mobile').length) {
-        $('#mobile_menu').removeClass('slideUp');
+        $('#mobile_menu').removeClass('active');
         $('#btn_mobile').find('i').removeClass('fa-x');
       }
     });
@@ -138,45 +138,52 @@ function horaEscrito(elemento) {
 
 //Button ver mais
 document.addEventListener('DOMContentLoaded', function () {
-  //Adiciona evento ao botão "Ver Mais"
+  //Obtém os elementos
   const buttonVerMais = document.getElementById('button-ver-mais');
   const buttonInfo = document.getElementById('conteudo-button-info');
-
-  buttonVerMais.addEventListener('click', function () {
-    buttonInfo.classList.add('slideUp');
-  });
-
-  //Fecha as informações clicando no botão "Fechar"
   const buttonFechar = document.getElementById('btn-fechar');
-  buttonFechar.addEventListener('click', function () {
-    ocultarConteudo();
-  });
-
-  //Fecha as informações clicando no ícone "X"
   const buttonIconFechar = document.getElementById('btn-icon');
-  buttonIconFechar.addEventListener('click', function () {
-    ocultarConteudo();
-  });
 
-  //Manipulador de eventos para o clique no documento
-  document.addEventListener('click', function (event) {
-    const target = event.target;
+  //Verifica se os elementos existem antes de adicionar os event listeners
+  if (buttonVerMais && buttonInfo && buttonFechar && buttonIconFechar) {
+    // Adiciona evento ao botão "Ver Mais"
+    buttonVerMais.addEventListener('click', function () {
+      buttonInfo.classList.add('slideUp');
+    });
 
-    // Verifica se o clique foi fora do menu e dos botões
-    if (!buttonInfo.contains(target) && !buttonVerMais.contains(target)) {
+    //Fecha as informações clicando no botão "Fechar"
+    buttonFechar.addEventListener('click', function () {
       ocultarConteudo();
-    }
-  });
+    });
 
-  //Função para descer o conteúdo e esconder o button-info
-  function ocultarConteudo() {
-    if (buttonInfo.classList.contains('slideUp')) {
-      buttonInfo.classList.add('slideDown');
-      buttonInfo.addEventListener('animationend', function () {
-        buttonInfo.classList.remove('slideUp');
-        buttonInfo.classList.remove('slideDown');
-      }, { once: true });
+    //Fecha as informações clicando no ícone "X"
+    buttonIconFechar.addEventListener('click', function () {
+      ocultarConteudo();
+    });
+
+    //Manipulador de eventos para o clique no documento
+    document.addEventListener('click', function (event) {
+      const target = event.target;
+
+      //Verifica se o clique foi fora do menu e dos botões
+      if (!buttonInfo.contains(target) && !buttonVerMais.contains(target) && !buttonFechar.contains(target) && !buttonIconFechar.contains(target)) {
+        ocultarConteudo();
+      }
+    });
+
+    //Função para descer o conteúdo e esconder o button-info
+    function ocultarConteudo() {
+      if (buttonInfo.classList.contains('slideUp')) {
+        buttonInfo.classList.add('slideDown');
+        const animationEndHandler = function () {
+          buttonInfo.classList.remove('slideUp');
+          buttonInfo.classList.remove('slideDown');
+          buttonInfo.removeEventListener('animationend', animationEndHandler);
+        };
+        buttonInfo.addEventListener('animationend', animationEndHandler, { once: true });
+      }
     }
   }
 });
+
 
