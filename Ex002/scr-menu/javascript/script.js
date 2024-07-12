@@ -28,7 +28,6 @@
   //Abre a barra de pesquisa
   lupa.addEventListener('click', () => {
     boxBuscar.classList.add('ativar');
-  
   });
 
   //Remove a barra de pesquisa
@@ -113,21 +112,21 @@ var hora2 = document.getElementById('hora-funcionamento2');
 var mudarCor = document.getElementById('mudar-cor'); 
 
 //Atualiza ambos os elementos de hora
-estaFechado(hora);
-estaFechado(hora2);
+horaFuncionamento(hora);
+horaFuncionamento(hora2);
 
 //Função para verificar se está fechado
-function estaFechado(elemento) {
-  if (diaDaSemana == 1 || (hours <= 11 && minutes < 30) || (hours >= 19 && minutes > 30)) {
-    escrito(elemento);
+function horaFuncionamento(elemento) {
+  if (diaDaSemana == 1 || (hours <= 11 && minutes < 30)){
+    horaEscrito(elemento)
   } else if (hours >= 11 && hours < 19 || (hours == 19 && minutes <= 30)) {
     elemento.innerHTML = 'Aberto agora';
   } else {
-    escrito(elemento);
+    horaEscrito(elemento)
   }
 }
 //Função para atualizar a hora e a cor
-function escrito(elemento) {
+function horaEscrito(elemento) {
   if(diaDaSemana == 1){
     elemento.innerHTML = 'Fechado';
   }else{
