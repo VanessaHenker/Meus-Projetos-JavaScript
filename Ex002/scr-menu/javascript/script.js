@@ -104,30 +104,34 @@ let now = new Date();
 let diaDaSemana = now.getDay();
 
 //Recebe a hora atual e min
-let hours = now.getHours();
-let minutes = now.getMinutes();
+let hours = 11;
+let minutes = 30;
 
 // Obtém os elementos de hora
 var hora = document.getElementById('hora-atual');
 var hora2 = document.getElementById('hora');
-var mudarCor = document.getElementById('mudar-cor'); // Supondo que exista um elemento com esse ID
+var mudarCor = document.getElementById('mudarCor'); // Supondo que exista um elemento com esse ID
 
 // Função para verificar se está fechado
 function estaFechado() {
-  return (diaDaSemana == 1) || (hours <= 11 && minutes < 30) || (hours >= 19 && minutes > 30);
+  return (diaDaSemana == 1) || (hours < 11 && minutes < 30) || (hours >= 19 && minutes > 30);
+}
+
+function estaAberto(){
+  return(hours >= 11 && hours < 19 || hours == 19 && minutes <= 30) 
 }
 
 // Função para atualizar a hora e a cor
 function atualizarHora(elemento) {
-  if (estaFechado()) {
+  if (estaAberto()) {
+    elemento.innerHTML = 'Aberto agora';
+  } else {
+    estaFechado()
     elemento.innerHTML = 'Fechado agora';
     elemento.style.color = 'black';
     mudarCor.style.color = '#ffcb45';
-  } else {
-    elemento.innerHTML = 'Aberto agora';
   }
-}
-
+} 
 // Atualiza ambos os elementos de hora
 atualizarHora(hora);
 atualizarHora(hora2);
