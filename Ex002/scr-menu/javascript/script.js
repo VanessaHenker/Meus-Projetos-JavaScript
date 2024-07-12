@@ -87,11 +87,11 @@
     }
   }
 
-//Conteudo informação menu
+//Conteudo informação menu 
+//Dias e horários de funcionamento
 /* 
-  Dias e horários de funcionamento
-  dom - fechado
-  sag - 11h30 - 19h30
+  dom - 11h30 - 19h30
+  sag - fechado
   ter - 11h30 - 19h30
   qua - 11h30 - 19h30
   qui - 11h30 - 19h30
@@ -107,23 +107,16 @@ let diaDaSemana = now.getDay();
 let hours = now.getHours();
 let minutes = now.getMinutes();
 
-// Obtém os elementos de hora
-var hora = document.getElementById('hora-atual');
-var hora2 = document.getElementById('hora');
+//Obtém os elementos de hora
+var hora = document.getElementById('hora-funcionamento');
+var hora2 = document.getElementById('hora-funcionamento2');
 var mudarCor = document.getElementById('mudar-cor'); 
 
-// Atualiza ambos os elementos de hora
+//Atualiza ambos os elementos de hora
 estaFechado(hora);
 estaFechado(hora2);
 
-// Função para atualizar a hora e a cor
-function escrito(elemento) {
-  elemento.innerHTML = 'Fechado';
-  elemento.style.color = 'black';
-  mudarCor.style.color = '#ffcb45';
-}
-
-// Função para verificar se está fechado
+//Função para verificar se está fechado
 function estaFechado(elemento) {
   if (diaDaSemana == 1 || (hours <= 11 && minutes < 30) || (hours >= 19 && minutes > 30)) {
     escrito(elemento);
@@ -133,6 +126,17 @@ function estaFechado(elemento) {
     escrito(elemento);
   }
 }
+//Função para atualizar a hora e a cor
+function escrito(elemento) {
+  if(diaDaSemana == 1){
+    elemento.innerHTML = 'Fechado';
+  }else{
+    elemento.innerHTML = 'Fechado agora';
+  }
+  elemento.style.color = 'black';
+  mudarCor.style.color = '#ffcb45';
+}
+
 //Button ver mais
 document.addEventListener('DOMContentLoaded', function () {
   //Adiciona evento ao botão "Ver Mais"
