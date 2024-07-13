@@ -33,6 +33,7 @@
   align-items: center;
   justify-content: center;
   background-color: var(--color-primary-5);
+  color: var(--color-neutral-1);
   border-radius: 12px;
   padding: 10px 14px;
   font-weight: 600;
@@ -90,6 +91,7 @@
 .btn-icon{
   border: none;
   background-color: white;
+  color: var(--color-neutral-1);
   font-size: 15px;
 }
 
