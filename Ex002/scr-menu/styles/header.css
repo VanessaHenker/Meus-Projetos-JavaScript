@@ -146,7 +146,7 @@ header{
   #btn_mobile i{
     color: var(--color-neutral-1);
   }
-  
+
   #mobile_menu.active{
     display: flex;
     flex-direction: column;
