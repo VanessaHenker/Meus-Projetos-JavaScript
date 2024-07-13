@@ -51,18 +51,17 @@
   max-width: 400px;
   background-color: white;
   border-radius: 10px;
-
-  
   margin-top: -20rem;
+  z-index: 0;
 
   animation: slideUp .7s forwards;
 
+  
   position: absolute;
 
-  background-color: white;
- 
   border: 1px solid #ccc;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
 
 }
 
