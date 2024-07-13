@@ -185,8 +185,3 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 });
-
-document.getElementById('btn-icon').addEventListener('click', function() {
-  document.getElementById('conteudo-button-info').style.display = 'none';
-});
-
