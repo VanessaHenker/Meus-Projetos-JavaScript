@@ -1,50 +1,39 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Animação de Conteúdo</title>
-<link rel="stylesheet" href="styles.css">
+<title>Fixar Elemento ao Clicar</title>
 <style>
-  body, html {
-    margin: 0;
-    font-family: Arial, sans-serif;
-  } 
-
-  .container {
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    height: 100%;
-  } 
-
-  .content {
-    text-align: center;
+  /* Estilo de exemplo para o elemento fixo */
+  .conteudo-fixado {
+    position: absolute; /* ou fixed, dependendo da sua necessidade */
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
     background-color: #f0f0f0;
-    padding: 20px;
-    border-radius: 8px;
-    
-    transition: opacity 0.5s, transform 0.5s; /* Adicionando transição */
-    opacity: 1; /* Inicialmente visível */
-    transform: translateY(0); /* Inicialmente na posição normal */
+    padding: 10px;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
 </style>
 </head>
 <body>
-<div class="container">
-  <div class="content" id="content">
-    <h1>Conteúdo que sobe</h1>
-    <p>Este é um exemplo de conteúdo que aparece de baixo para cima.</p>
-    <button onclick="fecharConteudo()">Fechar</button>
-  </div>
+
+<div id="conteudo" style="margin-top: 100px;">
+  <h2>Conteúdo abaixo do elemento fixado</h2>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis libero sit amet turpis rutrum, a malesuada orci convallis. Nulla facilisi.</p>
 </div>
 
+<button id="botaoFixar">Fixar Elemento</button>
+
 <script>
-function fecharConteudo() {
-  var content = document.getElementById('content');
-  content.style.opacity = '0';
-  content.style.transform = 'translateY(100%)';
-}
+document.getElementById('botaoFixar').addEventListener('click', function() {
+  var conteudoFixo = document.createElement('div');
+  conteudoFixo.className = 'conteudo-fixado';
+  conteudoFixo.textContent = 'Conteúdo fixado';
+  document.body.appendChild(conteudoFixo);
+});
 </script>
 
 </body>
