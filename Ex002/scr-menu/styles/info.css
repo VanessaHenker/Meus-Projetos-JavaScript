@@ -64,7 +64,8 @@
 
   animation: slideUp .7s forwards;  
   
- 
+  overflow: auto;
+  max-height: 80vh;
 }
 
 @keyframes slideUp {
@@ -108,4 +109,29 @@
 
 .detalhes{
   margin-top: 20px;
+}
+
+/* Estilização da barra de rolagem */
+.conteudo-button-info::-webkit-scrollbar {
+  width: 5px; 
+}
+
+.conteudo-button-info::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+
+.conteudo-button-info::-webkit-scrollbar-thumb {
+  background-color: #888; 
+}
+
+.conteudo-button-info::-webkit-scrollbar-thumb:hover {
+  background-color: #555; 
+}
+
+/* Versão mobile */
+@media screen and (max-width: 450px){
+  .conteudo-button-info{
+    max-width: 300px;
+    margin-left: -9.3rem;
+  }
 }
