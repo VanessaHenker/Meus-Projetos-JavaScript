@@ -126,6 +126,16 @@
   background-color: #555; 
 }
 
+.open {
+  color: green;
+}
+.closed {
+  color: black;
+}
+.highlight {
+  color: #ffcb45;
+}
+
 /* Versão mobile */
 @media screen and (max-width: 450px){
   .conteudo-button-info{
