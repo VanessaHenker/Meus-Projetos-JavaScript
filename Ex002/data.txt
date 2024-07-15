@@ -1,0 +1,50 @@
+Horários de funcionamento
+Dom - 11:30 ás 19:30
+Seg - Fechado
+Ter - 11:30 ás 19:30
+Qua - 11:30 ás 19:30
+Qui - 11:30 ás 19:30
+Sex - 11:30 ás 19:30
+Sáb - 11:30 ás 19:30
+
+Endereço
+Local tal, na rua tal
+
+Tempo de entrega
+110min - 115min
+
+Opções de entrega
+<i class="fa-solid fa-motorcycle"></i> Delivery
+<i class="fa-solid fa-bag-shopping"></i> Retirada
+
+Pagamento na entrega
+Dinheiro
+PIX (pagamento antecipado no whatsapp)
+
+Cartão de crédito
+American Express
+BANESCARD
+Elo
+Mastercard
+Visa
+
+Cartão de débito
+American Express
+BANESCARD
+Elo
+Mastercard
+Visa
+Hipercard
+
+LE CARD - ALIMENTAÇÃO
+LE CARD
+
+LE CARD - REFEIÇÃO
+LE CARD
+
+PICPAY (pagamento antecipado no whatsapp)
+PICPAY
+
+Estabelecimento
+Razão Social: Pizza Bliss
+CNPJ: 00.000.000/0000-00

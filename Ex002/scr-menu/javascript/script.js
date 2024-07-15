@@ -186,8 +186,8 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 });
 
-
-function createSection(title, contents) {
+ // Função para criar elementos HTML de forma modular
+ function createSection(title, contents) {
   const section = document.createElement('div');
   const h3 = document.createElement('h3');
   h3.textContent = title;
@@ -201,3 +201,39 @@ function createSection(title, contents) {
   
   return section;
 }
+
+// Função para inicializar o conteúdo
+function init(data) {
+  const container = document.getElementById('container');
+  const lines = data.split('\n');
+  let currentSection = [];
+  let currentTitle = '';
+
+  lines.forEach(line => {
+      if (line.trim() === '') {
+          if (currentTitle && currentSection.length > 0) {
+              container.appendChild(createSection(currentTitle, currentSection));
+          }
+          currentSection = [];
+          currentTitle = '';
+      } else if (currentTitle === '') {
+          currentTitle = line;
+      } else {
+          currentSection.push(line);
+      }
+  });
+
+  if (currentTitle && currentSection.length > 0) {
+      container.appendChild(createSection(currentTitle, currentSection));
+  }
+}
+
+// Fetch the content of the .txt file
+fetch('data.txt')
+  .then(response => response.text())
+  .then(data => {
+      init(data);
+  })
+  .catch(error => {
+      console.error('Error loading the text file:', error);
+  });
