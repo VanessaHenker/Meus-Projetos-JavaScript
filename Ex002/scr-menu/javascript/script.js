@@ -103,7 +103,7 @@ let now = new Date();
 let diaDaSemana = now.getDay();
 
 //Recebe a hora atual e min
-let hours = now.getHours();
+/* let hours = now.getHours();
 let minutes = now.getMinutes();
 
 //Obtém os elementos de hora
@@ -134,7 +134,7 @@ function horaEscrito(elemento) {
   }
   elemento.style.color = 'black';
   mudarCor.style.color = '#ffcb45';
-} 
+}  */
 
 //Button ver mais
 document.addEventListener('DOMContentLoaded', function () {
@@ -237,3 +237,91 @@ document.addEventListener('DOMContentLoaded', function () {
         container.appendChild(createSection(currentTitle, currentSection));
     }
   }
+
+// Função para carregar e processar os horários de funcionamento a partir do arquivo .txt
+function carregarHorarios() {
+  fetch('horarios.txt')
+      .then(response => {
+          if (!response.ok) {
+              throw new Error('Erro ao carregar o arquivo');
+          }
+          return response.text();
+      })
+      .then(data => {
+          const horarios = parseHorarios(data);
+          const now = new Date();
+          const diaDaSemana = now.getDay();
+          const hours = now.getHours();
+          const minutes = now.getMinutes();
+
+          // Obtém os elementos HTML
+          const hora = document.getElementById('hora-funcionamento');
+          const hora2 = document.getElementById('hora-funcionamento2');
+          //const mudarCor = document.getElementById('mudar-cor');
+
+          // Atualiza os elementos de hora com base nos horários carregados
+          horaFuncionamento(hora, horarios, diaDaSemana, hours, minutes);
+          horaFuncionamento(hora2, horarios, diaDaSemana, hours, minutes);
+      })
+      .catch(error => {
+          console.error('Erro ao carregar o arquivo de horários:', error);
+      });
+}
+
+// Função para processar os horários de funcionamento
+function parseHorarios(data) {
+  const lines = data.split('\n');
+  const horarios = {};
+
+  lines.forEach(line => {
+      if (line.startsWith('Horários de funcionamento')) {
+          return; // Ignora a linha de título
+      } else if (line.trim() === '') {
+          return; // Ignora linhas em branco
+      } else {
+          const [dia, horario] = line.split(' - ');
+          horarios[dia.trim()] = horario.trim();
+      }
+  });
+
+  return horarios;
+}
+
+// Função para verificar e exibir o estado de funcionamento
+function horaFuncionamento(elemento, horarios, diaDaSemana, hours, minutes) {
+  const diaSemana = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'][diaDaSemana];
+  const horario = horarios[diaSemana];
+
+  if (!horario || horario.toLowerCase() === 'fechado') {
+      horaEscrito(elemento, true);
+  } else {
+      const [abreStr, fechaStr] = horario.split(' às ');
+      const [abreHour, abreMin] = abreStr.split(':').map(Number);
+      const [fechaHour, fechaMin] = fechaStr.split(':').map(Number);
+
+      const abreTime = abreHour * 60 + abreMin;
+      const fechaTime = fechaHour * 60 + fechaMin;
+      const currentTime = hours * 60 + minutes;
+
+      if (currentTime >= abreTime && currentTime <= fechaTime) {
+          elemento.innerHTML = 'Aberto agora';
+          elemento.style.color = 'green';
+      } else {
+          horaEscrito(elemento, false);
+      }
+  }
+}
+
+// Função para exibir o estado de fechamento
+function horaEscrito(elemento, fechadoAgora) {
+  if (fechadoAgora) {
+      elemento.innerHTML = 'Fechado agora';
+  } else {
+      elemento.innerHTML = 'Fechado';
+  }
+  elemento.style.color = 'black';
+  mudarCor.style.color = '#ffcb45';
+}
+
+// Carrega os horários ao carregar a página
+document.addEventListener('DOMContentLoaded', carregarHorarios);
