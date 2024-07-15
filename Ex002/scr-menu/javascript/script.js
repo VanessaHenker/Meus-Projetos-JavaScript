@@ -186,60 +186,8 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 });
 
-// Carrega o conteúdo do arquivo .txt
-  fetch('data.txt')
-    .then(response => response.text())
-    .then(data => {
-        init(data);
-    })
-    .catch(error => {
-        console.error('Error loading the text file:', error);
-    }); 
-
-  // Função para criar elementos HTML de forma modular
-  function createSection(title, contents) {
-    const section = document.createElement('div');
-    const h3 = document.createElement('h3');
-    h3.textContent = title;
-    section.appendChild(h3);
-    contents.forEach(content => {
-        const p = document.createElement('p');
-        p.innerHTML = content; // innerHTML para permitir ícones
-        section.appendChild(p);
-        section.style.marginTop = '20px'
-    });
-    
-    return section;
-  }
-
-  // Função para inicializar o conteúdo
-  function init(data) {
-    const container = document.getElementById('container');
-    const lines = data.split('\n');
-    let currentSection = [];
-    let currentTitle = '';
-
-    lines.forEach(line => {
-        if (line.trim() === '') {
-            if (currentTitle && currentSection.length > 0) {
-                container.appendChild(createSection(currentTitle, currentSection));
-            }
-            currentSection = [];
-            currentTitle = '';
-        } else if (currentTitle === '') {
-            currentTitle = line;
-        } else {
-            currentSection.push(line);
-        }
-    });
-
-    if (currentTitle && currentSection.length > 0) {
-        container.appendChild(createSection(currentTitle, currentSection));
-    }
-  }
-
-// Função para carregar e processar os horários de funcionamento a partir do arquivo .txt
-function carregarHorarios() {
+ // Função para carregar e processar os horários de funcionamento a partir do arquivo .txt
+ function carregarHorarios() {
   fetch('horarios.txt')
       .then(response => {
           if (!response.ok) {
@@ -257,7 +205,7 @@ function carregarHorarios() {
           // Obtém os elementos HTML
           const hora = document.getElementById('hora-funcionamento');
           const hora2 = document.getElementById('hora-funcionamento2');
-          //const mudarCor = document.getElementById('mudar-cor');
+          const mudarCor = document.getElementById('mudar-cor');
 
           // Atualiza os elementos de hora com base nos horários carregados
           horaFuncionamento(hora, horarios, diaDaSemana, hours, minutes);
@@ -320,8 +268,61 @@ function horaEscrito(elemento, fechadoAgora) {
       elemento.innerHTML = 'Fechado';
   }
   elemento.style.color = 'black';
+  const mudarCor = document.getElementById('mudar-cor'); // Certifique-se de obter a referência correta
   mudarCor.style.color = '#ffcb45';
 }
 
 // Carrega os horários ao carregar a página
 document.addEventListener('DOMContentLoaded', carregarHorarios);
+
+// Carrega o conteúdo do arquivo .txt
+fetch('data.txt')
+.then(response => response.text())
+.then(data => {
+    init(data);
+})
+.catch(error => {
+    console.error('Error loading the text file:', error);
+}); 
+
+// Função para criar elementos HTML de forma modular
+function createSection(title, contents) {
+const section = document.createElement('div');
+const h3 = document.createElement('h3');
+h3.textContent = title;
+section.appendChild(h3);
+contents.forEach(content => {
+    const p = document.createElement('p');
+    p.innerHTML = content; // innerHTML para permitir ícones
+    section.appendChild(p);
+    section.style.marginTop = '20px'
+});
+
+return section;
+}
+
+// Função para inicializar o conteúdo
+function init(data) {
+const container = document.getElementById('container');
+const lines = data.split('\n');
+let currentSection = [];
+let currentTitle = '';
+
+lines.forEach(line => {
+    if (line.trim() === '') {
+        if (currentTitle && currentSection.length > 0) {
+            container.appendChild(createSection(currentTitle, currentSection));
+        }
+        currentSection = [];
+        currentTitle = '';
+    } else if (currentTitle === '') {
+        currentTitle = line;
+    } else {
+        currentSection.push(line);
+    }
+});
+
+if (currentTitle && currentSection.length > 0) {
+    container.appendChild(createSection(currentTitle, currentSection));
+}
+}
