@@ -136,8 +136,6 @@ function horaEscrito(elemento) {
   mudarCor.style.color = '#ffcb45';
 } 
 
- 
-
 //Button ver mais
 document.addEventListener('DOMContentLoaded', function () {
   //Obtém os elementos
@@ -188,24 +186,34 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 });
 
+// Carrega o conteúdo do arquivo .txt
+  fetch('data.txt')
+    .then(response => response.text())
+    .then(data => {
+        init(data);
+    })
+    .catch(error => {
+        console.error('Error loading the text file:', error);
+    }); 
+
   // Função para criar elementos HTML de forma modular
   function createSection(title, contents) {
     const section = document.createElement('div');
     const h3 = document.createElement('h3');
     h3.textContent = title;
     section.appendChild(h3);
-    
     contents.forEach(content => {
         const p = document.createElement('p');
         p.innerHTML = content; // innerHTML para permitir ícones
         section.appendChild(p);
+        section.style.marginTop = '20px'
     });
     
     return section;
-}
+  }
 
-// Função para inicializar o conteúdo
-function init(data) {
+  // Função para inicializar o conteúdo
+  function init(data) {
     const container = document.getElementById('container');
     const lines = data.split('\n');
     let currentSection = [];
@@ -228,14 +236,4 @@ function init(data) {
     if (currentTitle && currentSection.length > 0) {
         container.appendChild(createSection(currentTitle, currentSection));
     }
-}
-
-// Fetch the content of the .txt file
-fetch('data.txt')
-    .then(response => response.text())
-    .then(data => {
-        init(data);
-    })
-    .catch(error => {
-        console.error('Error loading the text file:', error);
-    });
+  }
