@@ -99,11 +99,11 @@
 */
 
 //Recebe o dia atual
-let now = new Date();
+/*let now = new Date();
 let diaDaSemana = now.getDay();
 
 //Recebe a hora atual e min
-/* let hours = now.getHours();
+ let hours = now.getHours();
 let minutes = now.getMinutes();
 
 //Obtém os elementos de hora
@@ -186,9 +186,8 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 });
 
- // Função para carregar e processar os horários de funcionamento a partir do arquivo .txt
- function carregarHorarios() {
-  fetch('horarios.txt')
+function carregarHorarios() {
+  fetch('horarios2.txt')
       .then(response => {
           if (!response.ok) {
               throw new Error('Erro ao carregar o arquivo');
@@ -198,7 +197,7 @@ document.addEventListener('DOMContentLoaded', function () {
       .then(data => {
           const horarios = parseHorarios(data);
           const now = new Date();
-          const diaDaSemana = now.getDay();
+          const diaDaSemana = 6;
           const hours = now.getHours();
           const minutes = now.getMinutes();
 
@@ -228,7 +227,9 @@ function parseHorarios(data) {
           return; // Ignora linhas em branco
       } else {
           const [dia, horario] = line.split(' - ');
-          horarios[dia.trim()] = horario.trim();
+          if (dia && horario) {
+              horarios[dia.trim()] = horario.trim();
+          }
       }
   });
 
@@ -244,17 +245,22 @@ function horaFuncionamento(elemento, horarios, diaDaSemana, hours, minutes) {
       horaEscrito(elemento, true);
   } else {
       const [abreStr, fechaStr] = horario.split(' às ');
-      const [abreHour, abreMin] = abreStr.split(':').map(Number);
-      const [fechaHour, fechaMin] = fechaStr.split(':').map(Number);
+      if (abreStr && fechaStr) {
+          const [abreHour, abreMin] = abreStr.split(':').map(Number);
+          const [fechaHour, fechaMin] = fechaStr.split(':').map(Number);
 
-      const abreTime = abreHour * 60 + abreMin;
-      const fechaTime = fechaHour * 60 + fechaMin;
-      const currentTime = hours * 60 + minutes;
+          const abreTime = abreHour * 60 + abreMin;
+          const fechaTime = fechaHour * 60 + fechaMin;
+          const currentTime = hours * 60 + minutes;
 
-      if (currentTime >= abreTime && currentTime <= fechaTime) {
-          elemento.innerHTML = 'Aberto agora';
-          elemento.style.color = 'green';
+          if (currentTime >= abreTime && currentTime <= fechaTime) {
+              elemento.innerHTML = 'Aberto agora';
+              elemento.style.color = 'green';
+          } else {
+              horaEscrito(elemento, false);
+          }
       } else {
+          console.error('Formato de horário inválido para o dia: ', diaSemana);
           horaEscrito(elemento, false);
       }
   }
@@ -263,9 +269,9 @@ function horaFuncionamento(elemento, horarios, diaDaSemana, hours, minutes) {
 // Função para exibir o estado de fechamento
 function horaEscrito(elemento, fechadoAgora) {
   if (fechadoAgora) {
-      elemento.innerHTML = 'Fechado agora';
+    elemento.innerHTML = 'Fechado';
   } else {
-      elemento.innerHTML = 'Fechado';
+    elemento.innerHTML = 'Fechado agora';
   }
   elemento.style.color = 'black';
   const mudarCor = document.getElementById('mudar-cor'); // Certifique-se de obter a referência correta
@@ -274,9 +280,8 @@ function horaEscrito(elemento, fechadoAgora) {
 
 // Carrega os horários ao carregar a página
 document.addEventListener('DOMContentLoaded', carregarHorarios);
-
 // Carrega o conteúdo do arquivo .txt
-fetch('data.txt')
+fetch('data1.txt')
 .then(response => response.text())
 .then(data => {
     init(data);
@@ -284,6 +289,10 @@ fetch('data.txt')
 .catch(error => {
     console.error('Error loading the text file:', error);
 }); 
+
+
+
+
 
 // Função para criar elementos HTML de forma modular
 function createSection(title, contents) {
