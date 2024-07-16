@@ -242,7 +242,7 @@ function horaEscrito(elemento, fechado){
   document.getElementById('mudar-cor').style.color = '#ffcb45';
 }
 
-fetch('Info/client001/informacoes.txt')
+fetch('Info/client002/informacoes.txt')
 .then(response => response.text())
 .then(data => {
     carregarInfo(data);
@@ -255,7 +255,7 @@ function createSection(title, contents){
   //Função para criar elementos HTML de forma modular
   const section = document.createElement('div');
   const h3 = document.createElement('h3')
-
+  
   h3.textContent = title;
   section.appendChild(h3);
   contents.forEach(content => {
@@ -295,3 +295,77 @@ function carregarInfo(data){
     container.appendChild(createSection(currentTitle,currentSection))
   }
 }
+
+// Função para criar um item de menu
+function criarItemMenu(imagemSrc, titulo, localizacao) {
+  // Cria o contêiner principal
+  const itemDiv = document.createElement('div');
+  itemDiv.className = 'menu-item';
+
+  // Cria e adiciona a imagem
+  const img = document.createElement('img');
+  img.className = 'imagem-logo';
+  img.src = imagemSrc;
+  img.alt = titulo;
+  itemDiv.appendChild(img);
+
+  // Cria e adiciona o título
+  const h2 = document.createElement('h2');
+  h2.className = 'conteudo-escrito';
+  h2.textContent = titulo;
+  itemDiv.appendChild(h2);
+
+  // Cria e adiciona a localização
+  const p = document.createElement('p');
+  p.className = 'localizacao';
+
+  const i = document.createElement('i');
+  i.className = 'fa-solid fa-location-dot';
+  p.appendChild(i);
+
+  const span = document.createElement('span');
+  span.textContent = localizacao;
+  p.appendChild(span);
+
+  itemDiv.appendChild(p);
+
+  return itemDiv;
+}
+
+// Função para adicionar um item ao contêiner do menu
+function adicionarItemMenu(imagemSrc, titulo, localizacao) {
+  const menuContainer = document.getElementById('menu-container');
+  const itemMenu = criarItemMenu(imagemSrc, titulo, localizacao);
+  menuContainer.appendChild(itemMenu);
+}
+
+// Adicionando itens de exemplo
+adicionarItemMenu('Imagens/banner/logo-pizza.png', 'Cardápio - Pizza Bliss 1', ' Local tal, na rua tal 1');
+
+
+adicionarItemMenu('Info/client002/Imagens/banner/doceria.jpeg', 'Cardápio - Cake Bliss 2', ' Local tal, na rua tal 2');
+
+// Função para criar o ícone de navegação
+function criarIconeNavegacao(iconeClass, texto, id) {
+  const navIcon = document.createElement('i');
+  navIcon.className = iconeClass;
+  navIcon.id = id;
+  
+  // Adiciona um espaço e o texto ao elemento
+  navIcon.appendChild(document.createTextNode(' ' + texto));
+  
+  return navIcon;
+}
+
+// Função para adicionar o ícone de navegação ao contêiner
+function adicionarIconeNavegacao(iconeClass, texto, id) {
+  const menuContainer = document.getElementById('nav_logo');
+  const navIcon = criarIconeNavegacao(iconeClass, texto, id);
+  menuContainer.appendChild(navIcon);
+}
+
+// Adicionando o ícone de navegação de exemplo
+adicionarIconeNavegacao('fa-solid fa-pizza-slice', 'Pizza Bliss', 'nav_logo');
+
+// Adicionando o ícone de navegação de exemplo
+adicionarIconeNavegacao('fa-solid fa-cookie-bite', ' Bliss', 'nav_logo');
