@@ -86,57 +86,7 @@
     }
   }
 
-//Conteudo informação menu 
-//Dias e horários de funcionamento
-/* 
-  dom - 11h30 - 19h30
-  sag - fechado
-  ter - 11h30 - 19h30
-  qua - 11h30 - 19h30
-  qui - 11h30 - 19h30
-  sex - 11h30 - 19h30
-  sab - 11h30 - 19h30
-*/
-
-//Recebe o dia atual
-/*let now = new Date();
-let diaDaSemana = now.getDay();
-
-//Recebe a hora atual e min
- let hours = now.getHours();
-let minutes = now.getMinutes();
-
-//Obtém os elementos de hora
-var hora = document.getElementById('hora-funcionamento');
-var hora2 = document.getElementById('hora-funcionamento2');
-var mudarCor = document.getElementById('mudar-cor'); 
-
-//Atualiza ambos os elementos de hora
-horaFuncionamento(hora);
-horaFuncionamento(hora2);
-
-//Função para verificar se está fechado
-function horaFuncionamento(elemento) {
-  if (diaDaSemana == 1 || (hours <= 11 && minutes < 30)){
-    horaEscrito(elemento)
-  } else if (hours >= 11 && hours < 19 || (hours == 19 && minutes <= 30)) {
-    elemento.innerHTML = 'Aberto agora';
-  } else {
-    horaEscrito(elemento)
-  }
-}
-//Função para atualizar a hora e a cor
-function horaEscrito(elemento) {
-  if(diaDaSemana == 1){
-    elemento.innerHTML = 'Fechado';
-  }else{
-    elemento.innerHTML = 'Fechado agora';
-  }
-  elemento.style.color = 'black';
-  mudarCor.style.color = '#ffcb45';
-}  */
-
-//Button ver mais
+  //Button ver mais
 document.addEventListener('DOMContentLoaded', function () {
   //Obtém os elementos
   const buttonVerMais = document.getElementById('button-ver-mais');
@@ -186,147 +136,17 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 });
 
-document.addEventListener('DOMContentLoaded', () => {
+//Verifica condições de funcionamento de tal estabelimento 
+document.addEventListener('DOMContentLoaded', () =>{
   carregarHorarios();
 });
 
-function carregarHorarios() {
+function carregarHorarios(){
   fetch('Info/client001/horarios.txt')
-      .then(response => {
-          if (!response.ok) {
-              throw new Error('Erro ao carregar o arquivo');
-          }
-          return response.text();
-      })
-      .then(data => {
-          console.log('Arquivo de horários carregado:', data); // Adicionado log
-          const horarios = parseHorarios(data);
-          console.log('Horários processados:', horarios); // Adicionado log
-          const now = new Date();
-          const diaDaSemana = now.getDay();
-          const hours = now.getHours();
-          const minutes = now.getMinutes();
-
-          // Obtém os elementos HTML
-          const hora = document.getElementById('hora-funcionamento');
-          const hora2 = document.getElementById('hora-funcionamento2');
-          
-          // Atualiza os elementos de hora com base nos horários carregados
-          horaFuncionamento(hora, horarios, diaDaSemana, hours, minutes);
-          horaFuncionamento(hora2, horarios, diaDaSemana, hours, minutes);
-      })
-      .catch(error => {
-          console.error('Erro ao carregar o arquivo de horários:', error);
-      });
-}
-
-// Função para processar os horários de funcionamento
-function parseHorarios(data) {
-  const lines = data.split('\n');
-  const horarios = {};
-
-  lines.forEach(line => {
-      if (line.startsWith('Horários de funcionamento')) {
-          return; // Ignora a linha de título
-      } else if (line.trim() === '') {
-          return; // Ignora linhas em branco
-      } else {
-          const [dia, horario] = line.split(' - ');
-          if (dia && horario) {
-              horarios[dia.trim()] = horario.trim();
-          }
-      }
-  });
-
-  return horarios;
-}
-// Função para verificar e exibir o estado de funcionamento
-function horaFuncionamento(elemento, horarios, diaDaSemana, hours, minutes) {
-  const diaSemana = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'][diaDaSemana];
-  const horario = horarios[diaSemana];
-  console.log('Verificando funcionamento para:', diaSemana, horario); // Adicionado log
-
-  if (!horario || horario.toLowerCase() === 'fechado') {
-      horaEscrito(elemento, true);
-  } else {
-      const [abreStr, fechaStr] = horario.split(' / ');
-      if (abreStr && fechaStr) {
-          const [abreHour, abreMin] = abreStr.split(':').map(Number);
-          const [fechaHour, fechaMin] = fechaStr.split(':').map(Number);
-
-          const abreTime = abreHour * 60 + abreMin;
-          const fechaTime = fechaHour * 60 + fechaMin;
-          const currentTime = hours * 60 + minutes;
-
-          if (currentTime >= abreTime && currentTime <= fechaTime) {
-              elemento.innerHTML = 'Aberto agora';
-          } else {
-              horaEscrito(elemento, false);
-          }
-      } else {
-          console.error('Formato de horário inválido para o dia: ', diaSemana);
-          horaEscrito(elemento, false);
-      }
-  }
-}
-
-function horaEscrito(elemento, fechado) {
-  if (fechado) {
-      elemento.innerHTML = 'Fechado';
-  } else {
-      elemento.innerHTML = 'Fechado agora';
-  }
-  elemento.style.color = 'black';
-  document.getElementById('mudar-cor').style.color = '#ffcb45';
-}
-
-// Carrega o conteúdo do arquivo .txt
-fetch('Info/client001/informacoes.txt')
-.then(response => response.text())
-.then(data => {
-    init(data);
-})
-.catch(error => {
-    console.error('Error loading the text file:', error);
-}); 
-// Função para criar elementos HTML de forma modular
-function createSection(title, contents) {
-const section = document.createElement('div');
-const h3 = document.createElement('h3');
-h3.textContent = title;
-section.appendChild(h3);
-contents.forEach(content => {
-    const p = document.createElement('p');
-    p.innerHTML = content; // innerHTML para permitir ícones
-    section.appendChild(p);
-    section.style.marginTop = '20px'
-});
-
-return section;
-}
-
-// Função para inicializar o conteúdo
-function init(data) {
-const container = document.getElementById('container');
-const lines = data.split('\n');
-let currentSection = [];
-let currentTitle = '';
-
-lines.forEach(line => {
-    if (line.trim() === '') {
-        if (currentTitle && currentSection.length > 0) {
-            container.appendChild(createSection(currentTitle, currentSection));
-        }
-        currentSection = [];
-        currentTitle = '';
-    } else if (currentTitle === '') {
-        currentTitle = line;
-    } else {
-        currentSection.push(line);
+  .then(response =>{
+    if(!response.ok){
+      throw new Error('Erro ao carregar o arquivo');
     }
-});
-
-if (currentTitle && currentSection.length > 0) {
-    container.appendChild(createSection(currentTitle, currentSection));
-}
+    return response.text();
+  })
 }
