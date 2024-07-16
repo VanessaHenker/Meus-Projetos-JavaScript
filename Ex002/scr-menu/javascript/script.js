@@ -144,7 +144,6 @@ document.addEventListener('DOMContentLoaded', () =>{
 //Funçõa para obter horarios de funcionamento
 function carregarHorarios(){
   fetch('Info/client001/horarios.txt')
-  fetch('Info/client001/informacoes.txt')
   .then(response =>{
     if(!response.ok){
       throw new Error('Erro ao carregar o arquivo');
@@ -243,6 +242,14 @@ function horaEscrito(elemento, fechado){
   document.getElementById('mudar-cor').style.color = '#ffcb45';
 }
 
+fetch('Info/client001/informacoes.txt')
+.then(response => response.text())
+.then(data => {
+    carregarInfo(data);
+})
+.catch(error => {
+    console.error('Error loading the text file:', error);
+}); 
 //Carregar o conteúdo do arquivo .txt
 function createSection(title, contents){
   //Função para criar elementos HTML de forma modular
@@ -259,4 +266,32 @@ function createSection(title, contents){
   });
 
   return section;
+}
+
+//Função para inicializar o conteúdo
+function carregarInfo(data){
+  const container = document.getElementById('container')
+  const lines = data.split('\n');
+  let currentSection = [];//Cria um objeto vazio para armazenar os horários
+  let currentTitle = '';//Cria um objeto vazio para armazenar os horários
+
+  lines.forEach(line => {
+    if(line.trim() === ''){
+      if(currentTitle && currentSection.length > 0){
+        container.appendChild(createSection(currentTitle, currentSection));
+      }
+      currentSection = [];//Cria um objeto vazio para armazenar os horários
+      currentTitle = '';//Cria um objeto vazio para armazenar os horários
+    }
+    else if(currentTitle == ''){
+      currentTitle = line;
+    }
+    else{
+      currentSection.push(line);
+    }
+  });
+
+  if(currentTitle && currentSection.length > 0){
+    container.appendChild(createSection(currentTitle,currentSection))
+  }
 }
