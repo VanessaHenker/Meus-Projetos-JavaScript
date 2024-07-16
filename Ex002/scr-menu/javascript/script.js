@@ -86,7 +86,7 @@
     }
   }
 
-  //Button ver mais
+//Button ver mais
 document.addEventListener('DOMContentLoaded', function () {
   //Obtém os elementos
   const buttonVerMais = document.getElementById('button-ver-mais');
@@ -160,7 +160,7 @@ function carregarHorarios(){
     const diaDaSemana = now.getDay();
     const hours = now.getHours();
     const minutes = now.getMinutes();
-
+  
     //Obtém os elementos HTML
     const hora = document.getElementById('hora-funcionamento')
     const hora2 = document.getElementById('hora-funcionamento2')
@@ -179,10 +179,10 @@ function parseHorarios(data){
   const horarios = {}; //Cria um objeto vazio para armazenar os horários
 
   lines.forEach(line => {
-    if(line.startWith('Horarios de funcionamento')){
+    if(line.startsWith('Horários de funcionamento')){
       return; //Ignora a linha de título
     }
-    else if(line.trim() == ''){
+    else if(line.trim() === ''){
       return //Ignora linhas em branco
     }
     else{
@@ -209,7 +209,7 @@ function horaFuncionamento(elemento, horarios, diaDaSemana, hours, minutes){
 
     if(abreStr && fechaStr){
       const[abreHour, abreMin] = abreStr.split(':').map(Number)
-      const[fechaHour, fechaMin] = fechaStr.split(':').map(SVGAnimatedNumberList);
+      const[fechaHour, fechaMin] = fechaStr.split(':').map(Number);
     
       const abreTime = abreHour * 60 + abreMin;
       const fechaTime = fechaHour * 60 + fechaMin;
