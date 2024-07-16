@@ -121,7 +121,7 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     });
 
-    //Função para descer o conteúdo e esconder o button-info
+    //Função para descer o conteúdo e esconder o conteudo-button-info
     function ocultarConteudo() {
       if (buttonInfo.classList.contains('slideUp')) {
         buttonInfo.classList.add('slideDown');
@@ -175,8 +175,8 @@ function carregarHorarios(){
 }
 
 function parseHorarios(data){
-  const lines = data.split('\n')
-  const horarios = {};
+  const lines = data.split('\n')//Divide a string de entrada em um array de linhas
+  const horarios = {}; //Cria um objeto vazio para armazenar os horários
 
   lines.forEach(line => {
     if(line.startWith('Horarios de funcionamento')){
@@ -186,11 +186,25 @@ function parseHorarios(data){
       return //Ignora linhas em branco
     }
     else{
-      const[dia, horario] = line.split(' - ');
-      if(dia && horario){
-        horarios[dia.trim()] = horario.trim();
+      const[dia, horario] = line.split(' - '); //Divide a linha em duas partes: 'dia' e 'horario', usando ' - ' como delimitador
+      if(dia && horario){ // Verifica se ambas as partes existem (não são undefined ou null)
+        horarios[dia.trim()] = horario.trim();//Remove espaços em branco nas extremidades e adiciona ao objeto 'horarios'
       }
     }
   })
-  return horarios;
+  return horarios; // Retorna o objeto 'horarios' com os dias e horários de funcionamento
+}
+
+//Função para verificar e exibir o estado de funcionamento
+function horaFuncionamento(elemento, horarios, diaDaSemana, hours, minutes){
+  const diaSemana = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'][diaDaSemana];
+  const horario = horarios[diaSemana];
+
+  console.log('Verificando funcionamento para:', diaSemana, horario)//Adicionando log
+  if(!horario || horario.toLowerCase() === 'fechado'){
+    horaEscrito(elemento, true);
+  }
+  else{
+    
+  }
 }
