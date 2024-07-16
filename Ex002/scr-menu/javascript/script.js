@@ -191,7 +191,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function carregarHorarios() {
-  fetch('horarios2.txt')
+  fetch('horarios.txt')
       .then(response => {
           if (!response.ok) {
               throw new Error('Erro ao carregar o arquivo');
@@ -210,7 +210,7 @@ function carregarHorarios() {
           // Obtém os elementos HTML
           const hora = document.getElementById('hora-funcionamento');
           const hora2 = document.getElementById('hora-funcionamento2');
-
+          
           // Atualiza os elementos de hora com base nos horários carregados
           horaFuncionamento(hora, horarios, diaDaSemana, hours, minutes);
           horaFuncionamento(hora2, horarios, diaDaSemana, hours, minutes);
@@ -240,7 +240,6 @@ function parseHorarios(data) {
 
   return horarios;
 }
-
 // Função para verificar e exibir o estado de funcionamento
 function horaFuncionamento(elemento, horarios, diaDaSemana, hours, minutes) {
   const diaSemana = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'][diaDaSemana];
@@ -250,7 +249,7 @@ function horaFuncionamento(elemento, horarios, diaDaSemana, hours, minutes) {
   if (!horario || horario.toLowerCase() === 'fechado') {
       horaEscrito(elemento, true);
   } else {
-      const [abreStr, fechaStr] = horario.split(' às ');
+      const [abreStr, fechaStr] = horario.split(' / ');
       if (abreStr && fechaStr) {
           const [abreHour, abreMin] = abreStr.split(':').map(Number);
           const [fechaHour, fechaMin] = fechaStr.split(':').map(Number);
