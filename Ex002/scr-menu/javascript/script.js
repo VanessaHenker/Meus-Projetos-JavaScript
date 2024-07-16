@@ -186,6 +186,10 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 });
 
+document.addEventListener('DOMContentLoaded', () => {
+  carregarHorarios();
+});
+
 function carregarHorarios() {
   fetch('horarios2.txt')
       .then(response => {
@@ -195,16 +199,17 @@ function carregarHorarios() {
           return response.text();
       })
       .then(data => {
+          console.log('Arquivo de horários carregado:', data); // Adicionado log
           const horarios = parseHorarios(data);
+          console.log('Horários processados:', horarios); // Adicionado log
           const now = new Date();
-          const diaDaSemana = 6;
+          const diaDaSemana = now.getDay();
           const hours = now.getHours();
           const minutes = now.getMinutes();
 
           // Obtém os elementos HTML
           const hora = document.getElementById('hora-funcionamento');
           const hora2 = document.getElementById('hora-funcionamento2');
-          const mudarCor = document.getElementById('mudar-cor');
 
           // Atualiza os elementos de hora com base nos horários carregados
           horaFuncionamento(hora, horarios, diaDaSemana, hours, minutes);
@@ -240,6 +245,7 @@ function parseHorarios(data) {
 function horaFuncionamento(elemento, horarios, diaDaSemana, hours, minutes) {
   const diaSemana = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'][diaDaSemana];
   const horario = horarios[diaSemana];
+  console.log('Verificando funcionamento para:', diaSemana, horario); // Adicionado log
 
   if (!horario || horario.toLowerCase() === 'fechado') {
       horaEscrito(elemento, true);
@@ -255,7 +261,6 @@ function horaFuncionamento(elemento, horarios, diaDaSemana, hours, minutes) {
 
           if (currentTime >= abreTime && currentTime <= fechaTime) {
               elemento.innerHTML = 'Aberto agora';
-              elemento.style.color = 'green';
           } else {
               horaEscrito(elemento, false);
           }
@@ -266,20 +271,17 @@ function horaFuncionamento(elemento, horarios, diaDaSemana, hours, minutes) {
   }
 }
 
-// Função para exibir o estado de fechamento
-function horaEscrito(elemento, fechadoAgora) {
-  if (fechadoAgora) {
-    elemento.innerHTML = 'Fechado';
+function horaEscrito(elemento, fechado) {
+  if (fechado) {
+      elemento.innerHTML = 'Fechado';
   } else {
-    elemento.innerHTML = 'Fechado agora';
+      elemento.innerHTML = 'Fechado agora';
   }
   elemento.style.color = 'black';
-  const mudarCor = document.getElementById('mudar-cor'); // Certifique-se de obter a referência correta
-  mudarCor.style.color = '#ffcb45';
+  document.getElementById('mudar-cor').style.color = '#ffcb45';
 }
 
-// Carrega os horários ao carregar a página
-document.addEventListener('DOMContentLoaded', carregarHorarios);
+
 // Carrega o conteúdo do arquivo .txt
 fetch('data1.txt')
 .then(response => response.text())
@@ -289,11 +291,6 @@ fetch('data1.txt')
 .catch(error => {
     console.error('Error loading the text file:', error);
 }); 
-
-
-
-
-
 // Função para criar elementos HTML de forma modular
 function createSection(title, contents) {
 const section = document.createElement('div');
