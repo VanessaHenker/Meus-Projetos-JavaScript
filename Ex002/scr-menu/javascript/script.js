@@ -144,6 +144,7 @@ document.addEventListener('DOMContentLoaded', () =>{
 //Funçõa para obter horarios de funcionamento
 function carregarHorarios(){
   fetch('Info/client001/horarios.txt')
+  fetch('Info/client001/informacoes.txt')
   .then(response =>{
     if(!response.ok){
       throw new Error('Erro ao carregar o arquivo');
@@ -240,4 +241,22 @@ function horaEscrito(elemento, fechado){
 
   elemento.style.color = 'black';
   document.getElementById('mudar-cor').style.color = '#ffcb45';
+}
+
+//Carregar o conteúdo do arquivo .txt
+function createSection(title, contents){
+  //Função para criar elementos HTML de forma modular
+  const section = document.createElement('div');
+  const h3 = document.createElement('h3')
+
+  h3.textContent = title;
+  section.appendChild(h3);
+  contents.forEach(content => {
+    const p = document.createElement('p');
+    p.innerHTML = content; //innerHTML para permitir ícones
+    section.appendChild(p);
+    section.style.marginTop = '20px';
+  });
+
+  return section;
 }
