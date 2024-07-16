@@ -205,6 +205,39 @@ function horaFuncionamento(elemento, horarios, diaDaSemana, hours, minutes){
     horaEscrito(elemento, true);
   }
   else{
+    const[abreStr, fechaStr] = horario.split(' / ');
+
+    if(abreStr && fechaStr){
+      const[abreHour, abreMin] = abreStr.split(':').map(Number)
+      const[fechaHour, fechaMin] = fechaStr.split(':').map(SVGAnimatedNumberList);
     
+      const abreTime = abreHour * 60 + abreMin;
+      const fechaTime = fechaHour * 60 + fechaMin;
+      const horaAtual = hours * 60 + minutes;
+
+      if(horaAtual >= abreTime && horaAtual <= fechaTime){
+        elemento.innerHTML = 'Aberto agora';
+      }
+      else{
+        horaEscrito(elemento, false);
+      }
+    }
+    else{
+      console.error('Formato de horário inválido para o dia', diaSemana);
+      horaEscrito(elemento, false);
+    }
   }
+}
+
+//Mostrar se está fechado escrito
+function horaEscrito(elemento, fechado){
+  if(fechado){
+    elemento.innerHTML = 'Fechado'
+  }
+  else{
+    elemento.innerHTML = 'Fechado agora'
+  }
+
+  elemento.style.color = 'black';
+  document.getElementById('mudar-cor').style.color = '#ffcb45';
 }
