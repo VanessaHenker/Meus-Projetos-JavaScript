@@ -280,9 +280,8 @@ function horaEscrito(elemento, fechado) {
   document.getElementById('mudar-cor').style.color = '#ffcb45';
 }
 
-
 // Carrega o conteúdo do arquivo .txt
-fetch('data1.txt')
+fetch('Info/client001/informacoes.txt')
 .then(response => response.text())
 .then(data => {
     init(data);
