@@ -167,8 +167,30 @@ function carregarHorarios(){
     
     //Atualiza os elementos de hora com base nos horários carregados
     horaFuncionamento(hora, horarios, diaDaSemana, hours, minutes)
-    horaFuncionamento(hora, horarios, diaDaSemana, hours, minutes)
-})
+    horaFuncionamento(hora2, horarios, diaDaSemana, hours, minutes)
+  })
+  .catch(erro => {
+    console.error('Erro ao carregar o arquivo de horarios:', erro)
+  })
+}
 
-  
+function parseHorarios(data){
+  const lines = data.split('\n')
+  const horarios = {};
+
+  lines.forEach(line => {
+    if(line.startWith('Horarios de funcionamento')){
+      return; //Ignora a linha de título
+    }
+    else if(line.trim() == ''){
+      return //Ignora linhas em branco
+    }
+    else{
+      const[dia, horario] = line.split(' - ');
+      if(dia && horario){
+        horarios[dia.trim()] = horario.trim();
+      }
+    }
+  })
+  return horarios;
 }
