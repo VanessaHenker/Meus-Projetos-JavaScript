@@ -141,6 +141,7 @@ document.addEventListener('DOMContentLoaded', () =>{
   carregarHorarios();
 });
 
+//Funçõa para obter horarios de funcionamento
 function carregarHorarios(){
   fetch('Info/client001/horarios.txt')
   .then(response =>{
@@ -149,4 +150,18 @@ function carregarHorarios(){
     }
     return response.text();
   })
+  .then(data => {
+    console.log('Arquivo de horários carregado:', data);//Adiciona log
+    const horarios = parseHorarios(data);
+    console.log('Horarios processados:', horarios);//Adiciona log
+  })
+
+  //Obtém horarios e dia semanal
+  const now = new Date();
+  const diaDaSemana = now.getDay();
+  const hours = now.getHours();
+  const minutes = now.getMinutes();
+
+
+
 }
