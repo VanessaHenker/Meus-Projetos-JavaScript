@@ -191,7 +191,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function carregarHorarios() {
-  fetch('horarios.txt')
+  fetch('Info/client001/horarios.txt')
       .then(response => {
           if (!response.ok) {
               throw new Error('Erro ao carregar o arquivo');
