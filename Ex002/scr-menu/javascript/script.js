@@ -154,14 +154,21 @@ function carregarHorarios(){
     console.log('Arquivo de horários carregado:', data);//Adiciona log
     const horarios = parseHorarios(data);
     console.log('Horarios processados:', horarios);//Adiciona log
-  })
 
-  //Obtém horarios e dia semanal
-  const now = new Date();
-  const diaDaSemana = now.getDay();
-  const hours = now.getHours();
-  const minutes = now.getMinutes();
+    //Obtém horários e dia semanal atual
+    const now = new Date();
+    const diaDaSemana = now.getDay();
+    const hours = now.getHours();
+    const minutes = now.getMinutes();
 
+    //Obtém os elementos HTML
+    const hora = document.getElementById('hora-funcionamento')
+    const hora2 = document.getElementById('hora-funcionamento2')
+    
+    //Atualiza os elementos de hora com base nos horários carregados
+    horaFuncionamento(hora, horarios, diaDaSemana, hours, minutes)
+    horaFuncionamento(hora, horarios, diaDaSemana, hours, minutes)
+})
 
-
+  
 }
