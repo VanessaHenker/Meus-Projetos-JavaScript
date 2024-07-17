@@ -136,3 +136,47 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 });
 
+//Função assíncrona para carregar todos os dados necessários ao carregar a página
+async function carregarDados(){
+  try{
+    //Realiza uma requisição para obter o arquivo JSON que contém os dados
+    const response = await fetch('menu.json');
+    const data = await response.json();//Converte a resposta para Json
+
+
+    let menuItems, navIcons, arquivoInfo, arquivoHorario;
+
+    //Verifica qual menu deve usar, com base na configuração do Json
+    if(data.usarMenuPizza){
+      menuItems = data.menuItemsPizza;
+      navIcons = data.navIconsPizza;
+      arquivoInfo = data.arquivoPizza[0].arquivoInfo;
+      arquivoHorario = data.arquivoPizza[0].arquivoHorario;
+    }
+    else{
+      menuItems.Items = data.menuItemsCake;
+      navIcons = data.navIconsCake;
+      arquivoInfo = data.arquivoCake[0].arquivoInfo;
+      arquivoHorario = data.arquivoCake[0].arquivoHorario;
+    }
+
+    //Carrega e exibe os itens do menu
+    menuItems.forEach(item => {
+      adicionarItemMenu(item.imagemSrc, item.titulo, item.localizacao);
+    });
+
+    //Carrega e exibe os ícones de navegação
+    navIcons.forEach(icon => {
+      adicionarIconeNavegacao(icon.iconeClass, icon.texto, icon.id)
+    });
+
+    //Carrega as informações do arquivo especificado
+    carregarInfo(arquivoHorario)
+
+    // Carrega os horários de funcionamento do arquivo especificado
+    carregarHorarios(arquivoHorario);
+  }
+  catch(erro){
+    console.erro('Erro ao carregar dados:', erro); // Exibe o erro no console, se ocorrer algum problema
+  }
+}
