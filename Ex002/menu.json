@@ -1,21 +1,12 @@
-{
+{ 
   "usarMenuPizza": true,
   "menuItemsPizza": [
     {
       "imagemSrc": "Imagens/banner/logo-pizza.png",
       "titulo": "Cardápio - Pizza Bliss",
-      "localizacao": "Local tal, na rua tal 1"
+      "localizacao": " Local tal, na rua tal 1"
     }
   ],
-  
-  "menuItemsCake": [
-    {
-      "imagemSrc": "Info/client002/Imagens/banner/doceria.jpeg",
-      "titulo": "Cardápio - Cake Bliss 2",
-      "localizacao": "Local tal, na rua tal 2"
-    }
-  ],
-  
   "navIconsPizza": [
     {
       "iconeClass": "fa-solid fa-pizza-slice",
@@ -23,17 +14,26 @@
       "id": "nav_pizza"
     }
   ],
+  "arquivoPizza": [
+    {
+    "arquivoInfo": "Info/client001/informacoes.txt",
+    "arquivoHorario": "Info/client001/horarios.txt"
+    }
+  ],
+
+  "menuItemsCake": [
+    {
+      "imagemSrc": "Info/client002/Imagens/banner/doceria.jpeg",
+      "titulo": "Cardápio - Cake Bliss 2",
+      "localizacao": " Local tal, na rua tal 2"
+    }
+  ],
+  
   "navIconsCake": [
     {
       "iconeClass": "fa-solid fa-cookie-bite",
       "texto": "Cake Bliss",
       "id": "nav_bliss"
-    }
-  ],
-  "arquivoPizza": [
-    {
-    "arquivoInfo": "Info/client001/informacoes.txt",
-    "arquivoHorario": "Info/client001/horarios.txt"
     }
   ],
   "arquivoCake": [
