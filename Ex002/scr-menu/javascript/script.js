@@ -325,12 +325,7 @@ itemDiv.appendChild(p);
 return itemDiv;
 }
 
-
-
-
-
-
-/* // Função para adicionar um item ao contêiner do menu
+// Função para adicionar um item ao contêiner do menu
 function adicionarItemMenu(imagemSrc, titulo, localizacao) {
 const menuContainer = document.getElementById('menu-container');
 const itemMenu = criarItemMenu(imagemSrc, titulo, localizacao);
@@ -366,4 +361,4 @@ menuContainer.appendChild(navIcon);
 adicionarIconeNavegacao('fa-solid fa-pizza-slice', 'Pizza Bliss', 'nav_logo');
 
 // Adicionando o ícone de navegação de exemplo
-//adicionarIconeNavegacao('fa-solid fa-cookie-bite', ' Bliss', 'nav_logo'); */
+//adicionarIconeNavegacao('fa-solid fa-cookie-bite', ' Bliss', 'nav_logo'); 
