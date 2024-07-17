@@ -295,26 +295,40 @@ function carregarInfo(data) {
   }
 }
 
-// Função para criar um item de menu
+async function carregarDados() {
+  try {
+      const response = await fetch('menu.json');
+      const data = await response.json();
+      
+      // Adiciona itens do menu
+      data.menuItems.forEach(item => {
+          adicionarItemMenu(item.imagemSrc, item.titulo, item.localizacao);
+      });
+
+      // Adiciona ícones de navegação
+      data.navIcons.forEach(icon => {
+          adicionarIconeNavegacao(icon.iconeClass, icon.texto, icon.id);
+      });
+  } catch (error) {
+      console.error('Erro ao carregar dados:', error);
+  }
+}
+
 function criarItemMenu(imagemSrc, titulo, localizacao) {
-  // Cria o contêiner principal
   const itemDiv = document.createElement('div');
   itemDiv.className = 'menu-item';
 
-  // Cria e adiciona a imagem
   const img = document.createElement('img');
   img.className = 'imagem-logo';
   img.src = imagemSrc;
   img.alt = titulo;
   itemDiv.appendChild(img);
 
-  // Cria e adiciona o título
   const h2 = document.createElement('h2');
   h2.className = 'conteudo-escrito';
   h2.textContent = titulo;
   itemDiv.appendChild(h2);
 
-  // Cria e adiciona a localização
   const p = document.createElement('p');
   p.className = 'localizacao';
 
@@ -331,40 +345,27 @@ function criarItemMenu(imagemSrc, titulo, localizacao) {
   return itemDiv;
 }
 
-// Função para adicionar um item ao contêiner do menu
 function adicionarItemMenu(imagemSrc, titulo, localizacao) {
   const menuContainer = document.getElementById('menu-container');
   const itemMenu = criarItemMenu(imagemSrc, titulo, localizacao);
   menuContainer.appendChild(itemMenu);
 }
 
-// Adicionando itens de exemplo
-adicionarItemMenu('Imagens/banner/logo-pizza.png', 'Cardápio - Pizza Bliss', ' Local tal, na rua tal 1');
-
-
-//adicionarItemMenu('Info/client002/Imagens/banner/doceria.jpeg', 'Cardápio - Cake Bliss 2', ' Local tal, na rua tal 2');
-
-// Função para criar o ícone de navegação
 function criarIconeNavegacao(iconeClass, texto, id) {
   const navIcon = document.createElement('i');
   navIcon.className = iconeClass;
   navIcon.id = id;
 
-  // Adiciona um espaço e o texto ao elemento
   navIcon.appendChild(document.createTextNode(' ' + texto));
 
   return navIcon;
 }
 
-// Função para adicionar o ícone de navegação ao contêiner
 function adicionarIconeNavegacao(iconeClass, texto, id) {
   const menuContainer = document.getElementById('nav_logo');
   const navIcon = criarIconeNavegacao(iconeClass, texto, id);
   menuContainer.appendChild(navIcon);
 }
 
-// Adicionando o ícone de navegação de exemplo
-adicionarIconeNavegacao('fa-solid fa-pizza-slice', 'Pizza Bliss', 'nav_logo');
-
-// Adicionando o ícone de navegação de exemplo
-//adicionarIconeNavegacao('fa-solid fa-cookie-bite', ' Bliss', 'nav_logo'); 
+// Carrega os dados ao carregar a página
+document.addEventListener('DOMContentLoaded', carregarDados);
