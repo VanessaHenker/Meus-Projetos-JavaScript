@@ -325,11 +325,6 @@ itemDiv.appendChild(p);
 return itemDiv;
 }
 
-
-
-
-
-
 // Função para adicionar um item ao contêiner do menu
 function adicionarItemMenu(imagemSrc, titulo, localizacao) {
 const menuContainer = document.getElementById('menu-container');
@@ -338,7 +333,8 @@ menuContainer.appendChild(itemMenu);
 }
 
 // Adicionando itens de exemplo
-adicionarItemMenu('Imagens/banner/logo-pizza.png', 'Cardápio - Pizza Bliss', ' Local tal, na rua tal 1');
+adicionarItemMenu('Imagens/banner/logo-pizza.png', 'Cardápio - Pizza Bliss 1', ' Local tal, na rua tal 1');
+
 
 //adicionarItemMenu('Info/client002/Imagens/banner/doceria.jpeg', 'Cardápio - Cake Bliss 2', ' Local tal, na rua tal 2');
 
