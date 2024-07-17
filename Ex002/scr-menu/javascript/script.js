@@ -198,5 +198,24 @@ function criarItemMenu(imagemSrc, titulo, localizacao){
   h2.textContent = titulo;
   itemDiv.appendChild(h2); //Adiciona o título ao item de menu
 
+  //Cria parágrafo para exibir a localização
+  const p = document.createElement('p');
+  p.className = 'localizacao';
 
+  //Cria o ícone de localização(i)
+  const i = document.createElement('i');
+  i.className = 'fa-solid fa-location-dot';
+  p.appendChild(i);
+
+  // Cria o span para exibir o texto da localização
+  const span = document.createElement('span');
+  span.textContent = localizacao;
+  p.appendChild(span);
+
+  // Adiciona o parágrafo (com ícone e localização) ao item de menu
+  itemDiv.appendChild('p');
+
+  return itemDiv;
 }
+
+// Função assíncrona para carregar os horários de funcionamento a partir de um arquivo
