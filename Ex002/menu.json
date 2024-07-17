@@ -1,9 +1,14 @@
 {
-  "menuItems": [{
+  "usarMenuPizza": false,
+  "menuItemsPizza": [
+    {
       "imagemSrc": "Imagens/banner/logo-pizza.png",
       "titulo": "Cardápio - Pizza Bliss",
       "localizacao": "Local tal, na rua tal 1"
-    },
+    }
+  ],
+  
+  "menuItemsCake": [
     {
       "imagemSrc": "Info/client002/Imagens/banner/doceria.jpeg",
       "titulo": "Cardápio - Cake Bliss 2",
@@ -11,16 +16,31 @@
     }
   ],
   
-  "navIcons": [
+  "navIconsPizza": [
     {
       "iconeClass": "fa-solid fa-pizza-slice",
       "texto": "Pizza Bliss",
       "id": "nav_pizza"
-    },
+    }
+  ],
+  "navIconsCake": [
     {
       "iconeClass": "fa-solid fa-cookie-bite",
-      "texto": "Bliss",
+      "texto": "Cake Bliss",
       "id": "nav_bliss"
     }
+  ],
+  "arquivoPizza": [
+    {
+    "arquivoInfo": "Info/client001/informacoes.txt",
+    "arquivoHorario": "Info/client001/horarios.txt"
+    }
+  ],
+  "arquivoCake": [
+    {
+    "arquivoInfo": "Info/client002/informacoes.txt",
+    "arquivoHorario": "Info/client002/horarios.txt"
+    }
   ]
+  
 }
