@@ -242,57 +242,60 @@ function horaEscrito(elemento, fechado){
   document.getElementById('mudar-cor').style.color = '#ffcb45';
 }
 
-fetch('Info/client002/informacoes.txt')
-.then(response => response.text())
-.then(data => {
-    carregarInfo(data);
-})
-.catch(error => {
-    console.error('Error loading the text file:', error);
-}); 
 //Carregar o conteúdo do arquivo .txt
-function createSection(title, contents){
+fetch('Info/client001/informacoes.txt')
+  .then(response => response.text())
+  .then(data => {
+    carregarInfo(data);
+  })
+  .catch(error => {
+    console.error('Error loading the text file:', error);
+  });
+
+  function createSection(title, contents){
   //Função para criar elementos HTML de forma modular
   const section = document.createElement('div');
-  const h3 = document.createElement('h3')
-  
+  const h3 = document.createElement('h3');
+
   h3.textContent = title;
   section.appendChild(h3);
   contents.forEach(content => {
     const p = document.createElement('p');
     p.innerHTML = content; //innerHTML para permitir ícones
     section.appendChild(p);
-    section.style.marginTop = '20px';
   });
+
+  section.style.marginTop = '20px';
 
   return section;
 }
 
 //Função para inicializar o conteúdo
 function carregarInfo(data){
-  const container = document.getElementById('container')
+  const container = document.getElementById('container');
   const lines = data.split('\n');
-  let currentSection = [];//Cria um objeto vazio para armazenar os horários
-  let currentTitle = '';//Cria um objeto vazio para armazenar os horários
+  let currentSection = [];
+  let currentTitle = '';
 
   lines.forEach(line => {
     if(line.trim() === ''){
       if(currentTitle && currentSection.length > 0){
         container.appendChild(createSection(currentTitle, currentSection));
       }
-      currentSection = [];//Cria um objeto vazio para armazenar os horários
-      currentTitle = '';//Cria um objeto vazio para armazenar os horários
+      currentSection = [];
+      currentTitle = '';
     }
-    else if(currentTitle == ''){
+    else if(currentTitle === ''){
       currentTitle = line;
-    }
+    } 
     else{
       currentSection.push(line);
     }
   });
 
+  // Adicionando a última seção, caso exista
   if(currentTitle && currentSection.length > 0){
-    container.appendChild(createSection(currentTitle,currentSection))
+    container.appendChild(createSection(currentTitle, currentSection));
   }
 }
 
@@ -343,17 +346,17 @@ function adicionarItemMenu(imagemSrc, titulo, localizacao) {
 adicionarItemMenu('Imagens/banner/logo-pizza.png', 'Cardápio - Pizza Bliss 1', ' Local tal, na rua tal 1');
 
 
-adicionarItemMenu('Info/client002/Imagens/banner/doceria.jpeg', 'Cardápio - Cake Bliss 2', ' Local tal, na rua tal 2');
+//adicionarItemMenu('Info/client002/Imagens/banner/doceria.jpeg', 'Cardápio - Cake Bliss 2', ' Local tal, na rua tal 2');
 
 // Função para criar o ícone de navegação
 function criarIconeNavegacao(iconeClass, texto, id) {
   const navIcon = document.createElement('i');
   navIcon.className = iconeClass;
   navIcon.id = id;
-  
+
   // Adiciona um espaço e o texto ao elemento
   navIcon.appendChild(document.createTextNode(' ' + texto));
-  
+
   return navIcon;
 }
 
@@ -368,4 +371,4 @@ function adicionarIconeNavegacao(iconeClass, texto, id) {
 adicionarIconeNavegacao('fa-solid fa-pizza-slice', 'Pizza Bliss', 'nav_logo');
 
 // Adicionando o ícone de navegação de exemplo
-adicionarIconeNavegacao('fa-solid fa-cookie-bite', ' Bliss', 'nav_logo');
+//adicionarIconeNavegacao('fa-solid fa-cookie-bite', ' Bliss', 'nav_logo');
