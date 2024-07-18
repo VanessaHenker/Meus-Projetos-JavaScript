@@ -173,7 +173,7 @@ async function carregarDados(){
     //Carrega as informações do arquivo especificado
     carregarInfo(arquivoHorario)
 
-    // Carrega os horários de funcionamento do arquivo especificado
+    //Carrega os horários de funcionamento do arquivo especificado
     carregarHorarios(arquivoHorario);
   }
   catch(erro){
@@ -218,7 +218,7 @@ function criarItemMenu(imagemSrc, titulo, localizacao){
   return itemDiv;
 }
 
-// Função assíncrona para carregar os horários de funcionamento a partir de um arquivo
+//Função para adicionar um ícone de navegação ao contêiner de navegação na página HTML
 function adicionarIconeNavegacao(iconeClass, texto, id){
   const menuContainer = document.getElementById('nav_logo');
   const navIcon = criarIconeNavegacao(iconeClass, texto, id);
@@ -258,9 +258,49 @@ async function carregarInfo(arquivoInfo){
         currentSection.push(line);
       }
     });
-  
+
+    //Adiciona a última seção, se existir
+    if(currentTitle && currentSection.length > 0){
+      container.appendChild(createSection(currentTitle, currentTitle));
+    }
   }
   catch(erro){
-    
+    console.error('Erro ao carregar o arquivo e informações:', erro);// Exibe o erro no console, se houver algum problema
   }
 }
+
+//Função para criar uma seção com título e conteúdo
+function createSection(title, content){
+  const section = document.createElement('div');//Cria um elemento div para seção 
+  const h3 = document.createElement('h3');//Cria um elemento h3 para título da seção
+
+  h3.textContent = title; //Define o texto do título com o título fornecido
+  section.appendChild(h3);//Adiciona o título à seção
+
+  //Itera sobre o conteúdo da seção e cria parágrafos para cada item
+  contents.forEach(content => {
+    const p = document.createElement('p');
+    p.innerHTML = content;
+    section.appendChild(p);
+  });
+
+  section.style.marginTop = '20px'; 
+
+  return section;
+}
+
+
+
+//Função para analisar os horários de funcionamento a partir dos dados do arquivo
+/* function parseHorarios(data){
+  const lines = data.split('\n')//Divide o texto em linhas
+  const horarios = {}; //Objeto para armazenar os horários processados
+
+  //Itera sobre cada linha do texto
+  lines.forEach(line => {
+    if(line.startsWith('Horários de funcionamento')){
+      return; //Ignora linhas em branco
+    }
+    else if()
+  });
+} */
