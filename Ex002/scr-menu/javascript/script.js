@@ -290,17 +290,55 @@ function createSection(title, content){
 }
 
 
+//Função assícrona para carregar os horários de funcionamento a partir de um arquivo
+async function carregarHorarios(arquivoHorario){
+  try{
+    const response = await fetch(arquivoHorario);//Faz uma requisição para obter o conteúdo do arquivo
+    const data = await response.txt();
+    console.log('Arquivo de horários carregados:', data);
+
+    const horarios = parseHorarios(data);
+    console.log('Horarios processados:',horarios);
+
+    //Obtém dia e hora atual
+    const now = new Date();
+    const diaDaSemana = now.getDay();
+    const hours = now.getHours();
+    const minutes = now.getMinutes();
+    
+    const hora = document.getElementById('hora-funcionamento');
+    const hora2 = document.getElementById('hora-funcionamento2');
+
+    //Verifica o horário de funcionamento para o momento atual
+
+    horaFuncionamento(hora, horarios, diaDaSemana, hours, minutes);
+    horaFuncionamento(hora2, horarios, diaDaSemana, hours, minutes);
+  }
+  catch(error){
+    console.error('Erro ao carregar o arquivo horarios:',error)
+  }
+}
 
 //Função para analisar os horários de funcionamento a partir dos dados do arquivo
-/* function parseHorarios(data){
+function parseHorarios(data){
   const lines = data.split('\n')//Divide o texto em linhas
   const horarios = {}; //Objeto para armazenar os horários processados
 
   //Itera sobre cada linha do texto
   lines.forEach(line => {
     if(line.startsWith('Horários de funcionamento')){
-      return; //Ignora linhas em branco
+      return; //Ignora a linha de cabeçalho "Horários de funcionamento"
     }
-    else if()
+    else if(line.trim() === ''){
+      return //Ignora linhas em branco
+    }
+    else{
+      const [dia, horario] = line.split(' - ');
+      if(dia && horario){
+        horarios[dia.trim()] = horario.trim(); //Armazena o horário associado ao dia da semana
+      }
+    }
   });
-} */
+
+  return horarios;
+} 
