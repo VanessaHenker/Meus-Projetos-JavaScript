@@ -237,6 +237,30 @@ async function carregarInfo(arquivoInfo){
 
     let currentSection = []; //Inicializa a variável vazia
     let currentTitle = '';  //Inicializa a variável vazia
+    
+    //Itera sobre cada linha do texto
+    lines.forEach( line => {
+      if(line.trim() === ''){
+        // Se a linha estiver vazia, adiciona a seção atual ao contêiner de informações
+        if(currentTitle && currentSection.length > 0){
+          container.appendChild(createSection(currentTitle, currentSection));
 
+          currentSection = []; //Reinicia a seção atual
+          currentTitle = ''; //Reinicia o título da seção
+        }
+      }
+      else if(currentSection === ''){
+        // Se o título da seção ainda não foi definido, define-o com a linha atual
+        currentTitle = line;
+      }
+      else{
+        //Caso contrário, adiciona a linha à seção atual
+        currentSection.push(line);
+      }
+    });
+  
+  }
+  catch(erro){
+    
   }
 }

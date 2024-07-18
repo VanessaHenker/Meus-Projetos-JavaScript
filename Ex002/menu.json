@@ -1,5 +1,5 @@
 { 
-  "usarMenuPizza": true,
+  "usarMenuPizza": false,
   "menuItemsPizza": [
     {
       "imagemSrc": "Imagens/banner/logo-pizza.png",
