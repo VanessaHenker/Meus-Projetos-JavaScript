@@ -342,3 +342,54 @@ function parseHorarios(data){
 
   return horarios;
 } 
+
+//Função para verificar se está aberto e exibir o status no elemento fornecido
+function horaFuncionamento(){
+  const diaSemana = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'][diaDaSemana]; 
+  const horario = horarios[diaSemana]; 
+
+  console.log('Verificando funcionamento para:', diaSemana);
+
+  if(!horario || horario.toLowerCase() == 'fechado'){
+    horaEscrito(elemento, true);
+  }
+  else{
+    const [abreStr, fechaStr] = horario.split(' / '); 
+
+    if (abreStr && fechaStr) {
+      const [abreHour, abreMin] = abreStr.split(':').map(Number); 
+      const [fechaHour, fechaMin] = fechaStr.split(':').map(Number);
+
+      const abreTime = abreHour * 60 + abreMin; 
+      const fechaTime = fechaHour * 60 + fechaMin; 
+      const horaAtual = hours * 60 + minutes; 
+
+      if (horaAtual >= abreTime && horaAtual <= fechaTime) {
+        elemento.innerHTML = 'Aberto agora';
+      } 
+      else {
+        horaEscrito(elemento, false); 
+      }
+    } 
+    else {
+      console.error('Formato de horário inválido para o dia', diaSemana); 
+      horaEscrito(elemento, false); // Exibe como fechado agora
+    }
+  }
+}
+
+// Função para exibir o status de horário de funcionamento no elemento fornecido
+function horaEscrito(elemento, fechado) {
+  if (fechado) {
+    elemento.innerHTML = 'Fechado'; 
+  } 
+  else {
+    elemento.innerHTML = 'Fechado agora'; 
+  }
+
+  elemento.style.color = 'black';
+  document.getElementById('mudar-cor').style.color = '#ffcb45'; 
+}
+
+// Adiciona um ouvinte de evento para carregar os dados quando o conteúdo da página estiver carregado
+document.addEventListener('DOMContentLoaded', carregarDados);
