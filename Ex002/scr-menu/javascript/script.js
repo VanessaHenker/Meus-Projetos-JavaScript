@@ -219,3 +219,24 @@ function criarItemMenu(imagemSrc, titulo, localizacao){
 }
 
 // Função assíncrona para carregar os horários de funcionamento a partir de um arquivo
+function adicionarIconeNavegacao(iconeClass, texto, id){
+  const menuContainer = document.getElementById('nav_logo');
+  const navIcon = criarIconeNavegacao(iconeClass, texto, id);
+
+  menuContainer.appendChild(navIcon);
+}
+
+// Função assíncrona para carregar informações de um arquivo e exibir no conteiner especificado
+async function carregarInfo(arquivoInfo){
+  try{
+    const response = await fetch(arquivoInfo);
+    const data = await response.text();
+
+    const container= document.getElementById('conteudo-informacoes');
+    const lines = data.split('\n');
+
+    let currentSection = []; //Inicializa a variável vazia
+    let currentTitle = '';  //Inicializa a variável vazia
+
+  }
+}
