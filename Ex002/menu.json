@@ -1,46 +1,35 @@
 { 
-  "usarMenuPizza": false,
-  "menuItemsPizza": [
-    {
+  "usarMenuPizza": true,
+  "menuItemsPizza": [{
       "imagemSrc": "Imagens/banner/logo-pizza.png",
       "titulo": "Cardápio - Pizza Bliss",
       "localizacao": " Local tal, na rua tal 1"
-    }
-  ],
-  "navIconsPizza": [
-    {
+    }],
+
+  "navIconsPizza": [{
       "iconeClass": "fa-solid fa-pizza-slice",
       "texto": "Pizza Bliss",
       "id": "nav_pizza"
-    }
-  ],
-  "arquivoPizza": [
-    {
+    }],
+
+  "arquivoPizza": [{
     "arquivoInfo": "Info/client001/informacoes.txt",
     "arquivoHorario": "Info/client001/horarios.txt"
-    }
-  ],
-
-  "menuItemsCake": [
-    {
+    }],
+    
+  "menuItemsCake": [{
       "imagemSrc": "Info/client002/Imagens/banner/doceria.jpeg",
       "titulo": "Cardápio - Cake Bliss 2",
       "localizacao": " Local tal, na rua tal 2"
-    }
-  ],
+    }],
   
-  "navIconsCake": [
-    {
+  "navIconsCake": [{
       "iconeClass": "fa-solid fa-cookie-bite",
       "texto": "Cake Bliss",
       "id": "nav_bliss"
-    }
-  ],
-  "arquivoCake": [
-    {
+    }],
+  "arquivoCake": [{
     "arquivoInfo": "Info/client002/informacoes.txt",
     "arquivoHorario": "Info/client002/horarios.txt"
-    }
-  ]
-  
+  }]
 }

@@ -151,7 +151,8 @@ async function carregarDados() {
       navIcons = data.navIconsPizza;
       arquivoInfo = data.arquivoPizza[0].arquivoInfo;
       arquivoHorario = data.arquivoPizza[0].arquivoHorario;
-    } else {
+    } 
+    else {
       menuItems = data.menuItemsCake;
       navIcons = data.navIconsCake;
       arquivoInfo = data.arquivoCake[0].arquivoInfo;
