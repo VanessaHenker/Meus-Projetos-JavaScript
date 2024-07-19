@@ -1,5 +1,0 @@
-const data = {
-  logoSrc: "Imagens/banner/logo-pizza.png",
-  title: "Cardápio - Pizza Bliss",
-  location: "Local tal, na rua tal"
-};

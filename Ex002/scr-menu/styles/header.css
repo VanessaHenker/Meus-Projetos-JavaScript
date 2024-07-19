@@ -110,6 +110,12 @@ header{
   .ativar-barra {
     display: none;
   }
+
+  .scroll-pesquisa{
+    overflow: auto;
+    max-height: 20vh;
+  }
+  
   .opcoes-barra{
     display: flex;
     align-items: center;
@@ -180,6 +186,10 @@ header{
     width: 150px;
   }
 
+  .scroll-pesquisa{
+    overflow: auto;
+    height: 15vh;
+  }
   .conteudo-button-pesq{
     overflow: none;
   }
@@ -192,7 +202,7 @@ header{
 
 @media screen and (max-width: 320px){
   #nav_logo{
-    font-size: 14px;
+    font-size: 15px;
   }
 
   .conteudo-button-pesq.ativar{
@@ -207,4 +217,8 @@ header{
     font-size: 0.7rem;
     margin-left: -5rem;
   } 
+
+  input{
+    margin-top: 2px;
+  }
 } 
