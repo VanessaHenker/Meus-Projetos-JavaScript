@@ -222,3 +222,8 @@ header{
     margin-top: 2px;
   }
 } 
+
+/*Estilização da barra de rolagem */
+.scroll-pesquisa::-webkit-scrollbar {
+  width: 0px; 
+}
