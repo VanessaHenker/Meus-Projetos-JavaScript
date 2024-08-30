@@ -2,6 +2,7 @@
 
 @import url('header.css');
 @import url('info.css');
+@import url('cardapio.css');
 
 :root {
   --color-primary-1: #fff9ea;
