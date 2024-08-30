@@ -1,0 +1,16 @@
+.conteudo-cardapio{
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  background-color: aqua;
+}
+
+.section-titulo{
+  font-size: 1.5rem;
+  color: var(--color-primary-6);
+}
+
+.section-subtitulo{
+  font-size: 2rem;
+  color: var(--color-primary-0);
+}
