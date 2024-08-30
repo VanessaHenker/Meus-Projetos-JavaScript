@@ -1,8 +1,9 @@
 .conteudo-cardapio{
-  justify-content: center;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  margin: auto;
-  background-color: aqua;
+  justify-content: center;
+  min-height: 35vh;
 }
 
 .section-titulo{
