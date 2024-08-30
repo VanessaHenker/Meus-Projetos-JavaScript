@@ -14,7 +14,8 @@
 .section-subtitulo{
   font-size: 2rem;
   color: var(--color-primary-0);
-}
+  margin: auto;
+  }
 
 .section-opcao{
   font-size: 2rem;
@@ -23,14 +24,11 @@
 
 .conteudo-opcao{
   display: flex;
-  text-align: center;
-}
-
-.teste{
-  display: flex;
   align-items: center;
   justify-content: center;
-  background-color: blueviolet;
-  width: 100%;
+}
+
+.opcao-verMais{
+  margin-left: 200px;
 }
 
