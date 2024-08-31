@@ -90,6 +90,10 @@
   color: var(--color-primary-6);
 }
 
+.prato-descricao{
+  text-align: center;
+  color: black;
+}
 .prato-preco{
   display: flex;
   align-items: center;
@@ -112,6 +116,12 @@
   margin-top: -2.5rem;
   font-weight: 800;
   color: var(--color-primary-6);
+}
+
+.button-verMais:hover{
+ color: var(--color-primary-5);
+ transition: color .3s ease;
+ cursor: pointer;
 }
 
 @media screen and (max-width: 1170px) {
