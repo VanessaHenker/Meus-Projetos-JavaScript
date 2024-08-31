@@ -407,7 +407,7 @@ function horaEscrito(elemento, fechado) {
 document.addEventListener('DOMContentLoaded', carregarDados);
 
 document.addEventListener("DOMContentLoaded", function() {
-  fetch('pizzas.json')
+  fetch('cardapio.json')
   .then(response => response.json())
   .then(data => {
       const cardapio = document.getElementById('cardapio');

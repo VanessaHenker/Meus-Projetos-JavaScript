@@ -1,6 +1,6 @@
 {
   "pizzas": [
-    {
+    { 
       "nome": "Calabresa",
       "imagem": "Imagens/pizzas/pizza_calabresa.png",
       "descricao": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
