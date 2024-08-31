@@ -405,3 +405,42 @@ function horaEscrito(elemento, fechado) {
 
 // Adiciona um ouvinte de evento para carregar os dados quando o conteúdo da página estiver carregado
 document.addEventListener('DOMContentLoaded', carregarDados);
+
+document.addEventListener("DOMContentLoaded", function() {
+  fetch('pizzas.json')
+  .then(response => response.json())
+  .then(data => {
+      const cardapio = document.getElementById('cardapio');
+      
+      data.pizzas.forEach(pizza => {
+          const prato = document.createElement('a');
+          prato.classList.add('pratos');
+          prato.href = 'menu.html';
+          
+          prato.innerHTML = `
+              <div class="prato-coracao">
+                  <i class="fa-solid fa-heart"></i>
+              </div>
+              <img class="tamanho-imagem" src="${pizza.imagem}" alt="imagem-pizza">
+              <h3 class="color-padrao">${pizza.nome}</h3>
+              <span class="prato-descricao color-padrao">${pizza.descricao}</span>
+              <div class="prato-star">
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <span class="color-padrao">${pizza.avaliacoes}</span>
+              </div>
+              <div class="prato-preco">
+                  <h4 class="color-padrao">${pizza.preco}</h4>
+                  <button class="btn-default">
+                      <i class="fa-solid fa-basket-shopping"></i>
+                  </button>
+              </div>
+          `;
+          
+          cardapio.appendChild(prato);
+      });
+  });
+});
