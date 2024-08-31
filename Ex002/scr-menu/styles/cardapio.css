@@ -27,6 +27,25 @@
   justify-content:space-between;
 }
 
+.conteudo-verMais{
+  display: flex;
+  justify-content: flex-end;
+  margin-left: 85%;
+ }
+ 
+ .button-verMais{
+   margin-top: -2.5rem;
+   font-weight: 800;
+   color: var(--color-primary-6);
+  
+ }
+ 
+ .button-verMais:hover{
+  color: var(--color-primary-5);
+  transition: color .3s ease;
+  cursor: pointer;
+ }
+
 #menu{
   display: flex;
   flex-direction: column;
@@ -82,7 +101,7 @@
 }
 
 .prato-titulo{
-  color: #434343;
+  color: #434343; 
   text-align: center;
 }
 
@@ -100,29 +119,7 @@
   gap: 20px;
 }
 
-.teste{
-  display: flex;
-  align-items: center;
-}
 
-
-.conteudo-verMais{
- display: flex;
- justify-content: flex-end;
- margin-left: 85%;
-}
-
-.button-verMais{
-  margin-top: -2.5rem;
-  font-weight: 800;
-  color: var(--color-primary-6);
-}
-
-.button-verMais:hover{
- color: var(--color-primary-5);
- transition: color .3s ease;
- cursor: pointer;
-}
 
 @media screen and (max-width: 1170px) {
   #cardapio{
