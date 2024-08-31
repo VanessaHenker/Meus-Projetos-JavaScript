@@ -96,6 +96,24 @@
   gap: 20px;
 }
 
+.teste{
+  display: flex;
+  align-items: center;
+}
+
+
+.conteudo-verMais{
+ display: flex;
+ justify-content: flex-end;
+ margin-left: 85%;
+}
+
+.button-verMais{
+  margin-top: -2.5rem;
+  font-weight: 800;
+  color: var(--color-primary-6);
+}
+
 @media screen and (max-width: 1170px) {
   #cardapio{
     flex-wrap: wrap;
@@ -108,6 +126,10 @@
 
   .prato-descricao{
     text-align: center;
+  }
+
+  .button-verMais{
+    display: none;
   }
 }
 
@@ -123,12 +145,3 @@
 
 } 
 
-.teste{
-  display: flex;
-  align-items: center;
-}
-
-
-.a{
-
-}
