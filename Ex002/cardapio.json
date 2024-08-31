@@ -1,32 +1,58 @@
 {
-  "pizzas": [
-    { 
-      "nome": "Calabresa",
-      "imagem": "Imagens/pizzas/pizza_calabresa.png",
-      "descricao": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-      "preco": "R$ 00,00",
-      "avaliacoes": "(500+)"
+  "categorias": [
+    {
+      "nome": "Pizzas",
+      "subtitulo": "Nossas pizzas especiais",
+      "itens": [
+        {
+          "nome": "Calabresa",
+          "imagem": "Imagens/pizzas/pizza_calabresa.png",
+          "descricao": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+          "preco": "R$ 00,00",
+          "avaliacoes": "(500+)"
+        },
+        {
+          "nome": "Queijo",
+          "imagem": "Imagens/pizzas/pizza_queijo.png",
+          "descricao": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+          "preco": "R$ 00,00",
+          "avaliacoes": "(500+)"
+        },
+        {
+          "nome": "Portuguesa",
+          "imagem": "Imagens/pizzas/pizza_portuguesa.png",
+          "descricao": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+          "preco": "R$ 00,00",
+          "avaliacoes": "(500+)"
+        },
+        {
+          "nome": "Pepperoni",
+          "imagem": "Imagens/pizzas/pizza_peperoni.png",
+          "descricao": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+          "preco": "R$ 00,00",
+          "avaliacoes": "(500+)"
+        }
+      ]
     },
     {
-      "nome": "Queijo",
-      "imagem": "Imagens/pizzas/pizza_queijo.png",
-      "descricao": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-      "preco": "R$ 00,00",
-      "avaliacoes": "(500+)"
-    },
-    {
-      "nome": "Portuguesa",
-      "imagem": "Imagens/pizzas/pizza_portuguesa.png",
-      "descricao": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-      "preco": "R$ 00,00",
-      "avaliacoes": "(500+)"
-    },
-    {
-      "nome": "Pepperoni",
-      "imagem": "Imagens/pizzas/pizza_peperoni.png",
-      "descricao": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-      "preco": "R$ 00,00",
-      "avaliacoes": "(500+)"
+      "nome": "Bebidas",
+      "subtitulo": "Nossas bebidas refrescantes",
+      "itens": [
+        {
+          "nome": "Coca-Cola",
+          "imagem": "Imagens/bebidas/coca_cola.png",
+          "descricao": "A clássica Coca-Cola.",
+          "preco": "R$ 5,00",
+          "avaliacoes": "(200+)"
+        },
+        {
+          "nome": "Suco de Laranja",
+          "imagem": "Imagens/bebidas/suco_laranja.png",
+          "descricao": "Suco natural de laranja.",
+          "preco": "R$ 7,00",
+          "avaliacoes": "(150+)"
+        }
+      ]
     }
   ]
 }
