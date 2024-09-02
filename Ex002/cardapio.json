@@ -1,32 +1,38 @@
 {
-  "pizzas": [
-    { 
-      "nome": "Calabresa",
-      "imagem": "Imagens/pizzas/pizza_calabresa.png",
-      "descricao": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-      "preco": "R$ 00,00",
-      "avaliacoes": "(500+)"
-    },
+  "categorias": [
     {
-      "nome": "Queijo",
-      "imagem": "Imagens/pizzas/pizza_queijo.png",
-      "descricao": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-      "preco": "R$ 00,00",
-      "avaliacoes": "(500+)"
-    },
-    {
-      "nome": "Portuguesa",
-      "imagem": "Imagens/pizzas/pizza_portuguesa.png",
-      "descricao": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-      "preco": "R$ 00,00",
-      "avaliacoes": "(500+)"
-    },
-    {
-      "nome": "Pepperoni",
-      "imagem": "Imagens/pizzas/pizza_peperoni.png",
-      "descricao": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-      "preco": "R$ 00,00",
-      "avaliacoes": "(500+)"
+      "titulo": "Pizzas",
+      "itens": [
+        {
+          "nome": "Calabresa",
+          "imagem": "Imagens/pizzas/pizza_calabresa.png",
+          "descricao": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+          "preco": "R$ 00,00",
+          "avaliacoes": "(500+)"
+        },
+        {
+          "nome": "Queijo",
+          "imagem": "Imagens/pizzas/pizza_queijo.png",
+          "descricao": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+          "preco": "R$ 00,00",
+          "avaliacoes": "(500+)"
+        },
+        {
+          "nome": "Portuguesa",
+          "imagem": "Imagens/pizzas/pizza_portuguesa.png",
+          "descricao": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+          "preco": "R$ 00,00",
+          "avaliacoes": "(500+)"
+        },
+        {
+          "nome": "Pepperoni",
+          "imagem": "Imagens/pizzas/pizza_peperoni.png",
+          "descricao": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+          "preco": "R$ 00,00",
+          "avaliacoes": "(500+)"
+        }
+      ]
     }
+    
   ]
 }

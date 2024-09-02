@@ -403,47 +403,53 @@ function horaEscrito(elemento, fechado) {
   document.getElementById('mudar-cor').style.color = '#ffcb45';
 }
 
-// Adiciona um ouvinte de evento para carregar os dados quando o conteúdo da página estiver carregado
-const subtituloElement = document.querySelector('.section-subtitulo');
-// Define o subtítulo
-subtituloElement.textContent = "Nossas pizzas salgadas";
-document.addEventListener('DOMContentLoaded', carregarDados);
-
+//Conteudo cardápio
 document.addEventListener("DOMContentLoaded", function() {
   fetch('cardapio.json')
-  .then(response => response.json())
-  .then(data => {
-      const cardapio = document.getElementById('cardapio');
-      
-      data.pizzas.forEach(pizza => {
-          const prato = document.createElement('a');
-          prato.classList.add('pratos');
-          prato.href = 'menu.html';
-          
-          prato.innerHTML = `
-              <div class="prato-coracao">
-                  <i class="fa-solid fa-heart"></i>
-              </div>
-              <img class="tamanho-imagem" src="${pizza.imagem}" alt="imagem-pizza">
-              <h3 class="color-padrao">${pizza.nome}</h3>
-              <span class="prato-descricao color-padrao">${pizza.descricao}</span>
-              <div class="prato-star">
-                  <i class="fa-solid fa-star"></i>
-                  <i class="fa-solid fa-star"></i>
-                  <i class="fa-solid fa-star"></i>
-                  <i class="fa-solid fa-star"></i>
-                  <i class="fa-solid fa-star"></i>
-                  <span class="color-padrao">${pizza.avaliacoes}</span>
-              </div>
-              <div class="prato-preco">
-                  <h4 class="color-padrao">${pizza.preco}</h4>
-                  <button class="btn-default">
-                      <i class="fa-solid fa-basket-shopping"></i>
-                  </button>
-              </div>
-          `;
-          
-          cardapio.appendChild(prato);
-      });
-  });
+    .then(response => response.json())
+    .then(data => {
+        const cardapio = document.getElementById('cardapio');
+        const subtituloElement = document.querySelector('.section-subtitulo');
+
+        // Acessando a categoria correta do JSON
+        const pizzasCategoria = data.categorias.find(categoria => categoria.titulo === "Pizzas");
+
+        // Definindo o subtítulo dinamicamente com base no título da categoria
+        subtituloElement.textContent = pizzasCategoria.titulo;
+
+        // Renderizando os itens da categoria "Pizzas"
+        pizzasCategoria.itens.forEach(pizza => {
+            const prato = document.createElement('a');
+            prato.classList.add('pratos');
+            prato.href = 'menu.html';
+            
+            prato.innerHTML = `
+                <div class="prato-coracao">
+                    <i class="fa-solid fa-heart"></i>
+                </div>
+                <img class="tamanho-imagem" src="${pizza.imagem}" alt="imagem-pizza">
+                <h3 class="color-padrao">${pizza.nome}</h3>
+                <span class="prato-descricao color-padrao">${pizza.descricao}</span>
+                <div class="prato-star">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <span class="color-padrao">${pizza.avaliacoes}</span>
+                </div>
+                <div class="prato-preco">
+                    <h4 class="color-padrao">${pizza.preco}</h4>
+                    <button class="btn-default">
+                        <i class="fa-solid fa-basket-shopping"></i>
+                    </button>
+                </div>
+            `;
+            
+            cardapio.appendChild(prato);
+        });
+    })
+    .catch(error => {
+        console.error('Erro ao carregar os dados:', error);
+    });
 });
