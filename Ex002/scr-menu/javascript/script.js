@@ -418,7 +418,7 @@ document.addEventListener("DOMContentLoaded", function (){
       data.pizzas.forEach(pizza => {
         const prato = document.createElement('a');
         prato.classList.add('pratos');
-        prato.href = 'menu.html';
+        prato.href = '#';
 
         prato.innerHTML = `
               <div class="prato-coracao">
