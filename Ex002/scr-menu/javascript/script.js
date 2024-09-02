@@ -405,11 +405,12 @@ function horaEscrito(elemento, fechado) {
 
 // Adiciona um ouvinte de evento para carregar os dados quando o conteúdo da página estiver carregado
 const subtituloElement = document.querySelector('.section-subtitulo');
-// Define o subtítulo
-subtituloElement.textContent = "Nossas pizzas salgadas";
-document.addEventListener('DOMContentLoaded', carregarDados);
+
 
 document.addEventListener("DOMContentLoaded", function() {
+  // Define o subtítulo
+  subtituloElement.textContent = "Nossas pizzas salgadas";
+  document.addEventListener('DOMContentLoaded', carregarDados);
   fetch('cardapio.json')
   .then(response => response.json())
   .then(data => {
