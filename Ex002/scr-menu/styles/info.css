@@ -2,6 +2,7 @@
   text-align: center;
   position: relative;
   background-color: #FAEBD7;
+  z-index: 2;
 }
 
 .imagem-logo{
