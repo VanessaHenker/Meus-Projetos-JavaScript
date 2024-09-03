@@ -1,56 +1,32 @@
 {
-  "categorias": [
-    {
-      "titulo": "Nossas pizzas salgadas",
-      "itens": [
-        { 
-          "nome": "Calabresa",
-          "imagem": "Imagens/pizzas/pizza_calabresa.png",
-          "descricao": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-          "preco": "R$ 00,00",
-          "avaliacoes": "(500+)"
-        },
-        {
-          "nome": "Queijo",
-          "imagem": "Imagens/pizzas/pizza_queijo.png",
-          "descricao": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-          "preco": "R$ 00,00",
-          "avaliacoes": "(500+)"
-        },
-        {
-          "nome": "Portuguesa",
-          "imagem": "Imagens/pizzas/pizza_portuguesa.png",
-          "descricao": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-          "preco": "R$ 00,00",
-          "avaliacoes": "(500+)"
-        },
-        {
-          "nome": "Pepperoni",
-          "imagem": "Imagens/pizzas/pizza_peperoni.png",
-          "descricao": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-          "preco": "R$ 00,00",
-          "avaliacoes": "(500+)"
-        }
-      ]
+  "pizzas": [
+    { 
+      "nome": "Calabresa",
+      "imagem": "Imagens/pizzas/pizza_calabresa.png",
+      "descricao": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+      "preco": "R$ 00,00",
+      "avaliacoes": "(500+)"
     },
     {
-      "titulo": "Outra categoria de pizzas",
-      "itens": [
-        { 
-          "nome": "Pizza Vegetariana",
-          "imagem": "Imagens/pizzas/pizza_vegetariana.png",
-          "descricao": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-          "preco": "R$ 00,00",
-          "avaliacoes": "(500+)"
-        },
-        {
-          "nome": "Pizza Margherita",
-          "imagem": "Imagens/pizzas/pizza_margherita.png",
-          "descricao": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-          "preco": "R$ 00,00",
-          "avaliacoes": "(500+)"
-        }
-      ]
+      "nome": "Queijo",
+      "imagem": "Imagens/pizzas/pizza_queijo.png",
+      "descricao": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+      "preco": "R$ 00,00",
+      "avaliacoes": "(500+)"
+    },
+    {
+      "nome": "Portuguesa",
+      "imagem": "Imagens/pizzas/pizza_portuguesa.png",
+      "descricao": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+      "preco": "R$ 00,00",
+      "avaliacoes": "(500+)"
+    },
+    {
+      "nome": "Pepperoni",
+      "imagem": "Imagens/pizzas/pizza_peperoni.png",
+      "descricao": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+      "preco": "R$ 00,00",
+      "avaliacoes": "(500+)"
     }
   ]
 }
