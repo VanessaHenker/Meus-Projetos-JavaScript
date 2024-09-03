@@ -403,47 +403,73 @@ function horaEscrito(elemento, fechado) {
   document.getElementById('mudar-cor').style.color = '#ffcb45';
 }
 
-// Adiciona um ouvinte de evento para carregar os dados quando o conteúdo da página estiver carregado
-const subtituloElement = document.querySelector('.section-subtitulo');
-// Define o subtítulo
-subtituloElement.textContent = "Nossas pizzas salgadas";
-document.addEventListener('DOMContentLoaded', carregarDados);
-
-document.addEventListener("DOMContentLoaded", function() {
-  fetch('cardapio.json')
-  .then(response => response.json())
-  .then(data => {
-      const cardapio = document.getElementById('cardapio');
-      
-      data.pizzas.forEach(pizza => {
-          const prato = document.createElement('a');
-          prato.classList.add('pratos');
-          prato.href = '#';
-          
-          prato.innerHTML = `
-              <div class="prato-coracao">
-                  <i class="fa-solid fa-heart"></i>
-              </div>
-              <img class="tamanho-imagem" src="${pizza.imagem}" alt="imagem-pizza">
-              <h3 class="color-padrao">${pizza.nome}</h3>
-              <span class="prato-descricao color-padrao">${pizza.descricao}</span>
-              <div class="prato-star">
-                  <i class="fa-solid fa-star"></i>
-                  <i class="fa-solid fa-star"></i>
-                  <i class="fa-solid fa-star"></i>
-                  <i class="fa-solid fa-star"></i>
-                  <i class="fa-solid fa-star"></i>
-                  <span class="color-padrao">${pizza.avaliacoes}</span>
-              </div>
-              <div class="prato-preco">
-                  <h4 class="color-padrao">${pizza.preco}</h4>
-                  <button class="btn-default">
-                      <i class="fa-solid fa-basket-shopping"></i>
-                  </button>
-              </div>
-          `;
-          
-          cardapio.appendChild(prato);
-      });
-  });
+document.addEventListener('DOMContentLoaded', () => {
+  definirSubtitulo("Nossas pizzas salgadas");
+  carregarDados('cardapio.json');
 });
+
+// Função para definir o subtítulo da seção
+function definirSubtitulo(texto) {
+  const subtituloElement = document.querySelector('.section-subtitulo');
+  subtituloElement.textContent = texto;
+}
+
+// Função para carregar os dados do cardápio
+function carregarDados(url) {
+  fetch(url)
+      .then(response => {
+          if (!response.ok) {
+              throw new Error('Erro na resposta da rede.');
+          }
+          return response.json();
+      })
+      .then(data => exibirCardapio(data.pizzas))
+      .catch(error => console.error("Erro ao carregar os dados:", error));
+}
+
+// Função para exibir o cardápio na página
+function exibirCardapio(pizzas) {
+  const cardapio = document.getElementById('cardapio');
+  cardapio.innerHTML = ''; // Limpa o conteúdo existente
+  pizzas.forEach(pizza => {
+      const prato = criarPrato(pizza);
+      cardapio.appendChild(prato);
+  });
+}
+
+// Função para criar o elemento de prato
+function criarPrato(pizza) {
+  const prato = document.createElement('a');
+  prato.classList.add('pratos');
+  prato.href = '#';
+
+  prato.innerHTML = `
+      <div class="prato-coracao">
+          <i class="fa-solid fa-heart"></i>
+      </div>
+      <img class="tamanho-imagem" src="${pizza.imagem}" alt="imagem-pizza">
+      <h3 class="color-padrao">${pizza.nome}</h3>
+      <span class="prato-descricao color-padrao">${pizza.descricao}</span>
+      <div class="prato-star">
+          ${criarEstrelas(pizza.avaliacoes)}
+      </div>
+      <div class="prato-preco">
+          <h4 class="color-padrao">${pizza.preco}</h4>
+          <button class="btn-default">
+              <i class="fa-solid fa-basket-shopping"></i>
+          </button>
+      </div>
+  `;
+
+  return prato;
+}
+
+// Função para criar estrelas de avaliação
+function criarEstrelas(avaliacoes) {
+  let estrelasHTML = '';
+  for (let i = 0; i < 5; i++) {
+      estrelasHTML += '<i class="fa-solid fa-star"></i>';
+  }
+  estrelasHTML += `<span class="color-padrao">${avaliacoes}</span>`;
+  return estrelasHTML;
+}
