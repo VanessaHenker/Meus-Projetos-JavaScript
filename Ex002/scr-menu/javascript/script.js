@@ -403,19 +403,25 @@ function horaEscrito(elemento, fechado) {
   document.getElementById('mudar-cor').style.color = '#ffcb45';
 }
 
-// Adiciona um ouvinte de evento para carregar os dados quando o conteúdo da página estiver carregado
-const subtituloElement = document.querySelector('.section-subtitulo');
-// Define o subtítulo
-subtituloElement.textContent = "Nossas pizzas salgadas";
-document.addEventListener('DOMContentLoaded', carregarDados);
-
 document.addEventListener("DOMContentLoaded", function() {
   fetch('cardapio.json')
   .then(response => response.json())
   .then(data => {
       const cardapio = document.getElementById('cardapio');
       
-      data.pizzas.forEach(pizza => {
+      // Supondo que você queira carregar a primeira categoria
+      const primeiraCategoria = data.categorias[0];
+      
+      // Criar o subtítulo dinamicamente
+      const subtituloElement = document.createElement('h3');
+      subtituloElement.classList.add('section-subtitulo');
+      subtituloElement.textContent = primeiraCategoria.titulo;
+      
+      // Inserir o subtítulo antes do conteúdo do cardápio
+      cardapio.parentNode.insertBefore(subtituloElement, cardapio);
+      
+      // Iterar sobre os itens da primeira categoria
+      primeiraCategoria.itens.forEach(pizza => {
           const prato = document.createElement('a');
           prato.classList.add('pratos');
           prato.href = '#';
