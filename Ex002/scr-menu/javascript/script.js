@@ -403,7 +403,6 @@ function horaEscrito(elemento, fechado) {
   document.getElementById('mudar-cor').style.color = '#ffcb45';
 }
 
-//Conteudo cardápio
 document.addEventListener('DOMContentLoaded', async () => {
   try {
     // Carregar os dados do menu
@@ -418,7 +417,14 @@ document.addEventListener('DOMContentLoaded', async () => {
     cardapio.innerHTML = '';
 
     // Iterar sobre as categorias
-    data.categorias.forEach(categoria => {
+    data.categorias.forEach((categoria, index) => {
+      // Adicionar uma linha horizontal ou espaçamento entre categorias (exceto a primeira)
+      if (index > 0) {
+        const separador = document.createElement('hr');
+        separador.classList.add('separador-categoria'); // Opcional: adicionar uma classe para estilizar
+        cardapio.appendChild(separador);
+      }
+
       const subtitulo = document.createElement('h3');
       subtitulo.classList.add('section-subtitulo');
       subtitulo.textContent = categoria.nome;
