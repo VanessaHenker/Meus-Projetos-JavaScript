@@ -247,75 +247,105 @@ function createSection(title, contents) {
   return section;
 }
 
+//Função assíncrona para carregar os horários de funcionamento a partir de um arquivo
 async function carregarHorarios(arquivoHorario) {
   try {
-    const response = await fetch(arquivoHorario);
-    const data = await response.text();
+    const response = await fetch(arquivoHorario); 
+    const data = await response.text(); 
+    console.log('Arquivo de horários carregado:', data); 
 
-    const horarios = parseHorarios(data);
+    const horarios = parseHorarios(data); 
+    console.log('Horarios processados:', horarios); 
 
-    const now = new Date();
-    const diaDaSemana = now.getDay();
+    //Obtém dia e horario atual
+    const now = new Date(); 
+    const diaDaSemana = now.getDay(); 
     const hours = now.getHours();
-    const minutes = now.getMinutes();
+    const minutes = now.getMinutes(); 
 
-    const hora = document.getElementById('hora-funcionamento');
-    const hora2 = document.getElementById('hora-funcionamento2');
+    const hora = document.getElementById('hora-funcionamento'); 
+    const hora2 = document.getElementById('hora-funcionamento2'); 
 
+    //Verifica o horário de funcionamento para o momento atual
     horaFuncionamento(hora, horarios, diaDaSemana, hours, minutes);
     horaFuncionamento(hora2, horarios, diaDaSemana, hours, minutes);
 
   } catch (error) {
-    console.error('Erro ao carregar o arquivo de horários:', error);
+    console.error('Erro ao carregar o arquivo de horarios:', error); 
   }
 }
 
+// Função para analisar os horários de funcionamento a partir dos dados do arquivo
 function parseHorarios(data) {
-  const lines = data.split('\n');
+  const lines = data.split('\n'); 
   const horarios = {};
 
+  // Itera sobre cada linha do texto
   lines.forEach(line => {
     if (line.startsWith('Horários de funcionamento')) {
-      return;
-    } else if (line.trim() === '') {
-      return;
-    } else {
-      const [dia, horario] = line.split(':');
-      horarios[dia.trim()] = horario.trim();
+      return; //Ignora a linha de cabeçalho "Horários de funcionamento"
+    } 
+    else if (line.trim() === '') {
+      return; //Ignora linhas em branco
+    } 
+    else {
+      const [dia, horario] = line.split(' - '); //Divide a linha em dia e horário
+      if (dia && horario) {
+        horarios[dia.trim()] = horario.trim(); //Armazena o horário associado ao dia da semana
+      }
     }
   });
 
   return horarios;
 }
 
-function horaFuncionamento(horaElement, horarios, diaDaSemana, hours, minutes) {
-  const diasSemana = ['domingo', 'segunda', 'terça', 'quarta', 'quinta', 'sexta', 'sábado'];
-  const diaAtual = diasSemana[diaDaSemana];
-  const horarioFuncionamento = horarios[diaAtual];
+//Função para verificar se está aberto e exibir o status no elemento fornecido
+function horaFuncionamento(elemento, horarios, diaDaSemana, hours, minutes) {
+  const diaSemana = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'][diaDaSemana]; 
+  const horario = horarios[diaSemana];
 
-  if (!horarioFuncionamento) {
-    horaElement.textContent = 'Fechado';
-    return;
-  }
+  console.log('Verificando funcionamento para:', diaSemana, horario); 
 
-  const [inicio, fim] = horarioFuncionamento.split(' às ').map(time => {
-    const [hour, minute] = time.split('h').map(Number);
-    return { hour, minute };
-  });
+  if (!horario || horario.toLowerCase() === 'fechado') {
+    horaEscrito(elemento, true);
+  } 
+  else {
+    const [abreStr, fechaStr] = horario.split(' / '); 
 
-  const agora = { hour: hours, minute: minutes };
+    if (abreStr && fechaStr) {
+      const [abreHour, abreMin] = abreStr.split(':').map(Number); 
+      const [fechaHour, fechaMin] = fechaStr.split(':').map(Number); 
 
-  if (agora.hour > inicio.hour || (agora.hour === inicio.hour && agora.minute >= inicio.minute)) {
-    if (agora.hour < fim.hour || (agora.hour === fim.hour && agora.minute <= fim.minute)) {
-      horaElement.textContent = `Aberto agora - Fecha às ${fim.hour}h${fim.minute}`;
-      return;
+      const abreTime = abreHour * 60 + abreMin;
+      const fechaTime = fechaHour * 60 + fechaMin; 
+      const horaAtual = hours * 60 + minutes; 
+
+      if (horaAtual >= abreTime && horaAtual <= fechaTime) {
+        elemento.innerHTML = 'Aberto agora'; 
+      } 
+      else {
+        horaEscrito(elemento, false); 
+      }
+    } 
+    else {
+      console.error('Formato de horário inválido para o dia', diaSemana); // Exibe um erro no console se o formato do horário for inválido
+      horaEscrito(elemento, false); 
     }
   }
-
-  horaElement.textContent = 'Fechado';
 }
 
-document.addEventListener('DOMContentLoaded', carregarDados);
+// Função para exibir o status de horário de funcionamento no elemento fornecido
+function horaEscrito(elemento, fechado) {
+  if (fechado) {
+    elemento.innerHTML = 'Fechado';
+  } 
+  else {
+    elemento.innerHTML = 'Fechado agora'; 
+  }
+
+  elemento.style.color = 'black'; 
+  document.getElementById('mudar-cor').style.color = '#ffcb45';
+}
 
 // Adiciona um ouvinte de evento para carregar os dados quando o conteúdo da página estiver carregado
 const subtituloElement = document.querySelector('.section-subtitulo');
