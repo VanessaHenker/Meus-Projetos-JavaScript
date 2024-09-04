@@ -418,10 +418,10 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // Iterar sobre as categorias
     data.categorias.forEach((categoria, index) => {
-      // Adicionar uma linha horizontal ou espaçamento entre categorias (exceto a primeira)
+      // Adicionar um separador (div) entre categorias (exceto a primeira)
       if (index > 0) {
-        const separador = document.createElement('hr');
-        separador.classList.add('separador-categoria'); // Opcional: adicionar uma classe para estilizar
+        const separador = document.createElement('div');
+        separador.classList.add('separador'); // Classe para estilização
         cardapio.appendChild(separador);
       }
 
