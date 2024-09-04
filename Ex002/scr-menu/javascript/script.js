@@ -403,6 +403,7 @@ function horaEscrito(elemento, fechado) {
   document.getElementById('mudar-cor').style.color = '#ffcb45';
 }
 
+//Conteudo cardápio
 document.addEventListener('DOMContentLoaded', async () => {
   try {
     // Carregar os dados do menu
@@ -412,36 +413,48 @@ document.addEventListener('DOMContentLoaded', async () => {
     const response = await fetch('cardapio.json');
     const data = await response.json();
     const cardapio = document.getElementById('cardapio');
+    
+    // Limpar o cardápio existente
+    cardapio.innerHTML = '';
 
-    data.pizzas.forEach(pizza => {
-      const prato = document.createElement('a');
-      prato.classList.add('pratos');
-      prato.href = '#';
+    // Iterar sobre as categorias
+    data.categorias.forEach(categoria => {
+      const subtitulo = document.createElement('h3');
+      subtitulo.classList.add('section-subtitulo');
+      subtitulo.textContent = categoria.nome;
+      cardapio.appendChild(subtitulo);
 
-      prato.innerHTML = `
-        <div class="prato-coracao">
-          <i class="fa-solid fa-heart"></i>
-        </div>
-        <img class="tamanho-imagem" src="${pizza.imagem}" alt="imagem-pizza">
-        <h3 class="color-padrao">${pizza.nome}</h3>
-        <span class="prato-descricao color-padrao">${pizza.descricao}</span>
-        <div class="prato-star">
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <span class="color-padrao">${pizza.avaliacoes}</span>
-        </div>
-        <div class="prato-preco">
-          <h4 class="color-padrao">${pizza.preco}</h4>
-          <button class="btn-default">
-            <i class="fa-solid fa-basket-shopping"></i>
-          </button>
-        </div>
-      `;
+      // Adicionar os itens da categoria
+      categoria.itens.forEach(item => {
+        const prato = document.createElement('a');
+        prato.classList.add('pratos');
+        prato.href = '#';
 
-      cardapio.appendChild(prato);
+        prato.innerHTML = `
+          <div class="prato-coracao">
+            <i class="fa-solid fa-heart"></i>
+          </div>
+          <img class="tamanho-imagem" src="${item.imagem}" alt="imagem-${item.nome}">
+          <h3 class="color-padrao">${item.nome}</h3>
+          <span class="prato-descricao color-padrao">${item.descricao}</span>
+          <div class="prato-star">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <span class="color-padrao">${item.avaliacoes}</span>
+          </div>
+          <div class="prato-preco">
+            <h4 class="color-padrao">${item.preco}</h4>
+            <button class="btn-default">
+              <i class="fa-solid fa-basket-shopping"></i>
+            </button>
+          </div>
+        `;
+
+        cardapio.appendChild(prato);
+      });
     });
   } catch (error) {
     console.error('Erro ao carregar dados:', error);
