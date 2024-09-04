@@ -68,10 +68,28 @@
   margin-top: 32px;
   padding: 2rem;
   
+ 
+  flex-direction: column; /* As categorias ficarão uma abaixo da outra */
+  gap: 20px; /* Espaço entre as categorias */
+  
 }
-
 #cardapio a{
   background-color: var(--color-neutral-0);
+}
+
+.categoria-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%; /* A categoria ocupa toda a largura disponível */
+  margin-bottom: 50px;
+  align-items: center;
+}
+
+.itens-container {
+  display: flex;
+  flex-wrap: wrap; /* Os itens dentro da categoria irão quebrar para a linha seguinte, se necessário */
+  gap: 15px; /* Espaço entre os itens */
+  padding: 3rem;
 }
 
 .pratos {
@@ -80,13 +98,14 @@
   flex-direction: column;
   border-radius: 20px;
   gap: 18px;
-  width: 25%;
+  width: 22%;
   padding: 20px;
   background-color: var(--color-neutral-0);
   box-shadow: 0px 0px 12px 4px rgba(0, 0, 0, 0.1);
   position: relative;
   overflow: hidden;
 }
+
 
 .prato-coracao{
   position: absolute;
