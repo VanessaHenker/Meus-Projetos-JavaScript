@@ -390,19 +390,6 @@ function horaFuncionamento(elemento, horarios, diaDaSemana, hours, minutes) {
   }
 }
 
-// Função para exibir o status de horário de funcionamento no elemento fornecido
-function horaEscrito(elemento, fechado) {
-  if (fechado) {
-    elemento.innerHTML = 'Fechado';
-  } 
-  else {
-    elemento.innerHTML = 'Fechado agora'; 
-  }
-
-  elemento.style.color = 'black'; 
-  document.getElementById('mudar-cor').style.color = '#ffcb45';
-}
-
 document.addEventListener('DOMContentLoaded', async () => {
   try {
     // Carregar os dados do menu
@@ -418,19 +405,20 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // Iterar sobre as categorias
     data.categorias.forEach((categoria, index) => {
-      // Adicionar um separador (div) entre categorias (exceto a primeira)
-      if (index > 0) {
-        const separador = document.createElement('div');
-        separador.classList.add('separador'); // Classe para estilização
-        cardapio.appendChild(separador);
-      }
+      // Criar um contêiner para cada categoria
+      const categoriaContainer = document.createElement('div');
+      categoriaContainer.classList.add('categoria-container');
 
+      // Adicionar o título da categoria
       const subtitulo = document.createElement('h3');
       subtitulo.classList.add('section-subtitulo');
       subtitulo.textContent = categoria.nome;
-      cardapio.appendChild(subtitulo);
+      categoriaContainer.appendChild(subtitulo);
 
       // Adicionar os itens da categoria
+      const itensContainer = document.createElement('div');
+      itensContainer.classList.add('itens-container'); // Contêiner para os itens
+
       categoria.itens.forEach(item => {
         const prato = document.createElement('a');
         prato.classList.add('pratos');
@@ -459,8 +447,14 @@ document.addEventListener('DOMContentLoaded', async () => {
           </div>
         `;
 
-        cardapio.appendChild(prato);
+        itensContainer.appendChild(prato);
       });
+
+      // Adicionar o contêiner de itens ao contêiner da categoria
+      categoriaContainer.appendChild(itensContainer);
+
+      // Adicionar o contêiner da categoria ao cardápio
+      cardapio.appendChild(categoriaContainer);
     });
   } catch (error) {
     console.error('Erro ao carregar dados:', error);
