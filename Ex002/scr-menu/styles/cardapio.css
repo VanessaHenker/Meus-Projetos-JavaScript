@@ -67,29 +67,10 @@
   gap: 24px;
   margin-top: 32px;
   padding: 2rem;
-  
- 
-  flex-direction: column; /* As categorias ficarão uma abaixo da outra */
-  gap: 20px; /* Espaço entre as categorias */
-  
 }
+
 #cardapio a{
   background-color: var(--color-neutral-0);
-}
-
-.categoria-container {
-  display: flex;
-  flex-direction: column;
-  width: 100%; 
-  margin-bottom: 50px;
-  align-items: center;
-}
-
-.itens-container {
-  display: flex;
-  flex-wrap: wrap; 
-  gap: 15px;
-  padding: 2rem;
 }
 
 .pratos {
@@ -98,14 +79,13 @@
   flex-direction: column;
   border-radius: 20px;
   gap: 18px;
-  width: 22%;
+  width: 25%;
   padding: 20px;
   background-color: var(--color-neutral-0);
   box-shadow: 0px 0px 12px 4px rgba(0, 0, 0, 0.1);
   position: relative;
   overflow: hidden;
 }
-
 
 .prato-coracao{
   position: absolute;
@@ -146,6 +126,57 @@
   gap: 20px;
 }
 
+#cardapio {
+  display: flex;
+  flex-direction: column; /* As categorias ficarão uma abaixo da outra */
+  gap: 20px; /* Espaço entre as categorias */
+}
+
+.categoria-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%; /* A categoria ocupa toda a largura disponível */
+}
+
+.section-subtitulo {
+  font-size: 24px;
+  margin-bottom: 10px; /* Espaço abaixo do título */
+}
+
+.itens-container {
+  display: flex;
+  flex-wrap: wrap; /* Os itens dentro da categoria irão quebrar para a linha seguinte, se necessário */
+  gap: 15px; /* Espaço entre os itens */
+}
+
+.pratos {
+  display: flex;
+  flex-direction: column; /* Cada item (prato) ficará em coluna */
+  align-items: center;
+  width: 200px; /* Largura fixa dos itens */
+  text-align: center;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.tamanho-imagem {
+  width: 100px; /* Ajuste o tamanho da imagem */
+  height: 100px;
+  object-fit: cover;
+}
+
+.prato-coracao, .prato-star, .prato-preco {
+  margin-top: 10px;
+}
+
+.separador {
+  height: 2px;
+  width: 100%;
+  background-color: #ccc;
+  margin: 20px 0;
+}
 
 
 @media screen and (max-width: 1170px) {
