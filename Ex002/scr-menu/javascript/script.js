@@ -303,7 +303,7 @@ function createSection(title, contents) {
   return section;
 }
 
-//Função assíncrona para carregar os horários de funcionamento a partir de um arquivo
+// Função assíncrona para carregar os horários de funcionamento a partir de um arquivo
 async function carregarHorarios(arquivoHorario) {
   try {
     const response = await fetch(arquivoHorario); 
@@ -313,7 +313,7 @@ async function carregarHorarios(arquivoHorario) {
     const horarios = parseHorarios(data); 
     console.log('Horarios processados:', horarios); 
 
-    //Obtém dia e horario atual
+    // Obtém dia e horário atual
     const now = new Date(); 
     const diaDaSemana = now.getDay(); 
     const hours = now.getHours();
@@ -322,12 +322,12 @@ async function carregarHorarios(arquivoHorario) {
     const hora = document.getElementById('hora-funcionamento'); 
     const hora2 = document.getElementById('hora-funcionamento2'); 
 
-    //Verifica o horário de funcionamento para o momento atual
+    // Verifica o horário de funcionamento para o momento atual
     horaFuncionamento(hora, horarios, diaDaSemana, hours, minutes);
     horaFuncionamento(hora2, horarios, diaDaSemana, hours, minutes);
 
   } catch (error) {
-    console.error('Erro ao carregar o arquivo de horarios:', error); 
+    console.error('Erro ao carregar o arquivo de horários:', error); 
   }
 }
 
@@ -339,15 +339,15 @@ function parseHorarios(data) {
   // Itera sobre cada linha do texto
   lines.forEach(line => {
     if (line.startsWith('Horários de funcionamento')) {
-      return; //Ignora a linha de cabeçalho "Horários de funcionamento"
+      return; // Ignora a linha de cabeçalho "Horários de funcionamento"
     } 
     else if (line.trim() === '') {
-      return; //Ignora linhas em branco
+      return; // Ignora linhas em branco
     } 
     else {
-      const [dia, horario] = line.split(' - '); //Divide a linha em dia e horário
+      const [dia, horario] = line.split(' - '); // Divide a linha em dia e horário
       if (dia && horario) {
-        horarios[dia.trim()] = horario.trim(); //Armazena o horário associado ao dia da semana
+        horarios[dia.trim()] = horario.trim(); // Armazena o horário associado ao dia da semana
       }
     }
   });
@@ -355,7 +355,7 @@ function parseHorarios(data) {
   return horarios;
 }
 
-//Função para verificar se está aberto e exibir o status no elemento fornecido
+// Função para verificar se está aberto e exibir o status no elemento fornecido
 function horaFuncionamento(elemento, horarios, diaDaSemana, hours, minutes) {
   const diaSemana = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'][diaDaSemana]; 
   const horario = horarios[diaSemana];
@@ -390,6 +390,13 @@ function horaFuncionamento(elemento, horarios, diaDaSemana, hours, minutes) {
   }
 }
 
+// Função para atualizar o status de funcionamento
+function horaEscrito(elemento, aberto) {
+  if (elemento) {
+    elemento.innerHTML = aberto ? 'Aberto agora' : 'Fechado agora';
+  }
+}
+
 document.addEventListener('DOMContentLoaded', async () => {
   try {
     // Carregar os dados do menu
@@ -404,12 +411,12 @@ document.addEventListener('DOMContentLoaded', async () => {
     cardapio.innerHTML = '';
 
     // Iterar sobre as categorias
-    data.categorias.forEach((categoria, index) => {
+    data.categorias.forEach((categoria) => {
       // Criar um contêiner para cada categoria
       const categoriaContainer = document.createElement('div');
       categoriaContainer.classList.add('categoria-container');
 
-      // Adicionar o título da categoria
+      // Adicionar o subtítulo da categoria
       const subtitulo = document.createElement('h3');
       subtitulo.classList.add('section-subtitulo');
       subtitulo.textContent = categoria.nome;
@@ -432,11 +439,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <h3 class="color-padrao">${item.nome}</h3>
           <span class="prato-descricao color-padrao">${item.descricao}</span>
           <div class="prato-star">
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
+            ${'<i class="fa-solid fa-star"></i>'.repeat(item.avaliacoes)}
             <span class="color-padrao">${item.avaliacoes}</span>
           </div>
           <div class="prato-preco">
@@ -457,6 +460,6 @@ document.addEventListener('DOMContentLoaded', async () => {
       cardapio.appendChild(categoriaContainer);
     });
   } catch (error) {
-    console.error('Erro ao carregar dados:', error);
+    console.error('Erro ao carregar os dados:', error);
   }
 });

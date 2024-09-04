@@ -80,16 +80,16 @@
 .categoria-container {
   display: flex;
   flex-direction: column;
-  width: 100%; /* A categoria ocupa toda a largura disponível */
+  width: 100%; 
   margin-bottom: 50px;
   align-items: center;
 }
 
 .itens-container {
   display: flex;
-  flex-wrap: wrap; /* Os itens dentro da categoria irão quebrar para a linha seguinte, se necessário */
-  gap: 15px; /* Espaço entre os itens */
-  padding: 3rem;
+  flex-wrap: wrap; 
+  gap: 15px;
+  padding: 2rem;
 }
 
 .pratos {
