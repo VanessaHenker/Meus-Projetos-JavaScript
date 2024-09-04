@@ -1,245 +1,301 @@
-// Botão do menu mobile
-document.addEventListener('DOMContentLoaded', function () {
-  const btnMobile = document.getElementById('btn_mobile');
-  const mobileMenu = document.getElementById('mobile_menu');
-
-  btnMobile.addEventListener('click', function () {
-    mobileMenu.classList.toggle('active');
-    btnMobile.querySelector('i').classList.toggle('fa-x');
+// Conteudo header 
+//Buttom menu
+$(document).ready(function () {
+  $('#btn_mobile').on('click', function () {
+    $('#mobile_menu').toggleClass('active');
+    $('#btn_mobile').find('i').toggleClass('fa-x');
   });
 
-  // Manipulador de eventos para cliques fora do menu mobile
-  document.addEventListener('click', function (event) {
-    const target = event.target;
+  //Manipulador de eventos para o clique no documento
+  $(document).on('click', function (event) {
+    var $target = $(event.target);
 
-    if (!mobileMenu.contains(target) && !btnMobile.contains(target)) {
-      mobileMenu.classList.remove('active');
-      btnMobile.querySelector('i').classList.remove('fa-x');
+    //Verifica se o clique foi fora do menu e do botão
+    if (!$target.closest('#mobile_menu').length && !$target.closest('#btn_mobile').length) {
+      $('#mobile_menu').removeClass('active');
+      $('#btn_mobile').find('i').removeClass('fa-x');
     }
   });
 });
 
-// Botão de pesquisa
-const boxBuscar = document.querySelector('.conteudo-button-pesq');
-const lupa = document.querySelector('.btn_mobile_pesq');
-const btnFechar = document.querySelector('.button_fechar');
+//Button pesquisa
+let boxBuscar = document.querySelector('.conteudo-button-pesq');
 
+let lupa = document.querySelector('.btn_mobile_pesq');
+
+let btnFechar = document.querySelector('.button_fechar');
+
+//Abre a barra de pesquisa
 lupa.addEventListener('click', () => {
   boxBuscar.classList.add('ativar');
 });
 
+//Remove a barra de pesquisa
 btnFechar.addEventListener('click', () => {
   boxBuscar.classList.remove('ativar');
-});
+})
 
-// Botão de pesquisa com opções
+//Button pesquisa opções
 const searchBar = document.getElementById('barra-pesquisa');
 const options = document.getElementById('opcoes');
-const buttonClose = document.getElementById('button_fechar');
+const button_close = document.getElementById('button_fechar');
 
+//Abre as opções
 searchBar.addEventListener('click', () => {
   options.classList.remove('ativar-barra');
 });
 
-buttonClose.addEventListener('click', () => {
+//Remove as opções clicando no X
+button_close.addEventListener('click', () => {
   options.classList.add('ativar-barra');
 });
 
+//Adiciona comportamento de clique nas opções
 const optionItems = document.querySelectorAll('.opcoes-barra');
 optionItems.forEach(option => {
   option.addEventListener('click', () => {
     searchBar.value = option.textContent;
     options.classList.add('ativar-barra');
-  });
+  })
 });
 
+//Verifica se opção de busca está aberta
 document.addEventListener('click', function (event) {
-  const target = event.target;
-  if (!searchBar.contains(target) && !options.contains(target)) {
+  var isClickInside = content.contains(event.target);
+
+  if (!isClickInside) {
     boxBuscar.classList.remove('ativar');
     options.classList.add('ativar-barra');
   }
 });
 
-// Função para filtrar opções ao digitar
-function digitarOpcao() {
-  const input = searchBar.value.toLowerCase();
-  const opcao = document.getElementsByClassName('opcoes-barra');
+//Digita a opção desejada
+function digitar_opcao() {
+  let input = document.getElementById('barra-pesquisa').value
+  input = input.toLowerCase();
 
-  for (let i = 0; i < opcao.length; i++) {
+  let opcao = document.getElementsByClassName('opcoes-barra');
+
+  for (i = 0; i < opcao.length; i++) {
     if (!opcao[i].innerHTML.toLowerCase().includes(input)) {
       opcao[i].style.display = "none";
-    } else {
+    }
+    else {
       opcao[i].style.display = "list-item";
     }
   }
 }
 
-// Botão "Ver Mais"
+//Button ver mais
 document.addEventListener('DOMContentLoaded', function () {
+  //Obtém os elementos
   const buttonVerMais = document.getElementById('button-ver-mais');
   const buttonInfo = document.getElementById('conteudo-button-info');
   const buttonFechar = document.getElementById('btn-fechar');
   const buttonIconFechar = document.getElementById('btn-icon');
 
+  //Verifica se os elementos existem antes de adicionar os event listeners
   if (buttonVerMais && buttonInfo && buttonFechar && buttonIconFechar) {
+    // Adiciona evento ao botão "Ver Mais"
     buttonVerMais.addEventListener('click', function () {
       buttonInfo.classList.add('slideUp');
     });
 
-    buttonFechar.addEventListener('click', ocultarConteudo);
-    buttonIconFechar.addEventListener('click', ocultarConteudo);
+    //Fecha as informações clicando no botão "Fechar"
+    buttonFechar.addEventListener('click', function () {
+      ocultarConteudo();
+    });
 
+    //Fecha as informações clicando no ícone "X"
+    buttonIconFechar.addEventListener('click', function () {
+      ocultarConteudo();
+    });
+
+    //Manipulador de eventos para o clique no documento
     document.addEventListener('click', function (event) {
       const target = event.target;
-      if (!buttonInfo.contains(target) && !buttonVerMais.contains(target)) {
+
+      //Verifica se o clique foi fora do menu e dos botões
+      if (!buttonInfo.contains(target) && !buttonVerMais.contains(target) && !buttonFechar.contains(target) && !buttonIconFechar.contains(target)) {
         ocultarConteudo();
       }
     });
 
+    //Função para descer o conteúdo e esconder o conteudo-button-info
     function ocultarConteudo() {
       if (buttonInfo.classList.contains('slideUp')) {
         buttonInfo.classList.add('slideDown');
-        buttonInfo.addEventListener('animationend', function () {
-          buttonInfo.classList.remove('slideUp', 'slideDown');
-        }, { once: true });
+        const animationEndHandler = function () {
+          buttonInfo.classList.remove('slideUp');
+          buttonInfo.classList.remove('slideDown');
+          buttonInfo.removeEventListener('animationend', animationEndHandler);
+        };
+        buttonInfo.addEventListener('animationend', animationEndHandler, { once: true });
       }
     }
   }
 });
 
-// Função assíncrona para carregar todos os dados necessários ao carregar a página
+//Função assíncrona para carregar todos os dados necessários ao carregar a página
 async function carregarDados() {
   try {
+    //Realiza uma requisição para obter o arquivo JSON que contém os dados
     const response = await fetch('menu.json');
-    const data = await response.json();
+    const data = await response.json(); 
 
     let menuItems, navIcons, arquivoInfo, arquivoHorario;
 
+    //Verifica qual menu deve usar, com base na configuração do JSON
     if (data.usarMenuPizza) {
       menuItems = data.menuItemsPizza;
       navIcons = data.navIconsPizza;
       arquivoInfo = data.arquivoPizza[0].arquivoInfo;
       arquivoHorario = data.arquivoPizza[0].arquivoHorario;
-    } else {
+    } 
+    else {
       menuItems = data.menuItemsCake;
       navIcons = data.navIconsCake;
       arquivoInfo = data.arquivoCake[0].arquivoInfo;
       arquivoHorario = data.arquivoCake[0].arquivoHorario;
     }
 
+    //Carrega e exibe os itens do menu
     menuItems.forEach(item => {
       adicionarItemMenu(item.imagemSrc, item.titulo, item.localizacao);
     });
 
+    //Carrega e exibe os ícones de navegação
     navIcons.forEach(icon => {
       adicionarIconeNavegacao(icon.iconeClass, icon.texto, icon.id);
     });
 
-    await carregarInfo(arquivoInfo);
-    await carregarHorarios(arquivoHorario);
+    //Carrega as informações do arquivo especificado
+    carregarInfo(arquivoInfo);
+
+    //Carrega os horários de funcionamento do arquivo especificado
+    carregarHorarios(arquivoHorario);
 
   } catch (error) {
-    console.error('Erro ao carregar dados:', error);
+    console.error('Erro ao carregar dados:', error); 
   }
 }
 
+//Função para criar um item de menu com imagem, título e localização
 function criarItemMenu(imagemSrc, titulo, localizacao) {
-  const itemDiv = document.createElement('div');
-  itemDiv.className = 'menu-item';
+  const itemDiv = document.createElement('div'); 
+  itemDiv.className = 'menu-item'; 
 
+  //Cria a imagem do item de menu
   const img = document.createElement('img');
-  img.className = 'imagem-logo';
-  img.src = imagemSrc;
-  img.alt = titulo;
-  itemDiv.appendChild(img);
+  img.className = 'imagem-logo'; 
+  img.src = imagemSrc; 
+  img.alt = titulo; 
+  itemDiv.appendChild(img); 
 
+  //Cria o título do item de menu (h2)
   const h2 = document.createElement('h2');
-  h2.className = 'conteudo-escrito';
-  h2.textContent = titulo;
-  itemDiv.appendChild(h2);
+  h2.className = 'conteudo-escrito'; 
+  h2.textContent = titulo; 
+  itemDiv.appendChild(h2); 
 
+  //Cria o parágrafo para exibir a localização
   const p = document.createElement('p');
-  p.className = 'localizacao';
+  p.className = 'localizacao'; 
 
+  //Cria o ícone de localização (i)
   const i = document.createElement('i');
-  i.className = 'fa-solid fa-location-dot';
-  p.appendChild(i);
+  i.className = 'fa-solid fa-location-dot'; 
+  p.appendChild(i); 
 
+  //Cria o span para exibir o texto da localização
   const span = document.createElement('span');
-  span.textContent = localizacao;
-  p.appendChild(span);
+  span.textContent = localizacao; 
+  p.appendChild(span); 
 
-  itemDiv.appendChild(p);
+  itemDiv.appendChild(p); 
 
-  return itemDiv;
+  return itemDiv; 
 }
 
+//Função para adicionar um item de menu ao contêiner do menu na página HTML
 function adicionarItemMenu(imagemSrc, titulo, localizacao) {
-  const menuContainer = document.getElementById('menu-container');
-  const itemMenu = criarItemMenu(imagemSrc, titulo, localizacao);
-  menuContainer.appendChild(itemMenu);
+  const menuContainer = document.getElementById('menu-container'); 
+  const itemMenu = criarItemMenu(imagemSrc, titulo, localizacao); 
+  menuContainer.appendChild(itemMenu); 
 }
 
+//Função para criar um ícone de navegação com classe, texto e ID
 function criarIconeNavegacao(iconeClass, texto, id) {
-  const navIcon = document.createElement('i');
-  navIcon.className = iconeClass;
-  navIcon.id = id;
+  const navIcon = document.createElement('i'); 
+  navIcon.className = iconeClass; 
+  navIcon.id = id; 
 
-  navIcon.appendChild(document.createTextNode(' ' + texto));
+  navIcon.appendChild(document.createTextNode(' ' + texto)); 
 
-  return navIcon;
+  return navIcon; 
 }
 
+//Função para adicionar um ícone de navegação ao contêiner de navegação na página HTML
 function adicionarIconeNavegacao(iconeClass, texto, id) {
-  const menuContainer = document.getElementById('nav_logo');
-  const navIcon = criarIconeNavegacao(iconeClass, texto, id);
-  menuContainer.appendChild(navIcon);
+  const menuContainer = document.getElementById('nav_logo'); 
+  const navIcon = criarIconeNavegacao(iconeClass, texto, id); 
+  menuContainer.appendChild(navIcon); 
 }
 
+//Função assíncrona para carregar informações de um arquivo e exibir no contêiner especificado
 async function carregarInfo(arquivoInfo) {
   try {
-    const response = await fetch(arquivoInfo);
-    const data = await response.text();
-    const container = document.getElementById('conteudo-informacoes');
-    const lines = data.split('\n');
+    const response = await fetch(arquivoInfo); 
+    const data = await response.text(); 
+    const container = document.getElementById('conteudo-informacoes'); 
+    const lines = data.split('\n'); 
 
     let currentSection = [];
     let currentTitle = '';
 
+    //Itera sobre cada linha do texto
     lines.forEach(line => {
       if (line.trim() === '') {
+        //Se a linha estiver vazia, adiciona a seção atual ao contêiner de informações
         if (currentTitle && currentSection.length > 0) {
           container.appendChild(createSection(currentTitle, currentSection));
         }
-        currentSection = [];
-        currentTitle = '';
-      } else if (currentTitle === '') {
+        currentSection = []; // Reinicia a seção atual
+        currentTitle = ''; // Reinicia o título da seção
+      } 
+      else if (currentTitle === '') {
+        //Se o título da seção ainda não foi definido, define-o com a linha atual
         currentTitle = line;
-      } else {
+      } 
+      else {
+        //Caso contrário, adiciona a linha à seção atual
         currentSection.push(line);
       }
     });
 
+    //diciona a última seção, se existir
     if (currentTitle && currentSection.length > 0) {
       container.appendChild(createSection(currentTitle, currentSection));
     }
-  } catch (error) {
-    console.error('Erro ao carregar o arquivo de informações:', error);
+  } 
+  catch (error) {
+    console.error('Erro ao carregar o arquivo de informações:', error); //Exibe o erro no console, se houver algum problema
   }
 }
 
+//Função para criar uma seção com título e conteúdo
 function createSection(title, contents) {
-  const section = document.createElement('div');
-  const h3 = document.createElement('h3');
+  const section = document.createElement('div'); 
+  const h3 = document.createElement('h3'); 
 
-  h3.textContent = title;
-  section.appendChild(h3);
+  h3.textContent = title; 
+  section.appendChild(h3); 
 
+  //Itera sobre o conteúdo da seção e cria parágrafos para cada item
   contents.forEach(content => {
     const p = document.createElement('p');
-    p.innerHTML = content;
-    section.appendChild(p);
+    p.innerHTML = content; 
+    section.appendChild(p); 
   });
 
   section.style.marginTop = '20px';
@@ -347,47 +403,47 @@ function horaEscrito(elemento, fechado) {
   document.getElementById('mudar-cor').style.color = '#ffcb45';
 }
 
-// Adiciona um ouvinte de evento para carregar os dados quando o conteúdo da página estiver carregado
-const subtituloElement = document.querySelector('.section-subtitulo');
-// Define o subtítulo
-subtituloElement.textContent = "Nossas pizzas salgadas";
-document.addEventListener('DOMContentLoaded', carregarDados);
+document.addEventListener('DOMContentLoaded', async () => {
+  try {
+    // Carregar os dados do menu
+    await carregarDados();
 
-document.addEventListener("DOMContentLoaded", function() {
-  fetch('cardapio.json')
-  .then(response => response.json())
-  .then(data => {
-      const cardapio = document.getElementById('cardapio');
-      
-      data.pizzas.forEach(pizza => {
-          const prato = document.createElement('a');
-          prato.classList.add('pratos');
-          prato.href = '#';
-          
-          prato.innerHTML = `
-              <div class="prato-coracao">
-                  <i class="fa-solid fa-heart"></i>
-              </div>
-              <img class="tamanho-imagem" src="${pizza.imagem}" alt="imagem-pizza">
-              <h3 class="color-padrao">${pizza.nome}</h3>
-              <span class="prato-descricao color-padrao">${pizza.descricao}</span>
-              <div class="prato-star">
-                  <i class="fa-solid fa-star"></i>
-                  <i class="fa-solid fa-star"></i>
-                  <i class="fa-solid fa-star"></i>
-                  <i class="fa-solid fa-star"></i>
-                  <i class="fa-solid fa-star"></i>
-                  <span class="color-padrao">${pizza.avaliacoes}</span>
-              </div>
-              <div class="prato-preco">
-                  <h4 class="color-padrao">${pizza.preco}</h4>
-                  <button class="btn-default">
-                      <i class="fa-solid fa-basket-shopping"></i>
-                  </button>
-              </div>
-          `;
-          
-          cardapio.appendChild(prato);
-      });
-  });
+    // Carregar o cardápio
+    const response = await fetch('cardapio.json');
+    const data = await response.json();
+    const cardapio = document.getElementById('cardapio');
+
+    data.pizzas.forEach(pizza => {
+      const prato = document.createElement('a');
+      prato.classList.add('pratos');
+      prato.href = '#';
+
+      prato.innerHTML = `
+        <div class="prato-coracao">
+          <i class="fa-solid fa-heart"></i>
+        </div>
+        <img class="tamanho-imagem" src="${pizza.imagem}" alt="imagem-pizza">
+        <h3 class="color-padrao">${pizza.nome}</h3>
+        <span class="prato-descricao color-padrao">${pizza.descricao}</span>
+        <div class="prato-star">
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <span class="color-padrao">${pizza.avaliacoes}</span>
+        </div>
+        <div class="prato-preco">
+          <h4 class="color-padrao">${pizza.preco}</h4>
+          <button class="btn-default">
+            <i class="fa-solid fa-basket-shopping"></i>
+          </button>
+        </div>
+      `;
+
+      cardapio.appendChild(prato);
+    });
+  } catch (error) {
+    console.error('Erro ao carregar dados:', error);
+  }
 });
