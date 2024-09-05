@@ -40,7 +40,7 @@
  }
  
  .button-verMais{
-   margin-top: -2.5rem;
+   margin-top: -2rem;
    font-weight: 800;
    color: var(--color-primary-6);
   
@@ -67,25 +67,47 @@
   gap: 24px;
   margin-top: 32px;
   padding: 2rem;
+  
+ 
+  flex-direction: column; /* As categorias ficarão uma abaixo da outra */
+  gap: 20px; /* Espaço entre as categorias */
+  
 }
-
 #cardapio a{
   background-color: var(--color-neutral-0);
+}
+
+.categoria-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%; /* A categoria ocupa toda a largura disponível */
+  margin-bottom: 50px;
+  align-items: center;
+}
+
+.itens-container {
+  display: flex;
+  flex-wrap: wrap; 
+  gap: 15px; /* Espaço entre os itens */
+  padding: 3rem;
+  justify-content: center;
 }
 
 .pratos {
   display: flex;
   align-items: center;
   flex-direction: column;
+  justify-content: center;
   border-radius: 20px;
   gap: 18px;
-  width: 25%;
+  width: 22%;
   padding: 20px;
   background-color: var(--color-neutral-0);
   box-shadow: 0px 0px 12px 4px rgba(0, 0, 0, 0.1);
   position: relative;
   overflow: hidden;
 }
+
 
 .prato-coracao{
   position: absolute;
@@ -127,7 +149,6 @@
 }
 
 
-
 @media screen and (max-width: 1170px) {
   #cardapio{
     flex-wrap: wrap;
@@ -158,4 +179,3 @@
   }
 
 } 
-
