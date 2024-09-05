@@ -316,7 +316,7 @@ async function carregarHorarios(arquivoHorario) {
     //Obtém dia e horario atual
     const now = new Date(); 
     const diaDaSemana = now.getDay(); 
-    const hours = 19;
+    const hours = now.getHours();
     const minutes = now.getMinutes(); 
 
     const hora = document.getElementById('hora-funcionamento'); 
