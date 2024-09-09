@@ -1,0 +1,56 @@
+{
+  "categorias": [
+    {
+      "nome": "Nossas Pizzas Salgadas",
+      "itens": [
+        { 
+          "nome": "Calabresa",
+          "imagem": "Imagens/pizzas/pizza_calabresa.png",
+          "descricao": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+          "preco": "R$ 00,00",
+          "avaliacoes": "(500+)"
+        },
+        {
+          "nome": "Queijo",
+          "imagem": "Imagens/pizzas/pizza_queijo.png",
+          "descricao": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+          "preco": "R$ 00,00",
+          "avaliacoes": "(500+)"
+        },
+        {
+          "nome": "Portuguesa",
+          "imagem": "Imagens/pizzas/pizza_portuguesa.png",
+          "descricao": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+          "preco": "R$ 00,00",
+          "avaliacoes": "(500+)"
+        },
+        {
+          "nome": "Pepperoni",
+          "imagem": "Imagens/pizzas/pizza_peperoni.png",
+          "descricao": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+          "preco": "R$ 00,00",
+          "avaliacoes": "(500+)"
+        }
+      ]
+    },
+    {
+      "nome": "Nossas Pizzas Doces",
+      "itens": [
+        { 
+          "nome": "Chocolate",
+          "imagem": "Imagens/pizzas/pizza_chocolate.png",
+          "descricao": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+          "preco": "R$ 00,00",
+          "avaliacoes": "(300+)"
+        },
+        {
+          "nome": "Banana com Canela",
+          "imagem": "Imagens/pizzas/pizza_banana_canela.png",
+          "descricao": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+          "preco": "R$ 00,00",
+          "avaliacoes": "(200+)"
+        }
+      ]
+    }
+  ]
+}
