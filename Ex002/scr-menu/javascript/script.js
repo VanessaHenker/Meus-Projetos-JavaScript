@@ -418,10 +418,16 @@ document.addEventListener('DOMContentLoaded', async () =>{
     cardapio.innerHTML = '';
     
     //Itens sobre categoria
-    data.categorias.forEach((categoria){
+    data.categorias.forEach((categoria) =>{
       //Criar um contêiner para cada categoria
       const categoriaContainer = document.createElement('div');
       categoriaContainer.classList.add('categoria-container');
+
+      //Adicionar o subtitulo da categoria
+      const subtitulo = document.createElement('h3');
+      subtitulo.classList.add('section-subtitulo');
+      subtitulo.textContent = categoria.nome;
+      
     });
   }
 
