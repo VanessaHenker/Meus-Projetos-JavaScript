@@ -403,3 +403,14 @@ function horaEscrito(elemento, fechado) {
   document.getElementById('mudar-cor').style.color = '#ffcb45';
 }
 
+//Conteudo cardápio
+document.addEventListener('DOMContentLoaded', async () =>{
+  try{
+    //Carregar dados do menu
+    await carregarDados();
+
+    //Carregar o cardapio
+    const responde = await fetch('cardapio.json');
+    const data = await responde.json();
+  }
+});
