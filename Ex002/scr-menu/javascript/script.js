@@ -404,8 +404,8 @@ function horaEscrito(elemento, fechado) {
 }
 
 //Conteudo cardápio
-document.addEventListener('DOMContentLoaded', async () =>{
-  try{
+document.addEventListener('DOMContentLoaded', async () => {
+  try {
     //Carregar dados do menu
     await carregarDados();
 
@@ -413,12 +413,12 @@ document.addEventListener('DOMContentLoaded', async () =>{
     const responde = await fetch('cardapio.json');
     const data = await responde.json();
     const cardapio = document.getElementById('cardapio');
-    
+
     //Limpar cardápio existente
     cardapio.innerHTML = '';
-    
+
     //Itens sobre categoria
-    data.categorias.forEach((categoria) =>{
+    data.categorias.forEach((categoria) => {
       //Criar um contêiner para cada categoria
       const categoriaContainer = document.createElement('div');
       categoriaContainer.classList.add('categoria-container');
@@ -427,7 +427,41 @@ document.addEventListener('DOMContentLoaded', async () =>{
       const subtitulo = document.createElement('h3');
       subtitulo.classList.add('section-subtitulo');
       subtitulo.textContent = categoria.nome;
-      
+      categoriaContainer.appendChild(subtitulo);
+
+      //Adicionar os itens da categoria
+      const itensContainer = document.createElement('div');
+      itensContainer.classList.add('itens-container');//container para itens
+
+      categoria.itens.forEach(item => {
+        const prato = document.createElement('a');
+        prato.href = '#'
+
+        prato.innerHTML = `
+        <div class="prato-coracao">
+            <i class="fa-solid fa-heart"></i>
+        </div>
+          <img class="tamanho-imagem" src="${item.imagem}" alt="imagem-${item.nome}">
+          <h3 class="color-padrao">${item.nome}</h3>
+          <span class="prato-descricao color-padrao">${item.descricao}</span>
+          <div class="prato-star">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <span class="color-padrao">${item.avaliacoes}</span>
+          </div>
+
+          <div class="prato-preco">
+            <h4 class="color-padrao">${item.preco}</h4>
+            <button class="btn-default">
+              <i class="fa-solid fa-basket-shopping"></i>
+            </button>
+          </div>
+
+        `;
+      });
     });
   }
 
