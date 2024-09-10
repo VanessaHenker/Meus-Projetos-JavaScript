@@ -412,5 +412,18 @@ document.addEventListener('DOMContentLoaded', async () =>{
     //Carregar o cardapio
     const responde = await fetch('cardapio.json');
     const data = await responde.json();
+    const cardapio = document.getElementById('cardapio');
+    
+    //Limpar cardápio existente
+    cardapio.innerHTML = '';
+    
+    //Itens sobre categoria
+    data.categorias.forEach((categoria){
+      //Criar um contêiner para cada categoria
+      const categoriaContainer = document.createElement('div');
+      categoriaContainer.classList.add('categoria-container');
+    });
   }
+
+  
 });
