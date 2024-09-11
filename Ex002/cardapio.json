@@ -51,6 +51,39 @@
           "avaliacoes": "(200+)"
         }
       ]
+    },
+    {
+      "nome": "Nossos refrigerantes",
+      "itens": [
+        { 
+          "nome": "Coca-Cola",
+          "imagem": "Pizza-Bliss/bebidas/logoCocaCola.jpg",
+          "descricao": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+          "preco": "R$ 00,00",
+          "avaliacoes": "(300+)"
+        },
+        {
+          "nome": "Sprite",
+          "imagem": "Pizza-Bliss/bebidas/logoSprit.jpg",
+          "descricao": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+          "preco": "R$ 00,00",
+          "avaliacoes": "(200+)"
+        },
+        {
+          "nome": "Fanta Laranja",
+          "imagem": "Pizza-Bliss/bebidas/logoFantaLaran.jpeg",
+          "descricao": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+          "preco": "R$ 00,00",
+          "avaliacoes": "(200+)"
+        },
+        {
+          "nome": "Guaraná AntarticaAlte",
+          "imagem": "Pizza-Bliss/bebidas/LogoGAntartica.webp",
+          "descricao": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+          "preco": "R$ 00,00",
+          "avaliacoes": "(200+)"
+        }
+      ]
     }
   ]
 }
