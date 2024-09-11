@@ -426,8 +426,17 @@ document.addEventListener('DOMContentLoaded', async () => {
       // Adicionar o subtítulo da categoria
       const subtitulo = document.createElement('h3');
       subtitulo.classList.add('section-subtitulo');
-      subtitulo.textContent = categoria.nome;
+      subtitulo.textContent = categoria.nome; // Título da categoria
       categoriaContainer.appendChild(subtitulo);
+
+      // Adicionar o botão "Ver Mais"
+      const verMaisContainer = document.createElement('div');
+      verMaisContainer.classList.add('conteudo-verMais');
+      const verMaisButton = document.createElement('h2');
+      verMaisButton.classList.add('button-verMais');
+      verMaisButton.textContent = 'Ver mais';
+      verMaisContainer.appendChild(verMaisButton);
+      categoriaContainer.appendChild(verMaisContainer); // Adiciona o botão ao container da categoria
 
       // Adicionar os itens da categoria
       const itensContainer = document.createElement('div');
