@@ -406,41 +406,42 @@ function horaEscrito(elemento, fechado) {
 //Conteudo cardápio
 document.addEventListener('DOMContentLoaded', async () => {
   try {
-    //Carregar dados do menu
+    // Carregar os dados do menu
     await carregarDados();
 
-    //Carregar o cardapio
-    const responde = await fetch('cardapio.json');
-    const data = await responde.json();
+    // Carregar o cardápio
+    const response = await fetch('cardapio.json');
+    const data = await response.json();
     const cardapio = document.getElementById('cardapio');
 
-    //Limpar cardápio existente
+    // Limpar o cardápio existente
     cardapio.innerHTML = '';
 
-    //Itens sobre categoria
+    // Iterar sobre as categorias
     data.categorias.forEach((categoria) => {
-      //Criar um contêiner para cada categoria
+      // Criar um contêiner para cada categoria
       const categoriaContainer = document.createElement('div');
       categoriaContainer.classList.add('categoria-container');
 
-      //Adicionar o subtitulo da categoria
+      // Adicionar o subtítulo da categoria
       const subtitulo = document.createElement('h3');
       subtitulo.classList.add('section-subtitulo');
       subtitulo.textContent = categoria.nome;
       categoriaContainer.appendChild(subtitulo);
 
-      //Adicionar os itens da categoria
+      // Adicionar os itens da categoria
       const itensContainer = document.createElement('div');
-      itensContainer.classList.add('itens-container');//container para itens
+      itensContainer.classList.add('itens-container'); // Contêiner para os itens
 
       categoria.itens.forEach(item => {
         const prato = document.createElement('a');
-        prato.href = '#'
+        prato.classList.add('pratos');
+        prato.href = '#';
 
         prato.innerHTML = `
-        <div class="prato-coracao">
+          <div class="prato-coracao">
             <i class="fa-solid fa-heart"></i>
-        </div>
+          </div>
           <img class="tamanho-imagem" src="${item.imagem}" alt="imagem-${item.nome}">
           <h3 class="color-padrao">${item.nome}</h3>
           <span class="prato-descricao color-padrao">${item.descricao}</span>
@@ -452,18 +453,24 @@ document.addEventListener('DOMContentLoaded', async () => {
             <i class="fa-solid fa-star"></i>
             <span class="color-padrao">${item.avaliacoes}</span>
           </div>
-
           <div class="prato-preco">
             <h4 class="color-padrao">${item.preco}</h4>
             <button class="btn-default">
               <i class="fa-solid fa-basket-shopping"></i>
             </button>
           </div>
-
         `;
-      });
-    });
-  }
 
-  
+        itensContainer.appendChild(prato);
+      });
+
+      // Adicionar o contêiner de itens ao contêiner da categoria
+      categoriaContainer.appendChild(itensContainer);
+
+      // Adicionar o contêiner da categoria ao cardápio
+      cardapio.appendChild(categoriaContainer);
+    });
+  } catch (error) {
+    console.error('Erro ao carregar os dados:', error);
+  }
 });
