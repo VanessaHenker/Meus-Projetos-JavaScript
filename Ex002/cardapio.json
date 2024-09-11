@@ -1,56 +1,35 @@
-{
-  "cardapio": [
-    {
-      "nome": "Nossas Pizzas Salgadas",
-      "itens": [
-        {
-          "nome": "Calabresa",
-          "imagem": "Imagens/pizzas/pizza_calabresa.png",
-          "descricao": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-          "preco": "R$ 00,00",
-          "avaliacoes": "(500+)"
-        },
-        {
-          "nome": "Queijo",
-          "imagem": "Imagens/pizzas/pizza_queijo.png",
-          "descricao": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-          "preco": "R$ 00,00",
-          "avaliacoes": "(500+)"
-        },
-        {
-          "nome": "Portuguesa",
-          "imagem": "Imagens/pizzas/pizza_portuguesa.png",
-          "descricao": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-          "preco": "R$ 00,00",
-          "avaliacoes": "(500+)"
-        },
-        {
-          "nome": "Pepperoni",
-          "imagem": "Imagens/pizzas/pizza_peperoni.png",
-          "descricao": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-          "preco": "R$ 00,00",
-          "avaliacoes": "(500+)"
-        },
-        {
-          "nome": "Nossas Pizzas Doces",
-          "itens": [
-            {
-              "nome": "Chocolate",
-              "imagem": "Imagens/pizzas/pizza_chocolate.png",
-              "descricao": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-              "preco": "R$ 00,00",
-              "avaliacoes": "(300+)"
-            },
-            {
-              "nome": "Banana com Canela",
-              "imagem": "Imagens/pizzas/pizza_banana_canela.png",
-              "descricao": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-              "preco": "R$ 00,00",
-              "avaliacoes": "(200+)"
-            }
-          ]
-        }
-      ]
-    }
-  ]
+{ 
+  "usarMenuPizza": true,
+  "menuItemsPizza": [{
+      "imagemSrc": "Imagens/banner/logo-pizza.png",
+      "titulo": "Cardápio - Pizza Bliss",
+      "localizacao": " Local tal, na rua tal 1"
+    }],
+
+  "navIconsPizza": [{
+      "iconeClass": "fa-solid fa-pizza-slice",
+      "texto": "Pizza Bliss",
+      "id": "nav_pizza"
+    }],
+
+  "arquivoPizza": [{
+    "arquivoInfo": "Info/client001/informacoes.txt",
+    "arquivoHorario": "Info/client001/horarios.txt"
+    }],
+    
+  "menuItemsCake": [{
+      "imagemSrc": "Info/client002/Imagens/banner/doceria.jpeg",
+      "titulo": "Cardápio - Cake Bliss",
+      "localizacao": " Local tal, na rua tal 2"
+    }],
+  
+  "navIconsCake": [{
+      "iconeClass": "fa-solid fa-cookie-bite",
+      "texto": "Cake Bliss",
+      "id": "nav_bliss"
+    }],
+  "arquivoCake": [{
+    "arquivoInfo": "Info/client002/informacoes.txt",
+    "arquivoHorario": "Info/client002/horarios.txt"
+  }]
 }
