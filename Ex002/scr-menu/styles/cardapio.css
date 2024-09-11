@@ -151,6 +151,10 @@
 
 
 @media screen and (max-width: 1170px) {
+  .section-subtitulo{
+    font-size: 1.5rem;
+  }
+  
   #cardapio{
     flex-wrap: wrap;
     justify-content: center;
@@ -172,6 +176,7 @@
 @media screen and (max-width: 600px) {
   .section-subtitulo,
   .prato-descricao{
+    font-size: 1.3rem;
     text-align: center;
   }
 
