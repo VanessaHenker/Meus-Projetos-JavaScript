@@ -84,8 +84,7 @@
           "avaliacoes": "(200+)"
         }
       ]
-    },
-    {
+    },{
       "nome": "Nossas Docerias",
       "disponivel": false,
       "itens": [
@@ -95,15 +94,9 @@
           "descricao": "Delicioso bolo de cenoura com cobertura de chocolate.",
           "preco": "R$ 15,00",
           "avaliacoes": "(100+)"
-        },
-        {
-          "nome": "Torta de Limão",
-          "imagem": "Pizza-Bliss/doceria/torta_limao.png",
-          "descricao": "Torta de limão com massa crocante e recheio cremoso.",
-          "preco": "R$ 18,00",
-          "avaliacoes": "(150+)"
         }
       ]
     }
+    
   ]
 }

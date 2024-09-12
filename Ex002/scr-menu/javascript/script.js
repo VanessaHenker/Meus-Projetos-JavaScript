@@ -419,74 +419,70 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // Iterar sobre as categorias
     data.categorias.forEach((categoria) => {
-      // Criar um contêiner para cada categoria
-      const categoriaContainer = document.createElement('div');
-      categoriaContainer.classList.add('categoria-container');
+      // Verificar se a categoria está disponível
+      if (categoria.disponivel === true) {
+        // Criar um contêiner para cada categoria
+        const categoriaContainer = document.createElement('div');
+        categoriaContainer.classList.add('categoria-container');
 
-      // Adicionar o subtítulo da categoria
-      const subtitulo = document.createElement('h3');
-      subtitulo.classList.add('section-subtitulo');
-      subtitulo.textContent = categoria.nome; // Título da categoria
-      categoriaContainer.appendChild(subtitulo);
+        // Adicionar o subtítulo da categoria
+        const subtitulo = document.createElement('h3');
+        subtitulo.classList.add('section-subtitulo');
+        subtitulo.textContent = categoria.nome; // Título da categoria
+        categoriaContainer.appendChild(subtitulo);
 
-      // Adicionar o botão "Ver Mais"
-      const verMaisContainer = document.createElement('div');
-      verMaisContainer.classList.add('conteudo-verMais');
-      const verMaisButton = document.createElement('h2');
-      verMaisButton.classList.add('button-verMais');
-      verMaisButton.textContent = 'Ver mais';
-      verMaisContainer.appendChild(verMaisButton);
-      categoriaContainer.appendChild(verMaisContainer); // Adiciona o botão ao container da categoria
+        // Adicionar o botão "Ver Mais"
+        const verMaisContainer = document.createElement('div');
+        verMaisContainer.classList.add('conteudo-verMais');
+        const verMaisButton = document.createElement('h2');
+        verMaisButton.classList.add('button-verMais');
+        verMaisButton.textContent = 'Ver mais';
+        verMaisContainer.appendChild(verMaisButton);
+        categoriaContainer.appendChild(verMaisContainer); // Adiciona o botão ao container da categoria
 
-      // Adicionar os itens da categoria
-      const itensContainer = document.createElement('div');
-      itensContainer.classList.add('itens-container'); // Contêiner para os itens
+        // Adicionar os itens da categoria
+        const itensContainer = document.createElement('div');
+        itensContainer.classList.add('itens-container'); // Contêiner para os itens
 
-      categoria.itens.forEach(item => {
-        const prato = document.createElement('a');
-        prato.classList.add('pratos');
-        prato.href = '#';
+        categoria.itens.forEach(item => {
+          const prato = document.createElement('a');
+          prato.classList.add('pratos');
+          prato.href = '#';
 
-        prato.innerHTML = `
-          <div class="prato-coracao">
-            <i class="fa-solid fa-heart"></i>
-          </div>
-          <img class="tamanho-imagem" src="${item.imagem}" alt="imagem-${item.nome}">
-          <h3 class="color-padrao">${item.nome}</h3>
-          <span class="prato-descricao color-padrao">${item.descricao}</span>
-          <div class="prato-star">
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <span class="color-padrao">${item.avaliacoes}</span>
-          </div>
-          <div class="prato-preco">
-            <h4 class="color-padrao">${item.preco}</h4>
-            <button class="btn-default">
-              <i class="fa-solid fa-basket-shopping"></i>
-            </button>
-          </div>
-        `;
+          prato.innerHTML = `
+            <div class="prato-coracao">
+              <i class="fa-solid fa-heart"></i>
+            </div>
+            <img class="tamanho-imagem" src="${item.imagem}" alt="imagem-${item.nome}">
+            <h3 class="color-padrao">${item.nome}</h3>
+            <span class="prato-descricao color-padrao">${item.descricao}</span>
+            <div class="prato-star">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <span class="color-padrao">${item.avaliacoes}</span>
+            </div>
+            <div class="prato-preco">
+              <h4 class="color-padrao">${item.preco}</h4>
+              <button class="btn-default">
+                <i class="fa-solid fa-basket-shopping"></i>
+              </button>
+            </div>
+          `;
 
-        itensContainer.appendChild(prato);
-      });
+          itensContainer.appendChild(prato);
+        });
 
-      // Adicionar o contêiner de itens ao contêiner da categoria
-      categoriaContainer.appendChild(itensContainer);
+        // Adicionar o contêiner de itens ao contêiner da categoria
+        categoriaContainer.appendChild(itensContainer);
 
-      // Adicionar o contêiner da categoria ao cardápio
-      cardapio.appendChild(categoriaContainer);
+        // Adicionar o contêiner da categoria ao cardápio
+        cardapio.appendChild(categoriaContainer);
+      }
     });
   } catch (error) {
     console.error('Erro ao carregar os dados:', error);
   }
-});
-
-const categorias = /* JSON carregado aqui */
-categorias.forEach(categoria => {
-    if (categoria.disponivel !== false) {  // Se 'disponivel' for true ou não existir, exibe
-        // Lógica para exibir a categoria e seus itens
-    }
 });
