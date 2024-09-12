@@ -483,3 +483,10 @@ document.addEventListener('DOMContentLoaded', async () => {
     console.error('Erro ao carregar os dados:', error);
   }
 });
+
+const categorias = /* JSON carregado aqui */
+categorias.forEach(categoria => {
+    if (categoria.disponivel !== false) {  // Se 'disponivel' for true ou não existir, exibe
+        // Lógica para exibir a categoria e seus itens
+    }
+});
