@@ -84,19 +84,6 @@
           "avaliacoes": "(200+)"
         }
       ]
-    },{
-      "nome": "Nossas Docerias",
-      "disponivel": false,
-      "itens": [
-        { 
-          "nome": "Bolo de Cenoura",
-          "imagem": "Pizza-Bliss/doceria/bolo_cenoura.png",
-          "descricao": "Delicioso bolo de cenoura com cobertura de chocolate.",
-          "preco": "R$ 15,00",
-          "avaliacoes": "(100+)"
-        }
-      ]
     }
-    
   ]
 }
