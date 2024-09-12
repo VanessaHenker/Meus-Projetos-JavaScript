@@ -1,0 +1,84 @@
+{
+  "categorias": [
+    {
+      "nome": "Nossas Pizzas Salgadas",
+      "itens": [
+        {
+          "nome": "Calabresa",
+          "imagem": "Pizza-Bliss/pizzas/pizza_calabresa.png",
+          "descricao": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+          "preco": "R$ 00,00",
+          "avaliacoes": "(500+)"
+        },
+        {
+          "nome": "Queijo",
+          "imagem": "Pizza-Bliss/pizzas/pizza_queijo.png",
+          "descricao": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+          "preco": "R$ 00,00",
+          "avaliacoes": "(500+)"
+        }
+   
+      ]
+    },
+    {
+      "nome": "Nossas Pizzas Doces",
+      "itens": [
+        {
+          "nome": "Chocolate",
+          "imagem": "Pizza-Bliss/pizzas/pizza-chocolate.jpeg",
+          "descricao": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+          "preco": "R$ 00,00",
+          "avaliacoes": "(300+)"
+        },
+        {
+          "nome": "Banana com Canela",
+          "imagem": "Pizza-Bliss/pizzas/Pizza-banana.png",
+          "descricao": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+          "preco": "R$ 00,00",
+          "avaliacoes": "(200+)"
+        }
+       
+      ]
+    },
+    {
+      "nome": "Nossos Bolos - Cake Bliss",
+      "itens": [
+        {
+          "nome": "Bolo de Chocolate",
+          "imagem": "Cake-Bliss/bolos/bolo-chocolate.png",
+          "descricao": "Bolo delicioso com cobertura de chocolate.",
+          "preco": "R$ 20,00",
+          "avaliacoes": "(300+)"
+        },
+        {
+          "nome": "Bolo de Morango",
+          "imagem": "Cake-Bliss/bolos/bolo-morango.png",
+          "descricao": "Bolo com recheio de morango fresco.",
+          "preco": "R$ 25,00",
+          "avaliacoes": "(200+)"
+        }
+     
+      ]
+    },
+    {
+      "nome": "Nossos Refrigerantes",
+      "itens": [
+        {
+          "nome": "Coca-Cola",
+          "imagem": "Pizza-Bliss/bebidas/logoCocaCola.jpg",
+          "descricao": "Coca-Cola gelada.",
+          "preco": "R$ 5,00",
+          "avaliacoes": "(300+)"
+        },
+        {
+          "nome": "Sprite",
+          "imagem": "Pizza-Bliss/bebidas/logoSprit.jpg",
+          "descricao": "Sprite gelado.",
+          "preco": "R$ 5,00",
+          "avaliacoes": "(200+)"
+        }
+        
+      ]
+    }
+  ]
+}
