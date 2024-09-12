@@ -27,16 +27,10 @@
   color: var(--color-primary-0);
 }
 
-.conteudo-opcao{
-  display: flex;
-  align-items: center;
-  justify-content:space-between;
-}
-
 .conteudo-verMais{
   display: flex;
   justify-content: flex-end;
-  margin-left: 85%;
+  margin-left: 70%;
  }
  
  .button-verMais{
