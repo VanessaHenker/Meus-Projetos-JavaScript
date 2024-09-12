@@ -1,4 +1,6 @@
 {
+  "usarMenuPizza": true,
+  "usarMenuCake": false,
   "categorias": [
     {
       "nome": "Nossas Pizzas Salgadas",
@@ -17,7 +19,6 @@
           "preco": "R$ 00,00",
           "avaliacoes": "(500+)"
         }
-   
       ]
     },
     {
@@ -37,7 +38,6 @@
           "preco": "R$ 00,00",
           "avaliacoes": "(200+)"
         }
-       
       ]
     },
     {
@@ -57,7 +57,6 @@
           "preco": "R$ 25,00",
           "avaliacoes": "(200+)"
         }
-     
       ]
     },
     {
@@ -77,7 +76,6 @@
           "preco": "R$ 5,00",
           "avaliacoes": "(200+)"
         }
-        
       ]
     }
   ]
