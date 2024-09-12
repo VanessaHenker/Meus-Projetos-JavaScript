@@ -1,11 +1,9 @@
 {
-  "usarMenuPizza": true,
-  "usarMenuCake": false,
   "categorias": [
     {
       "nome": "Nossas Pizzas Salgadas",
       "itens": [
-        {
+        { 
           "nome": "Calabresa",
           "imagem": "Pizza-Bliss/pizzas/pizza_calabresa.png",
           "descricao": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
@@ -18,13 +16,27 @@
           "descricao": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
           "preco": "R$ 00,00",
           "avaliacoes": "(500+)"
+        },
+        {
+          "nome": "Portuguesa",
+          "imagem": "Pizza-Bliss/pizzas/pizza_portuguesa.png",
+          "descricao": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+          "preco": "R$ 00,00",
+          "avaliacoes": "(500+)"
+        },
+        {
+          "nome": "Pepperoni",
+          "imagem": "Pizza-Bliss/pizzas/pizza_peperoni.png",
+          "descricao": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+          "preco": "R$ 00,00",
+          "avaliacoes": "(500+)"
         }
       ]
     },
     {
       "nome": "Nossas Pizzas Doces",
       "itens": [
-        {
+        { 
           "nome": "Chocolate",
           "imagem": "Pizza-Bliss/pizzas/pizza-chocolate.jpeg",
           "descricao": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
@@ -41,39 +53,34 @@
       ]
     },
     {
-      "nome": "Nossos Bolos - Cake Bliss",
+      "nome": "Nossos refrigerantes",
       "itens": [
-        {
-          "nome": "Bolo de Chocolate",
-          "imagem": "Cake-Bliss/bolos/bolo-chocolate.png",
-          "descricao": "Bolo delicioso com cobertura de chocolate.",
-          "preco": "R$ 20,00",
-          "avaliacoes": "(300+)"
-        },
-        {
-          "nome": "Bolo de Morango",
-          "imagem": "Cake-Bliss/bolos/bolo-morango.png",
-          "descricao": "Bolo com recheio de morango fresco.",
-          "preco": "R$ 25,00",
-          "avaliacoes": "(200+)"
-        }
-      ]
-    },
-    {
-      "nome": "Nossos Refrigerantes",
-      "itens": [
-        {
+        { 
           "nome": "Coca-Cola",
           "imagem": "Pizza-Bliss/bebidas/logoCocaCola.jpg",
-          "descricao": "Coca-Cola gelada.",
-          "preco": "R$ 5,00",
+          "descricao": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+          "preco": "R$ 00,00",
           "avaliacoes": "(300+)"
         },
         {
           "nome": "Sprite",
           "imagem": "Pizza-Bliss/bebidas/logoSprit.jpg",
-          "descricao": "Sprite gelado.",
-          "preco": "R$ 5,00",
+          "descricao": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+          "preco": "R$ 00,00",
+          "avaliacoes": "(200+)"
+        },
+        {
+          "nome": "Fanta Laranja",
+          "imagem": "Pizza-Bliss/bebidas/logoFantaLaran.jpeg",
+          "descricao": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+          "preco": "R$ 00,00",
+          "avaliacoes": "(200+)"
+        },
+        {
+          "nome": "Guaraná Antartica",
+          "imagem": "Pizza-Bliss/bebidas/LogoGAntartica.webp",
+          "descricao": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+          "preco": "R$ 00,00",
           "avaliacoes": "(200+)"
         }
       ]
