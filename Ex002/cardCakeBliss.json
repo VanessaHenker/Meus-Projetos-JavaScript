@@ -1,0 +1,23 @@
+{
+  "categorias": [
+    {
+      "nome": "Nossos Bolos",
+      "itens": [
+        {
+          "nome": "Bolo de Chocolate",
+          "imagem": "Doceria/bolos/bolo_chocolate.png",
+          "descricao": "Delicioso bolo de chocolate com cobertura de brigadeiro.",
+          "preco": "R$ 20,00",
+          "avaliacoes": "(300+)"
+        },
+        {
+          "nome": "Bolo de Morango",
+          "imagem": "Doceria/bolos/bolo_morango.png",
+          "descricao": "Bolo leve com recheio de creme e morangos frescos.",
+          "preco": "R$ 25,00",
+          "avaliacoes": "(250+)"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+{
+  "pizzaria": "./dados_pizzaria.json",
+  "doceria": "./dados_doceria.json"
+}
