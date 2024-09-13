@@ -59,7 +59,7 @@
     },
     {
       "nome": "Nossos refrigerantes",
-      "ativo": false,
+      "ativo": true,
       "itens": [
         { 
           "nome": "Coca-Cola",
