@@ -405,12 +405,19 @@ function horaEscrito(elemento, fechado) {
 
 //Conteudo cardápio
 document.addEventListener('DOMContentLoaded', async () => {
-  try {
-    // Carregar os dados do menu
-    await carregarDados();
+  // Definir se é uma pizzaria ou doceria (true para pizzaria, false para doceria)
+  const isPizzaria = true; // Alterar para 'false' se for doceria
 
-    // Carregar o cardápio
-    const response = await fetch('cardapio.json');
+  try {
+    // Carregar o menu.json que aponta para os arquivos de pizzaria e doceria
+    const menuResponse = await fetch('menu.json');
+    const menuData = await menuResponse.json();
+    
+    // Escolher o arquivo de acordo com o estabelecimento
+    const menuFile = isPizzaria ? menuData.pizzaria : menuData.doceria;
+
+    // Carregar os dados do cardápio específico (pizzaria ou doceria)
+    const response = await fetch(menuFile);
     const data = await response.json();
     const cardapio = document.getElementById('cardapio');
 
