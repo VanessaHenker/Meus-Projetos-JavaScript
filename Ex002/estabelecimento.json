@@ -1,4 +1,4 @@
 {
-  "pizzaria": "./dados_pizzaria.json",
-  "doceria": "./dados_doceria.json"
+  "pizzaria": "./cardPizzaBliss.json",
+  "doceria": "./cardcakeBliss.json"
 }

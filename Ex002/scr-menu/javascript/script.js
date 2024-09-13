@@ -406,11 +406,11 @@ function horaEscrito(elemento, fechado) {
 //Conteudo cardápio
 document.addEventListener('DOMContentLoaded', async () => {
   // Definir se é uma pizzaria ou doceria (true para pizzaria, false para doceria)
-  const isPizzaria = true; // Alterar para 'false' se for doceria
+  const isPizzaria = false; // Alterar para 'false' se for doceria
 
   try {
     // Carregar o menu.json que aponta para os arquivos de pizzaria e doceria
-    const menuResponse = await fetch('menu.json');
+    const menuResponse = await fetch('estabelecimento.json');
     const menuData = await menuResponse.json();
     
     // Escolher o arquivo de acordo com o estabelecimento
