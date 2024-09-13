@@ -1,11 +1,7 @@
 {
-  "pizzaria": true,
-  "sorveteria": false,
-  "hamburgueria": false,
   "categorias": [
     {
       "nome": "Nossas Pizzas Salgadas",
-      "ativo": true,
       "itens": [
         { 
           "nome": "Calabresa",
@@ -39,7 +35,6 @@
     },
     {
       "nome": "Nossas Pizzas Doces",
-      "ativo": true,
       "itens": [
         { 
           "nome": "Chocolate",
@@ -59,7 +54,6 @@
     },
     {
       "nome": "Nossos refrigerantes",
-      "ativo": true,
       "itens": [
         { 
           "nome": "Coca-Cola",
