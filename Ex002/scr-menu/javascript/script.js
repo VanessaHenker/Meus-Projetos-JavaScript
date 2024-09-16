@@ -137,13 +137,14 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 //Função assíncrona para carregar todos os dados necessários ao carregar a página
+//Função assíncrona para carregar todos os dados necessários ao carregar a página
 async function carregarDados() {
   try {
     //Realiza uma requisição para obter o arquivo JSON que contém os dados
     const response = await fetch('menu.json');
     const data = await response.json();
 
-    let menuItems, navIcons, arquivoInfo, arquivoHorario;
+    let menuItems, navIcons, arquivoInfo, arquivoHorario, arquivoCardapio;
 
     //Verifica qual menu deve usar, com base na configuração do JSON
     if (data.usarMenuPizza) {
@@ -151,12 +152,14 @@ async function carregarDados() {
       navIcons = data.navIconsPizza;
       arquivoInfo = data.arquivoPizza[0].arquivoInfo;
       arquivoHorario = data.arquivoPizza[0].arquivoHorario;
-    }
-    else {
+      arquivoCardapio = data.menuItemsPizza[0].menu; // arquivo de cardápio da pizza
+    } else {
       menuItems = data.menuItemsCake;
       navIcons = data.navIconsCake;
       arquivoInfo = data.arquivoCake[0].arquivoInfo;
       arquivoHorario = data.arquivoCake[0].arquivoHorario;
+      // Caso você tenha um arquivo de cardápio diferente para cake
+      arquivoCardapio = 'cardapio_cake.json'; // Defina o arquivo do cardápio de bolos se existir
     }
 
     //Carrega e exibe os itens do menu
@@ -175,10 +178,14 @@ async function carregarDados() {
     //Carrega os horários de funcionamento do arquivo especificado
     carregarHorarios(arquivoHorario);
 
+    //Carregar o cardápio conforme o tipo de menu
+    carregarCardapio(arquivoCardapio);
+
   } catch (error) {
     console.error('Erro ao carregar dados:', error);
   }
 }
+
 
 //Função para criar um item de menu com imagem, título e localização
 function criarItemMenu(imagemSrc, titulo, localizacao) {
@@ -282,6 +289,17 @@ async function carregarInfo(arquivoInfo) {
     console.error('Erro ao carregar o arquivo de informações:', error); //Exibe o erro no console, se houver algum problema
   }
 }
+
+//Conteudo cardápio info
+document.addEventListener('DOMContentLoaded', async () => {
+  try {
+    // Carregar os dados do menu
+    await carregarDados();
+  } 
+  catch (error) {
+    console.error('Erro ao carregar os dados:', error);
+  }
+});
 
 //Função para criar uma seção com título e conteúdo
 function createSection(title, contents) {
@@ -403,22 +421,10 @@ function horaEscrito(elemento, fechado) {
   document.getElementById('mudar-cor').style.color = '#ffcb45';
 }
 
-//Conteudo cardápio info
-document.addEventListener('DOMContentLoaded', async () => {
+//Função assíncrona para carregar o cardápio de um arquivo especificado
+async function carregarCardapio(arquivoCardapio) {
   try {
-    // Carregar os dados do menu
-    await carregarDados();
-  } 
-  catch (error) {
-    console.error('Erro ao carregar os dados:', error);
-  }
-});
-
-//Conteudo cardápio
-document.addEventListener('DOMContentLoaded', async () => {
-  try {
-    // Carregar o cardápio
-    const response = await fetch('cardapio.json');
+    const response = await fetch(arquivoCardapio); // Carregar o arquivo dinâmico
     const data = await response.json();
     const cardapio = document.getElementById('cardapio');
 
@@ -436,15 +442,6 @@ document.addEventListener('DOMContentLoaded', async () => {
       subtitulo.classList.add('section-subtitulo');
       subtitulo.textContent = categoria.nome; // Título da categoria
       categoriaContainer.appendChild(subtitulo);
-
-      // Adicionar o botão "Ver Mais"
-      const verMaisContainer = document.createElement('div');
-      verMaisContainer.classList.add('conteudo-verMais');
-      const verMaisButton = document.createElement('h2');
-      verMaisButton.classList.add('button-verMais');
-      verMaisButton.textContent = 'Ver mais';
-      verMaisContainer.appendChild(verMaisButton);
-      categoriaContainer.appendChild(verMaisContainer); // Adiciona o botão ao container da categoria
 
       // Adicionar os itens da categoria
       const itensContainer = document.createElement('div');
@@ -487,8 +484,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       // Adicionar o contêiner da categoria ao cardápio
       cardapio.appendChild(categoriaContainer);
     });
-  } 
-  catch (error) {
-    console.error('Erro ao carregar os dados:', error);
+  } catch (error) {
+    console.error('Erro ao carregar o cardápio:', error);
   }
-});
+}
