@@ -137,14 +137,13 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 //Função assíncrona para carregar todos os dados necessários ao carregar a página
-//Função assíncrona para carregar todos os dados necessários ao carregar a página
 async function carregarDados() {
   try {
-    //Realiza uma requisição para obter o arquivo JSON que contém os dados
+    //Realiza uma requisição para obter o arquivo JSON que contém os dados gerais
     const response = await fetch('menu.json');
     const data = await response.json();
 
-    let menuItems, navIcons, arquivoInfo, arquivoHorario, arquivoCardapio;
+    let menuItems, navIcons, arquivoInfo, arquivoHorario, cardapioFile;
 
     //Verifica qual menu deve usar, com base na configuração do JSON
     if (data.usarMenuPizza) {
@@ -152,14 +151,13 @@ async function carregarDados() {
       navIcons = data.navIconsPizza;
       arquivoInfo = data.arquivoPizza[0].arquivoInfo;
       arquivoHorario = data.arquivoPizza[0].arquivoHorario;
-      arquivoCardapio = data.menuItemsPizza[0].menu; // arquivo de cardápio da pizza
+      cardapioFile = data.menuItemsPizza[0].menu; // Arquivo de cardápio para Pizza Bliss
     } else {
       menuItems = data.menuItemsCake;
       navIcons = data.navIconsCake;
       arquivoInfo = data.arquivoCake[0].arquivoInfo;
       arquivoHorario = data.arquivoCake[0].arquivoHorario;
-      // Caso você tenha um arquivo de cardápio diferente para cake
-      arquivoCardapio = 'cardapio_cake.json'; // Defina o arquivo do cardápio de bolos se existir
+      cardapioFile = data.menuItemsCake[0].menu; // Arquivo de cardápio para Cake Bliss
     }
 
     //Carrega e exibe os itens do menu
@@ -178,8 +176,8 @@ async function carregarDados() {
     //Carrega os horários de funcionamento do arquivo especificado
     carregarHorarios(arquivoHorario);
 
-    //Carregar o cardápio conforme o tipo de menu
-    carregarCardapio(arquivoCardapio);
+    //Carrega o cardápio a partir do arquivo correto
+    carregarCardapio(cardapioFile);
 
   } catch (error) {
     console.error('Erro ao carregar dados:', error);
@@ -422,9 +420,9 @@ function horaEscrito(elemento, fechado) {
 }
 
 //Função assíncrona para carregar o cardápio de um arquivo especificado
-async function carregarCardapio(arquivoCardapio) {
+async function carregarCardapio(cardapioFile) {
   try {
-    const response = await fetch(arquivoCardapio); // Carregar o arquivo dinâmico
+    const response = await fetch(cardapioFile);
     const data = await response.json();
     const cardapio = document.getElementById('cardapio');
 
@@ -442,6 +440,15 @@ async function carregarCardapio(arquivoCardapio) {
       subtitulo.classList.add('section-subtitulo');
       subtitulo.textContent = categoria.nome; // Título da categoria
       categoriaContainer.appendChild(subtitulo);
+
+      // Adicionar o botão "Ver Mais"
+      const verMaisContainer = document.createElement('div');
+      verMaisContainer.classList.add('conteudo-verMais');
+      const verMaisButton = document.createElement('h2');
+      verMaisButton.classList.add('button-verMais');
+      verMaisButton.textContent = 'Ver mais';
+      verMaisContainer.appendChild(verMaisButton);
+      categoriaContainer.appendChild(verMaisContainer); // Adiciona o botão ao container da categoria
 
       // Adicionar os itens da categoria
       const itensContainer = document.createElement('div');
