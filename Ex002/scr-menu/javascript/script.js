@@ -408,6 +408,16 @@ document.addEventListener('DOMContentLoaded', async () => {
   try {
     // Carregar os dados do menu
     await carregarDados();
+  } catch (error) {
+    console.error('Erro ao carregar os dados:', error);
+  }
+});
+
+//Conteudo cardápio
+document.addEventListener('DOMContentLoaded', async () => {
+  try {
+    // Carregar os dados do menu
+    await carregarDados();
 
     // Carregar o cardápio
     const response = await fetch('cardapio.json');
