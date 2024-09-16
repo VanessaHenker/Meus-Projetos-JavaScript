@@ -3,7 +3,8 @@
   "menuItemsPizza": [{
       "imagemSrc": "Imagens/banner/logo-pizza.png",
       "titulo": "Cardápio - Pizza Bliss",
-      "localizacao": " Local tal, na rua tal 1"
+      "localizacao": " Local tal, na rua tal 1",
+      "menu": "cardapio.json"
     }],
 
   "navIconsPizza": [{
