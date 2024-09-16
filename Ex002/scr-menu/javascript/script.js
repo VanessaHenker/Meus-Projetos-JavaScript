@@ -403,12 +403,13 @@ function horaEscrito(elemento, fechado) {
   document.getElementById('mudar-cor').style.color = '#ffcb45';
 }
 
-//Conteudo cardápio
+//Conteudo cardápio info
 document.addEventListener('DOMContentLoaded', async () => {
   try {
     // Carregar os dados do menu
     await carregarDados();
-  } catch (error) {
+  } 
+  catch (error) {
     console.error('Erro ao carregar os dados:', error);
   }
 });
@@ -416,9 +417,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 //Conteudo cardápio
 document.addEventListener('DOMContentLoaded', async () => {
   try {
-    // Carregar os dados do menu
-    await carregarDados();
-
     // Carregar o cardápio
     const response = await fetch('cardapio.json');
     const data = await response.json();
@@ -489,7 +487,8 @@ document.addEventListener('DOMContentLoaded', async () => {
       // Adicionar o contêiner da categoria ao cardápio
       cardapio.appendChild(categoriaContainer);
     });
-  } catch (error) {
+  } 
+  catch (error) {
     console.error('Erro ao carregar os dados:', error);
   }
 });
