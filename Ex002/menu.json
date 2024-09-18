@@ -1,10 +1,10 @@
 { 
-  "usarMenuPizza": false,
+  "usarMenuPizza": true,
   "menuItemsPizza": [{
       "imagemSrc": "Imagens/banner/logo-pizza.png",
       "titulo": "Cardápio - Pizza Bliss",
       "localizacao": " Local tal, na rua tal 1",
-      "menu": "cardPizzaBliss.json"
+      "menu": "Pizza-Bliss/cardPizzaBliss.json"
     }],
 
   "navIconsPizza": [{
@@ -21,7 +21,7 @@
       "imagemSrc": "Cake-Bliss/Info/client002/Imagens/banner/doceria.jpeg",
       "titulo": "Cardápio - Cake Bliss",
       "localizacao": " Local tal, na rua tal 2",
-      "menu": "cardCakeBliss.json"
+      "menu": "Cake-Bliss/cardCakeBliss.json"
     }],
   
   "navIconsCake": [{
