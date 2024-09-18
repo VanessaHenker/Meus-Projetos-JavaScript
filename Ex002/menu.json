@@ -14,7 +14,7 @@
     }],
 
   "arquivoPizza": [{
-    "arquivoInfo": "Info/client001/informacoes.txt",
+    "arquivoInfo": "Pizza-Bliss/Info/client001/informacoes.txt",
     "arquivoHorario": "Info/client001/horarios.txt"
     }],
   "menuItemsCake": [{
