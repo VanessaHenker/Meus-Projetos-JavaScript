@@ -18,7 +18,7 @@
     "arquivoHorario": "Info/client001/horarios.txt"
     }],
   "menuItemsCake": [{
-      "imagemSrc": "Info/client002/Imagens/banner/doceria.jpeg",
+      "imagemSrc": "Cake-Bliss/Info/client002/Imagens/banner/doceria.jpeg",
       "titulo": "Cardápio - Cake Bliss",
       "localizacao": " Local tal, na rua tal 2",
       "menu": "cardCakeBliss.json"
@@ -30,7 +30,7 @@
       "id": "nav_bliss"
     }],
   "arquivoCake": [{
-    "arquivoInfo": "Info/client002/informacoes.txt",
+    "arquivoInfo": "Cake-Bliss/Info/client002/informacoes.txt",
     "arquivoHorario": "Info/client002/horarios.txt"
   }]
 }
