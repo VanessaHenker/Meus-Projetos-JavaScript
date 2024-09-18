@@ -1,11 +1,11 @@
 Horários de funcionamento
-Dom - 11:30 ás 19:30
+Dom - 18:00 ás 00:00
 Seg - Fechado
-Ter - 11:30 ás 19:30
-Qua - 11:30 ás 19:30
-Qui - 11:30 ás 19:30
-Sex - 11:30 ás 19:30
-Sáb - 11:30 ás 19:30
+Ter - 18:00 ás 23:00
+Qua - 18:00 ás 23:00
+Qui - 18:00 ás 23:00
+Sex - 18:00 ás 23:00
+Sáb - 18:00 ás 23:00
 
 Endereço
 Local tal, na rua tal

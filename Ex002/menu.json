@@ -15,7 +15,7 @@
 
   "arquivoPizza": [{
     "arquivoInfo": "Pizza-Bliss/Info/client001/informacoes.txt",
-    "arquivoHorario": "Info/client001/horarios.txt"
+    "arquivoHorario": "Pizza-Bliss/Info/client001/horarios.txt"
     }],
   "menuItemsCake": [{
       "imagemSrc": "Cake-Bliss/Info/client002/Imagens/banner/doceria.jpeg",
@@ -31,6 +31,6 @@
     }],
   "arquivoCake": [{
     "arquivoInfo": "Cake-Bliss/Info/client002/informacoes.txt",
-    "arquivoHorario": "Info/client002/horarios.txt"
+    "arquivoHorario": "Cake-Bliss/Info/client002/horarios.txt"
   }]
 }
