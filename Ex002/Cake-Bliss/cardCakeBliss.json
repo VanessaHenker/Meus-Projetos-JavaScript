@@ -42,6 +42,13 @@
           "descricao": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
           "preco": "R$ 00,00",
           "avaliacoes": "(300+)"
+        },
+        { 
+          "nome": "Guaraná",
+          "imagem": "Cake-Bliss/bebidas/guaranaLata.png",
+          "descricao": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+          "preco": "R$ 00,00",
+          "avaliacoes": "(300+)"
         }
       ]
     }
