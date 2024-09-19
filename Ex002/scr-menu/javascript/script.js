@@ -293,7 +293,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   try {
     // Carregar os dados do menu
     await carregarDados();
-  } 
+  }
   catch (error) {
     console.error('Erro ao carregar os dados:', error);
   }
@@ -492,6 +492,6 @@ async function carregarCardapio(cardapioFile) {
       cardapio.appendChild(categoriaContainer);
     });
   } catch (error) {
-    console.error('Erro ao carregar o cardápio:', error)
+    console.error('Erro ao carregar o cardápio:', error);
   }
 }
