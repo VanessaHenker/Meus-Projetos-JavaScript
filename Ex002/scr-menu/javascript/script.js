@@ -450,9 +450,9 @@ async function carregarCardapio(cardapioFile) {
       verMaisContainer.appendChild(verMaisButton);
       categoriaContainer.appendChild(verMaisContainer); // Adiciona o botão ao container da categoria
 
-      // Adicionar os itens da categoria
+      // Adicionar os itens da categoria (carrossel)
       const itensContainer = document.createElement('div');
-      itensContainer.classList.add('itens-container'); // Contêiner para os itens
+      itensContainer.classList.add('itens-container', 'slick-carousel'); // Adiciona a classe slick-carousel
 
       categoria.itens.forEach(item => {
         const prato = document.createElement('a');
@@ -490,6 +490,30 @@ async function carregarCardapio(cardapioFile) {
 
       // Adicionar o contêiner da categoria ao cardápio
       cardapio.appendChild(categoriaContainer);
+    });
+
+    // Inicializar o Slick Carousel em todos os contêineres de itens após eles serem criados
+    $('.slick-carousel').slick({
+      dots: true,
+      infinite: true,
+      slidesToShow: 3,
+      slidesToScroll: 1,
+      autoplay: true,
+      autoplaySpeed: 2000,
+      responsive: [
+        {
+          breakpoint: 768,
+          settings: {
+            slidesToShow: 2
+          }
+        },
+        {
+          breakpoint: 480,
+          settings: {
+            slidesToShow: 1
+          }
+        }
+      ]
     });
   } catch (error) {
     console.error('Erro ao carregar o cardápio:', error);
