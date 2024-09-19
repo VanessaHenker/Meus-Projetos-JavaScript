@@ -1,6 +1,32 @@
 {
   "categorias": [
     {
+      "nome": "BOLOS DE POTE",
+      "itens": [
+        { 
+          "nome": "Ninho com morango",
+          "imagem": "Cake-Bliss/doces/poteNinhoMorango.jpeg",
+          "descricao": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+          "preco": "R$ 00,00",
+          "avaliacoes": "(500+)"
+        },
+        { 
+          "nome": "Ninho com nutella",
+          "imagem": "Cake-Bliss/doces/poteNinhoNutella.jpg",
+          "descricao": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+          "preco": "R$ 00,00",
+          "avaliacoes": "(500+)"
+        },
+        { 
+          "nome": "Frutas vermelhas",
+          "imagem": "Cake-Bliss/doces/poteFrutasVermelhas.png",
+          "descricao": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+          "preco": "R$ 00,00",
+          "avaliacoes": "(500+)"
+        }
+      ]
+    },
+    {
       "nome": "FATIAS",
       "itens": [
         { 
