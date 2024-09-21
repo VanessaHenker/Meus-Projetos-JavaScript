@@ -480,23 +480,20 @@ async function carregarCardapio(cardapioFile) {
       // Adicionar o contêiner de itens ao contêiner da categoria
       categoriaContainer.appendChild(itensContainer);
 
-      // Verificar se a categoria tem 4 ou mais itens para habilitar a navegação
-      if (categoria.itens.length >= 4) {
-        // Criar botões de navegação para o carrossel
-        const prevButton = document.createElement('button');
-        prevButton.classList.add('carousel-nav', 'carousel-prev');
-        prevButton.textContent = '<';
-        prevButton.addEventListener('click', () => slideCarousel(categoriaIndex, -1));
+      // Criar botões de navegação para o carrossel
+      const prevButton = document.createElement('button');
+      prevButton.classList.add('carousel-nav', 'carousel-prev');
+      prevButton.textContent = '<';
+      prevButton.addEventListener('click', () => slideCarousel(categoriaIndex, -1));
 
-        const nextButton = document.createElement('button');
-        nextButton.classList.add('carousel-nav', 'carousel-next');
-        nextButton.textContent = '>';
-        nextButton.addEventListener('click', () => slideCarousel(categoriaIndex, 1));
+      const nextButton = document.createElement('button');
+      nextButton.classList.add('carousel-nav', 'carousel-next');
+      nextButton.textContent = '>';
+      nextButton.addEventListener('click', () => slideCarousel(categoriaIndex, 1));
 
-        // Adicionar botões de navegação ao contêiner da categoria
-        categoriaContainer.appendChild(prevButton);
-        categoriaContainer.appendChild(nextButton);
-      }
+      // Adicionar botões de navegação ao contêiner da categoria
+      categoriaContainer.appendChild(prevButton);
+      categoriaContainer.appendChild(nextButton);
 
       // Adicionar o contêiner da categoria ao cardápio
       cardapio.appendChild(categoriaContainer);
@@ -513,11 +510,10 @@ function slideCarousel(categoriaIndex, direction) {
   let currentOffset = parseInt(carousel.getAttribute('data-offset') || 0);
 
   // Calcular o novo deslocamento
-  currentOffset += direction * itemWidth;
+  currentOffset += direction * itemWidth * 4; // Mover por 4 itens de cada vez
 
   // Limitar o deslocamento para evitar transbordo
-  const visibleItems = 3; // Quantos itens queremos mostrar por vez
-  const maxOffset = -(items.length - visibleItems) * itemWidth;
+  const maxOffset = -(items.length - 4) * itemWidth; // Considera 4 itens visíveis por vez
 
   if (currentOffset > 0) {
     currentOffset = 0; // Limite para o início
@@ -529,3 +525,4 @@ function slideCarousel(categoriaIndex, direction) {
   carousel.style.transform = `translateX(${currentOffset}px)`;
   carousel.setAttribute('data-offset', currentOffset); // Armazenar o deslocamento atual
 }
+
