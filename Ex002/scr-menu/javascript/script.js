@@ -430,7 +430,7 @@ async function carregarCardapio(cardapioFile) {
     cardapio.innerHTML = '';
 
     // Iterar sobre as categorias
-    data.categorias.forEach((categoria) => {
+    data.categorias.forEach((categoria, categoriaIndex) => {
       // Criar um contêiner para cada categoria
       const categoriaContainer = document.createElement('div');
       categoriaContainer.classList.add('categoria-container');
@@ -441,19 +441,12 @@ async function carregarCardapio(cardapioFile) {
       subtitulo.textContent = categoria.nome; // Título da categoria
       categoriaContainer.appendChild(subtitulo);
 
-      // Adicionar o botão "Ver Mais"
-      const verMaisContainer = document.createElement('div');
-      verMaisContainer.classList.add('conteudo-verMais');
-      const verMaisButton = document.createElement('h2');
-      verMaisButton.classList.add('button-verMais');
-      verMaisButton.textContent = 'Ver mais';
-      verMaisContainer.appendChild(verMaisButton);
-      categoriaContainer.appendChild(verMaisContainer); // Adiciona o botão ao container da categoria
+      // Criar o contêiner de itens da categoria
+      const itensContainer = document.createElement('div');
+      itensContainer.classList.add('itens-container');
+      itensContainer.id = `carousel-${categoriaIndex}`;
 
       // Adicionar os itens da categoria
-      const itensContainer = document.createElement('div');
-      itensContainer.classList.add('itens-container'); // Contêiner para os itens
-
       categoria.itens.forEach(item => {
         const prato = document.createElement('a');
         prato.classList.add('pratos');
@@ -481,12 +474,26 @@ async function carregarCardapio(cardapioFile) {
             </button>
           </div>
         `;
-
         itensContainer.appendChild(prato);
       });
 
       // Adicionar o contêiner de itens ao contêiner da categoria
       categoriaContainer.appendChild(itensContainer);
+
+      // Criar botões de navegação para o carrossel
+      const prevButton = document.createElement('button');
+      prevButton.classList.add('carousel-nav', 'carousel-prev');
+      prevButton.textContent = '<';
+      prevButton.addEventListener('click', () => slideCarousel(categoriaIndex, -1));
+
+      const nextButton = document.createElement('button');
+      nextButton.classList.add('carousel-nav', 'carousel-next');
+      nextButton.textContent = '>';
+      nextButton.addEventListener('click', () => slideCarousel(categoriaIndex, 1));
+
+      // Adicionar botões de navegação ao contêiner da categoria
+      categoriaContainer.appendChild(prevButton);
+      categoriaContainer.appendChild(nextButton);
 
       // Adicionar o contêiner da categoria ao cardápio
       cardapio.appendChild(categoriaContainer);
@@ -496,105 +503,24 @@ async function carregarCardapio(cardapioFile) {
   }
 }
 
-let currentIndex = 0;
-
-async function carregarCardapio(cardapioFile) {
-  try {
-    const response = await fetch(cardapioFile);
-    const data = await response.json();
-    const cardapio = document.getElementById('cardapio');
-
-    // Limpar o cardápio existente
-    cardapio.innerHTML = '';
-
-    // Criar o contêiner do carrossel
-    const carouselContainer = document.createElement('div');
-    carouselContainer.classList.add('categoria-container-carousel');
-    cardapio.appendChild(carouselContainer);
-
-    // Iterar sobre as categorias
-    data.categorias.forEach((categoria) => {
-      // Criar um contêiner para cada item do carrossel
-      const categoriaItem = document.createElement('div');
-      categoriaItem.classList.add('categoria-item');
-
-      // Adicionar o subtítulo da categoria
-      const subtitulo = document.createElement('h3');
-      subtitulo.classList.add('section-subtitulo');
-      subtitulo.textContent = categoria.nome;
-      categoriaItem.appendChild(subtitulo);
-
-      // Adicionar os itens da categoria
-      const itensContainer = document.createElement('div');
-      itensContainer.classList.add('itens-container');
-
-      categoria.itens.forEach(item => {
-        const prato = document.createElement('a');
-        prato.classList.add('pratos');
-        prato.href = '#';
-
-        prato.innerHTML = `
-          <div class="prato-coracao">
-            <i class="fa-solid fa-heart"></i>
-          </div>
-          <img class="tamanho-imagem" src="${item.imagem}" alt="imagem-${item.nome}">
-          <h3 class="color-padrao">${item.nome}</h3>
-          <span class="prato-descricao color-padrao">${item.descricao}</span>
-          <div class="prato-star">
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <span class="color-padrao">${item.avaliacoes}</span>
-          </div>
-          <div class="prato-preco">
-            <h4 class="color-padrao">${item.preco}</h4>
-            <button class="btn-default">
-              <i class="fa-solid fa-basket-shopping"></i>
-            </button>
-          </div>
-        `;
-        itensContainer.appendChild(prato);
-      });
-
-      categoriaItem.appendChild(itensContainer);
-      carouselContainer.appendChild(categoriaItem);
-    });
-
-    // Adicionar botões de navegação do carrossel
-    const navContainer = document.createElement('div');
-    navContainer.classList.add('categoria-nav');
-
-    const prevButton = document.createElement('button');
-    prevButton.textContent = 'Anterior';
-    prevButton.addEventListener('click', () => slideCarousel(-1, carouselContainer));
-
-    const nextButton = document.createElement('button');
-    nextButton.textContent = 'Próximo';
-    nextButton.addEventListener('click', () => slideCarousel(1, carouselContainer));
-
-    navContainer.appendChild(prevButton);
-    navContainer.appendChild(nextButton);
-    cardapio.appendChild(navContainer);
-
-  } catch (error) {
-    console.error('Erro ao carregar o cardápio:', error);
-  }
-}
-
-function slideCarousel(direction, container) {
-  const items = document.querySelectorAll('.categoria-item');
-  const totalItems = items.length;
+function slideCarousel(categoriaIndex, direction) {
+  const carousel = document.getElementById(`carousel-${categoriaIndex}`);
+  const items = carousel.querySelectorAll('.pratos');
   const itemWidth = items[0].offsetWidth;
-  
-  currentIndex += direction;
-  
-  if (currentIndex < 0) {
-    currentIndex = totalItems - 1;
-  } else if (currentIndex >= totalItems) {
-    currentIndex = 0;
+  let currentOffset = parseInt(carousel.getAttribute('data-offset') || 0);
+
+  // Calcular o novo deslocamento
+  currentOffset += direction * itemWidth;
+
+  // Limitar o deslocamento para evitar transbordo
+  const maxOffset = -(items.length - 3) * itemWidth; // Assumindo que você quer mostrar 3 itens por vez
+  if (currentOffset > 0) {
+    currentOffset = 0; // Limite para o início
+  } else if (currentOffset < maxOffset) {
+    currentOffset = maxOffset; // Limite para o fim
   }
 
-  container.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
+  // Aplicar o novo deslocamento
+  carousel.style.transform = `translateX(${currentOffset}px)`;
+  carousel.setAttribute('data-offset', currentOffset); // Armazenar o deslocamento atual
 }

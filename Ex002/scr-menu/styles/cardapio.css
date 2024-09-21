@@ -191,15 +191,34 @@
 }
 
 
+/* Estilizando o container de cada carrossel de categoria */
+.categoria-container {
+  width: 100%;
+  overflow: hidden; /* Esconder os itens que estão fora da visualização */
+  position: relative;
+}
 
-.categoria-nav button {
-  padding: 10px;
-  background-color: #333;
+.itens-container {
+  display: flex;
+  transition: transform 0.5s ease; /* Transição suave quando o carrossel se move */
+}
+
+/* Botões de navegação */
+.carousel-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
   color: white;
   border: none;
   cursor: pointer;
+  padding: 10px;
 }
 
-.categoria-nav button:hover {
-  background-color: #555;
+.carousel-prev {
+  left: 0;
+}
+
+.carousel-next {
+  right: 0;
 }
