@@ -419,6 +419,7 @@ function horaEscrito(elemento, fechado) {
   document.getElementById('mudar-cor').style.color = '#ffcb45';
 }
 
+//Função assíncrona para carregar o cardápio de um arquivo especificado
 async function carregarCardapio(cardapioFile) {
   try {
     const response = await fetch(cardapioFile);
@@ -429,7 +430,7 @@ async function carregarCardapio(cardapioFile) {
     cardapio.innerHTML = '';
 
     // Iterar sobre as categorias
-    data.categorias.forEach((categoria, categoriaIndex) => {
+    data.categorias.forEach((categoria) => {
       // Criar um contêiner para cada categoria
       const categoriaContainer = document.createElement('div');
       categoriaContainer.classList.add('categoria-container');
@@ -437,15 +438,22 @@ async function carregarCardapio(cardapioFile) {
       // Adicionar o subtítulo da categoria
       const subtitulo = document.createElement('h3');
       subtitulo.classList.add('section-subtitulo');
-      subtitulo.textContent = categoria.nome;
+      subtitulo.textContent = categoria.nome; // Título da categoria
       categoriaContainer.appendChild(subtitulo);
 
-      // Criar o contêiner de itens da categoria
-      const itensContainer = document.createElement('div');
-      itensContainer.classList.add('itens-container');
-      itensContainer.id = `carousel-${categoriaIndex}`;
+      // Adicionar o botão "Ver Mais"
+      const verMaisContainer = document.createElement('div');
+      verMaisContainer.classList.add('conteudo-verMais');
+      const verMaisButton = document.createElement('h2');
+      verMaisButton.classList.add('button-verMais');
+      verMaisButton.textContent = 'Ver mais';
+      verMaisContainer.appendChild(verMaisButton);
+      categoriaContainer.appendChild(verMaisContainer); // Adiciona o botão ao container da categoria
 
       // Adicionar os itens da categoria
+      const itensContainer = document.createElement('div');
+      itensContainer.classList.add('itens-container'); // Contêiner para os itens
+
       categoria.itens.forEach(item => {
         const prato = document.createElement('a');
         prato.classList.add('pratos');
@@ -473,29 +481,12 @@ async function carregarCardapio(cardapioFile) {
             </button>
           </div>
         `;
+
         itensContainer.appendChild(prato);
       });
 
       // Adicionar o contêiner de itens ao contêiner da categoria
       categoriaContainer.appendChild(itensContainer);
-
-      // Verificar se o número de itens é maior que 4
-      if (categoria.itens.length > 4) {
-        // Criar botões de navegação para o carrossel
-        const prevButton = document.createElement('button');
-        prevButton.classList.add('carousel-nav', 'carousel-prev');
-        prevButton.textContent = '<';
-        prevButton.addEventListener('click', () => slideCarousel(categoriaIndex, -1));
-
-        const nextButton = document.createElement('button');
-        nextButton.classList.add('carousel-nav', 'carousel-next');
-        nextButton.textContent = '>';
-        nextButton.addEventListener('click', () => slideCarousel(categoriaIndex, 1));
-
-        // Adicionar botões de navegação ao contêiner da categoria
-        categoriaContainer.appendChild(prevButton);
-        categoriaContainer.appendChild(nextButton);
-      }
 
       // Adicionar o contêiner da categoria ao cardápio
       cardapio.appendChild(categoriaContainer);
@@ -503,27 +494,4 @@ async function carregarCardapio(cardapioFile) {
   } catch (error) {
     console.error('Erro ao carregar o cardápio:', error);
   }
-}
-
-function slideCarousel(categoriaIndex, direction) {
-  const carousel = document.getElementById(`carousel-${categoriaIndex}`);
-  const items = carousel.querySelectorAll('.pratos');
-  const itemWidth = items[0].offsetWidth;
-  let currentOffset = parseInt(carousel.getAttribute('data-offset') || 0);
-
-  // Inverter o cálculo do deslocamento: agora direction positivo move para a direita
-  currentOffset -= direction * itemWidth * 4; // Subtrai para inverter a direção
-
-  // Limitar o deslocamento para evitar transbordo
-  const maxOffset = -(items.length - 4) * itemWidth; // Considera 4 itens visíveis por vez
-
-  if (currentOffset > 0) {
-    currentOffset = 0; // Limite para o início
-  } else if (currentOffset < maxOffset) {
-    currentOffset = maxOffset; // Limite para o fim
-  }
-
-  // Aplicar o novo deslocamento
-  carousel.style.transform = `translateX(${currentOffset}px)`;
-  carousel.setAttribute('data-offset', currentOffset); // Armazenar o deslocamento atual
 }
