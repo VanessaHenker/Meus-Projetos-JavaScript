@@ -147,75 +147,6 @@
   gap: 20px;
 }
 
-
-/* Estilizando o container de cada carrossel de categoria */
-.categoria-container {
-  width: 100%;
-  overflow: hidden; /* Esconder os itens que estão fora da visualização */
-  position: relative;
-}
-
-.itens-container {
-  display: flex;
-  transition: transform 0.5s ease; /* Transição suave quando o carrossel se move */
-}
-
-/* Botões de navegação */
-.carousel-nav {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: rgba(0, 0, 0, 0.5);
-  color: white;
-  border: none;
-  cursor: pointer;
-  padding: 20px;
-}
-
-.carousel-prev {
-  left: 0;
-}
-
-.carousel-next {
-  right: 0;
-}
-.categoria-container {
-  width: 100%;
-  overflow: hidden;
-  position: relative;
-}
-
-.itens-container {
-  display: flex;
-  transition: transform 0.5s ease;
-  width: 100%; /* Faz com que os itens ocupem todo o espaço disponível */
-}
-
-.pratos {
-  flex: 1 0 calc(25% - 10px); /* Cada item ocupa 25% do espaço visível, ou seja, 4 itens por vez */
-  margin: 0 5px;
-}
-
-/* Botões de navegação */
-.carousel-nav {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: rgba(0, 0, 0, 0.5);
-  color: white;
-  border: none;
-  cursor: pointer;
-  padding: 10px;
-}
-
-.carousel-prev {
-  left: 0;
-}
-
-.carousel-next {
-  right: 0;
-}
-
 @media screen and (max-width: 1170px) {
   .section-subtitulo{
     font-size: 1.5rem;
@@ -258,3 +189,5 @@
       gap: 20px;
   }
 }
+
+
