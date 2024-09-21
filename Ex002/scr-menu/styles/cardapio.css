@@ -191,6 +191,33 @@
 }
 
 /* Exemplo de ajuste para o Slick Carousel */
-.slick-slide {
-  margin: 0 10px; /* Espaçamento entre os slides */
+/* Container do carrossel */
+.categoria-container-carousel {
+  display: flex;
+  overflow: hidden; /* Oculta os itens fora do carrossel */
+  width: 100%; /* Largura total do carrossel */
+}
+
+/* Itens do carrossel */
+.categoria-item {
+  flex: 0 0 33.33%; /* Mostra 3 itens por vez (33.33% da largura total) */
+  transition: transform 0.5s ease;
+}
+
+.categoria-nav {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+}
+
+.categoria-nav button {
+  padding: 10px;
+  background-color: #333;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.categoria-nav button:hover {
+  background-color: #555;
 }
