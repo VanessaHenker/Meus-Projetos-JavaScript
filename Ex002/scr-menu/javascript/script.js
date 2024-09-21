@@ -419,7 +419,6 @@ function horaEscrito(elemento, fechado) {
   document.getElementById('mudar-cor').style.color = '#ffcb45';
 }
 
-//Função assíncrona para carregar o cardápio de um arquivo especificado
 async function carregarCardapio(cardapioFile) {
   try {
     const response = await fetch(cardapioFile);
@@ -445,7 +444,6 @@ async function carregarCardapio(cardapioFile) {
       const itensContainer = document.createElement('div');
       itensContainer.classList.add('itens-container');
       itensContainer.id = `carousel-${categoriaIndex}`;
-      itensContainer.setAttribute('data-offset', 0); // Adicionar atributo para offset
 
       // Adicionar os itens da categoria
       categoria.itens.forEach(item => {
@@ -481,15 +479,6 @@ async function carregarCardapio(cardapioFile) {
       // Adicionar o contêiner de itens ao contêiner da categoria
       categoriaContainer.appendChild(itensContainer);
 
-      // Adicionar o botão "Ver Mais"
-      const verMaisContainer = document.createElement('div');
-      verMaisContainer.classList.add('conteudo-verMais');
-      const verMaisButton = document.createElement('h2');
-      verMaisButton.classList.add('button-verMais');
-      verMaisButton.textContent = 'Ver mais';
-      verMaisContainer.appendChild(verMaisButton);
-      categoriaContainer.appendChild(verMaisContainer); // Adiciona o botão ao container da categoria
-
       // Verificar se o número de itens é maior que 4
       if (categoria.itens.length > 4) {
         // Criar botões de navegação para o carrossel
@@ -522,7 +511,7 @@ function slideCarousel(categoriaIndex, direction) {
   const itemWidth = items[0].offsetWidth;
   let currentOffset = parseInt(carousel.getAttribute('data-offset') || 0);
 
-  // Atualizar deslocamento com a direção
+  // Inverter o cálculo do deslocamento: agora direction positivo move para a direita
   currentOffset -= direction * itemWidth * 4; // Subtrai para inverter a direção
 
   // Limitar o deslocamento para evitar transbordo
