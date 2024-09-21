@@ -30,11 +30,11 @@
 .conteudo-verMais{
   display: flex;
   justify-content: flex-end;
-  margin-left: 70%;
+  margin-left: 50%;
  }
  
  .button-verMais{
-   margin-top: -4rem;
+   margin-top: -3.5rem;
    font-weight: 800;
    font-size: 25px;
    color: var(--color-primary-6);
