@@ -419,7 +419,6 @@ function horaEscrito(elemento, fechado) {
   document.getElementById('mudar-cor').style.color = '#ffcb45';
 }
 
-//Função assíncrona para carregar o cardápio de um arquivo especificado
 async function carregarCardapio(cardapioFile) {
   try {
     const response = await fetch(cardapioFile);
@@ -480,20 +479,23 @@ async function carregarCardapio(cardapioFile) {
       // Adicionar o contêiner de itens ao contêiner da categoria
       categoriaContainer.appendChild(itensContainer);
 
-      // Criar botões de navegação para o carrossel
-      const prevButton = document.createElement('button');
-      prevButton.classList.add('carousel-nav', 'carousel-prev');
-      prevButton.textContent = '<';
-      prevButton.addEventListener('click', () => slideCarousel(categoriaIndex, -1));
+      // Verificar se o número de itens é maior que 4
+      if (categoria.itens.length > 4) {
+        // Criar botões de navegação para o carrossel
+        const prevButton = document.createElement('button');
+        prevButton.classList.add('carousel-nav', 'carousel-prev');
+        prevButton.textContent = '<';
+        prevButton.addEventListener('click', () => slideCarousel(categoriaIndex, -1));
 
-      const nextButton = document.createElement('button');
-      nextButton.classList.add('carousel-nav', 'carousel-next');
-      nextButton.textContent = '>';
-      nextButton.addEventListener('click', () => slideCarousel(categoriaIndex, 1));
+        const nextButton = document.createElement('button');
+        nextButton.classList.add('carousel-nav', 'carousel-next');
+        nextButton.textContent = '>';
+        nextButton.addEventListener('click', () => slideCarousel(categoriaIndex, 1));
 
-      // Adicionar botões de navegação ao contêiner da categoria
-      categoriaContainer.appendChild(prevButton);
-      categoriaContainer.appendChild(nextButton);
+        // Adicionar botões de navegação ao contêiner da categoria
+        categoriaContainer.appendChild(prevButton);
+        categoriaContainer.appendChild(nextButton);
+      }
 
       // Adicionar o contêiner da categoria ao cardápio
       cardapio.appendChild(categoriaContainer);
@@ -509,8 +511,8 @@ function slideCarousel(categoriaIndex, direction) {
   const itemWidth = items[0].offsetWidth;
   let currentOffset = parseInt(carousel.getAttribute('data-offset') || 0);
 
-  // Calcular o novo deslocamento
-  currentOffset += direction * itemWidth * 4; // Mover por 4 itens de cada vez
+  // Inverter o cálculo do deslocamento: agora direction positivo move para a direita
+  currentOffset -= direction * itemWidth * 4; // Subtrai para inverter a direção
 
   // Limitar o deslocamento para evitar transbordo
   const maxOffset = -(items.length - 4) * itemWidth; // Considera 4 itens visíveis por vez
@@ -525,4 +527,3 @@ function slideCarousel(categoriaIndex, direction) {
   carousel.style.transform = `translateX(${currentOffset}px)`;
   carousel.setAttribute('data-offset', currentOffset); // Armazenar o deslocamento atual
 }
-

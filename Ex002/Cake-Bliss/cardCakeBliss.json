@@ -70,6 +70,13 @@
           "descricao": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
           "preco": "R$ 00,00",
           "avaliacoes": "(500+)"
+        },
+        { 
+          "nome": "Nozes",
+          "imagem": "Cake-Bliss/doces/fatiaNozesjpg.jpg",
+          "descricao": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+          "preco": "R$ 00,00",
+          "avaliacoes": "(500+)"
         }
       ]
     },
