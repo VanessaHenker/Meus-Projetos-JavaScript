@@ -438,7 +438,7 @@ async function carregarCardapio(cardapioFile) {
       // Adicionar o subtítulo da categoria
       const subtitulo = document.createElement('h3');
       subtitulo.classList.add('section-subtitulo');
-      subtitulo.textContent = categoria.nome; // Título da categoria
+      subtitulo.textContent = categoria.nome;
       categoriaContainer.appendChild(subtitulo);
 
       // Criar o contêiner de itens da categoria
@@ -480,20 +480,23 @@ async function carregarCardapio(cardapioFile) {
       // Adicionar o contêiner de itens ao contêiner da categoria
       categoriaContainer.appendChild(itensContainer);
 
-      // Criar botões de navegação para o carrossel
-      const prevButton = document.createElement('button');
-      prevButton.classList.add('carousel-nav', 'carousel-prev');
-      prevButton.textContent = '<';
-      prevButton.addEventListener('click', () => slideCarousel(categoriaIndex, -1));
+      // Verificar se a categoria tem 4 ou mais itens para habilitar a navegação
+      if (categoria.itens.length >= 4) {
+        // Criar botões de navegação para o carrossel
+        const prevButton = document.createElement('button');
+        prevButton.classList.add('carousel-nav', 'carousel-prev');
+        prevButton.textContent = '<';
+        prevButton.addEventListener('click', () => slideCarousel(categoriaIndex, -1));
 
-      const nextButton = document.createElement('button');
-      nextButton.classList.add('carousel-nav', 'carousel-next');
-      nextButton.textContent = '>';
-      nextButton.addEventListener('click', () => slideCarousel(categoriaIndex, 1));
+        const nextButton = document.createElement('button');
+        nextButton.classList.add('carousel-nav', 'carousel-next');
+        nextButton.textContent = '>';
+        nextButton.addEventListener('click', () => slideCarousel(categoriaIndex, 1));
 
-      // Adicionar botões de navegação ao contêiner da categoria
-      categoriaContainer.appendChild(prevButton);
-      categoriaContainer.appendChild(nextButton);
+        // Adicionar botões de navegação ao contêiner da categoria
+        categoriaContainer.appendChild(prevButton);
+        categoriaContainer.appendChild(nextButton);
+      }
 
       // Adicionar o contêiner da categoria ao cardápio
       cardapio.appendChild(categoriaContainer);
@@ -513,7 +516,9 @@ function slideCarousel(categoriaIndex, direction) {
   currentOffset += direction * itemWidth;
 
   // Limitar o deslocamento para evitar transbordo
-  const maxOffset = -(items.length - 3) * itemWidth; // Assumindo que você quer mostrar 3 itens por vez
+  const visibleItems = 3; // Quantos itens queremos mostrar por vez
+  const maxOffset = -(items.length - visibleItems) * itemWidth;
+
   if (currentOffset > 0) {
     currentOffset = 0; // Limite para o início
   } else if (currentOffset < maxOffset) {
