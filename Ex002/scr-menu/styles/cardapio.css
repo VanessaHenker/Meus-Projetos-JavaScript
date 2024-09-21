@@ -34,16 +34,17 @@
  }
  
  .button-verMais{
-   margin-top: -3.3rem;
+   margin-top: -4rem;
    font-weight: 800;
+   font-size: 25px;
    color: var(--color-primary-6);
-  
- }
+   cursor: pointer;
+  }
  
  .button-verMais:hover{
   color: var(--color-primary-5);
   transition: color .3s ease;
-  cursor: pointer;
+
  }
 
 #menu{

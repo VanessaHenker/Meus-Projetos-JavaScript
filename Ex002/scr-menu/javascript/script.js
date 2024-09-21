@@ -440,6 +440,22 @@ async function carregarCardapio(cardapioFile) {
       subtitulo.textContent = categoria.nome;
       categoriaContainer.appendChild(subtitulo);
 
+      // Criar um contêiner para o botão "Ver Mais"
+      const verMaisContainer = document.createElement('div');
+      verMaisContainer.classList.add('conteudo-verMais');
+
+      // Criar o texto "Ver Mais"
+      const verMaisText = document.createElement('span');
+      verMaisText.classList.add('button-verMais');
+      verMaisText.textContent = 'Ver Mais';
+
+      // Adicionar o texto ao contêiner
+      verMaisContainer.appendChild(verMaisText);
+
+      // Adicionar o contêiner ao contêiner da categoria
+      categoriaContainer.appendChild(verMaisContainer);
+
+
       // Criar o contêiner de itens da categoria
       const itensContainer = document.createElement('div');
       itensContainer.classList.add('itens-container');
