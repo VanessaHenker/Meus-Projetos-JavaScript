@@ -147,49 +147,6 @@
   gap: 20px;
 }
 
-@media screen and (max-width: 1170px) {
-  .section-subtitulo{
-    font-size: 1.5rem;
-  }
-  
-  #cardapio{
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .pratos{
-    width: calc(50% - 12px);
-  }
-
-  .prato-descricao{
-    text-align: center;
-  }
-
-  .button-verMais{
-    display: none;
-  }
-}
-
-@media screen and (max-width: 600px) {
-  .section-subtitulo,
-  .prato-descricao{
-    font-size: 1.3rem;
-    text-align: center;
-  }
-
-  .pratos{
-    width: 100%;
-  }
-
-} 
-
-@media screen and (max-width: 600px) {
-  #footer_items {
-      flex-direction: column;
-      gap: 20px;
-  }
-}
-
 
 /* Estilizando o container de cada carrossel de categoria */
 .categoria-container {
@@ -257,4 +214,47 @@
 
 .carousel-next {
   right: 0;
+}
+
+@media screen and (max-width: 1170px) {
+  .section-subtitulo{
+    font-size: 1.5rem;
+  }
+  
+  #cardapio{
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .pratos{
+    width: calc(50% - 12px);
+  }
+
+  .prato-descricao{
+    text-align: center;
+  }
+
+  .button-verMais{
+    display: none;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .section-subtitulo,
+  .prato-descricao{
+    font-size: 1.3rem;
+    text-align: center;
+  }
+
+  .pratos{
+    width: 100%;
+  }
+
+} 
+
+@media screen and (max-width: 600px) {
+  #footer_items {
+      flex-direction: column;
+      gap: 20px;
+  }
 }
