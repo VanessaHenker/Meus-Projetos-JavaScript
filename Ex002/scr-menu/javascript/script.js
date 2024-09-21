@@ -496,6 +496,8 @@ async function carregarCardapio(cardapioFile) {
   }
 }
 
+let currentIndex = 0;
+
 async function carregarCardapio(cardapioFile) {
   try {
     const response = await fetch(cardapioFile);
@@ -505,44 +507,94 @@ async function carregarCardapio(cardapioFile) {
     // Limpar o cardápio existente
     cardapio.innerHTML = '';
 
+    // Criar o contêiner do carrossel
+    const carouselContainer = document.createElement('div');
+    carouselContainer.classList.add('categoria-container-carousel');
+    cardapio.appendChild(carouselContainer);
+
     // Iterar sobre as categorias
     data.categorias.forEach((categoria) => {
-      // Criar um contêiner para cada categoria
-      const categoriaContainer = document.createElement('div');
-      categoriaContainer.classList.add('categoria-container');
+      // Criar um contêiner para cada item do carrossel
+      const categoriaItem = document.createElement('div');
+      categoriaItem.classList.add('categoria-item');
 
-      // ... (restante do código para criar cada categoria)
+      // Adicionar o subtítulo da categoria
+      const subtitulo = document.createElement('h3');
+      subtitulo.classList.add('section-subtitulo');
+      subtitulo.textContent = categoria.nome;
+      categoriaItem.appendChild(subtitulo);
 
-      // Adicionar o contêiner da categoria ao cardápio
-      cardapio.appendChild(categoriaContainer);
+      // Adicionar os itens da categoria
+      const itensContainer = document.createElement('div');
+      itensContainer.classList.add('itens-container');
+
+      categoria.itens.forEach(item => {
+        const prato = document.createElement('a');
+        prato.classList.add('pratos');
+        prato.href = '#';
+
+        prato.innerHTML = `
+          <div class="prato-coracao">
+            <i class="fa-solid fa-heart"></i>
+          </div>
+          <img class="tamanho-imagem" src="${item.imagem}" alt="imagem-${item.nome}">
+          <h3 class="color-padrao">${item.nome}</h3>
+          <span class="prato-descricao color-padrao">${item.descricao}</span>
+          <div class="prato-star">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <span class="color-padrao">${item.avaliacoes}</span>
+          </div>
+          <div class="prato-preco">
+            <h4 class="color-padrao">${item.preco}</h4>
+            <button class="btn-default">
+              <i class="fa-solid fa-basket-shopping"></i>
+            </button>
+          </div>
+        `;
+        itensContainer.appendChild(prato);
+      });
+
+      categoriaItem.appendChild(itensContainer);
+      carouselContainer.appendChild(categoriaItem);
     });
 
-    // Inicializar o Slick Carousel depois de adicionar todas as categorias
-    $(cardapio).slick({
-      infinite: true,
-      slidesToShow: 3, // Número de itens visíveis por slide
-      slidesToScroll: 1, // Número de itens a rolar por vez
-      autoplay: true,
-      autoplaySpeed: 3000, // Velocidade do autoplay em milissegundos
-      responsive: [
-        {
-          breakpoint: 1024,
-          settings: {
-            slidesToShow: 2,
-            slidesToScroll: 1,
-          }
-        },
-        {
-          breakpoint: 600,
-          settings: {
-            slidesToShow: 1,
-            slidesToScroll: 1,
-          }
-        }
-      ]
-    });
+    // Adicionar botões de navegação do carrossel
+    const navContainer = document.createElement('div');
+    navContainer.classList.add('categoria-nav');
+
+    const prevButton = document.createElement('button');
+    prevButton.textContent = 'Anterior';
+    prevButton.addEventListener('click', () => slideCarousel(-1, carouselContainer));
+
+    const nextButton = document.createElement('button');
+    nextButton.textContent = 'Próximo';
+    nextButton.addEventListener('click', () => slideCarousel(1, carouselContainer));
+
+    navContainer.appendChild(prevButton);
+    navContainer.appendChild(nextButton);
+    cardapio.appendChild(navContainer);
 
   } catch (error) {
     console.error('Erro ao carregar o cardápio:', error);
   }
+}
+
+function slideCarousel(direction, container) {
+  const items = document.querySelectorAll('.categoria-item');
+  const totalItems = items.length;
+  const itemWidth = items[0].offsetWidth;
+  
+  currentIndex += direction;
+  
+  if (currentIndex < 0) {
+    currentIndex = totalItems - 1;
+  } else if (currentIndex >= totalItems) {
+    currentIndex = 0;
+  }
+
+  container.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
 }
