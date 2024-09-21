@@ -81,7 +81,7 @@
 
 .itens-container {
   display: flex;
-  flex-wrap: wrap; 
+
   gap: 15px; /* Espaço entre os itens */
   padding: 3rem;
   justify-content: center;
