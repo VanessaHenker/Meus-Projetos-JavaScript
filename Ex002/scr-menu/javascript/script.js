@@ -495,3 +495,54 @@ async function carregarCardapio(cardapioFile) {
     console.error('Erro ao carregar o cardápio:', error);
   }
 }
+
+async function carregarCardapio(cardapioFile) {
+  try {
+    const response = await fetch(cardapioFile);
+    const data = await response.json();
+    const cardapio = document.getElementById('cardapio');
+
+    // Limpar o cardápio existente
+    cardapio.innerHTML = '';
+
+    // Iterar sobre as categorias
+    data.categorias.forEach((categoria) => {
+      // Criar um contêiner para cada categoria
+      const categoriaContainer = document.createElement('div');
+      categoriaContainer.classList.add('categoria-container');
+
+      // ... (restante do código para criar cada categoria)
+
+      // Adicionar o contêiner da categoria ao cardápio
+      cardapio.appendChild(categoriaContainer);
+    });
+
+    // Inicializar o Slick Carousel depois de adicionar todas as categorias
+    $(cardapio).slick({
+      infinite: true,
+      slidesToShow: 3, // Número de itens visíveis por slide
+      slidesToScroll: 1, // Número de itens a rolar por vez
+      autoplay: true,
+      autoplaySpeed: 3000, // Velocidade do autoplay em milissegundos
+      responsive: [
+        {
+          breakpoint: 1024,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 1,
+          }
+        },
+        {
+          breakpoint: 600,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1,
+          }
+        }
+      ]
+    });
+
+  } catch (error) {
+    console.error('Erro ao carregar o cardápio:', error);
+  }
+}
