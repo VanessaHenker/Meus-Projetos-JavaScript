@@ -212,3 +212,13 @@
 .carousel-next {
   right: 70px; /* Aproxima a seta da direita ao conteúdo */
 }
+
+.itens-container {
+  display: flex;
+  transition: transform 0.5s ease;
+  width: 100%; /* Faz com que os itens ocupem todo o espaço disponível */
+}
+.pratos {
+  flex: 1 0 calc(20% - 0px); /* Cada item ocupa 25% do espaço visível, ou seja, 4 itens por vez */
+  margin: 0 5px;
+}
