@@ -193,7 +193,7 @@
 
 .carousel-nav {
   position: absolute;
-  top: 50%;
+  top: 110%;
   transform: translateY(-50%);
   background-color: rgba(0, 0, 0, 0.5);
   color: white;
@@ -206,26 +206,10 @@
 }
 
 .carousel-prev {
-  left: 10px; /* Ajusta a seta da esquerda para ficar próxima ao conteúdo */
+  left: 70px; /* Aproxima a seta da esquerda ao conteúdo */
 }
 
 .carousel-next {
-  right: 10px; /* Ajusta a seta da direita para ficar próxima ao conteúdo */
+  right: 70px; /* Aproxima a seta da direita ao conteúdo */
 }
 
-.carousel {
-  overflow: hidden; /* Oculta itens que não estão visíveis no carrossel */
-  width: 100%; /* Largura total do contêiner */
-}
-
-.itens-container {
-  display: flex;
-  transition: transform 0.5s ease;
-  width: calc(100% * (100 / 25)); /* Ajusta a largura total considerando que 4 itens ocupam 100% */
-}
-
-.pratos {
-  flex: 0 0 25%; /* Cada item ocupa 25% da largura do contêiner (4 itens por vez) */
-  box-sizing: border-box; /* Garante que o padding e a margem não aumentem a largura total */
-  margin: 0 10px; /* Espaço entre os itens */
-}
