@@ -213,3 +213,7 @@
   right: 70px; /* Aproxima a seta da direita ao conteúdo */
 }
 
+.pratos {
+  flex: 1 0 calc(25% - 10px); /* Cada item ocupa 25% do espaço visível, ou seja, 4 itens por vez */
+  margin: 0 5px;
+}
