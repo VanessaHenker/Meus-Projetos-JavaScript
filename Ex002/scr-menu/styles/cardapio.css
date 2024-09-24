@@ -193,11 +193,11 @@
 
 .carousel-nav {
   position: absolute;
-  top: 100%;
+  top: 110%;
   transform: translateY(-50%);
   background-color: rgba(0, 0, 0, 0.5);
   color: white;
-  font-size: 25px;
+  font-size: 24px;
   width: 40px;
   height: 40px;
   border: none;
@@ -206,10 +206,9 @@
 }
 
 .carousel-prev {
-  left: 10px; /* Posição à esquerda */
+  left: 70px; /* Aproxima a seta da esquerda ao conteúdo */
 }
 
 .carousel-next {
-  right: 10px; /* Posição à direita */
+  right: 70px; /* Aproxima a seta da direita ao conteúdo */
 }
-
