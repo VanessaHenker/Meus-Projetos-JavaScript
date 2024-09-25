@@ -496,22 +496,7 @@ async function carregarCardapio(cardapioFile) {
       categoriaContainer.appendChild(itensContainer);
 
       // Verificar se o número de itens é maior que 4
-      if (categoria.itens.length > 4) {
-        // Criar botões de navegação para o carrossel
-        const prevButton = document.createElement('button');
-        prevButton.classList.add('carousel-nav', 'carousel-prev');
-        prevButton.textContent = '<';
-        prevButton.addEventListener('click', () => slideCarousel(categoriaIndex, -1));
-
-        const nextButton = document.createElement('button');
-        nextButton.classList.add('carousel-nav', 'carousel-next');
-        nextButton.textContent = '>';
-        nextButton.addEventListener('click', () => slideCarousel(categoriaIndex, 1));
-
-        // Adicionar botões de navegação ao contêiner da categoria
-        categoriaContainer.appendChild(prevButton);
-        categoriaContainer.appendChild(nextButton);
-      }
+     
 
       // Adicionar o contêiner da categoria ao cardápio
       cardapio.appendChild(categoriaContainer);
@@ -521,17 +506,77 @@ async function carregarCardapio(cardapioFile) {
   }
 }
 
+try {
+  const cardapio = document.getElementById('cardapio');
+
+  categorias.forEach((categoria, categoriaIndex) => {
+    // Criação do contêiner da categoria
+    const categoriaContainer = document.createElement('div');
+    categoriaContainer.classList.add('categoria-container');
+
+    // Adiciona o título da categoria
+    const tituloCategoria = document.createElement('h2');
+    tituloCategoria.textContent = categoria.nome;
+    categoriaContainer.appendChild(tituloCategoria);
+
+    // Cria o carrossel para os itens da categoria
+    const carousel = document.createElement('div');
+    carousel.id = `carousel-${categoriaIndex}`;
+    carousel.classList.add('carousel');
+
+    categoria.itens.forEach(item => {
+      // Cria elementos individuais para cada item do carrossel
+      const itemElement = document.createElement('div');
+      itemElement.classList.add('pratos');
+
+      // Código para adicionar imagem, nome, descrição, preço, etc.
+      // Exemplo básico:
+      const itemNome = document.createElement('h3');
+      itemNome.textContent = item.nome;
+      itemElement.appendChild(itemNome);
+
+      carousel.appendChild(itemElement);
+    });
+
+    // Adiciona o carrossel ao contêiner da categoria
+    categoriaContainer.appendChild(carousel);
+
+    // Verifica se há mais de 4 itens para adicionar navegação
+    if (categoria.itens.length > 4) {
+      // Criar botões de navegação para o carrossel
+      const prevButton = document.createElement('button');
+      prevButton.classList.add('carousel-nav', 'carousel-prev');
+      prevButton.textContent = '<';
+      prevButton.addEventListener('click', () => slideCarousel(categoriaIndex, -1));
+
+      const nextButton = document.createElement('button');
+      nextButton.classList.add('carousel-nav', 'carousel-next');
+      nextButton.textContent = '>';
+      nextButton.addEventListener('click', () => slideCarousel(categoriaIndex, 1));
+
+      // Adicionar botões de navegação ao contêiner da categoria
+      categoriaContainer.appendChild(prevButton);
+      categoriaContainer.appendChild(nextButton);
+    }
+
+    // Adicionar o contêiner da categoria ao cardápio
+    cardapio.appendChild(categoriaContainer);
+  });
+} catch (error) {
+  console.error('Erro ao carregar o cardápio:', error);
+}
+
 function slideCarousel(categoriaIndex, direction) {
   const carousel = document.getElementById(`carousel-${categoriaIndex}`);
   const items = carousel.querySelectorAll('.pratos');
   const itemWidth = items[0].offsetWidth;
   let currentOffset = parseInt(carousel.getAttribute('data-offset') || 0);
 
-  // Inverter o cálculo do deslocamento: agora direction positivo move para a direita
-  currentOffset -= direction * itemWidth * 4; // Subtrai para inverter a direção
+  // Ajuste do deslocamento
+  currentOffset -= direction * itemWidth * 4;
 
-  // Limitar o deslocamento para evitar transbordo
-  const maxOffset = -(items.length - 4) * itemWidth; // Considera 4 itens visíveis por vez
+  // Limitar o deslocamento
+  const maxOffset = -(items.length - 4) * itemWidth;
 
   if (currentOffset > 0) {
     currentOffset = 0; // Limite para o início
@@ -541,5 +586,5 @@ function slideCarousel(categoriaIndex, direction) {
 
   // Aplicar o novo deslocamento
   carousel.style.transform = `translateX(${currentOffset}px)`;
-  carousel.setAttribute('data-offset', currentOffset); // Armazenar o deslocamento atual
+  carousel.setAttribute('data-offset', currentOffset.toString());
 }
