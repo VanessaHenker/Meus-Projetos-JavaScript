@@ -440,32 +440,26 @@ async function carregarCardapio(cardapioFile) {
       subtitulo.textContent = categoria.nome;
       categoriaContainer.appendChild(subtitulo);
 
-      // Criar um contêiner para o botão "Ver Mais"
-      const verMaisContainer = document.createElement('div');
-      verMaisContainer.classList.add('conteudo-verMais');
+      // Criação do contêiner do carrossel e das setas
+      const carouselWrapper = document.createElement('div');
+      carouselWrapper.classList.add('carousel-wrapper');
 
-      // Criar o texto "Ver Mais"
-      const verMaisText = document.createElement('span');
-      verMaisText.classList.add('button-verMais');
-      verMaisText.textContent = 'Ver Mais';
+      // Botão de navegação anterior
+      const prevButton = document.createElement('button');
+      prevButton.classList.add('carousel-nav', 'carousel-prev');
+      prevButton.textContent = '<';
+      prevButton.addEventListener('click', () => slideCarousel(categoriaIndex, -1));
 
-      // Adicionar o texto ao contêiner
-      verMaisContainer.appendChild(verMaisText);
+      // Carrossel que contém os itens
+      const carousel = document.createElement('div');
+      carousel.id = `carousel-${categoriaIndex}`;
+      carousel.classList.add('carousel');
+      carousel.setAttribute('data-offset', '0'); // Inicializa o offset
 
-      // Adicionar o contêiner ao contêiner da categoria
-      categoriaContainer.appendChild(verMaisContainer);
-
-
-      // Criar o contêiner de itens da categoria
-      const itensContainer = document.createElement('div');
-      itensContainer.classList.add('itens-container');
-      itensContainer.id = `carousel-${categoriaIndex}`;
-
-      // Adicionar os itens da categoria
+      // Adiciona os itens ao carrossel
       categoria.itens.forEach(item => {
-        const prato = document.createElement('a');
+        const prato = document.createElement('div');
         prato.classList.add('pratos');
-        prato.href = '#';
 
         prato.innerHTML = `
           <div class="prato-coracao">
@@ -489,14 +483,22 @@ async function carregarCardapio(cardapioFile) {
             </button>
           </div>
         `;
-        itensContainer.appendChild(prato);
+        carousel.appendChild(prato);
       });
 
-      // Adicionar o contêiner de itens ao contêiner da categoria
-      categoriaContainer.appendChild(itensContainer);
+      // Botão de navegação seguinte
+      const nextButton = document.createElement('button');
+      nextButton.classList.add('carousel-nav', 'carousel-next');
+      nextButton.textContent = '>';
+      nextButton.addEventListener('click', () => slideCarousel(categoriaIndex, 1));
 
-      // Verificar se o número de itens é maior que 4
-     
+      // Adicionar o carrossel e as setas ao contêiner do carrossel
+      carouselWrapper.appendChild(prevButton);
+      carouselWrapper.appendChild(carousel);
+      carouselWrapper.appendChild(nextButton);
+
+      // Adicionar o contêiner do carrossel ao contêiner da categoria
+      categoriaContainer.appendChild(carouselWrapper);
 
       // Adicionar o contêiner da categoria ao cardápio
       cardapio.appendChild(categoriaContainer);
@@ -506,82 +508,7 @@ async function carregarCardapio(cardapioFile) {
   }
 }
 
-try {
-  const cardapio = document.getElementById('cardapio');
-
-  categorias.forEach((categoria, categoriaIndex) => {
-    // Criação do contêiner da categoria
-    const categoriaContainer = document.createElement('div');
-    categoriaContainer.classList.add('categoria-container');
-
-    // Adiciona o título da categoria
-    const tituloCategoria = document.createElement('h2');
-    tituloCategoria.textContent = categoria.nome;
-    categoriaContainer.appendChild(tituloCategoria);
-
-    // Criação do contêiner do carrossel e das setas
-    const carouselWrapper = document.createElement('div');
-    carouselWrapper.classList.add('carousel-wrapper');
-
-    // Botão de navegação anterior
-    const prevButton = document.createElement('button');
-    prevButton.classList.add('carousel-nav', 'carousel-prev');
-    prevButton.textContent = '<';
-    prevButton.addEventListener('click', () => slideCarousel(categoriaIndex, -1));
-
-    // Carrossel que contém os itens
-    const carousel = document.createElement('div');
-    carousel.id = `carousel-${categoriaIndex}`;
-    carousel.classList.add('carousel');
-    carousel.setAttribute('data-offset', '0'); // Inicializa o offset
-
-    // Adiciona os itens ao carrossel
-    categoria.itens.forEach(item => {
-      const itemElement = document.createElement('div');
-      itemElement.classList.add('pratos');
-
-      const itemNome = document.createElement('h3');
-      itemNome.textContent = item.nome;
-
-      const itemImagem = document.createElement('img');
-      itemImagem.src = item.imagem;
-      itemImagem.alt = item.nome;
-
-      const itemDescricao = document.createElement('p');
-      itemDescricao.textContent = item.descricao;
-
-      const itemPreco = document.createElement('span');
-      itemPreco.textContent = item.preco;
-
-      itemElement.appendChild(itemImagem);
-      itemElement.appendChild(itemNome);
-      itemElement.appendChild(itemDescricao);
-      itemElement.appendChild(itemPreco);
-
-      carousel.appendChild(itemElement);
-    });
-
-    // Botão de navegação seguinte
-    const nextButton = document.createElement('button');
-    nextButton.classList.add('carousel-nav', 'carousel-next');
-    nextButton.textContent = '>';
-    nextButton.addEventListener('click', () => slideCarousel(categoriaIndex, 1));
-
-    // Adicionar o carrossel e as setas ao contêiner do carrossel
-    carouselWrapper.appendChild(prevButton);
-    carouselWrapper.appendChild(carousel);
-    carouselWrapper.appendChild(nextButton);
-
-    // Adicionar o contêiner do carrossel ao contêiner da categoria
-    categoriaContainer.appendChild(carouselWrapper);
-
-    // Adicionar o contêiner da categoria ao cardápio
-    cardapio.appendChild(categoriaContainer);
-  });
-} catch (error) {
-  console.error('Erro ao carregar o cardápio:', error);
-}
-
+// Função para fazer o carrossel deslizar
 function slideCarousel(categoriaIndex, direction) {
   const carousel = document.getElementById(`carousel-${categoriaIndex}`);
   const items = carousel.querySelectorAll('.pratos');
@@ -590,7 +517,7 @@ function slideCarousel(categoriaIndex, direction) {
   let currentOffset = parseInt(carousel.getAttribute('data-offset') || 0);
 
   // Ajuste do deslocamento
-  currentOffset -= direction * itemWidth;
+  currentOffset -= direction * itemWidth * visibleItems;
 
   // Limitar o deslocamento
   const maxOffset = -(items.length - visibleItems) * itemWidth;
