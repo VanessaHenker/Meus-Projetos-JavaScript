@@ -191,9 +191,33 @@
   }
 }
 
+.categoria-container {
+  margin-bottom: 20px;
+}
+
+.carousel-wrapper {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 100%;
+}
+
+.carousel {
+  display: flex;
+  overflow: hidden;
+  width: 100%; /* Ajuste conforme necessário */
+  transition: transform 0.3s ease-in-out;
+}
+
+.pratos {
+  flex: 0 0 calc(25% - 20px); /* Cada item ocupa 25%, com margem */
+  margin: 0 10px;
+  box-sizing: border-box;
+}
+
 .carousel-nav {
   position: absolute;
-  top: 110%;
+  top: 50%;
   transform: translateY(-50%);
   background-color: rgba(0, 0, 0, 0.5);
   color: white;
@@ -206,18 +230,14 @@
 }
 
 .carousel-prev {
-  left: 10px; /* Aproxima a seta da esquerda ao conteúdo */
+  left: 10px;
 }
 
 .carousel-next {
-  right: 10px; /* Aproxima a seta da direita ao conteúdo */
+  right: 10px;
 }
 
-.pratos {
-  flex: 1 0 calc(25% - 10px); /* Cada item ocupa 25% do espaço visível, ou seja, 4 itens por vez */
-  margin: 0 10px;
+.carousel-nav:hover {
+  background-color: #555;
 }
 
-.itens-container {
-  transition: transform 0.5s ease;
-}
