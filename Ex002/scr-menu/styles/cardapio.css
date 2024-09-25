@@ -199,8 +199,8 @@
 .carousel-wrapper {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   position: relative;
+  width: 100%;
 }
 
 .carousel {
@@ -223,18 +223,16 @@
   border: none;
   padding: 10px;
   cursor: pointer;
-  margin: 0 5px;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
   z-index: 1;
 }
 
 .carousel-prev {
+  position: absolute;
   left: 0;
 }
 
 .carousel-next {
+  position: absolute;
   right: 0;
 }
 
