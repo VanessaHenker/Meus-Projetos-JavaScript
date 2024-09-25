@@ -506,3 +506,102 @@ async function carregarCardapio(cardapioFile) {
   }
 }
 
+try {
+  const cardapio = document.getElementById('cardapio');
+
+  categorias.forEach((categoria, categoriaIndex) => {
+    // Criação do contêiner da categoria
+    const categoriaContainer = document.createElement('div');
+    categoriaContainer.classList.add('categoria-container');
+
+    // Adiciona o título da categoria
+    const tituloCategoria = document.createElement('h2');
+    tituloCategoria.textContent = categoria.nome;
+    categoriaContainer.appendChild(tituloCategoria);
+
+    // Criação do contêiner do carrossel e das setas
+    const carouselWrapper = document.createElement('div');
+    carouselWrapper.classList.add('carousel-wrapper');
+
+    // Botão de navegação anterior
+    const prevButton = document.createElement('button');
+    prevButton.classList.add('carousel-nav', 'carousel-prev');
+    prevButton.textContent = '<';
+    prevButton.addEventListener('click', () => slideCarousel(categoriaIndex, -1));
+
+    // Carrossel que contém os itens
+    const carousel = document.createElement('div');
+    carousel.id = `carousel-${categoriaIndex}`;
+    carousel.classList.add('carousel');
+    carousel.setAttribute('data-offset', '0'); // Inicializa o offset
+
+    // Adiciona os itens ao carrossel
+    categoria.itens.forEach(item => {
+      const itemElement = document.createElement('div');
+      itemElement.classList.add('pratos');
+
+      const itemNome = document.createElement('h3');
+      itemNome.textContent = item.nome;
+
+      const itemImagem = document.createElement('img');
+      itemImagem.src = item.imagem;
+      itemImagem.alt = item.nome;
+
+      const itemDescricao = document.createElement('p');
+      itemDescricao.textContent = item.descricao;
+
+      const itemPreco = document.createElement('span');
+      itemPreco.textContent = item.preco;
+
+      itemElement.appendChild(itemImagem);
+      itemElement.appendChild(itemNome);
+      itemElement.appendChild(itemDescricao);
+      itemElement.appendChild(itemPreco);
+
+      carousel.appendChild(itemElement);
+    });
+
+    // Botão de navegação seguinte
+    const nextButton = document.createElement('button');
+    nextButton.classList.add('carousel-nav', 'carousel-next');
+    nextButton.textContent = '>';
+    nextButton.addEventListener('click', () => slideCarousel(categoriaIndex, 1));
+
+    // Adicionar o carrossel e as setas ao contêiner do carrossel
+    carouselWrapper.appendChild(prevButton);
+    carouselWrapper.appendChild(carousel);
+    carouselWrapper.appendChild(nextButton);
+
+    // Adicionar o contêiner do carrossel ao contêiner da categoria
+    categoriaContainer.appendChild(carouselWrapper);
+
+    // Adicionar o contêiner da categoria ao cardápio
+    cardapio.appendChild(categoriaContainer);
+  });
+} catch (error) {
+  console.error('Erro ao carregar o cardápio:', error);
+}
+
+function slideCarousel(categoriaIndex, direction) {
+  const carousel = document.getElementById(`carousel-${categoriaIndex}`);
+  const items = carousel.querySelectorAll('.pratos');
+  const itemWidth = items[0].offsetWidth;
+  const visibleItems = 4; // Quantidade de itens visíveis ao mesmo tempo
+  let currentOffset = parseInt(carousel.getAttribute('data-offset') || 0);
+
+  // Ajuste do deslocamento
+  currentOffset -= direction * itemWidth;
+
+  // Limitar o deslocamento
+  const maxOffset = -(items.length - visibleItems) * itemWidth;
+
+  if (currentOffset > 0) {
+    currentOffset = 0; // Limite para o início
+  } else if (currentOffset < maxOffset) {
+    currentOffset = maxOffset; // Limite para o fim
+  }
+
+  // Aplicar o novo deslocamento
+  carousel.style.transform = `translateX(${currentOffset}px)`;
+  carousel.setAttribute('data-offset', currentOffset.toString());
+}
