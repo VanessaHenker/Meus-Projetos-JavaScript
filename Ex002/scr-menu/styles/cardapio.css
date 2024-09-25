@@ -148,7 +148,6 @@
   gap: 20px;
 }
 
-
 @media screen and (max-width: 1170px) {
   .section-subtitulo{
     font-size: 1.5rem;
@@ -192,50 +191,33 @@
   }
 }
 
-.categoria-container {
-  margin-bottom: 20px;
-}
-
-.carousel-wrapper {
-  display: flex;
-  align-items: center;
-  position: relative;
-  width: 100%;
-}
-
-.carousel {
-  display: flex;
-  overflow: hidden;
-  width: 80%; /* Ajuste conforme necessário */
-  transition: transform 0.3s ease-in-out;
-}
-
-.pratos {
-  flex: 0 0 auto;
-  width: 25%; /* Ajuste para 4 itens visíveis por vez */
-  box-sizing: border-box;
-  padding: 10px;
-}
-
 .carousel-nav {
-  background-color: #333;
+  position: absolute;
+  top: 110%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
   color: white;
+  font-size: 24px;
+  width: 40px;
+  height: 40px;
   border: none;
-  padding: 10px;
   cursor: pointer;
-  z-index: 1;
+  z-index: 10;
 }
 
 .carousel-prev {
-  position: absolute;
-  left: 0;
+  left: 10px; /* Aproxima a seta da esquerda ao conteúdo */
 }
 
 .carousel-next {
-  position: absolute;
-  right: 0;
+  right: 10px; /* Aproxima a seta da direita ao conteúdo */
 }
 
-.carousel-nav:hover {
-  background-color: #555;
+.pratos {
+  flex: 1 0 calc(25% - 10px); /* Cada item ocupa 25% do espaço visível, ou seja, 4 itens por vez */
+  margin: 0 10px;
+}
+
+.itens-container {
+  transition: transform 0.5s ease;
 }
