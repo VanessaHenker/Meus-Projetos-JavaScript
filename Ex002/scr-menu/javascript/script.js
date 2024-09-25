@@ -520,26 +520,46 @@ try {
     categoriaContainer.appendChild(tituloCategoria);
 
     // Cria o carrossel para os itens da categoria
+    const carouselWrapper = document.createElement('div');
+    carouselWrapper.classList.add('carousel-wrapper'); // Wrapper para aplicar overflow
+
     const carousel = document.createElement('div');
     carousel.id = `carousel-${categoriaIndex}`;
     carousel.classList.add('carousel');
+    carousel.setAttribute('data-offset', '0'); // Inicializa o offset
 
     categoria.itens.forEach(item => {
       // Cria elementos individuais para cada item do carrossel
       const itemElement = document.createElement('div');
       itemElement.classList.add('pratos');
 
-      // Código para adicionar imagem, nome, descrição, preço, etc.
-      // Exemplo básico:
+      // Adiciona os detalhes do item
       const itemNome = document.createElement('h3');
       itemNome.textContent = item.nome;
-      itemElement.appendChild(itemNome);
 
+      const itemImagem = document.createElement('img');
+      itemImagem.src = item.imagem;
+      itemImagem.alt = item.nome;
+
+      const itemDescricao = document.createElement('p');
+      itemDescricao.textContent = item.descricao;
+
+      const itemPreco = document.createElement('span');
+      itemPreco.textContent = item.preco;
+
+      // Anexa os elementos ao item
+      itemElement.appendChild(itemImagem);
+      itemElement.appendChild(itemNome);
+      itemElement.appendChild(itemDescricao);
+      itemElement.appendChild(itemPreco);
+
+      // Adiciona o item ao carrossel
       carousel.appendChild(itemElement);
     });
 
     // Adiciona o carrossel ao contêiner da categoria
-    categoriaContainer.appendChild(carousel);
+    carouselWrapper.appendChild(carousel);
+    categoriaContainer.appendChild(carouselWrapper);
 
     // Verifica se há mais de 4 itens para adicionar navegação
     if (categoria.itens.length > 4) {
@@ -570,13 +590,14 @@ function slideCarousel(categoriaIndex, direction) {
   const carousel = document.getElementById(`carousel-${categoriaIndex}`);
   const items = carousel.querySelectorAll('.pratos');
   const itemWidth = items[0].offsetWidth;
+  const visibleItems = 4; // Quantidade de itens visíveis ao mesmo tempo
   let currentOffset = parseInt(carousel.getAttribute('data-offset') || 0);
 
   // Ajuste do deslocamento
-  currentOffset -= direction * itemWidth * 4;
+  currentOffset -= direction * itemWidth * visibleItems;
 
   // Limitar o deslocamento
-  const maxOffset = -(items.length - 4) * itemWidth;
+  const maxOffset = -(items.length - visibleItems) * itemWidth;
 
   if (currentOffset > 0) {
     currentOffset = 0; // Limite para o início
