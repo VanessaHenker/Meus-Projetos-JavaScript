@@ -196,8 +196,6 @@
 }
 
 .carousel-wrapper {
-  display: flex;
-  align-items: center;
   position: relative;
   width: 100%;
 }
@@ -205,7 +203,6 @@
 .carousel {
   display: flex;
   overflow: hidden;
-  width: 100%; /* Ajuste conforme necessário */
   transition: transform 0.3s ease-in-out;
 }
 
@@ -227,6 +224,7 @@
   border: none;
   cursor: pointer;
   z-index: 10;
+  transition: background-color 0.3s ease;
 }
 
 .carousel-prev {
@@ -238,6 +236,5 @@
 }
 
 .carousel-nav:hover {
-  background-color: #555;
+  background-color: #333; /* Tom mais escuro ao passar o mouse */
 }
-
