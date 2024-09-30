@@ -193,33 +193,32 @@
 
 .categoria-container {
   margin-bottom: 70px;
-  padding: 0 20px; /* Adicionei padding para dar espaço ao redor do conteúdo */
 }
 
 .carousel-wrapper {
   position: relative;
   width: 100%;
-  overflow: hidden; /* Garante que o conteúdo do carrossel que sai da área visível seja escondido */
+  overflow: hidden; /* Garante que o conteúdo do carrossel fora da área visível seja escondido */
 }
 
 .carousel {
   display: flex;
   transition: transform 0.3s ease-in-out;
-  gap: 10px; /* Adiciona espaçamento entre os itens */
+  will-change: transform; /* Melhora a performance da animação */
 }
 
 .pratos {
-  flex: 0 0 calc(25% - 20px); /* Cada item ocupa 25%, com margem */
-  margin: 0 10px;
+  flex: 0 0 calc(25% - 20px); /* Cada item ocupa 25% da largura do carrossel, com margem */
+  margin: 0 10px; /* Espaçamento entre os itens */
   box-sizing: border-box;
-  transition: transform 0.3s ease; /* Transição suave ao interagir */
+  transition: transform 0.3s ease; /* Suaviza a animação quando o carrossel é deslizado */
 }
 
 .carousel-nav {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.5); /* Fundo semi-transparente para as setas */
   color: white;
   font-size: 24px;
   width: 40px;
@@ -227,12 +226,10 @@
   border: none;
   cursor: pointer;
   z-index: 10;
-  transition: background-color 0.3s ease;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-left: -60px;
-  margin-right: -60px;
+  transition: background-color 0.3s ease;
 }
 
 .carousel-prev {
@@ -247,20 +244,34 @@
   background-color: #333; /* Tom mais escuro ao passar o mouse */
 }
 
+/* Ajustes para telas menores */
+@media (max-width: 1024px) {
+  .pratos {
+    flex: 0 0 calc(33.33% - 20px); /* Exibe 3 itens por linha em telas médias */
+  }
+}
+
 @media (max-width: 768px) {
   .pratos {
-    flex: 0 0 calc(50% - 20px); /* Ocupa 50% da largura em telas menores */
+    flex: 0 0 calc(50% - 20px); /* Exibe 2 itens por linha em tablets */
   }
-  
+
   .carousel-nav {
-    width: 30px;
-    height: 30px;
-    font-size: 20px; /* Botões menores em telas pequenas */
+    font-size: 20px;
+    width: 35px;
+    height: 35px;
   }
 }
 
 @media (max-width: 480px) {
   .pratos {
-    flex: 0 0 calc(100% - 20px); /* Ocupa 100% da largura em telas muito pequenas */
+    flex: 0 0 calc(100% - 20px); /* Exibe 1 item por linha em dispositivos móveis */
+  }
+
+  .carousel-nav {
+    font-size: 18px;
+    width: 30px;
+    height: 30px;
   }
 }
+
