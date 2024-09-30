@@ -193,23 +193,26 @@
 
 .categoria-container {
   margin-bottom: 70px;
+  padding: 0 20px; /* Adicionei padding para dar espaço ao redor do conteúdo */
 }
 
 .carousel-wrapper {
   position: relative;
   width: 100%;
+  overflow: hidden; /* Garante que o conteúdo do carrossel que sai da área visível seja escondido */
 }
 
 .carousel {
   display: flex;
-  overflow: hidden;
   transition: transform 0.3s ease-in-out;
+  gap: 10px; /* Adiciona espaçamento entre os itens */
 }
 
 .pratos {
   flex: 0 0 calc(25% - 20px); /* Cada item ocupa 25%, com margem */
   margin: 0 10px;
   box-sizing: border-box;
+  transition: transform 0.3s ease; /* Transição suave ao interagir */
 }
 
 .carousel-nav {
@@ -225,6 +228,9 @@
   cursor: pointer;
   z-index: 10;
   transition: background-color 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin-left: -60px;
   margin-right: -60px;
 }
@@ -241,3 +247,20 @@
   background-color: #333; /* Tom mais escuro ao passar o mouse */
 }
 
+@media (max-width: 768px) {
+  .pratos {
+    flex: 0 0 calc(50% - 20px); /* Ocupa 50% da largura em telas menores */
+  }
+  
+  .carousel-nav {
+    width: 30px;
+    height: 30px;
+    font-size: 20px; /* Botões menores em telas pequenas */
+  }
+}
+
+@media (max-width: 480px) {
+  .pratos {
+    flex: 0 0 calc(100% - 20px); /* Ocupa 100% da largura em telas muito pequenas */
+  }
+}
