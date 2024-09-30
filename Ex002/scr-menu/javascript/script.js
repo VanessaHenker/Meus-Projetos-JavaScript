@@ -419,6 +419,24 @@ function horaEscrito(elemento, fechado) {
   document.getElementById('mudar-cor').style.color = '#ffcb45';
 }
 
+// Função para escolher e carregar o cardápio certo
+async function carregarMenuPrincipal(menuConfig) {
+  try {
+    const response = await fetch(menuConfig);
+    const data = await response.json();
+
+    // Verificar qual menu deve ser carregado
+    if (data.usarMenuPizza) {
+      carregarCardapio(data.menuItemsPizza[0].menu);
+    } else {
+      carregarCardapio(data.menuItemsCake[0].menu);
+    }
+  } catch (error) {
+    console.error('Erro ao carregar o menu principal:', error);
+  }
+}
+
+// Função para carregar o cardápio de um arquivo específico
 async function carregarCardapio(cardapioFile) {
   try {
     const response = await fetch(cardapioFile);
@@ -553,3 +571,6 @@ function slideCarousel(categoriaIndex, direction) {
   carousel.style.transform = `translateX(${currentOffset}px)`;
   carousel.setAttribute('data-offset', currentOffset.toString());
 }
+
+// Chamar a função de carregamento do menu principal
+carregarMenuPrincipal('caminho/para/seu/json/menu.json');
