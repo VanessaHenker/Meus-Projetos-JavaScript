@@ -425,11 +425,28 @@ async function carregarCardapio(cardapioFile) {
     const data = await response.json();
     const cardapio = document.getElementById('cardapio');
 
+    // Verificar se o cardápio existe no DOM
+    if (!cardapio) {
+      console.error("Elemento com ID 'cardapio' não encontrado.");
+      return;
+    }
+
     // Limpar o cardápio existente
     cardapio.innerHTML = '';
 
+    // Verificar se o JSON contém categorias
+    if (!data.categorias || data.categorias.length === 0) {
+      console.error('Nenhuma categoria encontrada no cardápio.');
+      return;
+    }
+
     // Iterar sobre as categorias
     data.categorias.forEach((categoria, categoriaIndex) => {
+      if (!categoria.itens || categoria.itens.length === 0) {
+        console.warn(`Categoria "${categoria.nome}" não tem itens.`);
+        return; // Não cria categorias sem itens
+      }
+
       // Criar um contêiner para cada categoria
       const categoriaContainer = document.createElement('div');
       categoriaContainer.classList.add('categoria-container');
@@ -511,13 +528,17 @@ async function carregarCardapio(cardapioFile) {
 // Função para fazer o carrossel deslizar
 function slideCarousel(categoriaIndex, direction) {
   const carousel = document.getElementById(`carousel-${categoriaIndex}`);
+  if (!carousel) return;
+
   const items = carousel.querySelectorAll('.pratos');
+  if (items.length === 0) return;
+
   const itemWidth = items[0].offsetWidth + 20; // Inclui a margem de 10px de cada lado
   const visibleItems = 4; // Quantidade de itens visíveis ao mesmo tempo
   let currentOffset = parseInt(carousel.getAttribute('data-offset') || 0);
 
   // Ajuste do deslocamento
-  currentOffset -= direction * itemWidth * visibleItems;
+  currentOffset -= direction * itemWidth;
 
   // Limitar o deslocamento
   const maxOffset = -(items.length - visibleItems) * itemWidth;
