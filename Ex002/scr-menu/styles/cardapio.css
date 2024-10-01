@@ -262,14 +262,3 @@
   }
 }
 
-@media (max-width: 480px) {
-  .pratos {
-    flex: 0 0 calc(100% - 20px); /* Exibe 1 item por linha em dispositivos móveis */
-  }
-
-  .carousel-nav {
-    font-size: 18px;
-    width: 30px;
-    height: 30px;
-  }
-}
