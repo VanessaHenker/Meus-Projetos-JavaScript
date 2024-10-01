@@ -520,7 +520,7 @@ function slideCarousel(categoriaIndex, direction) {
   const carousel = document.getElementById(`carousel-${categoriaIndex}`);
   const items = carousel.querySelectorAll('.pratos');
   const itemWidth = items[0].offsetWidth + 20; // Inclui a margem de 10px de cada lado
-  const visibleItems = 4; // Quantidade de itens visíveis ao mesmo tempo
+  const visibleItems = Math.floor(carousel.offsetWidth / itemWidth); // Quantidade de itens visíveis ao mesmo tempo
   let currentOffset = parseInt(carousel.getAttribute('data-offset') || 0);
 
   // Ajuste do deslocamento

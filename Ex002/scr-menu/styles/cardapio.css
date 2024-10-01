@@ -247,16 +247,16 @@
 /* Ajustes para telas menores carrosel*/
 @media (max-width: 1024px) {
   .pratos {
-    flex: 0 0 calc(33.33% - 15px); /* Ajuste fino no tamanho */
-    margin: 5px; /* Menor espaçamento */
+    flex: 0 0 calc(33.33% - 15px); /* Três itens por linha */
+    margin: 5px; /* Espaçamento reduzido entre os itens */
   }
 }
 
-/* Para tablets (exemplo 2 itens por linha) */
+/* Para tablets (exemplo: 2 itens por linha) */
 @media (max-width: 768px) {
   .pratos {
-    flex: 0 0 calc(50% - 10px); /* Ajusta para caber 2 itens */
-    margin: 5px; /* Ajusta margem */
+    flex: 0 0 calc(50% - 10px); /* Dois itens por linha */
+    margin: 5px; /* Espaçamento entre os itens */
   }
 
   .carousel-nav {
@@ -269,9 +269,15 @@
 /* Para dispositivos móveis (1 item por linha) */
 @media (max-width: 480px) {
   .pratos {
-    flex: 0 0 100%; /* Cada item ocupa 100% da largura */
-    margin: 0; /* Remove a margem */
-    box-sizing: border-box; /* Garante que padding e borda estão incluídos no cálculo */
+    flex: 0 0 100%; /* Um item por linha */
+    margin: 0 auto 10px; /* Centraliza os itens e adiciona margem inferior */
+    display: flex;
+    justify-content: center; /* Centraliza o conteúdo dentro do item */
+  }
+
+  .carousel {
+    justify-content: center; /* Centraliza os itens dentro do carrossel */
+
   }
 
   .carousel-nav {
@@ -279,20 +285,4 @@
     width: 30px;
     height: 30px;
   }
-}
-
-/* Ajuste global para melhorar o controle de overflow */
-.carousel-wrapper {
-  overflow-x: scroll; /* Permite o scroll horizontal para o carrossel */
-  scroll-behavior: smooth; /* Animação suave ao rolar */
-}
-
-.carousel {
-  display: flex;
-  transition: transform 0.3s ease-in-out;
-}
-
-.pratos {
-  min-width: 100%; /* Garante que cada item ocupa 100% da largura da tela no mobile */
-  box-sizing: border-box; /* Inclui padding e borda no cálculo do tamanho */
 }
