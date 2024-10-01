@@ -269,8 +269,8 @@
 /* Para dispositivos móveis (1 item por linha) */
 @media (max-width: 480px) {
   .pratos {
-    flex: 0 0 calc(100% - 10px); /* Exibe 1 item por linha */
-    margin: 5px auto; /* Centraliza o item */
+    flex: 0 0 100%; /* Exibe 1 item por linha sem calc */
+    margin: 5px 0; /* Ajusta margem */
   }
 
   .carousel-nav {
@@ -278,16 +278,4 @@
     width: 30px;
     height: 30px;
   }
-}
-
-/* Overflow controlado para o carrossel */
-.carousel {
-  display: flex;
-  overflow-x: hidden; /* Evita que os itens saiam da área visível */
-  scroll-behavior: smooth; /* Animação suave no deslizamento */
-}
-
-.pratos {
-  box-sizing: border-box; /* Inclui padding e borda no cálculo do tamanho */
-  min-width: 0; /* Impede que o flex item cresça além do esperado */
 }
