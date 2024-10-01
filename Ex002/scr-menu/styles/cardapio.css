@@ -244,19 +244,19 @@
 }
 
 /* Ajustes para telas menores carrosel*/
-/* Ajustes para telas maiores (ex.: desktops) */
+/* Para telas grandes (exemplo 4 itens) */
 @media (max-width: 1024px) {
   .pratos {
-    flex: 0 0 30%; /* Aproximadamente 3 itens por linha */
-    margin: 10px; /* Espaço entre itens */
+    flex: 0 0 calc(33.33% - 15px); /* Ajuste fino no tamanho */
+    margin: 5px; /* Menor espaçamento */
   }
 }
 
-/* Ajustes para tablets */
+/* Para tablets (exemplo 2 itens por linha) */
 @media (max-width: 768px) {
   .pratos {
-    flex: 0 0 45%; /* Aproximadamente 2 itens por linha */
-    margin: 10px auto; /* Centralizar os itens com margem */
+    flex: 0 0 calc(50% - 10px); /* Ajusta para caber 2 itens */
+    margin: 5px; /* Ajusta margem */
   }
 
   .carousel-nav {
@@ -266,11 +266,11 @@
   }
 }
 
-/* Ajustes para dispositivos móveis */
+/* Para dispositivos móveis (1 item por linha) */
 @media (max-width: 480px) {
   .pratos {
-    flex: 0 0 100%; /* Um item por linha em dispositivos móveis */
-    margin: 10px auto; /* Centralizar os itens com margem */
+    flex: 0 0 calc(100% - 10px); /* Exibe 1 item por linha */
+    margin: 5px auto; /* Centraliza o item */
   }
 
   .carousel-nav {
@@ -280,16 +280,14 @@
   }
 }
 
-/* Certificar que o carrossel não está escondendo itens */
+/* Overflow controlado para o carrossel */
 .carousel {
   display: flex;
-  overflow-x: hidden; /* Ocultar overflow para o carrossel */
-  scroll-behavior: smooth; /* Para deslizar suavemente */
+  overflow-x: hidden; /* Evita que os itens saiam da área visível */
+  scroll-behavior: smooth; /* Animação suave no deslizamento */
 }
 
 .pratos {
-  box-sizing: border-box; /* Garantir que padding e border sejam incluídos no tamanho */
+  box-sizing: border-box; /* Inclui padding e borda no cálculo do tamanho */
+  min-width: 0; /* Impede que o flex item cresça além do esperado */
 }
-
-
-
