@@ -419,6 +419,7 @@ function horaEscrito(elemento, fechado) {
   document.getElementById('mudar-cor').style.color = '#ffcb45';
 }
 
+//Conteudo cardápio
 async function carregarCardapio(cardapioFile) {
   try {
     const response = await fetch(cardapioFile);
