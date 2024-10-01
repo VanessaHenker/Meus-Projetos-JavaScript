@@ -198,27 +198,27 @@
 .carousel-wrapper {
   position: relative;
   width: 100%;
-  overflow: hidden; 
+  overflow: hidden; /* Garante que o conteúdo do carrossel fora da área visível seja escondido */
 }
 
 .carousel {
   display: flex;
   transition: transform 0.3s ease-in-out;
-  will-change: transform; 
+  will-change: transform; /* Melhora a performance da animação */
 }
 
 .pratos {
-  flex: 0 0 calc(25% - 20px); 
-  margin: 0 10px; 
+  flex: 0 0 calc(25% - 20px); /* Cada item ocupa 25% da largura do carrossel, com margem */
+  margin: 0 10px; /* Espaçamento entre os itens */
   box-sizing: border-box;
-  transition: transform 0.3s ease; 
+  transition: transform 0.3s ease; /* Suaviza a animação quando o carrossel é deslizado */
 }
 
 .carousel-nav {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.5); /* Fundo semi-transparente para as setas */
   color: white;
   font-size: 24px;
   width: 40px;
@@ -230,7 +230,6 @@
   align-items: center;
   justify-content: center;
   transition: background-color 0.3s ease;
-  margin-left: -20px;
 }
 
 .carousel-prev {
@@ -242,19 +241,19 @@
 }
 
 .carousel-nav:hover {
-  background-color: #333; 
+  background-color: #333; /* Tom mais escuro ao passar o mouse */
 }
 
-/* Versão mobile */
+/* Ajustes para telas menores */
 @media (max-width: 1024px) {
   .pratos {
-    flex: 0 0 calc(33.33% - 20px); /
+    flex: 0 0 calc(33.33% - 20px); /* Exibe 3 itens por linha em telas médias */
   }
 }
 
 @media (max-width: 768px) {
   .pratos {
-    flex: 0 0 calc(50% - 20px);
+    flex: 0 0 calc(50% - 20px); /* Exibe 2 itens por linha em tablets */
   }
 
   .carousel-nav {
@@ -275,4 +274,3 @@
     height: 30px;
   }
 }
-
