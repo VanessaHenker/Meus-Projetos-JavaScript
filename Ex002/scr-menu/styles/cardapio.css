@@ -244,17 +244,19 @@
 }
 
 /* Ajustes para telas menores carrosel*/
+/* Ajustes para telas maiores (ex.: desktops) */
 @media (max-width: 1024px) {
   .pratos {
-    flex: 0 0 calc(33.33% - 10px); /* Ajustar o espaço */
-    margin: 10px; /* Ajustar a margem para espaçamento entre itens */
+    flex: 0 0 30%; /* Aproximadamente 3 itens por linha */
+    margin: 10px; /* Espaço entre itens */
   }
 }
 
+/* Ajustes para tablets */
 @media (max-width: 768px) {
   .pratos {
-    flex: 0 0 calc(50% - 10px); /* Ajustar o espaço */
-    margin: 10px; /* Espaço entre itens */
+    flex: 0 0 45%; /* Aproximadamente 2 itens por linha */
+    margin: 10px auto; /* Centralizar os itens com margem */
   }
 
   .carousel-nav {
@@ -264,10 +266,11 @@
   }
 }
 
+/* Ajustes para dispositivos móveis */
 @media (max-width: 480px) {
   .pratos {
-    flex: 0 0 calc(100% - 10px); /* Exibir 1 item por linha */
-    margin: 10px auto; /* Centralizar os itens e manter o espaço */
+    flex: 0 0 100%; /* Um item por linha em dispositivos móveis */
+    margin: 10px auto; /* Centralizar os itens com margem */
   }
 
   .carousel-nav {
@@ -280,12 +283,13 @@
 /* Certificar que o carrossel não está escondendo itens */
 .carousel {
   display: flex;
-  overflow-x: hidden; /* Ocultar o overflow */
+  overflow-x: hidden; /* Ocultar overflow para o carrossel */
   scroll-behavior: smooth; /* Para deslizar suavemente */
 }
 
 .pratos {
-  box-sizing: border-box; /* Garantir que o padding e border sejam considerados no tamanho */
+  box-sizing: border-box; /* Garantir que padding e border sejam incluídos no tamanho */
 }
+
 
 
