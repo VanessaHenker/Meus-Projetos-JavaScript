@@ -250,6 +250,12 @@
   .pratos {
     flex: 0 0 calc(33.33% - 10px); /* Três itens por linha */
     margin: 5px; /* Espaçamento reduzido entre os itens */
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    border-radius: 20px;
   }
 }
 
@@ -258,6 +264,12 @@
   .pratos {
     flex: 0 0 calc(50% - 10px); /* Dois itens por linha */
     margin: 5px; /* Espaçamento entre os itens */
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    border-radius: 20px;
   }
 
   .carousel-nav {
@@ -274,6 +286,12 @@
     margin: 0px 10px 10px 10px; /* Margem inferior para espaçamento entre os itens */
     box-sizing: border-box; /* Garante que padding e margin sejam considerados no tamanho */
     display: block; /* Torna cada item um bloco para ocupar toda a linha */
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    border-radius: 20px;
   }
 
   .carousel {
@@ -285,4 +303,5 @@
     width: 30px;
     height: 30px;
   }
+
 }
