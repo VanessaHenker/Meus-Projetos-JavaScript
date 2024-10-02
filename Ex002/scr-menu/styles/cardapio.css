@@ -148,6 +148,60 @@
   gap: 20px;
 }
 
+.categoria-container {
+  margin-bottom: 70px;
+}
+
+.carousel-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden; /* Garante que o conteúdo do carrossel fora da área visível seja escondido */
+}
+
+.carousel {
+  display: flex;
+  transition: transform 0.3s ease-in-out;
+  will-change: transform; /* Melhora a performance da animação */
+}
+
+.pratos {
+  flex: 0 0 calc(25% - 20px); /* Cada item ocupa 25% da largura do carrossel, com margem */
+  margin: 0 10px; /* Espaçamento entre os itens */
+  box-sizing: border-box;
+  transition: transform 0.3s ease; /* Suaviza a animação quando o carrossel é deslizado */
+  
+}
+
+.carousel-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5); /* Fundo semi-transparente para as setas */
+  color: white;
+  font-size: 24px;
+  width: 40px;
+  height: 40px;
+  border: none;
+  cursor: pointer;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+  border-radius: 100%;
+}
+
+.carousel-prev {
+  left: 10px;
+}
+
+.carousel-next {
+  right: 10px;
+}
+
+.carousel-nav:hover {
+  background-color: #333; /* Tom mais escuro ao passar o mouse */
+}
 @media screen and (max-width: 1170px) {
   .section-subtitulo{
     font-size: 1.5rem;
@@ -190,61 +244,6 @@
       gap: 20px;
   }
 }
-
-.categoria-container {
-  margin-bottom: 70px;
-}
-
-.carousel-wrapper {
-  position: relative;
-  width: 100%;
-  overflow: hidden; /* Garante que o conteúdo do carrossel fora da área visível seja escondido */
-}
-
-.carousel {
-  display: flex;
-  transition: transform 0.3s ease-in-out;
-  will-change: transform; /* Melhora a performance da animação */
-}
-
-.pratos {
-  flex: 0 0 calc(25% - 20px); /* Cada item ocupa 25% da largura do carrossel, com margem */
-  margin: 0 10px; /* Espaçamento entre os itens */
-  box-sizing: border-box;
-  transition: transform 0.3s ease; /* Suaviza a animação quando o carrossel é deslizado */
-}
-
-.carousel-nav {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: rgba(0, 0, 0, 0.5); /* Fundo semi-transparente para as setas */
-  color: white;
-  font-size: 24px;
-  width: 40px;
-  height: 40px;
-  border: none;
-  cursor: pointer;
-  z-index: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background-color 0.3s ease;
-  border-radius: 100%;
-}
-
-.carousel-prev {
-  left: 10px;
-}
-
-.carousel-next {
-  right: 10px;
-}
-
-.carousel-nav:hover {
-  background-color: #333; /* Tom mais escuro ao passar o mouse */
-}
-
 /* Ajustes para telas menores carrosel*/
 @media (max-width: 1024px) {
   .pratos {
@@ -256,6 +255,7 @@
     justify-content: center;
     text-align: center;
     border-radius: 20px;
+    
   }
 }
 
