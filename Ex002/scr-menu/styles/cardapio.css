@@ -230,6 +230,7 @@
   align-items: center;
   justify-content: center;
   transition: background-color 0.3s ease;
+  border-radius: 100%;
 }
 
 .carousel-prev {
@@ -269,15 +270,12 @@
 /* Para dispositivos móveis (1 item por linha) */
 @media (max-width: 480px) {
   .pratos {
-    flex: 0 0 100%; /* Um item por linha */
+    flex: 0 0 100%; /* Define um item por linha */
     margin: 0 auto 10px; /* Centraliza os itens e adiciona margem inferior */
-    display: flex;
-    justify-content: center; /* Centraliza o conteúdo dentro do item */
   }
 
   .carousel {
     justify-content: center; /* Centraliza os itens dentro do carrossel */
-
   }
 
   .carousel-nav {
