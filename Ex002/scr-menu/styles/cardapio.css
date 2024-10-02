@@ -225,7 +225,7 @@
   height: 40px;
   border: none;
   cursor: pointer;
-  z-index: 10;
+  z-index: 1;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -248,7 +248,7 @@
 /* Ajustes para telas menores carrosel*/
 @media (max-width: 1024px) {
   .pratos {
-    flex: 0 0 calc(33.33% - 15px); /* Três itens por linha */
+    flex: 0 0 calc(33.33% - 10px); /* Três itens por linha */
     margin: 5px; /* Espaçamento reduzido entre os itens */
   }
 }
@@ -270,8 +270,8 @@
 /* Para dispositivos móveis (1 item por linha) */
 @media (max-width: 480px) {
   .pratos {
-    flex: 0 0 100%; /* Define um item por linha */
-    margin: 0 auto 10px; /* Centraliza os itens e adiciona margem inferior */
+    flex: 0 0 calc(50% - 15px); /* Dois itens por linha */
+    margin: 5px; /* Espaçamento entre os itens */
   }
 
   .carousel {
