@@ -270,11 +270,11 @@
 /* Para dispositivos móveis (1 item por linha) */
 @media (max-width: 480px) {
   .pratos {
-    flex: 0 0 calc(40% - 15px); /* Dois itens por linha */
-    margin: 5px; /* Espaçamento entre os itens */
+    flex: 0 0 100%; /* Um item por linha */
+    margin: 0 auto 10px; /* Centraliza os itens e adiciona margem inferior */
     display: flex; /* Flexbox ativado */
-    justify-content: center; /* Centraliza os itens */
-    align-items: center; /* Alinha verticalmente o conteúdo */
+    justify-content: center; /* Centraliza o item */
+    align-items: center; /* Alinha o conteúdo verticalmente */
   }
 
   .carousel {
