@@ -271,15 +271,13 @@
 @media (max-width: 480px) {
   .pratos {
     flex: 0 0 100%; /* O item ocupa 100% da largura */
-    margin: 0 0 10px 0; /* Margem inferior para espaçamento entre os itens */
+    margin: 0px 10px 10px 10px; /* Margem inferior para espaçamento entre os itens */
     box-sizing: border-box; /* Garante que padding e margin sejam considerados no tamanho */
     display: block; /* Torna cada item um bloco para ocupar toda a linha */
   }
 
   .carousel {
     display: flex;
-    justify-content: center; /* Centraliza os itens dentro do carrossel */
-    align-items: center; /* Alinha os itens verticalmente no centro */
   }
 
   .carousel-nav {
