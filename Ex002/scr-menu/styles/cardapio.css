@@ -189,6 +189,7 @@
   justify-content: center;
   transition: background-color 0.3s ease;
   border-radius: 100%;
+  margin-left: 10px;
 }
 
 .carousel-prev {
@@ -291,7 +292,6 @@
     flex-direction: column;
     justify-content: center;
     text-align: center;
-    border-radius: 20px;
   }
 
   .carousel {
