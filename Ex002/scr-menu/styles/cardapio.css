@@ -270,12 +270,17 @@
 /* Para dispositivos móveis (1 item por linha) */
 @media (max-width: 480px) {
   .pratos {
-    flex: 0 0 calc(50% - 15px); /* Dois itens por linha */
+    flex: 0 0 calc(40% - 15px); /* Dois itens por linha */
     margin: 5px; /* Espaçamento entre os itens */
+    display: flex; /* Flexbox ativado */
+    justify-content: center; /* Centraliza os itens */
+    align-items: center; /* Alinha verticalmente o conteúdo */
   }
 
   .carousel {
+    display: flex;
     justify-content: center; /* Centraliza os itens dentro do carrossel */
+    align-items: center; /* Alinha os itens verticalmente no centro */
   }
 
   .carousel-nav {
