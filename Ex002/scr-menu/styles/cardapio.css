@@ -313,19 +313,27 @@
     justify-content: center;
     text-align: center;
     border-radius: 25px;
-    /* Valor uniforme */
-    padding: 10px;
-    /* Certifique-se de que o padding não esteja distorcendo */
+    padding: 10px; /* Ajuste o padding conforme necessário */
     box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.1);
   }
 
   .carousel {
+    overflow-x: auto; /* Permite rolagem horizontal para carrossel */
     display: flex;
+    -webkit-overflow-scrolling: touch; /* Suaviza a rolagem no iOS */
+    scroll-snap-type: x mandatory; /* Força a rolagem para parar em cada item */
+    -ms-overflow-style: none; /* Oculta a barra de rolagem no IE e Edge */
+    scrollbar-width: none; /* Oculta a barra de rolagem no Firefox */
   }
 
   .carousel-nav {
     font-size: 18px;
     width: 30px;
     height: 30px;
+    cursor: pointer; /* Adiciona um cursor indicando interatividade */
+  }
+
+  .carousel::-webkit-scrollbar {
+    display: none; /* Oculta a barra de rolagem no Chrome, Safari, etc. */
   }
 }
