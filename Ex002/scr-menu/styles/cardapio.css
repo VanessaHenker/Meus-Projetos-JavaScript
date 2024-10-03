@@ -318,7 +318,6 @@
   }
 
   .carousel {
-    overflow-x: auto; /* Permite rolagem horizontal para carrossel */
     display: flex;
     -webkit-overflow-scrolling: touch; /* Suaviza a rolagem no iOS */
     scroll-snap-type: x mandatory; /* Força a rolagem para parar em cada item */
@@ -331,11 +330,6 @@
     font-size: 18px;
     width: 30px;
     height: 30px;
-    cursor: pointer; /* Adiciona um cursor indicando interatividade */
-    margin: 10px; /* Margem uniforme em torno das setas de navegação */
-  }
-
-  .carousel::-webkit-scrollbar {
-    display: none; /* Oculta a barra de rolagem no Chrome, Safari, etc. */
+    margin-left: 20px;
   }
 }
