@@ -1,19 +1,20 @@
-.color-padrao{
+.color-padrao {
   color: black;
 }
-.conteudo-cardapio{
+
+.conteudo-cardapio {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
-.section-titulo{
+.section-titulo {
   font-size: 1.5rem;
   color: var(--color-primary-6);
 }
 
-.section-subtitulo{
+.section-subtitulo {
   font-size: 2rem;
   color: var(--color-primary-0);
   text-align: center;
@@ -22,32 +23,32 @@
   padding-top: 5px;
 }
 
-.section-opcao{
+.section-opcao {
   font-size: 2rem;
   color: var(--color-primary-0);
 }
 
-.conteudo-verMais{
+.conteudo-verMais {
   display: flex;
   justify-content: flex-end;
   margin-left: 50%;
- }
- 
- .button-verMais{
-   margin-top: -3.5rem;
-   font-weight: 800;
-   font-size: 25px;
-   color: var(--color-primary-6);
-   cursor: pointer;
-  }
- 
- .button-verMais:hover{
+}
+
+.button-verMais {
+  margin-top: -3.5rem;
+  font-weight: 800;
+  font-size: 25px;
+  color: var(--color-primary-6);
+  cursor: pointer;
+}
+
+.button-verMais:hover {
   color: var(--color-primary-5);
   transition: color .3s ease;
 
- }
+}
 
-#menu{
+#menu {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -55,27 +56,31 @@
   min-height: 70vh;
 }
 
-#cardapio{
+#cardapio {
   width: 100%;
   display: flex;
   justify-content: center;
   gap: 24px;
   margin-top: 32px;
   padding: 2rem;
-  
- 
-  flex-direction: column; /* As categorias ficarão uma abaixo da outra */
-  gap: 20px; /* Espaço entre as categorias */
-  
+
+
+  flex-direction: column;
+  /* As categorias ficarão uma abaixo da outra */
+  gap: 20px;
+  /* Espaço entre as categorias */
+
 }
-#cardapio a{
+
+#cardapio a {
   background-color: var(--color-neutral-0);
 }
 
 .categoria-container {
   display: flex;
   flex-direction: column;
-  width: 100%; /* A categoria ocupa toda a largura disponível */
+  width: 100%;
+  /* A categoria ocupa toda a largura disponível */
   margin-bottom: 50px;
   align-items: center;
 }
@@ -83,7 +88,8 @@
 .itens-container {
   display: flex;
 
-  gap: 15px; /* Espaço entre os itens */
+  gap: 15px;
+  /* Espaço entre os itens */
   padding: 3rem;
   justify-content: center;
 }
@@ -104,11 +110,11 @@
   overflow: hidden;
 }
 
-.pratos img{
+.pratos img {
   border-radius: 20px;
 }
 
-.prato-coracao{
+.prato-coracao {
   position: absolute;
   background-color: var(--color-primary-6);
   display: flex;
@@ -124,25 +130,26 @@
   border-radius: 0px 37.5px 0px 42.5px;
 }
 
-.tamanho-imagem{
+.tamanho-imagem {
   width: 180px;
   height: 150px;
 }
 
-.prato-titulo{
-  color: #434343; 
+.prato-titulo {
+  color: #434343;
   text-align: center;
 }
 
-.prato-star i{
+.prato-star i {
   color: var(--color-primary-6);
 }
 
-.prato-descricao{
+.prato-descricao {
   text-align: center;
   color: black;
 }
-.prato-preco{
+
+.prato-preco {
   display: flex;
   align-items: center;
   gap: 20px;
@@ -155,28 +162,34 @@
 .carousel-wrapper {
   position: relative;
   width: 100%;
-  overflow: hidden; /* Garante que o conteúdo do carrossel fora da área visível seja escondido */
+  overflow: hidden;
+  /* Garante que o conteúdo do carrossel fora da área visível seja escondido */
 }
 
 .carousel {
   display: flex;
   transition: transform 0.3s ease-in-out;
-  will-change: transform; /* Melhora a performance da animação */
+  will-change: transform;
+  /* Melhora a performance da animação */
 }
 
 .pratos {
-  flex: 0 0 calc(25% - 20px); /* Cada item ocupa 25% da largura do carrossel, com margem */
-  margin: 0 10px; /* Espaçamento entre os itens */
+  flex: 0 0 calc(25% - 20px);
+  /* Cada item ocupa 25% da largura do carrossel, com margem */
+  margin: 0 10px;
+  /* Espaçamento entre os itens */
   box-sizing: border-box;
-  transition: transform 0.3s ease; /* Suaviza a animação quando o carrossel é deslizado */
-  
+  transition: transform 0.3s ease;
+  /* Suaviza a animação quando o carrossel é deslizado */
+
 }
 
 .carousel-nav {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background-color: rgba(0, 0, 0, 0.5); /* Fundo semi-transparente para as setas */
+  background-color: rgba(0, 0, 0, 0.5);
+  /* Fundo semi-transparente para as setas */
   color: white;
   font-size: 24px;
   width: 40px;
@@ -201,70 +214,78 @@
 }
 
 .carousel-nav:hover {
-  background-color: #333; /* Tom mais escuro ao passar o mouse */
+  background-color: #333;
+  /* Tom mais escuro ao passar o mouse */
 }
+
 @media screen and (max-width: 1170px) {
-  .section-subtitulo{
+  .section-subtitulo {
     font-size: 1.5rem;
   }
-  
-  #cardapio{
+
+  #cardapio {
     flex-wrap: wrap;
     justify-content: center;
   }
 
-  .pratos{
+  .pratos {
     width: calc(50% - 12px);
   }
 
-  .prato-descricao{
+  .prato-descricao {
     text-align: center;
   }
 
-  .button-verMais{
+  .button-verMais {
     display: none;
   }
 }
 
 @media screen and (max-width: 600px) {
+
   .section-subtitulo,
-  .prato-descricao{
+  .prato-descricao {
     font-size: 1.3rem;
     text-align: center;
   }
 
-  .pratos{
+  .pratos {
     width: 100%;
   }
 
-} 
+}
 
 @media screen and (max-width: 600px) {
   #footer_items {
-      flex-direction: column;
-      gap: 20px;
+    flex-direction: column;
+    gap: 20px;
   }
 }
+
 /* Ajustes para telas menores carrosel*/
 @media (max-width: 1024px) {
   .pratos {
-    flex: 0 0 calc(33.33% - 10px); /* Três itens por linha */
-    margin: 5px; /* Espaçamento reduzido entre os itens */
+    flex: 0 0 calc(33.33% - 10px);
+    /* Três itens por linha */
+    margin: 5px;
+    /* Espaçamento reduzido entre os itens */
     display: flex;
     align-items: center;
     flex-direction: column;
     justify-content: center;
     text-align: center;
     border-radius: 20px;
-    
+
   }
 }
 
 /* Para tablets (exemplo: 2 itens por linha) */
 @media (max-width: 768px) {
   .pratos {
-    flex: 0 0 calc(50% - 10px); /* Dois itens por linha */
-    margin: 5px; /* Espaçamento entre os itens */
+    flex: 0 0 calc(50% - 10px);
+    /* Dois itens por linha */
+    margin: 5px;
+    /* Espaçamento entre os itens */
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -291,12 +312,12 @@
     flex-direction: column;
     justify-content: center;
     text-align: center;
-    border-radius: 25px; /* Valor uniforme */
-    padding: 10px; /* Certifique-se de que o padding não esteja distorcendo */
+    border-radius: 25px;
+    /* Valor uniforme */
+    padding: 10px;
+    /* Certifique-se de que o padding não esteja distorcendo */
     box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.1);
-}
-
-
+  }
 
   .carousel {
     display: flex;
@@ -307,5 +328,4 @@
     width: 30px;
     height: 30px;
   }
-
 }
