@@ -25,21 +25,21 @@
           "avaliacoes": "(500+)"
         },
         { 
-          "nome": "Ninho Duplo com morango",
-          "imagem": "Cake-Bliss/doces/poteNinhoDuplo.jpg",
+          "nome": "Oreo",
+          "imagem": "Cake-Bliss/doces/poteOreo.jpg",
           "descricao": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
           "preco": "R$ 00,00",
           "avaliacoes": "(500+)"
         },
         { 
-          "nome": "Ninho com nutella",
+          "nome": "Doce de leite",
           "imagem": "Cake-Bliss/doces/poteDoceLeite.jpg",
           "descricao": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
           "preco": "R$ 00,00",
           "avaliacoes": "(500+)"
         },
         { 
-          "nome": "Frutas vermelhas",
+          "nome": "Limão",
           "imagem": "Cake-Bliss/doces/poteLimao.jpg",
           "descricao": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
           "preco": "R$ 00,00",
