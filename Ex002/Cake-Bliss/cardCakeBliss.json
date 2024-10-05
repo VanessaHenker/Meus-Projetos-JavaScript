@@ -120,21 +120,14 @@
         },
         { 
           "nome": "Oreo",
-          "imagem": "Cake-Bliss/doces/fatiaOreojpg.jpg",
+          "imagem": "Cake-Bliss/doces/doseOreo.jpg",
           "descricao": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
           "preco": "R$ 00,00",
           "avaliacoes": "(500+)"
         },
         { 
-          "nome": "Red Velvet",
-          "imagem": "Cake-Bliss/doces/fatiaRedV.jpg",
-          "descricao": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-          "preco": "R$ 00,00",
-          "avaliacoes": "(500+)"
-        },
-        { 
-          "nome": "Prestígio",
-          "imagem": "Cake-Bliss/doces/fatiaPrestigio.jpg",
+          "nome": "Brigadeiro",
+          "imagem": "Cake-Bliss/doces/doseBrigadeiro.jpg",
           "descricao": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
           "preco": "R$ 00,00",
           "avaliacoes": "(500+)"
