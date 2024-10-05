@@ -105,15 +105,15 @@
           "avaliacoes": "(500+)"
         },
         { 
-          "nome": "Morango",
-          "imagem": "Cake-Bliss/doces/fatiaMorango.jpg",
+          "nome": "Ninho com morango",
+          "imagem": "Cake-Bliss/doces/doseNinho.jpg",
           "descricao": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
           "preco": "R$ 00,00",
           "avaliacoes": "(500+)"
         },
         { 
-          "nome": "Nozes",
-          "imagem": "Cake-Bliss/doces/fatiaNozesjpg.jpg",
+          "nome": "Limão",
+          "imagem": "Cake-Bliss/doces/doseLimao.jpg",
           "descricao": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
           "preco": "R$ 00,00",
           "avaliacoes": "(500+)"
