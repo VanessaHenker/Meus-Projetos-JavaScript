@@ -33,14 +33,14 @@
         },
         { 
           "nome": "Ninho com nutella",
-          "imagem": "Cake-Bliss/doces/poteNinhoNutella.jpg",
+          "imagem": "Cake-Bliss/doces/poteDoceLeite.jpg",
           "descricao": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
           "preco": "R$ 00,00",
           "avaliacoes": "(500+)"
         },
         { 
           "nome": "Frutas vermelhas",
-          "imagem": "Cake-Bliss/doces/poteFrutasVermelhas.png",
+          "imagem": "Cake-Bliss/doces/poteLimao.jpg",
           "descricao": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
           "preco": "R$ 00,00",
           "avaliacoes": "(500+)"
