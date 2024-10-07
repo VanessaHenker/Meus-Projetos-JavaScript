@@ -91,7 +91,7 @@
       "nome": "Nossas Pizzas Doces",
       "itens": [
         { 
-          "nome": "Chocolate",
+          "nome": "Brigadeiro",
           "imagem": "Pizza-Bliss/pizzas/pizza-chocolate.jpeg",
           "descricao": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
           "preco": "R$ 00,00",
@@ -100,6 +100,13 @@
         {
           "nome": "Banana com Canela",
           "imagem": "Pizza-Bliss/pizzas/Pizza-banana.png",
+          "descricao": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+          "preco": "R$ 00,00",
+          "avaliacoes": "(200+)"
+        },
+        {
+          "nome": "Brigadeiro com morango",
+          "imagem": "Pizza-Bliss/pizzas/pizzaMorango.png",
           "descricao": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
           "preco": "R$ 00,00",
           "avaliacoes": "(200+)"
