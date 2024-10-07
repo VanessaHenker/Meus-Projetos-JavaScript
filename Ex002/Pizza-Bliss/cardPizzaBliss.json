@@ -58,15 +58,29 @@
       "nome": "Nossas Pizzas Veganas",
       "itens": [
         {
-          "nome": "Pepperoni",
-          "imagem": "Pizza-Bliss/pizzas/pizza_peperoni.png",
+          "nome": "Abobrinha",
+          "imagem": "Pizza-Bliss/pizzas/pizzaAbobrinha.png",
           "descricao": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
           "preco": "R$ 00,00",
           "avaliacoes": "(500+)"
         },
         {
-          "nome": "Marguerita",
-          "imagem": "Pizza-Bliss/pizzas/pizzaMarguerita.png",
+          "nome": "Brócolis",
+          "imagem": "Pizza-Bliss/pizzas/pizzaBrocolis.png",
+          "descricao": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+          "preco": "R$ 00,00",
+          "avaliacoes": "(500+)"
+        },
+        {
+          "nome": "Rúcula",
+          "imagem": "Pizza-Bliss/pizzas/pizzaRucula.png",
+          "descricao": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+          "preco": "R$ 00,00",
+          "avaliacoes": "(500+)"
+        },
+        {
+          "nome": "Palmito",
+          "imagem": "Pizza-Bliss/pizzas/pizzaPalmito.png",
           "descricao": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
           "preco": "R$ 00,00",
           "avaliacoes": "(500+)"
