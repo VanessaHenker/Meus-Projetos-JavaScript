@@ -25,6 +25,27 @@
           "avaliacoes": "(500+)"
         },
         {
+          "nome": "Frango",
+          "imagem": "Pizza-Bliss/pizzas/pizzaFrango.png",
+          "descricao": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+          "preco": "R$ 00,00",
+          "avaliacoes": "(500+)"
+        },
+        {
+          "nome": "Queijo",
+          "imagem": "Pizza-Bliss/pizzas/pizza_queijo.png",
+          "descricao": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+          "preco": "R$ 00,00",
+          "avaliacoes": "(500+)"
+        },
+        {
+          "nome": "Pepperoni",
+          "imagem": "Pizza-Bliss/pizzas/pizza_peperoni.png",
+          "descricao": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+          "preco": "R$ 00,00",
+          "avaliacoes": "(500+)"
+        },
+        {
           "nome": "Pepperoni",
           "imagem": "Pizza-Bliss/pizzas/pizza_peperoni.png",
           "descricao": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
