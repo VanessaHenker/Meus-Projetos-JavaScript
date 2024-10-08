@@ -18,7 +18,7 @@ $(document).ready(function () {
   });
 });
 
-// Seletores
+// Seletores da barra de pesquisa
 let boxBuscar = document.querySelector('.conteudo-button-pesq');
 let lupa = document.querySelector('.btn_mobile_pesq');
 let btnFechar = document.querySelector('.button_fechar');
@@ -33,14 +33,14 @@ btnFechar.addEventListener('click', () => {
   boxBuscar.classList.remove('ativar');
 });
 
-// Pesquisa e opções
+// Seletores de pesquisa e opções
 const searchBar = document.getElementById('barra-pesquisa');
 const options = document.getElementById('opcoes');
 const button_close = document.getElementById('button_fechar');
 
 // Função para carregar o arquivo JSON dinamicamente
 function carregarCategorias() {
-  fetch('menu.json') // Certifique-se de que o caminho está correto
+  fetch('menu.json') // Verifique se o caminho está correto
     .then(response => {
       if (!response.ok) {
         throw new Error('Erro ao carregar o arquivo JSON');
@@ -48,7 +48,7 @@ function carregarCategorias() {
       return response.json();
     })
     .then(data => {
-      console.log('Categorias carregadas do JSON:', data);
+      console.log('Categorias carregadas do JSON:', data); // Verifique se o JSON está sendo carregado corretamente
       const categorias = data.categorias;
       const scrollPesquisa = document.querySelector('.scroll-pesquisa');
       scrollPesquisa.innerHTML = ''; // Limpa qualquer conteúdo anterior
@@ -62,10 +62,13 @@ function carregarCategorias() {
 
         // Adiciona comportamento de clique em cada nova categoria
         categoriaElemento.addEventListener('click', () => {
-          searchBar.value = categoria.nome;
-          options.classList.add('ativar-barra');
+          searchBar.value = categoria.nome; // Define o valor do input como o nome da categoria
+          options.classList.add('ativar-barra'); // Fecha as opções após a seleção
         });
       });
+
+      // Exibe as opções de pesquisa
+      options.classList.remove('ativar-barra');
     })
     .catch(error => console.error('Erro ao carregar o arquivo JSON:', error));
 }
@@ -73,22 +76,22 @@ function carregarCategorias() {
 // Chama a função para carregar as categorias
 carregarCategorias();
 
-// Abre as opções de pesquisa
+// Abre as opções de pesquisa ao clicar no campo de pesquisa
 searchBar.addEventListener('click', () => {
-  options.classList.remove('ativar-barra');
+  options.classList.remove('ativar-barra'); // Mostra as opções
 });
 
 // Remove as opções clicando no X
 button_close.addEventListener('click', () => {
-  options.classList.add('ativar-barra');
+  options.classList.add('ativar-barra'); // Fecha as opções
 });
 
 // Verifica se a opção de busca está aberta
 document.addEventListener('click', function (event) {
-  var isClickInside = options.contains(event.target);
+  const isClickInside = options.contains(event.target);
 
   if (!isClickInside && !searchBar.contains(event.target)) {
-    options.classList.add('ativar-barra');
+    options.classList.add('ativar-barra'); // Fecha as opções se clicar fora
   }
 });
 
