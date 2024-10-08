@@ -40,34 +40,53 @@ const searchBar = document.getElementById('barra-pesquisa');
 const options = document.getElementById('opcoes');
 const button_close = document.getElementById('button_fechar');
 
-//Abre as opções
+// Função para carregar o arquivo JSON dinamicamente
+function carregarCategorias() {
+  fetch('caminho/para/seu/arquivo.json') // Substitua pelo caminho correto do JSON
+    .then(response => response.json())
+    .then(data => {
+      const categorias = data.categorias;
+      const scrollPesquisa = document.querySelector('.scroll-pesquisa');
+      scrollPesquisa.innerHTML = ''; // Limpa qualquer conteúdo anterior
+
+      categorias.forEach(categoria => {
+        const categoriaElemento = document.createElement('p');
+        categoriaElemento.className = 'opcoes-barra';
+        categoriaElemento.textContent = categoria.nome;
+        scrollPesquisa.appendChild(categoriaElemento);
+
+        // Adiciona comportamento de clique em cada nova categoria
+        categoriaElemento.addEventListener('click', () => {
+          searchBar.value = categoria.nome;
+          options.classList.add('ativar-barra');
+        });
+      });
+    })
+    .catch(error => console.error('Erro ao carregar o arquivo JSON:', error));
+}
+
+// Chama a função para carregar as categorias
+carregarCategorias();
+
+// Abre as opções
 searchBar.addEventListener('click', () => {
   options.classList.remove('ativar-barra');
 });
 
-//Remove as opções clicando no X
+// Remove as opções clicando no X
 button_close.addEventListener('click', () => {
   options.classList.add('ativar-barra');
 });
 
-//Adiciona comportamento de clique nas opções
-const optionItems = document.querySelectorAll('.opcoes-barra');
-optionItems.forEach(option => {
-  option.addEventListener('click', () => {
-    searchBar.value = option.textContent;
-    options.classList.add('ativar-barra');
-  })
-});
-
-//Verifica se opção de busca está aberta
+// Verifica se a opção de busca está aberta
 document.addEventListener('click', function (event) {
-  var isClickInside = content.contains(event.target);
+  var isClickInside = options.contains(event.target);
 
-  if (!isClickInside) {
-    boxBuscar.classList.remove('ativar');
+  if (!isClickInside && !searchBar.contains(event.target)) {
     options.classList.add('ativar-barra');
   }
 });
+
 
 //Digita a opção desejada
 function digitar_opcao() {
