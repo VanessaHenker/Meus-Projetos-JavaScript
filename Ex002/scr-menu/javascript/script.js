@@ -18,31 +18,29 @@ $(document).ready(function () {
   });
 });
 
-//Button pesquisa
+// Seletores
 let boxBuscar = document.querySelector('.conteudo-button-pesq');
-
 let lupa = document.querySelector('.btn_mobile_pesq');
-
 let btnFechar = document.querySelector('.button_fechar');
 
-//Abre a barra de pesquisa
+// Abre a barra de pesquisa
 lupa.addEventListener('click', () => {
   boxBuscar.classList.add('ativar');
 });
 
-//Remove a barra de pesquisa
+// Remove a barra de pesquisa
 btnFechar.addEventListener('click', () => {
   boxBuscar.classList.remove('ativar');
-})
+});
 
-//Button pesquisa opções
+// Pesquisa e opções
 const searchBar = document.getElementById('barra-pesquisa');
 const options = document.getElementById('opcoes');
 const button_close = document.getElementById('button_fechar');
 
 // Função para carregar o arquivo JSON dinamicamente
 function carregarCategorias() {
-  fetch('menu.json') // Certifique-se de que o caminho para o JSON esteja correto
+  fetch('menu.json') // Certifique-se de que o caminho está correto
     .then(response => {
       if (!response.ok) {
         throw new Error('Erro ao carregar o arquivo JSON');
@@ -50,11 +48,12 @@ function carregarCategorias() {
       return response.json();
     })
     .then(data => {
-      console.log('Categorias carregadas do JSON:', data); // Verifique se o JSON está sendo carregado corretamente
+      console.log('Categorias carregadas do JSON:', data);
       const categorias = data.categorias;
       const scrollPesquisa = document.querySelector('.scroll-pesquisa');
       scrollPesquisa.innerHTML = ''; // Limpa qualquer conteúdo anterior
 
+      // Adiciona as categorias ao HTML
       categorias.forEach(categoria => {
         const categoriaElemento = document.createElement('p');
         categoriaElemento.className = 'opcoes-barra';
@@ -74,7 +73,7 @@ function carregarCategorias() {
 // Chama a função para carregar as categorias
 carregarCategorias();
 
-// Abre as opções
+// Abre as opções de pesquisa
 searchBar.addEventListener('click', () => {
   options.classList.remove('ativar-barra');
 });
