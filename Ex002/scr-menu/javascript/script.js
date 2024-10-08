@@ -42,9 +42,15 @@ const button_close = document.getElementById('button_fechar');
 
 // Função para carregar o arquivo JSON dinamicamente
 function carregarCategorias() {
-  fetch('menu.json') // Substitua pelo caminho correto do JSON
-    .then(response => response.json())
+  fetch('menu.json') // Certifique-se de que o caminho para o JSON esteja correto
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Erro ao carregar o arquivo JSON');
+      }
+      return response.json();
+    })
     .then(data => {
+      console.log('Categorias carregadas do JSON:', data); // Verifique se o JSON está sendo carregado corretamente
       const categorias = data.categorias;
       const scrollPesquisa = document.querySelector('.scroll-pesquisa');
       scrollPesquisa.innerHTML = ''; // Limpa qualquer conteúdo anterior
@@ -86,6 +92,7 @@ document.addEventListener('click', function (event) {
     options.classList.add('ativar-barra');
   }
 });
+
 
 
 //Digita a opção desejada
