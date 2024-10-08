@@ -51,14 +51,29 @@ button_close.addEventListener('click', () => {
 });
 
 //Adiciona comportamento de clique nas opções
-const optionItems = document.querySelectorAll('.opcoes-barra');
-optionItems.forEach(option => {
-  option.addEventListener('click', () => {
-    searchBar.value = option.textContent;
-    options.classList.add('ativar-barra');
-  })
-});
+function carregarCategorias() {
+  const categoriaLista = document.getElementById('categoria-lista');
 
+  // Itera pelas categorias no JSON
+  jsonData.categorias.forEach(categoria => {
+    const categoriaElemento = document.createElement('p');
+    categoriaElemento.classList.add('opcoes-barra');
+    categoriaElemento.textContent = categoria.nome;
+    
+    // Adiciona o evento de clique
+    categoriaElemento.addEventListener('click', () => {
+      const searchBar = document.getElementById('searchBar');
+      searchBar.value = categoria.nome; // Insere o nome da categoria no campo de busca
+      document.getElementById('opcoes').classList.add('ativar-barra'); // Mostra a barra
+    });
+
+    // Adiciona o elemento ao HTML
+    categoriaLista.appendChild(categoriaElemento);
+  });
+}
+
+// Chama a função para carregar as categorias
+carregarCategorias();
 //Verifica se opção de busca está aberta
 document.addEventListener('click', function (event) {
   var isClickInside = content.contains(event.target);
