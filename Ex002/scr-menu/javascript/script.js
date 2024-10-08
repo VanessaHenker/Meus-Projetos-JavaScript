@@ -42,7 +42,7 @@ const button_close = document.getElementById('button_fechar');
 
 // Função para carregar o arquivo JSON dinamicamente
 function carregarCategorias() {
-  fetch('caminho/para/seu/arquivo.json') // Substitua pelo caminho correto do JSON
+  fetch('menu.json') // Substitua pelo caminho correto do JSON
     .then(response => response.json())
     .then(data => {
       const categorias = data.categorias;
