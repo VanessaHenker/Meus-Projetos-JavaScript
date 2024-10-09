@@ -65,7 +65,7 @@ function carregarCategorias() {
               categoriaElemento.className = 'opcoes-barra';
               categoriaElemento.textContent = categoria.nome;
               scrollPesquisa.appendChild(categoriaElemento);
-              
+
               // Comportamento de clique para cada categoria
               categoriaElemento.addEventListener('click', () => {
                 searchBar.value = categoria.nome; // Define o valor do input como o nome da categoria
@@ -102,7 +102,6 @@ document.addEventListener('click', function (event) {
     boxBuscar.classList.remove('ativar'); // Também fecha a barra de busca
   }
 });
-
 
 //Digita a opção desejada
 function digitar_opcao() {
@@ -218,7 +217,6 @@ async function carregarDados() {
     console.error('Erro ao carregar dados:', error);
   }
 }
-
 
 //Função para criar um item de menu com imagem, título e localização
 function criarItemMenu(imagemSrc, titulo, localizacao) {

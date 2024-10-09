@@ -176,6 +176,11 @@ header{
   }
 }
 
+.categoria-conteudo.ativa {
+  background-color: #f0e68c; /* Exemplo de cor */
+  transition: background-color 0.3s ease; /* Transição suave */
+}
+
 @media screen and (max-width: 470px){
   #nav_logo{
     font-size: 14px;
