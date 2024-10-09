@@ -1,7 +1,7 @@
 {
   "categorias": [
     {
-      "nome": "Nossas Pizzas Salgadas",
+      "nome": "Pizzas Salgadas",
       "itens": [
         { 
           "nome": "Calabresa",
@@ -55,7 +55,7 @@
       ]
     },
     {
-      "nome": "Nossas Pizzas Veganas",
+      "nome": "Pizzas Veganas",
       "itens": [
         {
           "nome": "Abobrinha",
@@ -88,7 +88,7 @@
       ]
     },
     {
-      "nome": "Nossas Pizzas Doces",
+      "nome": "Pizzas Doces",
       "itens": [
         { 
           "nome": "Brigadeiro",
@@ -114,7 +114,7 @@
       ]
     },
     {
-      "nome": "Nossos refrigerantes",
+      "nome": "Refrigerantes",
       "itens": [
         { 
           "nome": "Coca-Cola",
