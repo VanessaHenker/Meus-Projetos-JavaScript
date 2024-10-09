@@ -40,7 +40,7 @@ const button_close = document.getElementById('button_fechar');
 
 // Função para carregar o arquivo JSON dinamicamente
 function carregarCategorias() {
-  fetch('menu.json') // Verifique se o caminho está correto
+  fetch('menu.json') // Atualize com o caminho correto
     .then(response => {
       if (!response.ok) {
         throw new Error('Erro ao carregar o arquivo JSON');
@@ -48,23 +48,52 @@ function carregarCategorias() {
       return response.json();
     })
     .then(data => {
-      console.log('Categorias carregadas do JSON:', data); // Verifique se o JSON está sendo carregado corretamente
-      const categorias = data.categorias;
+      console.log('Dados carregados do JSON:', data);
       const scrollPesquisa = document.querySelector('.scroll-pesquisa');
       scrollPesquisa.innerHTML = ''; // Limpa qualquer conteúdo anterior
 
-      // Adiciona as categorias ao HTML
-      categorias.forEach(categoria => {
-        const categoriaElemento = document.createElement('p');
-        categoriaElemento.className = 'opcoes-barra';
-        categoriaElemento.textContent = categoria.nome;
-        scrollPesquisa.appendChild(categoriaElemento);
-
-        // Adiciona comportamento de clique em cada nova categoria
-        categoriaElemento.addEventListener('click', () => {
-          searchBar.value = categoria.nome; // Define o valor do input como o nome da categoria
-          options.classList.add('ativar-barra'); // Fecha as opções após a seleção
+      // Carregar categorias de Pizza
+      if (data.usarMenuPizza) {
+        data.menuItemsPizza.forEach(item => {
+          fetch(item.menu) // Carregar o menu de pizza
+            .then(response => response.json())
+            .then(menuData => {
+              menuData.categorias.forEach(categoria => {
+                const categoriaElemento = document.createElement('p');
+                categoriaElemento.className = 'opcoes-barra';
+                categoriaElemento.textContent = categoria.nome;
+                scrollPesquisa.appendChild(categoriaElemento);
+                
+                // Comportamento de clique para cada categoria
+                categoriaElemento.addEventListener('click', () => {
+                  searchBar.value = categoria.nome; // Define o valor do input como o nome da categoria
+                  options.classList.add('ativar-barra'); // Fecha as opções após a seleção
+                });
+              });
+            })
+            .catch(error => console.error('Erro ao carregar o menu de pizza:', error));
         });
+      }
+
+      // Carregar categorias de Cake
+      data.menuItemsCake.forEach(item => {
+        fetch(item.menu) // Carregar o menu de bolo
+          .then(response => response.json())
+          .then(menuData => {
+            menuData.categorias.forEach(categoria => {
+              const categoriaElemento = document.createElement('p');
+              categoriaElemento.className = 'opcoes-barra';
+              categoriaElemento.textContent = categoria.nome;
+              scrollPesquisa.appendChild(categoriaElemento);
+              
+              // Comportamento de clique para cada categoria
+              categoriaElemento.addEventListener('click', () => {
+                searchBar.value = categoria.nome; // Define o valor do input como o nome da categoria
+                options.classList.add('ativar-barra'); // Fecha as opções após a seleção
+              });
+            });
+          })
+          .catch(error => console.error('Erro ao carregar o menu de bolo:', error));
       });
 
       // Exibe as opções de pesquisa
@@ -94,6 +123,27 @@ document.addEventListener('click', function (event) {
     options.classList.add('ativar-barra'); // Fecha as opções se clicar fora
   }
 });
+
+
+// Abre as opções de pesquisa ao clicar no campo de pesquisa
+searchBar.addEventListener('click', () => {
+  options.classList.remove('ativar-barra'); // Mostra as opções
+});
+
+// Remove as opções clicando no X
+button_close.addEventListener('click', () => {
+  options.classList.add('ativar-barra'); // Fecha as opções
+});
+
+// Verifica se a opção de busca está aberta
+document.addEventListener('click', function (event) {
+  const isClickInside = options.contains(event.target);
+
+  if (!isClickInside && !searchBar.contains(event.target)) {
+    options.classList.add('ativar-barra'); // Fecha as opções se clicar fora
+  }
+});
+
 
 
 
