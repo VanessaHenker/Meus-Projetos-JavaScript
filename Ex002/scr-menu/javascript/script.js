@@ -18,6 +18,7 @@ $(document).ready(function () {
   });
 });
 
+// Barra de pesquisa
 let boxBuscar = document.querySelector('.conteudo-button-pesq');
 let lupa = document.querySelector('.btn_mobile_pesq');
 let btnFechar = document.querySelector('.button_fechar');
@@ -103,32 +104,6 @@ document.addEventListener('click', function (event) {
   }
 });
 
-categoriaElemento.addEventListener('click', () => {
-  searchBar.value = categoria.nome; // Define o valor do input como o nome da categoria
-  options.classList.add('ativar-barra'); // Fecha as opções após a seleção
-
-  // Limpa o conteúdo anterior de itens de menu
-  const menuItemsContainer = document.getElementById('menu-items');
-  menuItemsContainer.innerHTML = '';
-
-  // Exibe os itens da categoria selecionada
-  categoria.itens.forEach(item => {
-    const itemElement = document.createElement('div');
-    itemElement.className = 'menu-item';
-    itemElement.innerHTML = `
-      <h4>${item.nome}</h4>
-      <p>Preço: R$${item.preco.toFixed(2)}</p>
-    `;
-
-    // Adicione o item ao container de itens de menu
-    menuItemsContainer.appendChild(itemElement);
-  });
-
-  // Rola a página para o container dos itens de menu
-  menuItemsContainer.scrollIntoView({ behavior: 'smooth' });
-});
-
-
 //Digita a opção desejada
 function digitar_opcao() {
   let input = document.getElementById('barra-pesquisa').value
@@ -212,7 +187,8 @@ async function carregarDados() {
       arquivoInfo = data.arquivoPizza[0].arquivoInfo;
       arquivoHorario = data.arquivoPizza[0].arquivoHorario;
       cardapioFile = data.menuItemsPizza[0].menu; // Arquivo de cardápio para Pizza Bliss
-    } else {
+    } 
+    else {
       menuItems = data.menuItemsCake;
       navIcons = data.navIconsCake;
       arquivoInfo = data.arquivoCake[0].arquivoInfo;
