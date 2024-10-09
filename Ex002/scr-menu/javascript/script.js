@@ -71,10 +71,8 @@ function carregarCategorias() {
             })
             .catch(error => console.error('Erro ao carregar o menu de pizza:', error));
         });
-      }
-
-      // Carregar categorias de Cake se houver
-      if (data.menuItemsCake.length > 0) {
+      } else {
+        // Carregar categorias de Cake se usarMenuPizza for false
         data.menuItemsCake.forEach(item => {
           fetch(item.menu) // Carregar o menu de bolo
             .then(response => response.json())
