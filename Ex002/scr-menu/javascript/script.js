@@ -103,6 +103,26 @@ document.addEventListener('click', function (event) {
   }
 });
 
+categoriaElemento.addEventListener('click', () => {
+  searchBar.value = categoria.nome; // Define o valor do input como o nome da categoria
+  options.classList.add('ativar-barra'); // Fecha as opções após a seleção
+
+  // Limpa o conteúdo anterior de itens de menu
+  const menuItemsContainer = document.getElementById('menu-items');
+  menuItemsContainer.innerHTML = '';
+
+  // Carrega e exibe os itens correspondentes à categoria selecionada
+  menuData.itens.forEach(item => {
+      const itemElement = document.createElement('div');
+      itemElement.className = 'menu-item';
+      itemElement.textContent = item.nome; // Ajuste conforme a estrutura do seu JSON
+
+      // Adicione mais detalhes do item conforme necessário (preço, descrição, imagem, etc.)
+
+      menuItemsContainer.appendChild(itemElement);
+  });
+});
+
 //Digita a opção desejada
 function digitar_opcao() {
   let input = document.getElementById('barra-pesquisa').value
