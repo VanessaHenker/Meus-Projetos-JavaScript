@@ -115,12 +115,17 @@ btnFechar.addEventListener('click', () => {
 
 // Verifica se a opção de busca está aberta
 document.addEventListener('click', function (event) {
-  const isClickInside = options.contains(event.target);
+  const isClickInsideOptions = options.contains(event.target);
+  const isClickInsideSearchBar = searchBar.contains(event.target);
+  const isClickInsideBoxBuscar = boxBuscar.contains(event.target); // Adicionei esta verificação
 
-  if (!isClickInside && !searchBar.contains(event.target)) {
+  // Se o clique for fora das opções, do campo de pesquisa e da caixa de busca
+  if (!isClickInsideOptions && !isClickInsideSearchBar && !isClickInsideBoxBuscar) {
     options.classList.add('ativar-barra'); // Fecha as opções se clicar fora
+    boxBuscar.classList.remove('ativar'); // Também fecha a barra de busca
   }
 });
+
 
 
 //Digita a opção desejada
