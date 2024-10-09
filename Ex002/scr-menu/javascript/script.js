@@ -104,7 +104,6 @@ document.addEventListener('click', function (event) {
 });
 
 
-
 //Digita a opção desejada
 function digitar_opcao() {
   let input = document.getElementById('barra-pesquisa').value
