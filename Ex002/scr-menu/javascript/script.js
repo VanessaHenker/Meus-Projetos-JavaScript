@@ -111,17 +111,23 @@ categoriaElemento.addEventListener('click', () => {
   const menuItemsContainer = document.getElementById('menu-items');
   menuItemsContainer.innerHTML = '';
 
-  // Carrega e exibe os itens correspondentes à categoria selecionada
-  menuData.itens.forEach(item => {
-      const itemElement = document.createElement('div');
-      itemElement.className = 'menu-item';
-      itemElement.textContent = item.nome; // Ajuste conforme a estrutura do seu JSON
+  // Exibe os itens da categoria selecionada
+  categoria.itens.forEach(item => {
+    const itemElement = document.createElement('div');
+    itemElement.className = 'menu-item';
+    itemElement.innerHTML = `
+      <h4>${item.nome}</h4>
+      <p>Preço: R$${item.preco.toFixed(2)}</p>
+    `;
 
-      // Adicione mais detalhes do item conforme necessário (preço, descrição, imagem, etc.)
-
-      menuItemsContainer.appendChild(itemElement);
+    // Adicione o item ao container de itens de menu
+    menuItemsContainer.appendChild(itemElement);
   });
+
+  // Rola a página para o container dos itens de menu
+  menuItemsContainer.scrollIntoView({ behavior: 'smooth' });
 });
+
 
 //Digita a opção desejada
 function digitar_opcao() {
