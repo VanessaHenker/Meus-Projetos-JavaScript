@@ -574,19 +574,3 @@ function slideCarousel(categoriaIndex, direction) {
   carousel.style.transform = `translateX(${currentOffset}px)`;
   carousel.setAttribute('data-offset', currentOffset.toString());
 }
-
-// Chamar a função para carregar o cardápio
-carregarCardapio('caminho/para/seu/json/cardapio.json');
-// Comportamento de clique para cada categoria
-categoriaElemento.addEventListener('click', () => {
-  searchBar.value = categoria.nome; // Define o valor do input como o nome da categoria
-  options.classList.add('ativar-barra'); // Fecha as opções após a seleção
-
-  // Encontra o título correspondente à categoria no cardápio
-  const tituloCategoria = document.querySelector(`h3.section-subtitulo:contains('${categoria.nome}')`);
-  
-  if (tituloCategoria) {
-    // Faz o scroll até o título da categoria
-    tituloCategoria.scrollIntoView({ behavior: 'smooth' });
-  }
-});
