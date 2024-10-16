@@ -574,17 +574,29 @@ function slideCarousel(categoriaIndex, direction) {
   carousel.style.transform = `translateX(${currentOffset}px)`;
   carousel.setAttribute('data-offset', currentOffset.toString());
 }
+
+//
 // Comportamento de clique para cada categoria
 categoriaElemento.addEventListener('click', () => {
   searchBar.value = categoria.nome; // Define o valor do input como o nome da categoria
   options.classList.add('ativar-barra'); // Fecha as opções após a seleção
 
-  // Achar o elemento da categoria correspondente no cardápio e rolar até ele
+  // Achar o elemento da categoria correspondente no cardápio
   const categoriaNoCardapio = Array.from(document.querySelectorAll('.section-subtitulo')).find(
     (el) => el.textContent === categoria.nome
   );
   
   if (categoriaNoCardapio) {
-    categoriaNoCardapio.scrollIntoView({ behavior: 'smooth' });
+    // Calcular a altura da barra de pesquisa ou qualquer elemento fixo no topo
+    const barraPesquisaAltura = document.querySelector('.conteudo-button-pesq').offsetHeight;
+
+    // Rolagem ajustada para compensar a barra fixa
+    const offsetPosicao = categoriaNoCardapio.getBoundingClientRect().top + window.pageYOffset - barraPesquisaAltura;
+
+    // Rolagem suave até a posição ajustada
+    window.scrollTo({
+      top: offsetPosicao,
+      behavior: 'smooth'
+    });
   }
 });
