@@ -581,16 +581,18 @@ categoriaElemento.addEventListener('click', () => {
   searchBar.value = categoria.nome; // Define o valor do input como o nome da categoria
   options.classList.add('ativar-barra'); // Fecha as opções após a seleção
 
-  // Seleciona o título <h3> correspondente no cardápio (exato)
-  const titulos = document.querySelectorAll('.section-subtitulo'); // Todos os h3s com a classe de subtítulo
+  // Seleciona o título <h3> correspondente no cardápio
+  const titulos = document.querySelectorAll('h3'); // Seleciona todos os <h3>
 
-  titulos.forEach(titulo => {
-    if (titulo.textContent.trim().toLowerCase() === categoria.nome.trim().toLowerCase()) {
-      // Rolagem suave até o título correspondente
-      window.scrollTo({
-        top: titulo.offsetTop - 10, // Pequeno ajuste para posicionar corretamente
-        behavior: 'smooth' // Rolagem suave
-      });
-    }
-  });
+  // Busca o h3 que tem o mesmo nome da categoria
+  let tituloCorrespondente = Array.from(titulos).find(titulo => 
+    titulo.textContent.trim().toLowerCase() === categoria.nome.trim().toLowerCase()
+  );
+
+  if (tituloCorrespondente) {
+    // Rolar suavemente até o título correspondente
+    tituloCorrespondente.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  } else {
+    console.error('Título da categoria não encontrado:', categoria.nome);
+  }
 });
