@@ -574,3 +574,17 @@ function slideCarousel(categoriaIndex, direction) {
   carousel.style.transform = `translateX(${currentOffset}px)`;
   carousel.setAttribute('data-offset', currentOffset.toString());
 }
+// Comportamento de clique para cada categoria
+categoriaElemento.addEventListener('click', () => {
+  searchBar.value = categoria.nome; // Define o valor do input como o nome da categoria
+  options.classList.add('ativar-barra'); // Fecha as opções após a seleção
+
+  // Achar o elemento da categoria correspondente no cardápio e rolar até ele
+  const categoriaNoCardapio = Array.from(document.querySelectorAll('.section-subtitulo')).find(
+    (el) => el.textContent === categoria.nome
+  );
+  
+  if (categoriaNoCardapio) {
+    categoriaNoCardapio.scrollIntoView({ behavior: 'smooth' });
+  }
+});
