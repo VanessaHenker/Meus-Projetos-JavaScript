@@ -581,15 +581,16 @@ categoriaElemento.addEventListener('click', () => {
   searchBar.value = categoria.nome; // Define o valor do input como o nome da categoria
   options.classList.add('ativar-barra'); // Fecha as opções após a seleção
 
-  // Achar o elemento h3 correspondente no cardápio
-  const h3Element = Array.from(document.querySelectorAll('h3')).find(
-    (el) => el.textContent.trim().toLowerCase() === categoria.nome.trim().toLowerCase()
-  );
+  // Seleciona o título <h3> correspondente no cardápio
+  const tituloCategoria = document.querySelector(`h3:contains(${categoria.nome})`);
 
-  if (h3Element) {
-    // Scroll suave até o título <h3>
-    h3Element.scrollIntoView({ behavior: 'smooth' });
+  if (tituloCategoria) {
+    // Scroll até o título <h3> correspondente
+    window.scrollTo({
+      top: tituloCategoria.offsetTop,
+      behavior: 'smooth' // Rolagem suave
+    });
   } else {
-    console.error('Título h3 não encontrado para a categoria:', categoria.nome);
+    console.error('Título da categoria não encontrado:', categoria.nome);
   }
 });
