@@ -579,7 +579,7 @@ function slideCarousel(categoriaIndex, direction) {
 // Comportamento de clique para cada categoria
 categoriaElemento.addEventListener('click', () => {
   searchBar.value = categoria.nome; // Define o valor do input como o nome da categoria
-  options.classList.add('ativar-barra'); // Fecha as opções após a seleção
+  options.classList.remove('ativar-barra'); // Fecha as opções após a seleção
 
   // Seleciona o título <h3> correspondente no cardápio
   const tituloCategoria = document.querySelector(`h3:contains(${categoria.nome})`);
