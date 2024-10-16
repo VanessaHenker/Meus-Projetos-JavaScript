@@ -576,22 +576,26 @@ function slideCarousel(categoriaIndex, direction) {
 }
 
 //
+
 // Comportamento de clique para cada categoria
 categoriaElemento.addEventListener('click', () => {
   searchBar.value = categoria.nome; // Define o valor do input como o nome da categoria
   options.classList.add('ativar-barra'); // Fecha as opções após a seleção
 
   // Seleciona o título <h3> correspondente no cardápio
-  const titulos = document.querySelectorAll('h3'); // Seleciona todos os <h3>
-
-  // Busca o h3 que tem o mesmo nome da categoria
-  let tituloCorrespondente = Array.from(titulos).find(titulo => 
-    titulo.textContent.trim().toLowerCase() === categoria.nome.trim().toLowerCase()
+  const tituloCategoria = Array.from(document.querySelectorAll('.section-subtitulo')).find(
+    (el) => el.textContent.trim().toLowerCase() === categoria.nome.trim().toLowerCase()
   );
 
-  if (tituloCorrespondente) {
-    // Rolar suavemente até o título correspondente
-    tituloCorrespondente.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  if (tituloCategoria) {
+    // Calcula a posição exata do título no documento
+    const topPosition = tituloCategoria.getBoundingClientRect().top + window.pageYOffset - 100;
+
+    // Scroll suave até o título correspondente
+    window.scrollTo({
+      top: topPosition,
+      behavior: 'smooth' // Rolagem suave
+    });
   } else {
     console.error('Título da categoria não encontrado:', categoria.nome);
   }
