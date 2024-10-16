@@ -581,24 +581,15 @@ categoriaElemento.addEventListener('click', () => {
   searchBar.value = categoria.nome; // Define o valor do input como o nome da categoria
   options.classList.add('ativar-barra'); // Fecha as opções após a seleção
 
-  // Achar o elemento da categoria correspondente no cardápio
-  const categoriaNoCardapio = Array.from(document.querySelectorAll('.section-subtitulo')).find(
+  // Achar o elemento h3 correspondente no cardápio
+  const h3Element = Array.from(document.querySelectorAll('h3')).find(
     (el) => el.textContent.trim().toLowerCase() === categoria.nome.trim().toLowerCase()
   );
 
-  if (categoriaNoCardapio) {
-    // Calcular a altura da barra de pesquisa ou qualquer elemento fixo no topo
-    const barraPesquisaAltura = document.querySelector('.conteudo-button-pesq').offsetHeight || 0;
-
-    // Obter a posição da categoria no cardápio
-    const offsetPosicao = categoriaNoCardapio.getBoundingClientRect().top + window.scrollY - barraPesquisaAltura;
-
-    // Rolagem suave até a posição ajustada
-    window.scrollTo({
-      top: offsetPosicao,
-      behavior: 'smooth'
-    });
+  if (h3Element) {
+    // Scroll suave até o título <h3>
+    h3Element.scrollIntoView({ behavior: 'smooth' });
   } else {
-    console.error('Categoria não encontrada no cardápio:', categoria.nome);
+    console.error('Título h3 não encontrado para a categoria:', categoria.nome);
   }
 });
