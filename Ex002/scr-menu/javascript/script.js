@@ -583,20 +583,22 @@ categoriaElemento.addEventListener('click', () => {
 
   // Achar o elemento da categoria correspondente no cardápio
   const categoriaNoCardapio = Array.from(document.querySelectorAll('.section-subtitulo')).find(
-    (el) => el.textContent === categoria.nome
+    (el) => el.textContent.trim().toLowerCase() === categoria.nome.trim().toLowerCase()
   );
-  
+
   if (categoriaNoCardapio) {
     // Calcular a altura da barra de pesquisa ou qualquer elemento fixo no topo
-    const barraPesquisaAltura = document.querySelector('.conteudo-button-pesq').offsetHeight;
+    const barraPesquisaAltura = document.querySelector('.conteudo-button-pesq').offsetHeight || 0;
 
-    // Rolagem ajustada para compensar a barra fixa
-    const offsetPosicao = categoriaNoCardapio.getBoundingClientRect().top + window.pageYOffset - barraPesquisaAltura;
+    // Obter a posição da categoria no cardápio
+    const offsetPosicao = categoriaNoCardapio.getBoundingClientRect().top + window.scrollY - barraPesquisaAltura;
 
     // Rolagem suave até a posição ajustada
     window.scrollTo({
       top: offsetPosicao,
       behavior: 'smooth'
     });
+  } else {
+    console.error('Categoria não encontrada no cardápio:', categoria.nome);
   }
 });
