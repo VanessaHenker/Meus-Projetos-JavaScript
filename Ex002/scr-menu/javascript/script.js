@@ -582,21 +582,69 @@ function scrollToCategory(categoryName) {
   // Seleciona todas as categorias no cardápio
   const categories = document.querySelectorAll('.categoria-container');
 
-  // Itera sobre as categorias para encontrar a que corresponde ao nome
+  let found = false; // Flag para saber se a categoria foi encontrada
+
   categories.forEach(category => {
     const subtitle = category.querySelector('.section-subtitulo').textContent;
 
-    if (subtitle === categoryName) {
-      // Usa scrollIntoView com alinhamento no topo e rolagem suave
-      category.scrollIntoView({
-        behavior: 'smooth',  // Animação suave de rolagem
-        block: 'start',      // Alinha ao início da janela
-        inline: 'nearest'    // Certifica que a rolagem é horizontalmente correta, se necessário
+    // Verifica se o nome da categoria bate com o nome clicado na barra de pesquisa
+    if (subtitle.trim().toLowerCase() === categoryName.trim().toLowerCase()) {
+      found = true; // Marca como encontrada
+
+      // Calcula a posição do elemento
+      const categoryPosition = category.getBoundingClientRect().top + window.pageYOffset - 100; // Ajuste de 100px para compensar cabeçalhos fixos
+
+      // Rola a página para a posição calculada
+      window.scrollTo({
+        top: categoryPosition,
+        behavior: 'smooth'  // Animação suave de rolagem
       });
 
-      console.log(`Rolando para a categoria: ${categoryName}`); // Verificação para saber se a categoria está sendo encontrada
+      console.log(`Rolando para a categoria: ${categoryName} na posição ${categoryPosition}`); // Log para verificar
     }
   });
+
+  if (!found) {
+    console.error(`Categoria ${categoryName} não encontrada no cardápio.`);
+  }
+}
+
+// No evento de clique da categoria na barra de pesquisa
+categoriaElemento.addEventListener('click', () => {
+  searchBar.value = categoria.nome;  // Define o valor do input como o nome da categoria
+  options.classList.add('ativar-barra');  // Fecha as opções após a seleção
+  scrollToCategory(categoria.nome);  // Rolagem até a categoria correspondente
+});
+// Função para rolar até a categoria correspondente ao clicar na opção da barra de pesquisa
+function scrollToCategory(categoryName) {
+  // Seleciona todas as categorias no cardápio
+  const categories = document.querySelectorAll('.categoria-container');
+
+  let found = false; // Flag para saber se a categoria foi encontrada
+
+  categories.forEach(category => {
+    const subtitle = category.querySelector('.section-subtitulo').textContent;
+
+    // Verifica se o nome da categoria bate com o nome clicado na barra de pesquisa
+    if (subtitle.trim().toLowerCase() === categoryName.trim().toLowerCase()) {
+      found = true; // Marca como encontrada
+
+      // Calcula a posição do elemento
+      const categoryPosition = category.getBoundingClientRect().top + window.pageYOffset - 100; // Ajuste de 100px para compensar cabeçalhos fixos
+
+      // Rola a página para a posição calculada
+      window.scrollTo({
+        top: categoryPosition,
+        behavior: 'smooth'  // Animação suave de rolagem
+      });
+
+      console.log(`Rolando para a categoria: ${categoryName} na posição ${categoryPosition}`); // Log para verificar
+    }
+  });
+
+  if (!found) {
+    console.error(`Categoria ${categoryName} não encontrada no cardápio.`);
+  }
 }
 
 // No evento de clique da categoria na barra de pesquisa
