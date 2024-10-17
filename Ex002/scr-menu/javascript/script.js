@@ -629,18 +629,18 @@ function scrollToCategory(categoryName) {
     if (subtitle.trim().toLowerCase() === categoryName.trim().toLowerCase()) {
       found = true; // Marca como encontrada
 
+      // Exibe informações sobre a categoria e sua posição
+      console.log('Categoria encontrada:', subtitle);
+
       // Garante que o elemento esteja visível no layout antes de tentar rolar
       setTimeout(() => {
-        // Calcula a posição exata do elemento em relação à página
-        const categoryPosition = category.getBoundingClientRect().top + window.pageYOffset - 100; // Ajuste de 100px para compensar cabeçalhos fixos
-
-        // Rola a página para a posição calculada
-        window.scrollTo({
-          top: categoryPosition,
-          behavior: 'smooth'  // Animação suave de rolagem
+        // Usar scrollIntoView para rolar até o elemento
+        category.scrollIntoView({
+          behavior: 'smooth', // Suaviza a rolagem
+          block: 'start'      // Alinha no topo
         });
 
-        console.log(`Rolando para a categoria: ${categoryName} na posição ${categoryPosition}`); // Log para verificar
+        console.log(`Rolando para a categoria: ${categoryName}`);
       }, 100); // Pequeno atraso para garantir que o layout tenha sido atualizado
     }
   });
