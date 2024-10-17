@@ -1,6 +1,9 @@
 .color-padrao {
   color: black;
 }
+body {
+  overflow-y: auto;  /* Certifique-se de que a rolagem vertical está habilitada */
+}
 
 .conteudo-cardapio {
   display: flex;
