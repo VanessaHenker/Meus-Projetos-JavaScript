@@ -656,3 +656,12 @@ categoriaElemento.addEventListener('click', () => {
   options.classList.add('ativar-barra');  // Fecha as opções após a seleção
   scrollToCategory(categoria.nome);  // Rolagem até a categoria correspondente
 });
+
+// Substitua o scrollIntoView por:
+setTimeout(() => {
+  const categoryPosition = category.getBoundingClientRect().top + window.pageYOffset - 100; // Ajuste para cabeçalhos fixos
+  window.scrollTo({
+    top: categoryPosition,
+    behavior: 'smooth'
+  });
+}, 100);
