@@ -579,18 +579,29 @@ function slideCarousel(categoriaIndex, direction) {
 
 // Função para rolar até a categoria correspondente ao clicar na opção da barra de pesquisa
 function scrollToCategory(categoryName) {
+  // Seleciona todas as categorias no cardápio
   const categories = document.querySelectorAll('.categoria-container');
+
+  // Itera sobre as categorias para encontrar a que corresponde ao nome
   categories.forEach(category => {
     const subtitle = category.querySelector('.section-subtitulo').textContent;
+
     if (subtitle === categoryName) {
-      category.scrollIntoView({ behavior: 'smooth' }); // Rolagem suave até a categoria
+      // Usa scrollIntoView com alinhamento no topo e rolagem suave
+      category.scrollIntoView({
+        behavior: 'smooth',  // Animação suave de rolagem
+        block: 'start',      // Alinha ao início da janela
+        inline: 'nearest'    // Certifica que a rolagem é horizontalmente correta, se necessário
+      });
+
+      console.log(`Rolando para a categoria: ${categoryName}`); // Verificação para saber se a categoria está sendo encontrada
     }
   });
 }
 
 // No evento de clique da categoria na barra de pesquisa
 categoriaElemento.addEventListener('click', () => {
-  searchBar.value = categoria.nome; // Define o valor do input como o nome da categoria
-  options.classList.add('ativar-barra'); // Fecha as opções após a seleção
-  scrollToCategory(categoria.nome); // Rolagem até a categoria correspondente
+  searchBar.value = categoria.nome;  // Define o valor do input como o nome da categoria
+  options.classList.add('ativar-barra');  // Fecha as opções após a seleção
+  scrollToCategory(categoria.nome);  // Rolagem até a categoria correspondente
 });
