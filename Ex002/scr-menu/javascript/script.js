@@ -592,3 +592,32 @@ categoriaElemento.addEventListener('click', () => {
     categoriaContainer.scrollIntoView({ behavior: 'smooth' });
   }
 });
+data.categorias.forEach((categoria, categoriaIndex) => {
+  // Criar um contêiner para cada categoria
+  const categoriaContainer = document.createElement('div');
+  categoriaContainer.classList.add('categoria-container');
+  categoriaContainer.id = `categoria-${categoriaIndex}`; // ID único para rolagem
+
+  // Adicionar o subtítulo da categoria
+  const subtitulo = document.createElement('h3');
+  subtitulo.classList.add('section-subtitulo');
+  subtitulo.textContent = categoria.nome;
+  categoriaContainer.appendChild(subtitulo);
+  
+  // ... (restante do código para criar o carrossel)
+
+  // Adicionar o contêiner da categoria ao cardápio
+  cardapio.appendChild(categoriaContainer);
+});
+
+// Dentro de carregarCategorias:
+categoriaElemento.addEventListener('click', () => {
+  searchBar.value = categoria.nome; // Define o valor do input como o nome da categoria
+  options.classList.add('ativar-barra'); // Fecha as opções após a seleção
+  
+  // Rolar suavemente para a categoria correspondente
+  const categoriaContainer = document.getElementById(`categoria-${categoriaIndex}`);
+  if (categoriaContainer) {
+    categoriaContainer.scrollIntoView({ behavior: 'smooth' });
+  }
+});
