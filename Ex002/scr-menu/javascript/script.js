@@ -577,3 +577,18 @@ function slideCarousel(categoriaIndex, direction) {
 
 //
 
+// Adicionar o contêiner da categoria ao cardápio
+categoriaContainer.id = `categoria-${categoriaIndex}`; // Adiciona um ID único
+cardapio.appendChild(categoriaContainer);
+
+// Comportamento de clique para cada categoria
+categoriaElemento.addEventListener('click', () => {
+  searchBar.value = categoria.nome; // Define o valor do input como o nome da categoria
+  options.classList.add('ativar-barra'); // Fecha as opções após a seleção
+  
+  // Rolar suavemente para a categoria correspondente
+  const categoriaContainer = document.getElementById(`categoria-${categoriaIndex}`);
+  if (categoriaContainer) {
+    categoriaContainer.scrollIntoView({ behavior: 'smooth' });
+  }
+});
