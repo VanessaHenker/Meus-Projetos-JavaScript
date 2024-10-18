@@ -577,47 +577,83 @@ function slideCarousel(categoriaIndex, direction) {
 
 //
 
-// Adicionar o contêiner da categoria ao cardápio
-categoriaContainer.id = `categoria-${categoriaIndex}`; // Adiciona um ID único
-cardapio.appendChild(categoriaContainer);
+async function carregarCardapio(cardapioFile) {
+  try {
+    const response = await fetch(cardapioFile);
+    const data = await response.json();
+    const cardapio = document.getElementById('cardapio');
 
-// Comportamento de clique para cada categoria
-categoriaElemento.addEventListener('click', () => {
-  searchBar.value = categoria.nome; // Define o valor do input como o nome da categoria
-  options.classList.add('ativar-barra'); // Fecha as opções após a seleção
-  
-  // Rolar suavemente para a categoria correspondente
-  const categoriaContainer = document.getElementById(`categoria-${categoriaIndex}`);
-  if (categoriaContainer) {
-    categoriaContainer.scrollIntoView({ behavior: 'smooth' });
+    // Limpar o cardápio existente
+    cardapio.innerHTML = '';
+
+    if (!data.categorias || data.categorias.length === 0) {
+      console.error('Nenhuma categoria encontrada no cardápio.');
+      return;
+    }
+
+    data.categorias.forEach((categoria, categoriaIndex) => {
+      const categoriaContainer = document.createElement('div');
+      categoriaContainer.classList.add('categoria-container');
+      categoriaContainer.id = `categoria-${categoriaIndex}`; // ID único
+
+      const subtitulo = document.createElement('h3');
+      subtitulo.classList.add('section-subtitulo');
+      subtitulo.textContent = categoria.nome;
+      categoriaContainer.appendChild(subtitulo);
+
+      // ... (restante do código para criar o carrossel)
+
+      cardapio.appendChild(categoriaContainer);
+    });
+  } catch (error) {
+    console.error('Erro ao carregar o cardápio:', error);
   }
-});
-data.categorias.forEach((categoria, categoriaIndex) => {
-  // Criar um contêiner para cada categoria
-  const categoriaContainer = document.createElement('div');
-  categoriaContainer.classList.add('categoria-container');
-  categoriaContainer.id = `categoria-${categoriaIndex}`; // ID único para rolagem
+}
 
-  // Adicionar o subtítulo da categoria
-  const subtitulo = document.createElement('h3');
-  subtitulo.classList.add('section-subtitulo');
-  subtitulo.textContent = categoria.nome;
-  categoriaContainer.appendChild(subtitulo);
-  
-  // ... (restante do código para criar o carrossel)
+// Função para carregar categorias
+function carregarCategorias() {
+  fetch('menu.json')
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Erro ao carregar o arquivo JSON');
+      }
+      return response.json();
+    })
+    .then(data => {
+      const scrollPesquisa = document.querySelector('.scroll-pesquisa');
+      scrollPesquisa.innerHTML = '';
 
-  // Adicionar o contêiner da categoria ao cardápio
-  cardapio.appendChild(categoriaContainer);
-});
+      const menuItems = data.usarMenuPizza ? data.menuItemsPizza : data.menuItemsCake;
+      menuItems.forEach((item, itemIndex) => {
+        fetch(item.menu)
+          .then(response => response.json())
+          .then(menuData => {
+            menuData.categorias.forEach((categoria, categoriaIndex) => {
+              const categoriaElemento = document.createElement('p');
+              categoriaElemento.className = 'opcoes-barra';
+              categoriaElemento.textContent = categoria.nome;
+              scrollPesquisa.appendChild(categoriaElemento);
 
-// Dentro de carregarCategorias:
-categoriaElemento.addEventListener('click', () => {
-  searchBar.value = categoria.nome; // Define o valor do input como o nome da categoria
-  options.classList.add('ativar-barra'); // Fecha as opções após a seleção
-  
-  // Rolar suavemente para a categoria correspondente
-  const categoriaContainer = document.getElementById(`categoria-${categoriaIndex}`);
-  if (categoriaContainer) {
-    categoriaContainer.scrollIntoView({ behavior: 'smooth' });
-  }
-});
+              // Comportamento de clique para cada categoria
+              categoriaElemento.addEventListener('click', () => {
+                searchBar.value = categoria.nome; // Define o valor do input
+                options.classList.add('ativar-barra'); // Fecha as opções
+
+                // Rolar suavemente para a categoria correspondente
+                const categoriaContainer = document.getElementById(`categoria-${categoriaIndex}`);
+                if (categoriaContainer) {
+                  categoriaContainer.scrollIntoView({ behavior: 'smooth' });
+                }
+              });
+            });
+          })
+          .catch(error => console.error('Erro ao carregar o menu:', error));
+      });
+
+      options.classList.add('ativar-barra');
+    })
+    .catch(error => console.error('Erro ao carregar o arquivo JSON:', error));
+}
+
+// Chama a função para carregar as categorias
+carregarCategorias();
