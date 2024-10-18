@@ -468,19 +468,22 @@ async function carregarCardapio(cardapioFile) {
 function slideCarousel(categoriaIndex, direction) {
   const carousel = document.getElementById(`carousel-${categoriaIndex}`);
   const items = carousel.querySelectorAll('.pratos');
+
+  if (items.length === 0) return; // Verifica se há itens no carrossel
+
   const itemWidth = items[0].offsetWidth + 20; // Margem de 10px de cada lado
   const visibleItems = Math.floor(carousel.offsetWidth / itemWidth);
   let currentOffset = parseInt(carousel.getAttribute('data-offset') || 0);
 
+  // Atualiza o offset com base na direção
   currentOffset -= direction * itemWidth;
+
+  // Limita o deslocamento
   const maxOffset = -(items.length - visibleItems) * itemWidth;
+  currentOffset = Math.max(currentOffset, maxOffset);
+  currentOffset = Math.min(currentOffset, 0); 
 
-  if (currentOffset > 0) {
-    currentOffset = 0; 
-  } else if (currentOffset < maxOffset) {
-    currentOffset = maxOffset; 
-  }
-
+  // Aplica o novo deslocamento
   carousel.style.transform = `translateX(${currentOffset}px)`;
   carousel.setAttribute('data-offset', currentOffset.toString());
 }
@@ -498,6 +501,7 @@ function carregarCategorias() {
       scrollPesquisa.innerHTML = '';
 
       const menuItems = data.usarMenuPizza ? data.menuItemsPizza : data.menuItemsCake;
+
       menuItems.forEach((item, itemIndex) => {
         fetch(item.menu)
           .then(response => response.json())
@@ -514,7 +518,13 @@ function carregarCategorias() {
 
                 const categoriaContainer = document.getElementById(`categoria-${categoriaIndex}`);
                 if (categoriaContainer) {
-                  categoriaContainer.scrollIntoView({ behavior: 'smooth' });
+                  const offset = 100; // Ajuste de deslocamento, se necessário
+                  const topPos = categoriaContainer.getBoundingClientRect().top + window.scrollY - offset;
+
+                  window.scrollTo({
+                    top: topPos,
+                    behavior: 'smooth'
+                  });
                 }
               });
             });
@@ -527,4 +537,5 @@ function carregarCategorias() {
     .catch(error => console.error('Erro ao carregar o arquivo JSON:', error));
 }
 
+// Chama a função para carregar as categorias
 carregarCategorias();
