@@ -41,51 +41,6 @@ btnFechar.addEventListener('click', () => {
   options.classList.add('ativar-barra'); // Fecha as opções
 });
 
-// Função para carregar o arquivo JSON dinamicamente
-function carregarCategorias() {
-  fetch('menu.json') // Atualize com o caminho correto
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Erro ao carregar o arquivo JSON');
-      }
-      return response.json();
-    })
-    .then(data => {
-      console.log('Dados carregados do JSON:', data);
-      const scrollPesquisa = document.querySelector('.scroll-pesquisa');
-      scrollPesquisa.innerHTML = ''; // Limpa qualquer conteúdo anterior
-
-      // Carregar categorias dependendo do tipo de menu
-      const menuItems = data.usarMenuPizza ? data.menuItemsPizza : data.menuItemsCake;
-      menuItems.forEach(item => {
-        fetch(item.menu) // Carregar o menu correspondente
-          .then(response => response.json())
-          .then(menuData => {
-            menuData.categorias.forEach(categoria => {
-              const categoriaElemento = document.createElement('p');
-              categoriaElemento.className = 'opcoes-barra';
-              categoriaElemento.textContent = categoria.nome;
-              scrollPesquisa.appendChild(categoriaElemento);
-
-              // Comportamento de clique para cada categoria
-              categoriaElemento.addEventListener('click', () => {
-                searchBar.value = categoria.nome; // Define o valor do input como o nome da categoria
-                options.classList.add('ativar-barra'); // Fecha as opções após a seleção
-              });
-            });
-          })
-          .catch(error => console.error('Erro ao carregar o menu:', error));
-      });
-
-      // As opções de pesquisa permanecem fechadas ao carregar
-      options.classList.add('ativar-barra');
-    })
-    .catch(error => console.error('Erro ao carregar o arquivo JSON:', error));
-}
-
-// Chama a função para carregar as categorias
-carregarCategorias();
-
 // Abre as opções de pesquisa ao clicar no campo de pesquisa
 searchBar.addEventListener('click', () => {
   options.classList.remove('ativar-barra'); // Mostra as opções
@@ -577,6 +532,7 @@ function slideCarousel(categoriaIndex, direction) {
 }
 
 // Função para carregar categorias
+// Função para carregar categorias
 function carregarCategorias() {
   fetch('menu.json')
     .then(response => {
@@ -608,7 +564,12 @@ function carregarCategorias() {
                 // Rolar suavemente para a categoria correspondente
                 const categoriaContainer = document.getElementById(`categoria-${categoriaIndex}`);
                 if (categoriaContainer) {
-                  categoriaContainer.scrollIntoView({ behavior: 'smooth' });
+                  // Encontre o h3 dentro do contêiner da categoria
+                  const h3Element = categoriaContainer.querySelector('h3');
+                  if (h3Element) {
+                    const topPosition = h3Element.getBoundingClientRect().top + window.scrollY;
+                    window.scrollTo({ top: topPosition, behavior: 'smooth' });
+                  }
                 }
               });
             });
