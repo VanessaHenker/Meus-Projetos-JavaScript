@@ -532,7 +532,6 @@ function slideCarousel(categoriaIndex, direction) {
 }
 
 // Função para carregar categorias
-// Função para carregar categorias
 function carregarCategorias() {
   fetch('menu.json')
     .then(response => {
